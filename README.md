@@ -2,7 +2,7 @@
 
 ![Vibe coded with Claude](https://img.shields.io/badge/vibe%20coded-with%20Claude-d6b46a)
 ![Single file](https://img.shields.io/badge/each%20project-one%20HTML%20file-6b6fe0)
-![Tests](https://github.com/cnaebadi/vibe-coded/actions/workflows/tests.yml/badge.svg)
+![Tests](https://github.com/cnaebadi/vibe-astro/actions/workflows/tests.yml/badge.svg)
 
 Three small web projects built by **vibe coding**: I directed the design, tested,
 and decided what to keep; the AI ([Claude](https://claude.ai)) wrote most of the
@@ -13,13 +13,13 @@ system fonts).
 Every page is in **Persian and English**. On the first visit it asks which one you
 want and remembers your choice; Persian is the default.
 
-**Live:** https://cnaebadi.github.io/vibe-coded/
+**Live:** https://cnaebadi.github.io/vibe-astro/
 
 | | Project | What it does |
 |---|---|---|
-| [![](jyotish/og.png)](https://cnaebadi.github.io/vibe-coded/jyotish/) | **[Jyotish](https://cnaebadi.github.io/vibe-coded/jyotish/)** · جیوتیش | A Vedic (sidereal, Lahiri) birth chart: North and South Indian charts, D1 and D9, the nine grahas, twelve houses, aspects, Vimshottari dasha, yogas and a life-potential score. |
-| [![](ramz-adad/og.png)](https://cnaebadi.github.io/vibe-coded/ramz-adad/) | **[Number Codes](https://cnaebadi.github.io/vibe-coded/ramz-adad/)** · رمز اعداد | A numerology cheat sheet: base, master and karmic numbers, angel numbers, the tarot Major Arcana, Pythagorean, Chaldean and Abjad tables, a calculator and a time/number reader. |
-| [![](solar-system/og.png)](https://cnaebadi.github.io/vibe-coded/solar-system/) | **[The Real Solar System](https://cnaebadi.github.io/vibe-coded/solar-system/)** · منظومه شمسی واقعی | A 3D solar system with the planets where they really are, a time machine (1800–2200), a geocentric view with the zodiac, and a calendar of eclipses, conjunctions and retrogrades. |
+| [![](jyotish/og.png)](https://cnaebadi.github.io/vibe-astro/jyotish/) | **[Jyotish](https://cnaebadi.github.io/vibe-astro/jyotish/)** · جیوتیش | A Vedic (sidereal, Lahiri) birth chart: North and South Indian charts, D1 and D9, the nine grahas, twelve houses, aspects, Vimshottari dasha, yogas and a life-potential score. |
+| [![](ramz-adad/og.png)](https://cnaebadi.github.io/vibe-astro/ramz-adad/) | **[Number Codes](https://cnaebadi.github.io/vibe-astro/ramz-adad/)** · رمز اعداد | A numerology cheat sheet: base, master and karmic numbers, angel numbers, the tarot Major Arcana, Pythagorean, Chaldean and Abjad tables, a calculator and a time/number reader. |
+| [![](solar-system/og.png)](https://cnaebadi.github.io/vibe-astro/solar-system/) | **[The Real Solar System](https://cnaebadi.github.io/vibe-astro/solar-system/)** · منظومه شمسی واقعی | A 3D solar system with the planets where they really are, a time machine (1800–2200), a geocentric view with the zodiac, and a calendar of eclipses, conjunctions and retrogrades. |
 
 ## How it works
 
@@ -85,7 +85,7 @@ astronomy, on the other hand, is real.
 
 هر صفحه فارسی و انگلیسی دارد. بار اول زبان را می‌پرسد و انتخاب را نگه می‌دارد. پیش‌فرض فارسی است.
 
-**نسخه‌ی آنلاین:** https://cnaebadi.github.io/vibe-coded/
+**نسخه‌ی آنلاین:** https://cnaebadi.github.io/vibe-astro/
 
 ## License
 

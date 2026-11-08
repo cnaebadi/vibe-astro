@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { PAGES, readPage } from '../lib/pages.js';
 
 const FONT_HOSTS = /^https:\/\/fonts\.(googleapis|gstatic)\.com\//;
-const OWN_SITE = /^https:\/\/cnaebadi\.github\.io\/vibe-coded\//; // only in meta tags, never loaded by the page
+const OWN_SITE = /^https:\/\/cnaebadi\.github\.io\/vibe-astro\//; // only in meta tags, never loaded by the page
 
 function resourceRefs(html) {
   const refs = [];
