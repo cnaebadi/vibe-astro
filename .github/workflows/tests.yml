@@ -1,0 +1,23 @@
+name: tests
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install
+        working-directory: tests
+        run: npm ci
+      - name: Make sure Chrome is there
+        run: google-chrome --version || npx playwright-core install chrome
+        working-directory: tests
+      - name: Test
+        working-directory: tests
+        env:
+          TZ: UTC
+        run: npm test

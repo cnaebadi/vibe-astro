@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<!--i18n-head-->
+<script>
+/* زبان: قبل از رندر، جهت صفحه را تنظیم می‌کند تا پرش دیده نشود */
+(function(){
+  var l = 'fa'; try { l = localStorage.getItem('vibeLang') || 'fa'; } catch(e){}
+  if(l === 'en'){ var r = document.documentElement; r.lang = 'en'; r.dir = 'ltr'; r.classList.add('i18n-wait'); }
+  window.__LANG = l === 'en' ? 'en' : 'fa';
+  window.I18L = function(fa, en){ return window.__LANG === 'en' ? en : fa; };
+})();
+</script>
+<style>
+html.i18n-wait body{visibility:hidden}
+.i18n-tg{position:fixed;z-index:9990;bottom:14px;inset-inline-start:14px;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(18,16,34,.72);border:1px solid rgba(241,212,139,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.i18n-tg button{all:unset;cursor:pointer;font:600 12px/1 Vazirmatn,system-ui,sans-serif;color:rgba(236,239,250,.7);padding:7px 11px;border-radius:999px;transition:background .2s,color .2s}
+.i18n-tg button[aria-pressed="true"]{background:rgba(241,212,139,.92);color:#1a1530}
+.i18n-tg button:focus-visible{outline:2px solid #f1d48b;outline-offset:2px}
+.i18n-ask{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:16px;background:rgba(6,5,14,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:i18nIn .35s ease}
+.i18n-ask .box{width:min(360px,100%);padding:26px 22px 20px;border-radius:22px;text-align:center;background:linear-gradient(160deg,rgba(40,32,72,.96),rgba(20,17,38,.96));border:1px solid rgba(241,212,139,.3);box-shadow:0 20px 60px rgba(0,0,0,.5);color:#eceffa;font-family:Vazirmatn,system-ui,sans-serif}
+.i18n-ask h2{margin:0 0 8px;font-size:1.15rem;font-weight:800;color:#f1d48b}
+.i18n-ask h2 span,.i18n-ask p span{display:block}
+.i18n-ask h2 span[lang=en]{font-size:.92rem;font-weight:600;opacity:.85;margin-top:2px}
+.i18n-ask p{margin:0 0 18px;font-size:.86rem;color:rgba(236,239,250,.6)}
+.i18n-ask .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.i18n-ask button{all:unset;box-sizing:border-box;cursor:pointer;padding:14px 10px;border-radius:14px;font:700 1rem/1.2 Vazirmatn,system-ui,sans-serif;text-align:center;border:1px solid rgba(241,212,139,.35);color:#eceffa;transition:transform .15s,background .2s}
+.i18n-ask button:hover{transform:translateY(-2px);background:rgba(241,212,139,.12)}
+.i18n-ask button.pri{background:rgba(241,212,139,.92);color:#1a1530;border-color:transparent}
+.i18n-ask button:focus-visible{outline:2px solid #f1d48b;outline-offset:3px}
+.i18n-ask small{display:block;font-weight:400;font-size:.72rem;opacity:.7;margin-top:3px}
+@keyframes i18nIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.i18n-ask{animation:none}}
+@media print{.i18n-tg{display:none}}
+</style>
+<!--/i18n-head-->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>رمز اعداد</title>
+<!--og-->
+<meta name="description" content="چیت‌شیت اعدادشناسی: اعداد پایه، استاد و کارمیک، اعداد فرشته‌ای، تاروت، ابجد و محاسبه‌گر. · A numerology cheat sheet: master, karmic and angel numbers, tarot, Abjad and a calculator.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cnaebadi.github.io/vibe-coded/ramz-adad/">
+<link rel="canonical" href="https://cnaebadi.github.io/vibe-coded/ramz-adad/">
+<meta property="og:title" content="رمز اعداد · Number Codes">
+<meta property="og:description" content="چیت‌شیت اعدادشناسی: اعداد پایه، استاد و کارمیک، اعداد فرشته‌ای، تاروت، ابجد و محاسبه‌گر. · A numerology cheat sheet: master, karmic and angel numbers, tarot, Abjad and a calculator.">
+<meta property="og:image" content="https://cnaebadi.github.io/vibe-coded/ramz-adad/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="رمز اعداد · Number Codes">
+<meta name="twitter:description" content="چیت‌شیت اعدادشناسی: اعداد پایه، استاد و کارمیک، اعداد فرشته‌ای، تاروت، ابجد و محاسبه‌گر. · A numerology cheat sheet: master, karmic and angel numbers, tarot, Abjad and a calculator.">
+<meta name="twitter:image" content="https://cnaebadi.github.io/vibe-coded/ramz-adad/og.png">
+<!--/og-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gulzar&family=Vazirmatn:wght@200;300;400;500;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<script>
+/* تشخیص دستگاه پیش از رندر، تا چیدمان پرش نکند */
+(function(){
+  var ua = navigator.userAgent || '';
+  var isTV = /SmartTV|SMART-TV|Tizen|Web0S|WebOS|NetCast|BRAVIA|HbbTV|AFT[A-Z]|CrKey|GoogleTV|Android ?TV|Roku|Viera|AQUOS|PhilipsTV|Opera TV|DTV/i.test(ua);
+  var mm = function(q){ try { return matchMedia(q).matches; } catch(e){ return false; } };
+  var coarse = mm('(pointer:coarse)');
+  var noHover = mm('(hover:none)');
+  var short = Math.min(screen.width, screen.height);
+  var dev;
+  if (isTV || (mm('(pointer:none)') && innerWidth >= 1200)) dev = 'tv';
+  else if (coarse && short < 600) dev = 'mobile';
+  else if (coarse || noHover) dev = 'tablet';
+  else dev = 'desktop';
+  var manual = null;
+  try { manual = localStorage.getItem('ramzLayout'); } catch(e){}
+  function pick(){
+    if (manual && manual !== 'auto') return manual;
+    if (dev === 'tv') return 'tv';
+    if (dev === 'mobile') return 'mobile';
+    return innerWidth < 780 ? 'mobile' : 'desktop';
+  }
+  var r = document.documentElement;
+  r.dataset.device = dev;
+  r.dataset.layout = pick();
+  window.__ramz = { dev: dev, pick: pick, setManual: function(v){ manual = v; try{ localStorage.setItem('ramzLayout', v);}catch(e){} r.dataset.layout = pick(); } };
+  addEventListener('resize', function(){ r.dataset.layout = pick(); });
+})();
+</script>
+<style>
+:root{
+  /* جهان: رصدخانه‌ای شبانه با جوهر نیلی و ورق طلا؛ چیدمان: نوار ناوبری کناری + ستون محتوا */
+  --ink:#07060f;
+  --night:#110e24;
+  --panel:rgba(24,20,48,.66);
+  --panel-solid:#171332;
+  --gold:#d6b46a;
+  --gold-hi:#f5e2a8;
+  --ivory:#ece4d2;
+  --muted:#a59db9;
+  --line:rgba(214,180,106,.2);
+  --line-soft:rgba(236,228,210,.08);
+  --display:'Gulzar','Noto Nastaliq Urdu','Vazirmatn',serif;
+  --body:'Vazirmatn',Tahoma,'Segoe UI',sans-serif;
+  --latin:'Cormorant Garamond','Times New Roman',serif;
+  --r:18px;
+  color-scheme:dark;
+}
+html[data-layout="desktop"]{font-size:17px}
+html[data-layout="mobile"]{font-size:15.5px}
+html[data-layout="tv"]{font-size:clamp(20px,1.3vw,32px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px;background:var(--ink)}
+body{
+  margin:0;min-height:100%;
+  background:
+    radial-gradient(1200px 700px at 85% -10%, rgba(92,64,170,.28), transparent 60%),
+    radial-gradient(900px 600px at 0% 30%, rgba(40,90,150,.18), transparent 60%),
+    radial-gradient(900px 900px at 60% 110%, rgba(150,90,40,.14), transparent 60%),
+    var(--ink);
+  color:var(--ivory);font-family:var(--body);line-height:1.85;
+  padding-top:env(safe-area-inset-top);
+  -webkit-font-smoothing:antialiased;
+}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.shell{position:relative;z-index:1}
+a{color:var(--gold-hi)}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:10px}
+.lat{font-family:var(--latin);direction:ltr;unicode-bidi:isolate;letter-spacing:.02em}
+
+/* ---------- ناوبری ---------- */
+.nav{display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ivory)}
+.brand b{font-family:var(--display);font-weight:400;font-size:2rem;line-height:1.6;
+  background:linear-gradient(100deg,var(--gold) 10%,var(--gold-hi) 40%,var(--gold) 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.brand svg{width:38px;height:38px;flex:none}
+.nav ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.nav li a{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:12px;
+  text-decoration:none;color:var(--muted);font-size:.95rem;transition:background .25s,color .25s}
+.nav li a i{font-style:normal;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--line);font-size:.85rem;color:var(--gold);flex:none;transition:all .3s}
+.nav li a:hover,.nav li a.on{color:var(--ivory);background:rgba(214,180,106,.08)}
+.nav li a.on i{background:var(--gold);color:var(--ink);box-shadow:0 0 18px rgba(214,180,106,.55)}
+.nav .short{display:none}
+
+html[data-layout="desktop"] .shell{display:grid;grid-template-columns:250px minmax(0,1fr);gap:44px;max-width:1440px;margin:0 auto;padding:0 32px}
+html[data-layout="desktop"] .nav{position:sticky;top:0;height:100vh;overflow:auto;padding:28px 0 28px}
+
+html[data-layout="mobile"] .nav{position:fixed;inset:auto 0 0 0;z-index:40;gap:0;
+  background:rgba(12,10,28,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+html[data-layout="mobile"] .nav .brand{display:none}
+html[data-layout="mobile"] .nav ol{flex-direction:row;overflow-x:auto;gap:2px;scrollbar-width:none}
+html[data-layout="mobile"] .nav ol::-webkit-scrollbar{display:none}
+html[data-layout="mobile"] .nav li a{flex-direction:column;gap:2px;padding:6px 10px;font-size:.72rem;white-space:nowrap}
+html[data-layout="mobile"] .nav .long{display:none}
+html[data-layout="mobile"] .nav .short{display:inline}
+html[data-layout="mobile"] main{padding:0 16px 110px}
+
+html[data-layout="tv"] .shell{max-width:1700px;margin:0 auto;padding:0 3vw}
+html[data-layout="tv"] .nav{position:sticky;top:0;z-index:40;flex-direction:row;align-items:center;gap:30px;
+  padding:14px 0;background:linear-gradient(var(--ink) 70%,transparent)}
+html[data-layout="tv"] .nav ol{flex-direction:row;flex-wrap:wrap;gap:6px}
+html[data-layout="tv"] .nav .long{display:none}
+html[data-layout="tv"] .nav .short{display:inline}
+html[data-layout="tv"] .nav li a{padding:8px 14px}
+html[data-layout="tv"] :focus-visible,html[data-layout="tv"] :focus{outline:3px solid var(--gold-hi);outline-offset:4px;box-shadow:0 0 0 8px rgba(214,180,106,.18),0 0 40px rgba(214,180,106,.35)}
+
+/* ---------- جستجو ---------- */
+.searchbar{position:sticky;top:0;z-index:30;padding:14px 0 12px;
+  background:linear-gradient(var(--ink) 55%,rgba(7,6,15,0))}
+html[data-layout="tv"] .searchbar{top:auto;position:relative}
+.search{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
+  border-radius:999px;padding:6px 16px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.search svg{width:18px;height:18px;flex:none;opacity:.7}
+.search input{flex:1;min-width:0;background:none;border:0;color:var(--ivory);font:inherit;padding:6px 0;outline:none}
+.search input::placeholder{color:var(--muted)}
+.search output{font-size:.8rem;color:var(--gold);white-space:nowrap}
+
+/* ---------- هیرو ---------- */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px;padding:28px 0 40px}
+html[data-layout="mobile"] .hero{grid-template-columns:1fr;gap:0;padding-top:4px;text-align:center}
+html[data-layout="tv"] .hero{grid-template-columns:1.1fr .9fr;padding:10px 0 30px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-size:.82rem;letter-spacing:.06em}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
+html[data-layout="mobile"] .eyebrow::after{content:"";width:28px;height:1px;background:var(--gold)}
+.hero h1{font-family:var(--display);font-weight:400;margin:6px 0 4px;line-height:1.55;
+  font-size:clamp(3.4rem,8vw,6.6rem);
+  background:linear-gradient(100deg,#b8924a 0%,var(--gold-hi) 25%,#c9a45a 45%,#fff3cf 55%,#b8924a 75%,var(--gold-hi) 100%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:foil 9s ease-in-out infinite, rise 1.4s cubic-bezier(.2,.8,.2,1) both;
+  filter:drop-shadow(0 6px 30px rgba(214,180,106,.25))}
+@keyframes foil{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes rise{from{opacity:0;transform:translateY(18px);filter:blur(8px)}}
+.hero p.lead{max-width:34em;color:var(--muted);margin:0 0 22px;font-size:1.05rem;animation:rise 1.4s .25s cubic-bezier(.2,.8,.2,1) both}
+html[data-layout="mobile"] .hero p.lead{margin-inline:auto}
+.cta{display:flex;flex-wrap:wrap;gap:12px;animation:rise 1.4s .4s cubic-bezier(.2,.8,.2,1) both}
+html[data-layout="mobile"] .cta{justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 22px;font:inherit;font-size:.95rem;
+  text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:transform .2s,box-shadow .3s,background .3s}
+.btn.primary{background:linear-gradient(135deg,#e7c97f,#b98f45);color:#1a1307;font-weight:700;border-color:transparent;
+  box-shadow:0 8px 30px rgba(214,180,106,.35)}
+.btn.ghost{background:transparent;color:var(--gold-hi)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(214,180,106,.4)}
+.digits{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;animation:rise 1.4s .55s cubic-bezier(.2,.8,.2,1) both}
+html[data-layout="mobile"] .digits{justify-content:center}
+.digits button{width:42px;height:42px;border-radius:50%;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);
+  background:radial-gradient(circle at 50% 35%,color-mix(in srgb,var(--c) 22%,transparent),transparent 70%);
+  color:var(--ivory);font:500 1.05rem var(--body);cursor:pointer;transition:transform .25s,box-shadow .3s}
+.digits button:hover,.digits button:focus-visible{transform:translateY(-3px) scale(1.08);box-shadow:0 0 22px color-mix(in srgb,var(--c) 60%,transparent)}
+html[data-layout="tv"] .digits button{width:64px;height:64px;font-size:1.3rem}
+.wheel-wrap{position:relative;aspect-ratio:1;width:100%;max-width:520px;justify-self:center}
+html[data-layout="mobile"] .wheel-wrap{max-width:300px;margin:0 auto -10px;order:-1}
+#wheel{width:100%;height:100%;display:block}
+
+/* ---------- بخش‌ها ---------- */
+section.sec{padding:34px 0 18px;border-top:1px solid var(--line-soft)}
+.sec-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:18px;flex-wrap:wrap}
+.sec-no{font-family:var(--latin);font-style:italic;font-size:3.6rem;line-height:.8;color:transparent;
+  -webkit-text-stroke:1px var(--gold);opacity:.75}
+.sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4vw,2.8rem);line-height:1.7;margin:0;color:var(--gold-hi);text-wrap:balance}
+.sec-head p{margin:0;color:var(--muted);flex-basis:100%;max-width:60ch}
+h3.sub{font-size:1.02rem;font-weight:700;color:var(--gold);margin:26px 0 10px;display:flex;align-items:center;gap:10px}
+h3.sub::after{content:"";flex:1;height:1px;background:linear-gradient(to left,transparent,var(--line))}
+
+/* کارت‌های اعداد */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin:6px 0 24px}
+html[data-layout="mobile"] .cards{grid-template-columns:repeat(2,1fr);gap:10px}
+html[data-layout="tv"] .cards{grid-template-columns:repeat(5,1fr);gap:20px}
+.ncard{position:relative;overflow:hidden;text-align:right;border-radius:var(--r);padding:16px 16px 14px;cursor:pointer;
+  background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,0) 50%),var(--panel);
+  border:1px solid var(--line-soft);color:var(--ivory);font:inherit;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s}
+.ncard::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--c) 30%,transparent),transparent 60%)}
+.ncard:hover,.ncard:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 60%,transparent);
+  box-shadow:0 18px 50px -18px color-mix(in srgb,var(--c) 70%,transparent)}
+.ncard:hover::before,.ncard:focus-visible::before{opacity:1}
+.ncard .big{display:block;font-weight:200;font-size:4.2rem;line-height:1;margin:4px 0 6px;
+  background:linear-gradient(180deg,#fff,color-mix(in srgb,var(--c) 85%,#fff));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ncard .lat{position:absolute;top:12px;left:16px;font-size:1.3rem;color:color-mix(in srgb,var(--c) 70%,var(--muted));font-style:italic}
+.ncard .kw{display:block;font-size:.85rem;color:var(--ivory);line-height:1.7}
+.ncard .pl{display:block;font-size:.75rem;color:var(--muted);margin-top:6px}
+.ncard .orb{position:absolute;width:120px;height:120px;border-radius:50%;left:-40px;bottom:-50px;
+  background:radial-gradient(circle,color-mix(in srgb,var(--c) 45%,transparent),transparent 70%);opacity:.45;pointer-events:none}
+
+/* جدول‌ها */
+.tbl{overflow-x:auto;border-radius:var(--r);border:1px solid var(--line);background:var(--panel);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{font-weight:500;color:var(--gold);text-align:right;padding:12px 14px;font-size:.78rem;letter-spacing:.03em;
+  border-bottom:1px solid var(--line);background:rgba(214,180,106,.05);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr{transition:background .2s}
+tbody tr:hover{background:rgba(214,180,106,.05)}
+tr[data-open]{cursor:pointer}
+td.c-key{white-space:nowrap}
+.dg{display:inline-grid;place-items:center;min-width:38px;height:38px;padding:0 8px;border-radius:999px;font-weight:700;font-size:1rem;
+  border:1px solid color-mix(in srgb,var(--c,var(--gold)) 60%,transparent);
+  background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--c,var(--gold)) 28%,transparent),transparent 75%);color:#fff}
+.sw{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--c);vertical-align:middle;margin-left:6px;box-shadow:0 0 10px var(--c)}
+td .en{display:block;font-family:var(--latin);font-style:italic;color:var(--muted);font-size:.9rem;direction:ltr;text-align:right}
+td.dim{color:var(--muted)}
+tr.hide{display:none}
+.tbl.grid td,.tbl.grid th{text-align:center}
+.tbl.grid td b{display:block;font-size:1.15rem;color:var(--ivory)}
+.tbl.grid td small{color:var(--gold);font-size:.78rem}
+
+/* موبایل: سطرها تبدیل به کارت */
+html[data-layout="mobile"] .tbl:not(.grid){background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;overflow:visible}
+html[data-layout="mobile"] .tbl:not(.grid) table,html[data-layout="mobile"] .tbl:not(.grid) tbody{display:block}
+html[data-layout="mobile"] .tbl:not(.grid) thead{display:none}
+html[data-layout="mobile"] .tbl:not(.grid) tr{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-bottom:10px;
+  padding:14px;border-radius:16px;background:var(--panel);border:1px solid var(--line-soft)}
+html[data-layout="mobile"] .tbl:not(.grid) td{display:block;padding:0;border:0;grid-column:1/-1}
+html[data-layout="mobile"] .tbl:not(.grid) td::before{content:attr(data-label);display:block;font-size:.7rem;color:var(--gold);opacity:.85}
+html[data-layout="mobile"] .tbl:not(.grid) td:first-child{grid-column:1;grid-row:span 1}
+html[data-layout="mobile"] .tbl:not(.grid) td:first-child::before{display:none}
+html[data-layout="mobile"] .tbl:not(.grid) td:nth-child(2){grid-column:2;align-self:center}
+html[data-layout="mobile"] .tbl:not(.grid) td:nth-child(2)::before{display:none}
+html[data-layout="mobile"] .tbl:not(.grid) td:nth-child(2){font-weight:700}
+html[data-layout="mobile"] table{font-size:.88rem}
+
+/* نکته‌ها */
+.note{margin:14px 0 6px;padding:14px 18px;border-radius:14px;background:rgba(214,180,106,.05);
+  border-right:3px solid var(--gold);color:#d9d1c0;font-size:.9rem;max-width:80ch}
+.note strong{color:var(--gold-hi)}
+.note ul,.note ol{margin:6px 0 0;padding-right:20px}
+.note li{margin:3px 0}
+.note .t{display:block;color:var(--gold);font-weight:700;font-size:.8rem;margin-bottom:4px}
+
+/* ماشین‌حساب */
+.calc{display:grid;grid-template-columns:minmax(260px,330px) minmax(0,1fr);gap:22px;align-items:start}
+html[data-layout="mobile"] .calc{grid-template-columns:1fr}
+.form{display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line)}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:.82rem;color:var(--gold)}
+.form input{font:inherit;font-size:1rem;color:var(--ivory);background:rgba(0,0,0,.3);border:1px solid var(--line);
+  border-radius:12px;padding:10px 12px;outline:none;transition:border-color .2s,box-shadow .2s}
+.form input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(214,180,106,.15)}
+.form input.ltr{direction:ltr;text-align:left}
+.form .err{font-size:.78rem;color:#f0a58f;min-height:1em}
+.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+html[data-layout="tv"] .results{grid-template-columns:repeat(4,1fr)}
+.res{position:relative;text-align:right;padding:16px;border-radius:16px;cursor:pointer;color:var(--ivory);font:inherit;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--c) 14%,transparent),transparent 60%),var(--panel);
+  border:1px solid color-mix(in srgb,var(--c) 30%,transparent);transition:transform .3s,box-shadow .3s}
+.res:hover,.res:focus-visible{transform:translateY(-3px);box-shadow:0 14px 40px -16px color-mix(in srgb,var(--c) 80%,transparent)}
+.res .lbl{display:block;font-size:.78rem;color:var(--gold)}
+.res .val{display:flex;align-items:baseline;gap:8px;margin:2px 0}
+.res .val b{font-weight:200;font-size:3rem;line-height:1.1}
+.res .val span{color:var(--muted);font-size:.85rem}
+.res .how{display:block;font-size:.72rem;color:var(--muted);direction:rtl}
+.res .mean{display:block;font-size:.82rem;margin-top:4px}
+.chip{display:inline-block;font-size:.68rem;padding:1px 9px;border-radius:999px;margin-top:6px;margin-left:4px;border:1px solid}
+.chip.m{color:var(--gold-hi);border-color:var(--gold)}
+.chip.k{color:#f0a58f;border-color:#f0a58f}
+.letters{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.letters span{font-size:.78rem;padding:2px 8px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--line-soft)}
+.letters span b{color:var(--gold);font-weight:500;margin-right:4px}
+
+/* ساعت‌خوان */
+.reader{display:grid;grid-template-columns:minmax(240px,300px) 1fr;gap:18px;align-items:start;padding:20px;margin:6px 0 22px;border-radius:var(--r);
+  background:radial-gradient(600px 300px at 90% 0%,rgba(214,180,106,.12),transparent 60%),var(--panel);border:1px solid var(--line);box-shadow:0 20px 60px -30px rgba(214,180,106,.4)}
+html[data-layout="mobile"] .reader{grid-template-columns:1fr;padding:16px}
+.rd-in{display:flex;flex-direction:column;gap:10px}
+.rd-in label{font-size:.85rem;color:var(--gold)}
+.reader>*{min-width:0}
+.rd-in input{width:100%;min-width:0;font:300 2.4rem var(--body);text-align:center;color:var(--gold-hi);background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:16px;padding:10px;outline:none;letter-spacing:.05em}
+.rd-in input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(214,180,106,.15)}
+.rd-ex{display:flex;flex-wrap:wrap;gap:6px}
+.rd-ex button{font:inherit;font-size:.8rem;padding:3px 12px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer}
+.rd-ex button.colon{font-size:1.1rem;font-weight:800;color:var(--gold-hi);border-color:var(--gold);padding:0 16px}
+.rd-ex button:hover,.rd-ex button:focus-visible{color:var(--gold-hi);border-color:var(--gold)}
+.rd-sum{padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(214,180,106,.14),rgba(214,180,106,.03));border:1px solid var(--line);margin-bottom:10px}
+.rd-sum small{display:block;color:var(--gold);font-size:.75rem}
+.rd-sum p{margin:2px 0 0;font-size:1rem}
+.rd-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.rd-tags span{font-size:.75rem;padding:2px 10px;border-radius:999px;border:1px solid var(--gold);color:var(--gold-hi)}
+.rd-tags span.k{border-color:#f0a58f;color:#f0a58f}
+.rd-step>div{min-width:0;overflow-wrap:anywhere}
+.rd-step{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line-soft);font-size:.9rem}
+.rd-step>i{font-style:normal;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#e7c97f,#b98f45);color:#1a1307;font-weight:800;font-size:.8rem}
+.rd-step b{color:var(--gold-hi);font-weight:500}
+.rd-step .links{margin-top:4px}
+/* واژه‌نامه */
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin:0}
+.gloss div{padding:14px 16px;border-radius:14px;background:var(--panel);border:1px solid var(--line-soft)}
+.gloss dt{color:var(--gold-hi);font-weight:700}
+.gloss dd{margin:2px 0 0;color:#d9d1c0;font-size:.88rem}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:var(--panel);border:1px solid var(--line-soft)}
+.steps li::before{content:counter(s,persian);flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,#e7c97f,#b98f45);color:#1a1307;font-weight:800}
+
+.credit{margin:0 0 6px;font-size:.7rem;color:var(--muted);opacity:.75;letter-spacing:.02em}
+.credit .lat,.credit-end .lat{font-size:1.15em;color:var(--gold)}
+.credit-end{margin:18px 0 0;text-align:center;font-size:.85rem;color:var(--muted)}
+/* فوتر */
+footer{padding:40px 0 60px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line-soft);margin-top:30px}
+.seg{display:inline-flex;gap:4px;padding:4px;border-radius:999px;border:1px solid var(--line);background:var(--panel);margin:8px 0}
+.seg button{font:inherit;font-size:.8rem;color:var(--muted);background:none;border:0;padding:6px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+
+/* کشو جزئیات */
+.scrim{position:fixed;inset:0;background:rgba(3,2,10,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:60;opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:61;background:linear-gradient(170deg,#1d1840,#0d0b1f 70%);border:1px solid var(--line);
+  color:var(--ivory);overflow:auto;transition:transform .5s cubic-bezier(.2,.9,.2,1),opacity .4s;opacity:0;pointer-events:none}
+.drawer.open{opacity:1;pointer-events:auto}
+html[data-layout="desktop"] .drawer{top:0;bottom:0;left:0;width:min(480px,92vw);border-width:0 0 0 1px;transform:translateX(-102%);padding:32px 30px}
+html[data-layout="desktop"] .drawer.open{transform:none}
+html[data-layout="mobile"] .drawer{left:0;right:0;bottom:0;max-height:88vh;border-radius:26px 26px 0 0;transform:translateY(102%);padding:10px 20px calc(30px + env(safe-area-inset-bottom))}
+html[data-layout="mobile"] .drawer.open{transform:none}
+html[data-layout="mobile"] .drawer::before{content:"";display:block;width:44px;height:5px;border-radius:9px;background:var(--line);margin:4px auto 10px}
+html[data-layout="tv"] .drawer{top:50%;left:50%;width:min(1100px,86vw);max-height:84vh;border-radius:30px;transform:translate(-50%,-46%) scale(.96);padding:40px 48px}
+html[data-layout="tv"] .drawer.open{transform:translate(-50%,-50%)}
+.dclose{position:sticky;top:0;float:left;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--panel-solid);color:var(--ivory);font-size:1.3rem;cursor:pointer;z-index:2}
+.dhead{display:flex;align-items:center;gap:18px;margin-bottom:12px}
+.dhead .glyph{font-weight:200;font-size:6rem;line-height:1;background:linear-gradient(180deg,#fff,var(--c));-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 24px color-mix(in srgb,var(--c) 60%,transparent))}
+.dhead h4{margin:0;font-family:var(--display);font-weight:400;font-size:2rem;line-height:1.7;color:var(--gold-hi)}
+.dhead .lat{color:var(--muted);font-style:italic;font-size:1.1rem}
+.kws{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.kws span{padding:3px 12px;border-radius:999px;font-size:.82rem;border:1px solid color-mix(in srgb,var(--c) 50%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent)}
+.kws.shadow span{border-color:rgba(236,228,210,.15);background:rgba(255,255,255,.03);color:var(--muted)}
+.corr{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}
+html[data-layout="tv"] .corr{grid-template-columns:repeat(4,1fr)}
+.corr div{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line-soft);font-size:.88rem}
+.corr small{display:block;color:var(--gold);font-size:.7rem}
+.drow{padding:10px 0;border-top:1px solid var(--line-soft);font-size:.92rem}
+.drow small{display:block;color:var(--gold);font-size:.72rem}
+.links{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.links button{font:inherit;font-size:.8rem;padding:4px 12px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--ivory);cursor:pointer}
+.links button:hover,.links button:focus-visible{border-color:var(--gold);color:var(--gold-hi)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<div class="shell">
+  <aside class="nav" aria-label="بخش‌ها">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#d6b46a" stroke-width="1"/><path d="M20 2 L35.6 29 L4.4 29 Z" fill="none" stroke="#d6b46a" stroke-width=".8"/><path d="M20 38 L4.4 11 L35.6 11 Z" fill="none" stroke="#d6b46a" stroke-width=".8" opacity=".6"/><circle cx="20" cy="20" r="2.2" fill="#f5e2a8"/></svg>
+      <b>رمز اعداد</b>
+    </a>
+    <ol id="navlist">
+      <li><a href="#numbers"><i>۱</i><span class="long">اعداد پایه ۰ تا ۹</span><span class="short">پایه</span></a></li>
+      <li><a href="#master"><i>۲</i><span class="long">اعداد استاد</span><span class="short">استاد</span></a></li>
+      <li><a href="#karmic"><i>۳</i><span class="long">اعداد کارمیک</span><span class="short">کارمیک</span></a></li>
+      <li><a href="#angel"><i>۴</i><span class="long">تکرارشونده و فرشته‌ای</span><span class="short">فرشته</span></a></li>
+      <li><a href="#tarot"><i>۵</i><span class="long">اعداد و تاروت</span><span class="short">تاروت</span></a></li>
+      <li><a href="#core"><i>۶</i><span class="long">اعداد هسته‌ای</span><span class="short">هسته</span></a></li>
+      <li><a href="#letters"><i>۷</i><span class="long">جدول حروف و ابجد</span><span class="short">حروف</span></a></li>
+      <li><a href="#calc"><i>۸</i><span class="long">محاسبه‌گر</span><span class="short">محاسبه</span></a></li>
+      <li><a href="#guide"><i>۹</i><span class="long">راهنما و واژه‌نامه</span><span class="short">راهنما</span></a></li>
+    </ol>
+  </aside>
+
+  <main id="top">
+    <div class="searchbar">
+      <label class="search" for="q">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#d6b46a" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="جستجو در همه جدول‌ها؛ مثلاً «زحل»، «۷۷۷»، «عدالت»" autocomplete="off">
+        <output id="qcount" aria-live="polite"></output>
+      </label>
+    </div>
+
+    <header class="hero">
+      <div>
+        <p class="credit">ساخته شده توسط <span class="lat">Sina Ebadi</span></p>
+        <span class="eyebrow">چیت‌شیت جامع اعدادشناسی</span>
+        <h1>رمز اعداد</h1>
+        <p class="lead">از صفر تا نُه، اعداد استاد و کارمیک، اعداد فرشته‌ای، تاروت و جدول ابجد، همه در یک نگاه. جدول‌ها فقط کلیدواژه‌اند و توضیح لازم زیر هر جدول آمده. روی هر عدد بزنید تا پرونده کاملش باز شود.</p>
+        <div class="cta">
+          <a class="btn primary" href="#calc">عدد خودت را حساب کن</a>
+          <a class="btn ghost" href="#reader">ساعتی که دیدی را بخوان</a>
+          <a class="btn ghost" href="#numbers">شروع از اعداد پایه</a>
+        </div>
+        <div class="digits" id="heroDigits" aria-label="باز کردن پرونده هر عدد"></div>
+      </div>
+      <div class="wheel-wrap"><canvas id="wheel" role="img" aria-label="دایره نه‌گانه اعداد با مثلث ۳-۶-۹ و شش‌ضلعی ۱-۴-۲-۸-۵-۷"></canvas></div>
+    </header>
+
+    <!-- ۱ -->
+    <section class="sec" id="numbers">
+      <div class="sec-head"><span class="sec-no">01</span><h2>اعداد پایه؛ صفر تا نُه</h2>
+        <p>هر عدد مرکب در نهایت به یکی از این ده ریشه برمی‌گردد. کارت‌ها خلاصه‌اند؛ جدول، چیت‌شیت کامل این بخش است.</p></div>
+      <div class="cards" id="digitCards"></div>
+      <h3 class="sub">چیت‌شیت اعداد پایه</h3>
+      <div class="tbl" id="t-digits"></div>
+      <div class="note"><span class="t">نکته‌ها</span>
+        <ul>
+          <li data-en="<strong>Zero</strong> is not a number of its own in personal calculations; it amplifies the number beside it (10 means 1 backed by the infinite)."><strong>صفر</strong> در محاسبه شخصی عدد مستقلی نیست؛ تقویت‌کننده عدد کنار خودش است (۱۰ یعنی ۱ با پشتوانه بی‌کران).</li>
+          <li data-en="<strong>Shadow</strong> means the unbalanced form of the same energy; every number has a light side and a shadow, not good and bad."><strong>سایه</strong> یعنی شکل نامتعادل همان انرژی؛ هر عدد هم روشن است هم سایه، نه خوب و بد.</li>
+          <li data-en="Planets follow the <span class='lat'>Chaldean / Cheiro</span> school; in India, <strong>Rahu</strong> and <strong>Ketu</strong> take the place of Uranus and Neptune.">سیاره‌ها طبق مکتب <span class="lat">Chaldean / Cheiro</span> آمده‌اند؛ در هند به‌جای اورانوس و نپتون، <strong>راهو</strong> و <strong>کتو</strong> می‌نشینند.</li>
+          <li data-en="Color, element and chakra correspondences differ slightly between sources; the most common version is shown here. <span class='dim'>* Pluto is a convention for zero.</span>">تطبیق رنگ، عنصر و چاکرا در منابع مختلف کمی فرق دارد؛ اینجا رایج‌ترین نسخه آمده است. <span class="dim">* پلوتو برای صفر قراردادی است.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ۲ -->
+    <section class="sec" id="master">
+      <div class="sec-head"><span class="sec-no">02</span><h2>اعداد استاد</h2>
+        <p>اعداد دو رقمی هم‌رقم که در محاسبه هسته‌ای کاهش داده نمی‌شوند و با ریشه‌شان نوشته می‌شوند: ۱۱/۲، ۲۲/۴، ۳۳/۶.</p></div>
+      <div class="tbl" id="t-master"></div>
+      <div class="note"><span class="t">نکته‌ها</span>
+        <ul>
+          <li data-en="They count as “master” only when they appear in the <strong>core numbers</strong> (life path, expression, soul, birthday); an 11 on a license plate or a clock is not a master number.">فقط وقتی «استاد» حساب می‌شوند که در <strong>اعداد هسته‌ای</strong> (مسیر زندگی، بیان، روح، تولد) ظاهر شوند؛ ۱۱ در یک پلاک یا ساعت، استاد نیست.</li>
+          <li data-en="People with a master number usually live mostly the energy of its <strong>root</strong> until their mature years, and reach the higher frequency later.">صاحب عدد استاد معمولاً تا سال‌های بلوغ بیشتر انرژی <strong>ریشه</strong> را زندگی می‌کند و بعد به فرکانس بالاتر می‌رسد.</li>
+          <li>برخی مکاتب ۴۴ را هم استاد می‌دانند؛ اکثر منابع آن را به ۸ کاهش می‌دهند.</li>
+          <li>شماره تاروت ۱۱ در عرشه رایدر-ویت «عدالت» است و در مارسی و توت «قدرت».</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ۳ -->
+    <section class="sec" id="karmic">
+      <div class="sec-head"><span class="sec-no">03</span><h2>اعداد کارمیک</h2>
+        <p>چهار عدد «دَین کارمایی» که اگر در مسیر کاهش یک عدد هسته‌ای ظاهر شوند، درس ویژه‌ای را نشان می‌دهند.</p></div>
+      <div class="tbl" id="t-karmic"></div>
+      <div class="note"><span class="t">نکته‌ها</span>
+        <ul>
+          <li data-en="A karmic number matters only when the compound number <strong>before the final reduction</strong> is one of these four, e.g. life path 14/5.">کارمیک فقط وقتی معنا دارد که عدد مرکب <strong>قبل از کاهش نهایی</strong> یکی از این چهار باشد؛ مثلاً مسیر زندگی ۱۴/۵.</li>
+          <li>کارت تاروت هم‌شماره هر عدد کارمیک (مرگ، اعتدال، برج، خورشید) کلید فهم همان درس است.</li>
+          <li>این‌ها «مجازات» نیستند؛ بیشتر الگوهای تکرارشونده‌ای‌اند که با آگاهی شکسته می‌شوند.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ۴ -->
+    <section class="sec" id="angel">
+      <div class="sec-head"><span class="sec-no">04</span><h2>اعداد تکرارشونده و فرشته‌ای</h2>
+        <p>دو بخش «اعداد تکرارشونده» و «فرشته‌شناسی» یکی شده‌اند چون از یک منطق پیروی می‌کنند: تکرار یعنی تأکید.</p></div>
+      <div class="reader" id="reader">
+        <div class="rd-in">
+          <label for="rdq">ساعت‌خوان: ساعت یا عددی که دیدی را بنویس</label>
+          <input id="rdq" type="text" inputmode="decimal" value="14:14" autocomplete="off" dir="ltr" placeholder="مثلاً ۱۴:۱۴ یا ۷۱۷">
+          <div class="rd-ex" aria-label="نمونه‌ها"><button type="button" class="colon" id="rdColon" aria-label="افزودن دونقطه">:</button><button type="button" data-rd="11:11">۱۱:۱۱</button><button type="button" data-rd="12:21">۱۲:۲۱</button><button type="button" data-rd="717">۷۱۷</button><button type="button" data-rd="1234">۱۲۳۴</button><button type="button" data-rd="22:22">۲۲:۲۲</button></div>
+        </div>
+        <div id="rdOut" aria-live="polite"></div>
+      </div>
+      <h3 class="sub">سه‌رقمی‌های هم‌رقم</h3>
+      <div class="tbl" id="t-angel"></div>
+      <div class="note"><span class="t">نکته‌ها</span>
+        <ul>
+          <li><strong>۶۶۶</strong> در این سنت معنای شیطانی ندارد؛ هشدار نرمی برای بازگرداندن تعادل است.</li>
+          <li>هرچه تکرار بیشتر (۷، ۷۷، ۷۷۷، ۷۷۷۷)، شدت پیام بیشتر؛ معنای پایه همان عدد است.</li>
+        </ul>
+      </div>
+      <h3 class="sub">الگوهای ترکیبی و ساعت‌های آینه‌ای</h3>
+      <div class="tbl" id="t-pattern"></div>
+      <div class="note"><span class="t">روش خواندن هر عدد فرشته‌ای</span>
+        <ol>
+          <li><strong>بافت:</strong> کجا دیدی و دقیقاً به چه فکر می‌کردی؟ پیام درباره همان فکر است.</li>
+          <li><strong>تفکیک:</strong> عدد ترکیبی را رقم‌به‌رقم بخوان؛ رقم تکراری غالب است (۷۱۷ = ۷ غالب، ۱ در مرکز).</li>
+          <li><strong>جمع:</strong> رقم‌ها را جمع کن تا ریشه پنهان دیده شود (۷+۱+۷=۱۵ ← ۶: موضوع، خانه و مسئولیت است).</li>
+          <li><strong>ثبت:</strong> تاریخ، عدد و حالتت را یادداشت کن؛ الگو معمولاً بعد از چند هفته روشن می‌شود.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ۵ -->
+    <section class="sec" id="tarot">
+      <div class="sec-head"><span class="sec-no">05</span><h2>اعداد و آرکانای کبیر تاروت</h2>
+        <p>۲۲ کارت آرکانای کبیر با شماره، عدد ریشه و نشان نجومی (سنت گلدن داون). روی هر ردیف بزنید تا پرونده عدد ریشه‌اش باز شود.</p></div>
+      <div class="tbl" id="t-tarot"></div>
+      <div class="note"><span class="t">نکته‌ها</span>
+        <ul>
+          <li>هر کارت بالای ۹ با جمع ارقام به یک کارت پایه وصل می‌شود (۱۳ مرگ ← ۴ امپراتور): دو روی یک انرژی.</li>
+          <li data-en="In the Marseille and Thoth decks, <strong>Strength (8)</strong> and <strong>Justice (11)</strong> swap places.">در عرشه مارسی و توت جای <strong>قدرت (۸)</strong> و <strong>عدالت (۱۱)</strong> عوض است.</li>
+          <li><strong>کارت تولد:</strong> روز + ماه + سال تولد را جمع کن، سپس ارقام را جمع کن تا به ۲۱ یا کمتر برسی. محاسبه‌گر بخش ۸ این را خودکار حساب می‌کند.</li>
+          <li>ابله گاهی ۲۲ شمرده می‌شود و با عدد استاد ۲۲ پیوند می‌خورد.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ۶ -->
+    <section class="sec" id="core">
+      <div class="sec-head"><span class="sec-no">06</span><h2>اعداد هسته‌ای</h2>
+        <p>مسیر زندگی، سرنوشت و آرزوی روح، به‌علاوه اعداد مکمل؛ اینکه هرکدام از کجا می‌آید و چه می‌گوید.</p></div>
+      <div class="tbl" id="t-core"></div>
+      <div class="note"><span class="t">مثال کامل: ۱۵ ژوئیه ۱۹۹۰</span>
+        <ul>
+          <li data-en="Day 15 → 6 · Month 7 · Year 1990 → 19 → 10 → 1 · Sum: 6+7+1 = <strong>14/5</strong> (path 5 with karmic debt 14).">روز ۱۵ ← ۶ · ماه ۷ · سال ۱۹۹۰ ← ۱۹ ← ۱۰ ← ۱ · جمع: ۶+۷+۱ = <strong>۱۴/۵</strong> (مسیر ۵ با دَین کارمایی ۱۴).</li>
+          <li>چرا جداجدا؟ چون جمع یکجای همه ارقام ممکن است عدد استاد یا کارمیک را پنهان کند.</li>
+          <li data-en="Use your <strong>full legal name</strong> for the name, not a nickname. The letter <span class='lat'>Y</span> counts as a vowel when it is the only vowel sound in a word (as in <span class='lat'>Lynn</span>); the calculator treats it as a consonant.">برای نام از <strong>نام کامل شناسنامه‌ای</strong> استفاده کن، نه لقب. حرف <span class="lat">Y</span> وقتی تنها صدای حرف صدادار کلمه است (مثل <span class="lat">Lynn</span>) صدادار حساب می‌شود؛ محاسبه‌گر آن را بی‌صدا می‌گیرد.</li>
+          <li data-en="For a Persian name, use <strong>Abjad</strong> instead of Pythagorean (section 7).">برای نام فارسی، به‌جای فیثاغورثی از <strong>ابجد</strong> استفاده کن (بخش ۷).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ۷ -->
+    <section class="sec" id="letters">
+      <div class="sec-head"><span class="sec-no">07</span><h2>جدول تبدیل حروف</h2>
+        <p>سه سیستم: فیثاغورثی (رایج‌ترین برای لاتین)، کلدانی (قدیمی‌تر، صوت‌محور) و ابجد (سنت فارسی و عربی).</p></div>
+      <h3 class="sub">فیثاغورثی</h3>
+      <div class="tbl grid" id="t-pyth"></div>
+      <h3 class="sub">کلدانی</h3>
+      <div class="tbl grid" id="t-chal"></div>
+      <div class="note"><span class="t">نکته‌ها</span>
+        <ul>
+          <li>در کلدانی عدد ۹ به هیچ حرفی داده نمی‌شود چون مقدس شمرده می‌شد؛ عدد مرکب (پیش از کاهش) هم معنای مستقل دارد.</li>
+          <li>نتیجه دو سیستم معمولاً فرق دارد؛ اختلاف طبیعی است. یک سیستم را انتخاب کن و به آن وفادار بمان.</li>
+        </ul>
+      </div>
+      <h3 class="sub">ابجد</h3>
+      <div class="tbl grid" id="t-abjad"></div>
+      <div class="note"><span class="t">نکته‌ها</span>
+        <ul>
+          <li data-en="Memorization order: <strong>Abjad, Hawwaz, Hutti, Kalaman, Sa‘fas, Qarashat, Thakhadh, Dazagh</strong>.">ترتیب حفظی: <strong>ابجد، هوز، حطی، کلمن، سعفص، قرشت، ثخذ، ضظغ</strong>.</li>
+          <li data-en="Persian-only letters take the value of their Arabic look-alikes: <strong>پ = ب (2), چ = ج (3), ژ = ز (7), گ = ک (20)</strong>. “آ” and hamza = 1.">حروف ویژه فارسی ارزش هم‌شکل عربی‌شان را می‌گیرند: <strong>پ = ب (۲)، چ = ج (۳)، ژ = ز (۷)، گ = ک (۲۰)</strong>. «آ» و همزه = ۱.</li>
+          <li>در سنت کلاسیک خودِ جمع ابجد مهم است (مثل ماده‌تاریخ در شعر)؛ کاهش آن به یک رقم، تلفیقی مدرن با اعدادشناسی غربی است.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ۸ -->
+    <section class="sec" id="calc">
+      <div class="sec-head"><span class="sec-no">08</span><h2>محاسبه‌گر</h2>
+        <p>تاریخ تولد میلادی و نامت را وارد کن؛ همه‌چیز زنده حساب می‌شود. روی هر نتیجه بزن تا تفسیرش باز شود. نمونه از پیش پر شده است.</p></div>
+      <div class="calc">
+        <form class="form" id="calcForm" novalidate>
+          <label for="fDate">تاریخ تولد (میلادی)
+            <input id="fDate" type="date" value="1990-07-15" min="1800-01-01" max="2100-12-31">
+          </label>
+          <label for="fLatin">نام کامل به لاتین
+            <input id="fLatin" class="ltr" type="text" value="Sara Ahmadi" autocomplete="off" spellcheck="false">
+          </label>
+          <label for="fFa">نام کامل به فارسی (برای ابجد)
+            <input id="fFa" type="text" value="سارا احمدی" autocomplete="off">
+          </label>
+          <span class="err" id="fErr" role="status"></span>
+        </form>
+        <div>
+          <div class="results" id="results"></div>
+          <div class="letters" id="abjadLetters" aria-label="ارزش ابجد حروف"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ۹ -->
+    <section class="sec" id="guide">
+      <div class="sec-head"><span class="sec-no">09</span><h2>راهنمای عملی و واژه‌نامه</h2>
+        <p>ترتیب پیشنهادی برای خواندن یک پرونده کامل.</p></div>
+      <ol class="steps">
+        <li><span data-en="Read the <strong>life path</strong> first; it is the backbone of everything."><strong>مسیر زندگی</strong> را اول بخوان؛ ستون فقرات همه چیز است.</span></li>
+        <li><span data-en="Put the <strong>expression</strong> beside it: the path says where you are going, the expression says with what tools."><strong>بیان</strong> را کنارش بگذار: مسیر می‌گوید کجا می‌روی، بیان می‌گوید با چه ابزاری.</span></li>
+        <li><span data-en="Compare the <strong>soul urge</strong> and the <strong>personality</strong>; the gap between them shows your inner tension."><strong>آرزوی روح</strong> و <strong>شخصیت</strong> را مقایسه کن؛ فاصله این دو، تنش درونی را نشان می‌دهد.</span></li>
+        <li><span data-en="Look for a <strong>repeated number</strong> among the core numbers; a number that appears two or three times is the dominant theme.">دنبال <strong>عدد تکراری</strong> بین اعداد هسته‌ای بگرد؛ عددی که دو یا سه بار آمده، مضمون غالب است.</span></li>
+        <li><span data-en="Mark the <strong>master and karmic</strong> numbers and read their lessons in sections 2 and 3."><strong>استاد و کارمیک</strong> را علامت بزن و درسشان را از بخش ۲ و ۳ بخوان.</span></li>
+        <li><span data-en="Plan your timing with the <strong>personal year</strong>: 1 planting, 5 change, 9 closing a cycle.">با <strong>سال شخصی</strong> زمان‌بندی کن: ۱ کاشتن، ۵ تغییر، ۹ بستن چرخه.</span></li>
+        <li><span data-en="Keep the tarot <strong>birth card</strong> as a symbolic picture of the whole profile."><strong>کارت تولد</strong> تاروت را به‌عنوان تصویر نمادین کل پرونده نگه دار.</span></li>
+      </ol>
+      <h3 class="sub">واژه‌نامه کوتاه</h3>
+      <dl class="gloss">
+        <div><dt>کاهش</dt><dd>جمع ارقام یک عدد تا رسیدن به یک رقم (به‌جز ۱۱، ۲۲، ۳۳).</dd></div>
+        <div><dt>عدد مرکب</dt><dd>عدد دو رقمی پیش از کاهش؛ مثل ۱۴ در ۱۴/۵. لایه پنهان معنا.</dd></div>
+        <div><dt>عدد ریشه</dt><dd>رقم نهایی پس از کاهش؛ انرژی اصلی.</dd></div>
+        <div><dt>دَین کارمایی</dt><dd>۱۳، ۱۴، ۱۶، ۱۹ به‌عنوان عدد مرکب؛ درسی که تکرار می‌شود.</dd></div>
+        <div><dt>هم‌زمانی</dt><dd>تکرار معنادار یک عدد یا رویداد که با فکر لحظه گره خورده.</dd></div>
+        <div><dt>ساعت آینه‌ای</dt><dd>ساعتی که از دو طرف یکسان خوانده می‌شود، مثل ۱۲:۲۱.</dd></div>
+        <div><dt>سال شخصی</dt><dd>چرخه نه‌ساله شخصی؛ هر سال از روز تولد شروع می‌شود.</dd></div>
+      </dl>
+    </section>
+
+    <footer>
+      <div>چیدمان: <span id="devInfo"></span></div>
+      <div class="seg" role="group" aria-label="انتخاب چیدمان">
+        <button type="button" data-lay="auto">خودکار</button>
+        <button type="button" data-lay="mobile">موبایل</button>
+        <button type="button" data-lay="desktop">دسکتاپ</button>
+        <button type="button" data-lay="tv">تلویزیون</button>
+      </div>
+      <p>اعدادشناسی ابزاری برای تأمل و خودشناسی است، نه علم تجربی. در تلویزیون با کلیدهای جهت‌نما جابه‌جا شوید و با OK انتخاب کنید.</p>
+      <p class="credit-end">ساخته شده توسط <span class="lat">Sina Ebadi</span></p>
+    </footer>
+  </main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle" tabindex="-1">
+  <button class="dclose" id="dClose" type="button" aria-label="بستن">×</button>
+  <div id="dBody"></div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var $ = function(s,el){ return (el||document).querySelector(s); };
+var $$ = function(s,el){ return Array.prototype.slice.call((el||document).querySelectorAll(s)); };
+var FA = '۰۱۲۳۴۵۶۷۸۹';
+function fa(x){ return String(x).replace(/\d/g, function(d){ return FA[d]; }); }
+var reduceMotion = false; try{ reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+
+/* ================= داده‌ها ================= */
+var D = [
+ {n:0,hex:'#dfe4ee',kw:'پتانسیل، کلیت، آغاز بی‌شکل، بی‌کرانگی',sh:'خلأ، بی‌هدفی، سردرگمی',pl:'پلوتو*',el:'اثیر',co:'سفید / نقره‌ای',ch:'فراتر از تاج',ta:'ابله',
+  love:'عشق بی‌قیدوشرط، فضای تازه برای شروع',work:'ایده خام، شروع از صفر',adv:'به ناشناخته اعتماد کن؛ خالی بودن یعنی جا داشتن.',en:'Zero'},
+ {n:1,hex:'#e0523f',kw:'رهبری، استقلال، اراده، آغاز',sh:'خودخواهی، لجاجت، تنهایی',pl:'خورشید',el:'آتش',co:'قرمز',ch:'ریشه',ta:'جادوگر',
+  love:'به احترام و فضای شخصی نیاز دارد',work:'کارآفرینی، مدیریت، پیشگامی',adv:'قدم اول را خودت بردار.',en:'One'},
+ {n:2,hex:'#e98a3c',kw:'همکاری، دیپلماسی، حساسیت، شهود',sh:'وابستگی، تردید، زودرنجی',pl:'ماه',el:'آب',co:'نارنجی',ch:'ساکرال',ta:'کاهنه اعظم',
+  love:'شریک وفادار، عاشق آرامش و هماهنگی',work:'میانجی‌گری، مشاوره، کار تیمی',adv:'به ندای درونت گوش بده.',en:'Two'},
+ {n:3,hex:'#e8c547',kw:'خلاقیت، بیان، شادی، ارتباط',sh:'پراکندگی، سطحی‌نگری، اغراق',pl:'مشتری',el:'آتش',co:'زرد',ch:'شبکه خورشیدی',ta:'ملکه',
+  love:'شوخ و گرم، عاشق ابراز احساس',work:'هنر، نویسندگی، رسانه، اجرا',adv:'حرفت را بزن، بی‌سانسور.',en:'Three'},
+ {n:4,hex:'#57b36b',kw:'نظم، ثبات، پشتکار، بنیان',sh:'خشکی، لجبازی، محدودنگری',pl:'اورانوس (راهو)',el:'خاک',co:'سبز',ch:'قلب',ta:'امپراتور',
+  love:'وفادار و قابل اتکا',work:'مهندسی، مالی، ساخت‌وساز، سیستم',adv:'آجر به آجر بساز.',en:'Four'},
+ {n:5,hex:'#4a8fe0',kw:'آزادی، تغییر، ماجراجویی، کنجکاوی',sh:'بی‌قراری، افراط، بی‌مسئولیتی',pl:'عطارد',el:'هوا',co:'آبی',ch:'گلو',ta:'کاهن اعظم',
+  love:'به هیجان و تنوع نیاز دارد',work:'سفر، فروش، تبلیغات، رسانه',adv:'تغییر را بپذیر، ولی لنگر داشته باش.',en:'Five'},
+ {n:6,hex:'#6b6fe0',kw:'عشق، مسئولیت، خانه، شفابخشی',sh:'کنترل‌گری، کمال‌گرایی، ازخودگذشتگی افراطی',pl:'زهره (ناهید)',el:'خاک',co:'نیلی',ch:'چشم سوم',ta:'عشاق',
+  love:'خانواده‌محور و حمایتگر',work:'درمان، آموزش، طراحی، مراقبت',adv:'مراقبت از خودت را فراموش نکن.',en:'Six'},
+ {n:7,hex:'#a56ad9',kw:'تفکر، معنویت، تحلیل، خلوت',sh:'انزوا، بدبینی، سردی',pl:'نپتون (کتو)',el:'آب',co:'بنفش',ch:'تاج',ta:'ارابه',
+  love:'به عمق و اعتماد نیاز دارد',work:'پژوهش، فلسفه، علوم، تحلیل داده',adv:'سکوت، جواب‌ها را می‌آورد.',en:'Seven'},
+ {n:8,hex:'#d9789d',kw:'قدرت، ثروت، مدیریت، عدالت کارمایی',sh:'مادی‌گرایی، سلطه‌جویی، کارزدگی',pl:'زحل (کیوان)',el:'خاک',co:'رز / زرشکی',ch:'پیوند ریشه و تاج',ta:'قدرت',
+  love:'شریک قدرتمند و محافظ',work:'مدیریت، بانکداری، کسب‌وکار بزرگ',adv:'قدرت را با انصاف خرج کن.',en:'Eight'},
+ {n:9,hex:'#d4a64a',kw:'انسان‌دوستی، پایان، خرد، بخشش',sh:'دلزدگی، فداکاری بی‌حد، چسبیدن به گذشته',pl:'مریخ (بهرام)',el:'آتش',co:'طلایی',ch:'همه چاکراها',ta:'زاهد',
+  love:'عشق آرمانی و بی‌قیدوشرط',work:'خیریه، هنر، درمان، کار جهانی',adv:'رها کن تا جای تازه باز شود.',en:'Nine'}
+];
+var M = [
+ {n:11,root:2,t:'روشن‌بین / پیام‌آور',kw:'شهود، الهام، بیداری معنوی، کاریزما',ch:'اضطراب، حساسیت عصبی، خودتردیدی',ta:'عدالت (رایدر) / قدرت (مارسی)'},
+ {n:22,root:4,t:'معمار بزرگ',kw:'رؤیا به‌علاوه عمل، ساختن در مقیاس بزرگ، میراث',ch:'فشار سنگین، ترس از شکست، کنترل',ta:'ابله (در شمارش ۲۲)'},
+ {n:33,root:6,t:'معلم استاد',kw:'شفقت، شفا، خدمت، عشق آگاهانه',ch:'شهیدنمایی، کشیدن بار دیگران',ta:'ـ'}
+];
+var K = [
+ {n:13,root:4,l:'تنبلی و میان‌بُر زدن',kw:'کار پیوسته، تمرکز، نظم',w:'کارها را تا آخر تمام کن',ta:'مرگ'},
+ {n:14,root:5,l:'سوءاستفاده از آزادی',kw:'اعتدال، تعهد، مهار هوس',w:'آزادی با مرز',ta:'اعتدال'},
+ {n:16,root:7,l:'غرور و خودمحوری',kw:'فروریختن نفس، بیداری، فروتنی',w:'دیوار غرور را خودت بردار',ta:'برج'},
+ {n:19,root:1,l:'سوءاستفاده از قدرت',kw:'استقلال سالم، کمک خواستن',w:'تنها نیستی؛ یاری بخواه',ta:'خورشید'}
+];
+var A = [
+ {p:'000',m:'چرخه‌ای از نو؛ دروازه باز است',kw:'آغاز، یگانگی، پتانسیل',a:'نیت تازه بنویس'},
+ {p:'111',m:'افکارت با سرعت جان می‌گیرند',kw:'تجلی، آغاز، هم‌زمانی',a:'روی خواسته تمرکز کن، نه ترس'},
+ {p:'222',m:'همه‌چیز در حال جوانه زدن است',kw:'تعادل، اعتماد، همکاری',a:'صبور باش، شریک بجو'},
+ {p:'333',m:'راهنماها کنارت هستند',kw:'خلاقیت، حمایت، رشد',a:'بیافرین و بیان کن'},
+ {p:'444',m:'محافظت شده‌ای؛ مسیر درست است',kw:'ثبات، پایه، امنیت',a:'به ساختن ادامه بده'},
+ {p:'555',m:'تغییر بزرگ در راه است',kw:'دگرگونی، آزادی، حرکت',a:'کهنه‌ها را رها کن'},
+ {p:'666',m:'تعادل مادی و معنوی را برگردان',kw:'بازتنظیم، مراقبت، خانه',a:'از نگرانی به عمل برو'},
+ {p:'777',m:'در مسیر روحی درستی هستی',kw:'معجزه، شهود، هم‌سویی',a:'به خودت اعتماد کن'},
+ {p:'888',m:'فراوانی در جریان است',kw:'ثروت، پاداش، چرخه کارما',a:'دریافت کن و ببخش'},
+ {p:'999',m:'فصلی تمام می‌شود',kw:'پایان، رهایی، رسالت',a:'ببند، ببخش، آماده شو'}
+];
+var P = [
+ {p:'1010',ty:'تکراری',kw:'بیداری، رشد معنوی، فکر مثبت',a:'دیدگاهت را بالا ببر'},
+ {p:'1111',ty:'تکراری',kw:'دروازه بیداری، هم‌زمانی، آرزو',a:'همین لحظه نیت کن'},
+ {p:'1212',ty:'تکراری',kw:'خروج از منطقه امن، اعتماد',a:'یک ریسک حساب‌شده کن'},
+ {p:'1234',ty:'توالی',kw:'گام‌به‌گام، پیشرفت روان',a:'مرحله‌ها را جا نینداز'},
+ {p:'2222',ty:'تکراری',kw:'همه‌چیز سر جایش می‌نشیند',a:'به روند اعتماد کن'},
+ {p:'3333',ty:'تکراری',kw:'حمایت مضاعف استادان',a:'کمک بخواه'},
+ {p:'5555',ty:'تکراری',kw:'دگرگونی بنیادین',a:'برای تغییر جا باز کن'},
+ {p:'10:01',ty:'آینه‌ای',kw:'شروع دوباره، خودباوری',a:'از نو شروع کن'},
+ {p:'12:21',ty:'آینه‌ای',kw:'تعادل رابطه، بازتاب افکار',a:'به رابطه‌هایت نگاه کن'},
+ {p:'21:12',ty:'آینه‌ای',kw:'همکاری، خلق مشترک',a:'با دیگری بساز'},
+ {p:'23:32',ty:'آینه‌ای',kw:'بیان خلاق، حمایت',a:'حرف دلت را بزن'}
+];
+var T = [
+ [0,'ابله','The Fool','اورانوس / هوا','آغاز، معصومیت، جهش'],
+ [1,'جادوگر','The Magician','عطارد','اراده، مهارت، تجلی'],
+ [2,'کاهنه اعظم','The High Priestess','ماه','شهود، راز، دانش پنهان'],
+ [3,'ملکه','The Empress','زهره','باروری، فراوانی، طبیعت'],
+ [4,'امپراتور','The Emperor','حمل','اقتدار، ساختار، پدر'],
+ [5,'کاهن اعظم','The Hierophant','ثور','سنت، آموزش، باور'],
+ [6,'عشاق','The Lovers','جوزا','انتخاب، پیوند، ارزش‌ها'],
+ [7,'ارابه','The Chariot','سرطان','پیروزی، اراده، جهت'],
+ [8,'قدرت','Strength','اسد','شجاعت، مهار نرم، صبر'],
+ [9,'زاهد','The Hermit','سنبله','خلوت، جستجو، خرد درونی'],
+ [10,'چرخ بخت','Wheel of Fortune','مشتری','چرخه، سرنوشت، نقطه عطف'],
+ [11,'عدالت','Justice','میزان','انصاف، حقیقت، پیامد'],
+ [12,'به‌دارآویخته','The Hanged Man','نپتون / آب','توقف، تسلیم، نگاه تازه'],
+ [13,'مرگ','Death','عقرب','پایان، دگردیسی، گذار'],
+ [14,'اعتدال','Temperance','قوس','توازن، ترکیب، شکیبایی'],
+ [15,'شیطان','The Devil','جدی','وابستگی، وسوسه، سایه'],
+ [16,'برج','The Tower','مریخ','فروپاشی ناگهانی، افشا، بیداری'],
+ [17,'ستاره','The Star','دلو','امید، شفا، الهام'],
+ [18,'ماه','The Moon','حوت','توهم، ناخودآگاه، ترس'],
+ [19,'خورشید','The Sun','خورشید','شادی، موفقیت، روشنی'],
+ [20,'رستاخیز','Judgement','پلوتو / آتش','بیداری، فراخوان، بازبینی'],
+ [21,'جهان','The World','زحل','تکمیل، یکپارچگی، رسیدن']
+];
+var C = [
+ ['مسیر زندگی','Life Path','تاریخ تولد کامل','روز، ماه و سال جداگانه کاهش، سپس جمع','مسیر و درس اصلی عمر'],
+ ['عدد تولد','Birthday','روز تولد','فقط روز، کاهش','استعداد ویژه، ابزار کمکی'],
+ ['بیان / سرنوشت','Expression · Destiny','نام کامل','همه حروف','توانایی‌ها و هدف'],
+ ['آرزوی روح','Soul Urge','نام کامل','فقط حروف صدادار','خواسته پنهان قلب'],
+ ['شخصیت','Personality','نام کامل','فقط حروف بی‌صدا','تصویری که دیگران می‌بینند'],
+ ['بلوغ','Maturity','مسیر + بیان','جمع دو عدد، کاهش','جهت نیمه دوم زندگی'],
+ ['سال شخصی','Personal Year','روز و ماه تولد + سال جاری','جمع، کاهش تا ۱ تا ۹','انرژی و موضوع امسال'],
+ ['کارت تولد','Birth Card','روز + ماه + سال','جمع ارقام تا ۲۱ یا کمتر','کهن‌الگوی همراه در تاروت']
+];
+var PY = {A:1,J:1,S:1,B:2,K:2,T:2,C:3,L:3,U:3,D:4,M:4,V:4,E:5,N:5,W:5,F:6,O:6,X:6,G:7,P:7,Y:7,H:8,Q:8,Z:8,I:9,R:9};
+var CH = {A:1,I:1,J:1,Q:1,Y:1,B:2,K:2,R:2,C:3,G:3,L:3,S:3,D:4,M:4,T:4,E:5,H:5,N:5,X:5,U:6,V:6,W:6,O:7,Z:7,F:8,P:8};
+var AB = {'ا':1,'ب':2,'ج':3,'د':4,'ه':5,'و':6,'ز':7,'ح':8,'ط':9,'ی':10,'ک':20,'ل':30,'م':40,'ن':50,'س':60,'ع':70,'ف':80,'ص':90,
+  'ق':100,'ر':200,'ش':300,'ت':400,'ث':500,'خ':600,'ذ':700,'ض':800,'ظ':900,'غ':1000,
+  'پ':2,'چ':3,'ژ':7,'گ':20,'آ':1,'أ':1,'إ':1,'ء':1,'ئ':10,'ؤ':6,'ة':5,'ي':10,'ك':20,'ى':10};
+
+function hexOf(n){ var r = root(n); return D[r] ? D[r].hex : '#d6b46a'; }
+function sumDigits(n){ return String(n).split('').reduce(function(a,b){ return a + (+b); }, 0); }
+function chain(n, keepMaster){ var c=[n]; while(n>9 && !(keepMaster && (n===11||n===22||n===33))){ n=sumDigits(n); c.push(n);} return c; }
+function last(c){ return c[c.length-1]; }
+function root(n){ return n<=9 ? n : last(chain(n,false)); }
+
+/* ================= ساخت جدول ================= */
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+function dg(n){ return '<span class="dg" style="--c:'+hexOf(n)+'">'+fa(n)+'</span>'; }
+function table(id, cols, rows, openKey){
+  var h = '<table><thead><tr>' + cols.map(function(c){ return '<th scope="col">'+c.h+'</th>'; }).join('') + '</tr></thead><tbody>';
+  rows.forEach(function(r){
+    var o = openKey ? openKey(r) : null;
+    h += '<tr' + (o!=null ? ' data-open="'+o+'" tabindex="0"' : '') + '>';
+    cols.forEach(function(c){ h += '<td data-label="'+c.h+'" class="'+(c.cls||'')+'">'+(c.f ? c.f(r) : esc(r[c.k]))+'</td>'; });
+    h += '</tr>';
+  });
+  $('#'+id).innerHTML = h + '</tbody></table>';
+}
+
+table('t-digits', [
+  {h:'عدد',cls:'c-key',f:function(r){return dg(r.n);}},
+  {h:'کلیدواژه‌ها',k:'kw'},
+  {h:'سایه',k:'sh',cls:'dim'},
+  {h:'سیاره',k:'pl'},
+  {h:'عنصر',k:'el'},
+  {h:'رنگ',f:function(r){return '<span class="sw" style="--c:'+r.hex+'"></span>'+r.co;}},
+  {h:'چاکرا',k:'ch'},
+  {h:'تاروت',f:function(r){return r.ta+' ('+fa(r.n)+')';}}
+], D, function(r){return r.n;});
+
+table('t-master', [
+  {h:'عدد',cls:'c-key',f:function(r){return dg(r.n);}},
+  {h:'لقب',k:'t'},
+  {h:'ریشه',f:function(r){return fa(r.n)+'/'+fa(r.root);}},
+  {h:'کلیدواژه‌ها',k:'kw'},
+  {h:'چالش',k:'ch',cls:'dim'},
+  {h:'تاروت',k:'ta'}
+], M, function(r){return r.n;});
+
+table('t-karmic', [
+  {h:'عدد',cls:'c-key',f:function(r){return dg(r.n);}},
+  {h:'ریشه',f:function(r){return fa(r.n)+'/'+fa(r.root);}},
+  {h:'الگوی گذشته',k:'l',cls:'dim'},
+  {h:'درس',k:'kw'},
+  {h:'راه رهایی',k:'w'},
+  {h:'تاروت',k:'ta'}
+], K, function(r){return r.n;});
+
+table('t-angel', [
+  {h:'الگو',cls:'c-key',f:function(r){return '<span class="dg" style="--c:'+hexOf(+r.p[0])+'">'+fa(r.p)+'</span>';}},
+  {h:'پیام',k:'m'},
+  {h:'کلیدواژه‌ها',k:'kw'},
+  {h:'اقدام',k:'a',cls:'dim'}
+], A, function(r){return +r.p[0];});
+
+table('t-pattern', [
+  {h:'الگو',cls:'c-key',f:function(r){return '<span class="dg" style="--c:var(--gold)">'+fa(r.p)+'</span>';}},
+  {h:'نوع',k:'ty'},
+  {h:'کلیدواژه‌ها',k:'kw'},
+  {h:'اقدام',k:'a',cls:'dim'}
+], P, null);
+
+table('t-tarot', [
+  {h:'شماره',cls:'c-key',f:function(r){return dg(r[0]);}},
+  {h:'کارت',f:function(r){return r[1]+'<span class="en">'+r[2]+'</span>';}},
+  {h:'عدد ریشه',f:function(r){var x=r[0]; if(x===11) return '۱۱/۲ (استاد)'; return x>9 ? fa(x)+' ← '+fa(root(x)) : fa(x);}},
+  {h:'نشان نجومی',f:function(r){return esc(r[3]);}},
+  {h:'کلیدواژه‌ها',f:function(r){return esc(r[4]);}}
+], T, function(r){return r[0]===11 ? 11 : root(r[0]);});
+
+table('t-core', [
+  {h:'عدد',cls:'c-key',f:function(r){return '<span class="dg" style="--c:var(--gold)">'+fa(C.indexOf(r)+1)+'</span>';}},
+  {h:'نام',f:function(r){return r[0]+'<span class="en">'+r[1]+'</span>';}},
+  {h:'منبع',f:function(r){return esc(r[2]);}},
+  {h:'روش',f:function(r){return esc(r[3]);},cls:'dim'},
+  {h:'چه می‌گوید',f:function(r){return esc(r[4]);}}
+], C, null);
+
+(function(){
+  function gridTable(id, map, nums, colHead){
+    var g = {}; nums.forEach(function(n){ g[n]=[]; });
+    Object.keys(map).forEach(function(k){ if(g[map[k]]) g[map[k]].push(k); });
+    var rows = 0; nums.forEach(function(n){ rows = Math.max(rows, g[n].length); });
+    var h = '<table><thead><tr>'+nums.map(function(n){return '<th>'+fa(n)+'</th>';}).join('')+'</tr></thead><tbody>';
+    for(var i=0;i<rows;i++){ h+='<tr>'+nums.map(function(n){ return '<td class="lat">'+(g[n][i]||'')+'</td>'; }).join('')+'</tr>'; }
+    $('#'+id).innerHTML = h+'</tbody></table>';
+  }
+  gridTable('t-pyth', PY, [1,2,3,4,5,6,7,8,9]);
+  gridTable('t-chal', CH, [1,2,3,4,5,6,7,8]);
+  var groups = [
+    ['یکان',['ا','ب','ج','د','ه','و','ز','ح','ط']],
+    ['دهگان',['ی','ک','ل','م','ن','س','ع','ف','ص']],
+    ['صدگان',['ق','ر','ش','ت','ث','خ','ذ','ض','ظ']],
+    ['هزار',['غ']]
+  ];
+  var h = '<table><tbody>';
+  groups.forEach(function(g){
+    h += '<tr><th scope="row">'+g[0]+'</th>';
+    for(var i=0;i<9;i++){ var L=g[1][i]; h += '<td>'+(L ? '<b>'+L+'</b><small>'+fa(AB[L])+'</small>' : '')+'</td>'; }
+    h += '</tr>';
+  });
+  $('#t-abjad').innerHTML = h + '</tbody></table>';
+})();
+
+/* کارت‌های اعداد و دکمه‌های هیرو */
+$('#digitCards').innerHTML = D.map(function(d){
+  return '<button type="button" class="ncard" data-open="'+d.n+'" style="--c:'+d.hex+'">'+
+    '<span class="orb"></span><span class="lat">'+d.en+'</span>'+
+    '<span class="big">'+fa(d.n)+'</span>'+
+    '<span class="kw">'+d.kw.split('، ').slice(0,3).join(' · ')+'</span>'+
+    '<span class="pl">'+d.pl+' · '+d.el+'</span></button>';
+}).join('');
+$('#heroDigits').innerHTML = D.map(function(d){
+  return '<button type="button" data-open="'+d.n+'" style="--c:'+d.hex+'" aria-label="پرونده عدد '+fa(d.n)+'">'+fa(d.n)+'</button>';
+}).join('');
+
+/* نور دنبال‌کننده نشانگر روی کارت‌ها */
+document.addEventListener('pointermove', function(e){
+  var c = e.target.closest && e.target.closest('.ncard'); if(!c) return;
+  var r = c.getBoundingClientRect();
+  c.style.setProperty('--mx', (e.clientX-r.left)+'px'); c.style.setProperty('--my', (e.clientY-r.top)+'px');
+}, {passive:true});
+
+/* ================= کشو جزئیات ================= */
+var drawer = $('#drawer'), scrim = $('#scrim'), lastFocus = null;
+function kwChips(s, cls){ return '<div class="kws'+(cls?' '+cls:'')+'">'+s.split('، ').map(function(k){return '<span>'+k+'</span>';}).join('')+'</div>'; }
+function digitHTML(n){
+  var d = D[n];
+  var cards = T.filter(function(t){ return t[0]!==11 && root(t[0])===n; }).map(function(t){ return t[1]+' ('+fa(t[0])+')'; });
+  var rel = [];
+  M.forEach(function(m){ if(m.root===n) rel.push(m.n); });
+  K.forEach(function(k){ if(k.root===n) rel.push(k.n); });
+  var ang = A[n];
+  return '<div class="dhead" style="--c:'+d.hex+'"><span class="glyph">'+fa(n)+'</span><div><h4 id="dTitle">عدد '+fa(n)+'</h4><span class="lat">'+d.en+'</span></div></div>'+
+   '<div style="--c:'+d.hex+'">'+kwChips(d.kw)+'<small style="color:var(--gold);font-size:.72rem">سایه</small>'+kwChips(d.sh,'shadow')+'</div>'+
+   '<div class="corr"><div><small>سیاره</small>'+d.pl+'</div><div><small>عنصر</small>'+d.el+'</div><div><small>رنگ</small><span class="sw" style="--c:'+d.hex+'"></span>'+d.co+'</div><div><small>چاکرا</small>'+d.ch+'</div></div>'+
+   '<div class="drow"><small>در عشق</small>'+d.love+'</div>'+
+   '<div class="drow"><small>در کار</small>'+d.work+'</div>'+
+   '<div class="drow"><small>پیام</small>'+d.adv+'</div>'+
+   '<div class="drow"><small>عدد فرشته‌ای '+fa(ang.p)+'</small>'+ang.m+'</div>'+
+   '<div class="drow"><small>کارت‌های تاروت هم‌ریشه</small>'+cards.join(' · ')+'</div>'+
+   (rel.length ? '<div class="drow"><small>اعداد استاد و کارمیک با این ریشه</small><div class="links">'+rel.map(function(r){return '<button type="button" data-open="'+r+'">'+fa(r)+'/'+fa(n)+'</button>';}).join('')+'</div></div>' : '');
+}
+function specialHTML(n){
+  var m = M.filter(function(x){return x.n===n;})[0], k = K.filter(function(x){return x.n===n;})[0];
+  var r = (m||k).root, c = D[r].hex;
+  var h = '<div class="dhead" style="--c:'+c+'"><span class="glyph">'+fa(n)+'</span><div><h4 id="dTitle">'+(m ? 'عدد استاد '+fa(n) : 'عدد کارمیک '+fa(n))+'</h4><span class="lat">'+fa(n)+'/'+fa(r)+'</span></div></div><div style="--c:'+c+'">';
+  if(m){
+    h += '<div class="drow"><small>لقب</small>'+m.t+'</div>'+kwChips(m.kw)+'<small style="color:var(--gold);font-size:.72rem">چالش</small>'+kwChips(m.ch,'shadow')+
+      '<div class="drow"><small>تاروت</small>'+m.ta+'</div>';
+  } else {
+    h += '<div class="drow"><small>الگوی گذشته</small>'+k.l+'</div>'+kwChips(k.kw)+'<div class="drow"><small>راه رهایی</small>'+k.w+'</div><div class="drow"><small>کارت تاروت هم‌شماره</small>'+k.ta+' ('+fa(k.n)+')</div>';
+  }
+  return h + '</div><div class="drow"><small>عدد ریشه</small><div class="links"><button type="button" data-open="'+r+'">پرونده عدد '+fa(r)+'</button></div></div>';
+}
+function openNumber(n){
+  n = +n;
+  var html = n<=9 ? digitHTML(n) : (n===11||n===22||n===33||n===13||n===14||n===16||n===19) ? specialHTML(n) : digitHTML(root(n));
+  $('#dBody').innerHTML = html;
+  if(!drawer.classList.contains('open')) lastFocus = document.activeElement;
+  drawer.classList.add('open'); scrim.classList.add('open');
+  drawer.scrollTop = 0;
+  setTimeout(function(){ $('#dClose').focus(); }, 60);
+}
+function closeDrawer(){
+  drawer.classList.remove('open'); scrim.classList.remove('open');
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener('click', function(e){
+  var o = e.target.closest && e.target.closest('[data-open]');
+  if(o){ openNumber(o.getAttribute('data-open')); }
+});
+document.addEventListener('keydown', function(e){
+  var isBack = e.key==='Escape' || e.key==='GoBack' || (e.key==='Backspace' && e.target.tagName!=='INPUT');
+  if(isBack && drawer.classList.contains('open')){ e.preventDefault(); closeDrawer(); }
+  if(e.key==='Enter' && e.target.matches && e.target.matches('tr[data-open]')){ openNumber(e.target.getAttribute('data-open')); }
+});
+scrim.addEventListener('click', closeDrawer);
+$('#dClose').addEventListener('click', closeDrawer);
+
+/* ================= محاسبه‌گر ================= */
+function show(c){ // نمایش عدد مرکب/ریشه
+  var f = last(c);
+  if(c.length>1){ var prev = c[c.length-2]; if(prev<=99) return {b:fa(f), s:'از '+fa(prev), comp:prev}; return {b:fa(f), s:'از '+fa(c[0]), comp:null}; }
+  return {b:fa(f), s:'', comp:null};
+}
+function flags(c, keep){
+  var f = last(c), out = '';
+  if(keep && (f===11||f===22||f===33)) out += '<span class="chip m">عدد استاد</span>';
+  if(!keep) return out;
+  var kk = c.filter(function(x){return x===13||x===14||x===16||x===19;});
+  if(kk.length) out += '<span class="chip k">کارمیک '+fa(kk[0])+'</span>';
+  return out;
+}
+function meaning(n){ var r = (n===11||n===22||n===33) ? M.filter(function(m){return m.n===n;})[0].kw : D[root(n)].kw; return r.split('، ').slice(0,2).join('، '); }
+function tile(label, c, how, keep){
+  var s = show(c), f = last(c);
+  return '<button type="button" class="res" data-open="'+f+'" style="--c:'+(f>9?'#d6b46a':D[f].hex)+'">'+
+    '<span class="lbl">'+label+'</span><span class="val"><b>'+s.b+'</b><span>'+s.s+'</span></span>'+
+    (how?'<span class="how">'+how+'</span>':'')+'<span class="mean">'+meaning(f)+'</span>'+flags(c, keep)+'</button>';
+}
+function calc(){
+  var err = [], out = '';
+  var v = $('#fDate').value, m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v);
+  var Y = new Date().getFullYear();
+  if(m){
+    var y = +m[1], mo = +m[2], d = +m[3];
+    var dc = chain(d,true), mc = chain(mo,true), yc = chain(y,true);
+    var lp = chain(last(dc)+last(mc)+last(yc), true);
+    out += tile('مسیر زندگی', lp, fa(d)+'←'+fa(last(dc))+' + '+fa(mo)+'←'+fa(last(mc))+' + '+fa(y)+'←'+fa(last(yc)), true);
+    out += tile('عدد تولد', dc, '', true);
+    var pyc = chain(last(chain(d,false))+last(chain(mo,false))+last(chain(Y,false)), false);
+    out += tile('سال شخصی '+fa(Y), pyc, 'روز و ماه تولد + '+fa(Y), false);
+    var s = d+mo+y, bc = [s]; while(s>21){ s=sumDigits(s); bc.push(s); }
+    var card = T[s], second = s>9 ? root(s) : null;
+    out += '<button type="button" class="res" data-open="'+(s===11?11:root(s))+'" style="--c:#d6b46a"><span class="lbl">کارت تولد تاروت</span><span class="val"><b>'+fa(s)+'</b><span>'+card[1]+'</span></span>'+
+      '<span class="how">'+fa(d)+' + '+fa(mo)+' + '+fa(y)+' = '+fa(d+mo+y)+(second!=null?' · کارت دوم: '+T[second][1]+' ('+fa(second)+')':'')+'</span><span class="mean">'+card[4]+'</span></button>';
+  } else err.push('تاریخ تولد را کامل وارد کن.');
+
+  var name = $('#fLatin').value.toUpperCase().replace(/[^A-Z]/g,'');
+  if(name){
+    var all=0, vow=0, con=0, ch=0;
+    name.split('').forEach(function(L){ all+=PY[L]; ch+=CH[L]; if('AEIOU'.indexOf(L)>-1) vow+=PY[L]; else con+=PY[L]; });
+    var ex = chain(all,true);
+    out += tile('بیان / سرنوشت', ex, 'جمع همه حروف: '+fa(all), true);
+    out += tile('آرزوی روح', chain(vow,true), 'حروف صدادار: '+fa(vow), true);
+    out += tile('شخصیت', chain(con,true), 'حروف بی‌صدا: '+fa(con), true);
+    out += tile('نام به روش کلدانی', chain(ch,false), 'عدد مرکب: '+fa(ch), false);
+    if(m){ var lpF = last(chain(last(chain(+m[3],true))+last(chain(+m[2],true))+last(chain(+m[1],true)),true)); out += tile('بلوغ', chain(lpF+last(ex),true), 'مسیر '+fa(lpF)+' + بیان '+fa(last(ex)), true); }
+  } else if($('#fLatin').value.trim()) err.push('نام لاتین فقط حروف A تا Z می‌پذیرد.');
+
+  var fn = $('#fFa').value, abSum = 0, parts = [];
+  fn.replace(/[ً-ٰٟ]/g,'').split('').forEach(function(L){ if(AB[L]!=null){ abSum+=AB[L]; parts.push('<span>'+L+'<b>'+fa(AB[L])+'</b></span>'); } });
+  if(abSum){ out += tile('ابجد نام فارسی', chain(abSum,true), 'جمع ابجد: '+fa(abSum), true); }
+  else if(fn.trim()) err.push('برای ابجد، نام را با حروف فارسی بنویس.');
+  $('#abjadLetters').innerHTML = parts.join('');
+  $('#results').innerHTML = out;
+  $('#fErr').textContent = err.join(' ');
+}
+['fDate','fLatin','fFa'].forEach(function(id){ $('#'+id).addEventListener('input', calc); });
+$('#calcForm').addEventListener('submit', function(e){ e.preventDefault(); calc(); });
+calc();
+
+/* ================= ساعت‌خوان ================= */
+function readNumber(raw){
+  var t = String(raw).replace(/[۰-۹]/g,function(d){return FA.indexOf(d);}).replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d);});
+  var s = t.replace(/\D/g,''), isTime = /\d\s*[:：.,٫/]\s*\d/.test(t) || (s.length===4 && +s.slice(0,2)<24 && +s.slice(2)<60);
+  if(!s) return null;
+  var R = {s:s, isTime:isTime, tags:[], steps:[]}, rev = s.split('').reverse().join('');
+  var half = s.length%2===0 && s.slice(0,s.length/2)===s.slice(s.length/2);
+  var same = /^(\d)\1+$/.test(s);
+  var asc = s.length>=3 && '0123456789'.indexOf(s)>-1, desc = s.length>=3 && '9876543210'.indexOf(s)>-1;
+  if(same) R.tags.push(['تکراری','']);
+  if(s.length>1 && s===rev && !same) R.tags.push([isTime?'ساعت آینه‌ای':'عدد آینه‌ای','']);
+  if(half && !same) R.tags.push(['جفت تکرارشونده','']);
+  if(asc||desc) R.tags.push(['توالی','']);
+  var known = A.filter(function(a){ return a.p===s; })[0] || P.filter(function(p){ return p.p.replace(/\D/g,'')===s; })[0];
+  if(!known && same && s.length>3){ var a3 = A.filter(function(a){ return a.p===s.slice(0,3); })[0]; if(a3) known = {m:a3.m, kw:a3.kw, a:a3.a, lv:1}; }
+  // ۱: رقم‌ها
+  var cnt = {}; s.split('').forEach(function(d){ cnt[d]=(cnt[d]||0)+1; });
+  var digs = Object.keys(cnt).sort(function(a,b){ return cnt[b]-cnt[a] || s.indexOf(a)-s.indexOf(b); });
+  var dom = digs[0];
+  R.steps.push({h:'رقم‌ها را جدا بخوان', b: digs.map(function(d){ return '<b>'+fa(d)+'</b>'+(cnt[d]>1?' (×'+fa(cnt[d])+')':'')+': '+D[+d].kw.split('، ').slice(0,3).join('، '); }).join('<br>') + (digs.length>1 && cnt[dom]>cnt[digs[1]] ? '<br>رقم غالب: <b>'+fa(dom)+'</b>' : ''), links:digs.map(Number)});
+  // ۲: دو رقمی‌ها
+  var pairs = {}, specials = [];
+  for(var i=0;i<s.length-1;i++){ var n = +s.substr(i,2); if(s[i]!=='0') pairs[n]=(pairs[n]||0)+1; }
+  Object.keys(pairs).forEach(function(k){ k=+k; var m = M.filter(function(x){return x.n===k;})[0], kk = K.filter(function(x){return x.n===k;})[0];
+    if(m) specials.push({n:k, t:'عدد استاد '+fa(k)+'/'+fa(m.root)+' ('+m.t+'): '+m.kw+'.', c:pairs[k]});
+    if(kk) specials.push({n:k, t:'عدد کارمیک '+fa(k)+'/'+fa(kk.root)+': درس «'+kk.w+'» · '+kk.kw+' · تاروت: '+kk.ta+'.', c:pairs[k], k:1}); });
+  specials.forEach(function(x){ R.tags.push([(x.k?'کارمیک ':'استاد ')+fa(x.n), x.k?'k':'']); });
+  if(specials.length) R.steps.push({h:'اعداد دو رقمی ویژه', b:specials.map(function(x){ return x.t+(x.c>1?' <b>(دو بار تکرار: تأکید روی همین درس)</b>':''); }).join('<br>'), links:specials.map(function(x){return x.n;})});
+  // ۳: الگو
+  if(known) R.steps.push({h:'الگوی شناخته‌شده', b:'<b>'+(known.m||known.kw)+'</b>'+(known.m?' · '+known.kw:'')+' · اقدام: '+known.a+'.'});
+  // ۴: ریشه
+  var sum = s.split('').reduce(function(a,b){return a+ +b;},0), ch = chain(sum,true), r = last(ch);
+  R.root = r;
+  R.steps.push({h:'جمع کن تا ریشه', b: s.split('').map(fa).join('+')+' = '+ch.map(fa).join(' ← ')+'<br>ریشه: <b>'+fa(r)+'</b>، '+(r>9 ? M.filter(function(m){return m.n===r;})[0].kw : D[r].kw)+'.', links:[r]});
+  // جمع‌بندی
+  var base = D[+dom], rd = r>9 ? D[root(r)] : D[r], msg = '';
+  if(known) msg += (known.m || known.kw)+'. ';
+  msg += I18L('انرژی غالب «','The dominant energy is “')+base.kw.split('، ').slice(0,2).join(I18L(' و ',' and '))+I18L('» است','”');
+  if(rd.n!==base.n) msg += I18L(' و ریشه‌ی پنهانش «',', with a hidden root of “')+rd.kw.split('، ').slice(0,2).join(I18L(' و ',' and '))+I18L('»','”');
+  msg += '. ';
+  var kar = specials.filter(function(x){return x.k;})[0], mas = specials.filter(function(x){return !x.k;})[0];
+  if(kar) msg += 'درس اصلی: '+K.filter(function(x){return x.n===kar.n;})[0].w+'. ';
+  if(mas) msg += 'پیام از سطح بالاتر است: '+M.filter(function(x){return x.n===mas.n;})[0].kw.split('، ')[0]+'. ';
+  msg += 'پیام: '+base.adv;
+  R.msg = msg;
+  return R;
+}
+function renderReader(){
+  var R = readNumber($('#rdq').value), out = $('#rdOut');
+  if(!R){ out.innerHTML = '<div class="rd-sum"><p>یک ساعت یا عدد بنویس؛ مثلاً ۱۴:۱۴.</p></div>'; return; }
+  var lbl = R.isTime && R.s.length===4 ? R.s.slice(0,2)+':'+R.s.slice(2) : $('#rdq').value.trim();
+  out.innerHTML = '<div class="rd-sum"><small>پیام '+fa(lbl)+'</small><p>'+R.msg+'</p></div>'+
+    (R.tags.length ? '<div class="rd-tags">'+R.tags.map(function(t){ return '<span class="'+t[1]+'">'+t[0]+'</span>'; }).join('')+'</div>' : '')+
+    R.steps.map(function(st,i){ return '<div class="rd-step"><i>'+fa(i+1)+'</i><div><b>'+st.h+'</b><br>'+st.b+(st.links?'<div class="links">'+st.links.map(function(n){ return '<button type="button" data-open="'+n+'">پرونده '+fa(n)+'</button>'; }).join('')+'</div>':'')+'</div></div>'; }).join('')+
+    '<div class="rd-step"><i>'+fa(R.steps.length+1)+'</i><div><b>بافت</b><br>به لحظه‌ای که دیدی برگرد: به چه فکر می‌کردی؟ پیام درباره‌ی همان فکر است.</div></div>';
+}
+$('#rdq').addEventListener('input', renderReader);
+$('#rdColon').addEventListener('mousedown', function(e){ e.preventDefault(); });
+$('#rdColon').addEventListener('click', function(){
+  var i = $('#rdq'), a = i.selectionStart==null ? i.value.length : i.selectionStart, b = i.selectionEnd==null ? a : i.selectionEnd;
+  i.value = i.value.slice(0,a)+':'+i.value.slice(b); i.focus(); try{ i.setSelectionRange(a+1,a+1); }catch(e){} renderReader();
+});
+$$('[data-rd]').forEach(function(b){ b.addEventListener('click', function(){ $('#rdq').value = b.getAttribute('data-rd'); renderReader(); }); });
+renderReader();
+
+/* ================= جستجو ================= */
+function norm(s){ return String(s).toLowerCase().replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/[۰-۹]/g,function(d){return FA.indexOf(d);}).replace(/‌/g,' '); }
+$('#q').addEventListener('input', function(){
+  var q = norm(this.value.trim()), n = 0;
+  $$('.tbl:not(.grid) tbody tr').forEach(function(tr){
+    var hit = !q || norm(tr.textContent).indexOf(q) > -1;
+    tr.classList.toggle('hide', !hit); if(hit && q) n++;
+  });
+  $('#qcount').textContent = q ? (n ? fa(n)+' ردیف' : 'چیزی پیدا نشد') : '';
+  if(q && n){ var f = $('.tbl:not(.grid) tbody tr:not(.hide)'); if(f && f.getBoundingClientRect().top > innerHeight) f.scrollIntoView({block:'center', behavior: reduceMotion?'auto':'smooth'}); }
+});
+
+/* ================= ناوبری فعال ================= */
+var links = $$('#navlist a');
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(a){ var on = a.getAttribute('href')==='#'+e.target.id; a.classList.toggle('on', on); if(on && document.documentElement.dataset.layout==='mobile') a.scrollIntoView({inline:'center', block:'nearest'}); }); } });
+  }, {rootMargin:'-40% 0px -55% 0px'});
+  $$('section.sec').forEach(function(s){ io.observe(s); });
+}
+
+/* ================= انتخاب چیدمان ================= */
+var devNames = {mobile:'موبایل', tablet:'تبلت', desktop:'دسکتاپ', tv:'تلویزیون'};
+function syncSeg(){
+  var cur = 'auto'; try{ cur = localStorage.getItem('ramzLayout') || 'auto'; }catch(e){}
+  $$('.seg button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lay===cur)); });
+  $('#devInfo').textContent = devNames[document.documentElement.dataset.layout] + ' (دستگاه تشخیص‌داده‌شده: ' + devNames[document.documentElement.dataset.device] + ')';
+}
+$$('.seg button').forEach(function(b){ b.addEventListener('click', function(){ window.__ramz.setManual(b.dataset.lay); syncSeg(); sizeWheel(); }); });
+addEventListener('resize', syncSeg);
+syncSeg();
+
+/* ================= ناوبری فضایی تلویزیون ================= */
+function visible(el){ var r = el.getBoundingClientRect(); return r.width>0 && r.height>0 && getComputedStyle(el).visibility!=='hidden'; }
+function spatial(dir){
+  var scope = drawer.classList.contains('open') ? drawer : document;
+  var els = $$('a[href],button,input,tr[data-open]', scope).filter(visible);
+  var cur = document.activeElement;
+  if(!cur || cur===document.body || els.indexOf(cur)<0){ var first = els.filter(function(e){ var r=e.getBoundingClientRect(); return r.top>=0 && r.top<innerHeight; })[0] || els[0]; if(first) first.focus(); return; }
+  var a = cur.getBoundingClientRect(), ax = a.left+a.width/2, ay = a.top+a.height/2, best=null, bs=Infinity;
+  els.forEach(function(e){
+    if(e===cur) return;
+    var b = e.getBoundingClientRect(), dx = b.left+b.width/2-ax, dy = b.top+b.height/2-ay, main, side;
+    if(dir==='right'){ if(dx<=4) return; main=dx; side=Math.abs(dy); }
+    else if(dir==='left'){ if(dx>=-4) return; main=-dx; side=Math.abs(dy); }
+    else if(dir==='down'){ if(dy<=4) return; main=dy; side=Math.abs(dx); }
+    else { if(dy>=-4) return; main=-dy; side=Math.abs(dx); }
+    var s = main + side*2.2; if(s<bs){ bs=s; best=e; }
+  });
+  if(best){ best.focus({preventScroll:true}); best.scrollIntoView({block:'center', inline:'nearest', behavior: reduceMotion?'auto':'smooth'}); }
+  else if(dir==='down'||dir==='up'){ (scope===drawer?drawer:window).scrollBy({top:(dir==='down'?1:-1)*innerHeight*.4, behavior:'smooth'}); }
+}
+document.addEventListener('keydown', function(e){
+  if(document.documentElement.dataset.layout!=='tv') return;
+  var map = {ArrowRight:'right', ArrowLeft:'left', ArrowUp:'up', ArrowDown:'down'};
+  var dir = map[e.key]; if(!dir) return;
+  if(e.target.tagName==='INPUT' && (dir==='left'||dir==='right')) return;
+  e.preventDefault(); spatial(dir);
+});
+
+/* ================= آسمان پس‌زمینه ================= */
+var sky = $('#sky');
+function drawSky(){
+  var dpr = Math.min(devicePixelRatio||1, 2), w = innerWidth, h = innerHeight;
+  sky.width = w*dpr; sky.height = h*dpr;
+  var x = sky.getContext('2d'); x.scale(dpr,dpr);
+  var seed = 7; function rnd(){ seed = (seed*16807)%2147483647; return seed/2147483647; }
+  var count = Math.round(w*h/5200);
+  for(var i=0;i<count;i++){
+    var sx=rnd()*w, sy=rnd()*h, r=rnd()*1.1+.2, g=rnd()<.12;
+    x.fillStyle = g ? 'rgba(245,226,168,'+(.4+rnd()*.5)+')' : 'rgba(236,228,210,'+(.15+rnd()*.5)+')';
+    x.beginPath(); x.arc(sx,sy,r,0,6.283); x.fill();
+  }
+}
+drawSky();
+var skyT; addEventListener('resize', function(){ clearTimeout(skyT); skyT = setTimeout(drawSky, 200); });
+
+/* ================= دایره نه‌گانه ================= */
+var cv = $('#wheel'), wx = cv.getContext('2d'), W = 0, start = null, rot = 0, lastT = 0, running = true, parts = [];
+function sizeWheel(){
+  var r = cv.getBoundingClientRect(), dpr = Math.min(devicePixelRatio||1, 2);
+  W = r.width; cv.width = W*dpr; cv.height = W*dpr; wx.setTransform(dpr,0,0,dpr,0,0);
+  if(reduceMotion) drawWheel(1, 0);
+}
+for(var i=0;i<46;i++) parts.push({a:Math.random()*6.283, r:.55+Math.random()*.5, s:(Math.random()*.6+.2)*(Math.random()<.5?-1:1), z:Math.random()*1.4+.4});
+function ease(t){ return t<0?0:t>1?1:1-Math.pow(1-t,3); }
+function pt(digit, R, cx, cy){ var k = digit===9?0:digit; var a = -Math.PI/2 + k*2*Math.PI/9 + rot; return [cx+Math.cos(a)*R, cy+Math.sin(a)*R]; }
+function poly(list, t, R, cx, cy){
+  var n = list.length-1, full = Math.floor(t*n), frac = t*n-full;
+  wx.beginPath(); var p = pt(list[0],R,cx,cy); wx.moveTo(p[0],p[1]);
+  for(var i=1;i<=full;i++){ p = pt(list[i],R,cx,cy); wx.lineTo(p[0],p[1]); }
+  if(full<n){ var a=pt(list[full],R,cx,cy), b=pt(list[full+1],R,cx,cy); wx.lineTo(a[0]+(b[0]-a[0])*frac, a[1]+(b[1]-a[1])*frac); }
+  wx.stroke();
+}
+function drawWheel(p, time){
+  if(!W) return;
+  var cx=W/2, cy=W/2, R=W*.38;
+  wx.clearRect(0,0,W,W);
+  var g = wx.createRadialGradient(cx,cy,0,cx,cy,R*1.3);
+  g.addColorStop(0,'rgba(214,180,106,.16)'); g.addColorStop(.6,'rgba(110,80,190,.08)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  wx.fillStyle=g; wx.beginPath(); wx.arc(cx,cy,R*1.3,0,6.283); wx.fill();
+  wx.lineCap='round'; wx.shadowColor='rgba(214,180,106,.8)';
+  // حلقه‌ها
+  wx.shadowBlur=14; wx.strokeStyle='rgba(214,180,106,.85)'; wx.lineWidth=1.3;
+  wx.beginPath(); wx.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+6.283*ease(p/.35)); wx.stroke();
+  wx.shadowBlur=0; wx.strokeStyle='rgba(214,180,106,.22)'; wx.lineWidth=1;
+  wx.beginPath(); wx.arc(cx,cy,R*1.12,0,6.283*ease((p-.1)/.4)); wx.stroke();
+  wx.beginPath(); wx.arc(cx,cy,R*.42,0,6.283*ease((p-.2)/.4)); wx.stroke();
+  // تیک‌های حلقه بیرونی
+  wx.strokeStyle='rgba(214,180,106,.35)';
+  var tk = Math.floor(72*ease((p-.15)/.5));
+  for(var i=0;i<tk;i++){ var a=i*6.283/72 - rot*.5, l = i%8===0?8:4; wx.beginPath(); wx.moveTo(cx+Math.cos(a)*R*1.12, cy+Math.sin(a)*R*1.12); wx.lineTo(cx+Math.cos(a)*(R*1.12-l), cy+Math.sin(a)*(R*1.12-l)); wx.stroke(); }
+  // مثلث ۳-۶-۹ و شش‌ضلعی ۱-۴-۲-۸-۵-۷
+  wx.shadowBlur=10; wx.lineWidth=1.2;
+  wx.strokeStyle='rgba(245,226,168,.75)'; poly([9,3,6,9], ease((p-.3)/.35), R, cx, cy);
+  wx.strokeStyle='rgba(214,180,106,.55)'; poly([1,4,2,8,5,7,1], ease((p-.45)/.5), R, cx, cy);
+  wx.shadowBlur=0;
+  // ذرات مداری
+  parts.forEach(function(q){ var a = q.a + time*.00012*q.s; var x=cx+Math.cos(a)*R*q.r*1.25, y=cy+Math.sin(a)*R*q.r*1.25;
+    wx.fillStyle='rgba(245,226,168,'+(.25+.35*Math.sin(time*.002+q.a*5)*.5+.2)*ease(p)+')'; wx.beginPath(); wx.arc(x,y,q.z,0,6.283); wx.fill(); });
+  // ارقام
+  var fs = Math.max(13, W*.055);
+  for(var d=1; d<=9; d++){
+    var la = ease((p-.35-d*.04)/.25); if(la<=0) continue;
+    var pp = pt(d,R,cx,cy), col = D[d].hex;
+    wx.globalAlpha = la;
+    var gg = wx.createRadialGradient(pp[0],pp[1],0,pp[0],pp[1],fs*1.1); gg.addColorStop(0,'rgba(7,6,15,.95)'); gg.addColorStop(1,'rgba(7,6,15,0)');
+    wx.fillStyle = gg; wx.beginPath(); wx.arc(pp[0],pp[1],fs*1.1,0,6.283); wx.fill();
+    wx.strokeStyle = col; wx.lineWidth = 1; wx.shadowColor = col; wx.shadowBlur = 12;
+    wx.beginPath(); wx.arc(pp[0],pp[1],fs*.78,0,6.283); wx.stroke(); wx.shadowBlur=0;
+    wx.fillStyle = '#f5e2a8'; wx.font = '500 '+fs+'px Vazirmatn, Tahoma, sans-serif'; wx.textAlign='center'; wx.textBaseline='middle';
+    wx.fillText(fa(d), pp[0], pp[1]+fs*.06);
+    wx.globalAlpha = 1;
+  }
+  // صفر در مرکز
+  var c0 = ease((p-.75)/.25);
+  if(c0>0){
+    wx.globalAlpha=c0; var pulse = 1+.06*Math.sin(time*.0018);
+    var cg = wx.createRadialGradient(cx,cy,0,cx,cy,fs*2.2*pulse); cg.addColorStop(0,'rgba(245,226,168,.55)'); cg.addColorStop(1,'rgba(245,226,168,0)');
+    wx.fillStyle=cg; wx.beginPath(); wx.arc(cx,cy,fs*2.2*pulse,0,6.283); wx.fill();
+    wx.fillStyle='#fff8e2'; wx.font='300 '+(fs*1.5)+'px Vazirmatn, Tahoma, sans-serif'; wx.textAlign='center'; wx.textBaseline='middle'; wx.fillText('۰', cx, cy+fs*.08);
+    wx.globalAlpha=1;
+  }
+}
+function loop(t){
+  if(!start) start = t;
+  var dt = lastT ? t-lastT : 16; lastT = t;
+  var p = Math.min(1, (t-start)/3200);
+  if(p>=1) rot += dt*.000045;
+  drawWheel(p, t);
+  if(running) requestAnimationFrame(loop); else lastT = 0;
+}
+sizeWheel();
+addEventListener('resize', sizeWheel);
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ sizeWheel(); if(reduceMotion) drawWheel(1,0); });
+if(reduceMotion){ drawWheel(1,0); }
+else {
+  requestAnimationFrame(loop);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ var vis = es[0].isIntersecting; if(vis && !running){ running = true; requestAnimationFrame(loop); } else if(!vis) running = false; }).observe(cv);
+  }
+}
+})();
+</script>
+<!--i18n-->
+<script>
+window.I18N_EN = {"رمز اعداد":"Number Codes","اعداد پایه ۰ تا ۹":"Base numbers 0 to 9","پایه":"Base","اعداد استاد":"Master numbers","استاد":"Master","اعداد کارمیک":"Karmic numbers","کارمیک":"Karmic","تکرارشونده و فرشته‌ای":"Repeating & angel numbers","فرشته":"Angel","اعداد و تاروت":"Numbers & tarot","تاروت":"Tarot","اعداد هسته‌ای":"Core numbers","هسته":"Core","جدول حروف و ابجد":"Letter tables & Abjad","حروف":"Letters","محاسبه‌گر":"Calculator","محاسبه":"Calculate","راهنما و واژه‌نامه":"Guide & glossary","راهنما":"Guide","ساخته شده توسط":"Made by","چیت‌شیت جامع اعدادشناسی":"The complete numerology cheat sheet","از صفر تا نُه، اعداد استاد و کارمیک، اعداد فرشته‌ای، تاروت و جدول ابجد، همه در یک نگاه. جدول‌ها فقط کلیدواژه‌اند و توضیح لازم زیر هر جدول آمده. روی هر عدد بزنید تا پرونده کاملش باز شود.":"From zero to nine, master and karmic numbers, angel numbers, tarot and the Abjad table, all at a glance. Tables hold keywords only, with the needed notes under each one. Tap any number to open its full profile.","عدد خودت را حساب کن":"Calculate your numbers","ساعتی که دیدی را بخوان":"Read the time you saw","شروع از اعداد پایه":"Start with the base numbers","اعداد پایه؛ صفر تا نُه":"Base numbers: zero to nine","هر عدد مرکب در نهایت به یکی از این ده ریشه برمی‌گردد. کارت‌ها خلاصه‌اند؛ جدول، چیت‌شیت کامل این بخش است.":"Every compound number finally reduces to one of these ten roots. The cards are summaries; the table is the full cheat sheet for this section.","چیت‌شیت اعداد پایه":"Base numbers cheat sheet","نکته‌ها":"Notes","صفر":"Zero","در محاسبه شخصی عدد مستقلی نیست؛ تقویت‌کننده عدد کنار خودش است (۱۰ یعنی ۱ با پشتوانه بی‌کران).":"In personal calculations zero is not a number of its own; it amplifies the number beside it (10 means 1 backed by the infinite).","سایه":"Shadow","یعنی شکل نامتعادل همان انرژی؛ هر عدد هم روشن است هم سایه، نه خوب و بد.":"means the unbalanced form of the same energy; every number has a light and a shadow side, not good and bad.","راهو":"Rahu","کتو":"Ketu","تطبیق رنگ، عنصر و چاکرا در منابع مختلف کمی فرق دارد؛ اینجا رایج‌ترین نسخه آمده است.":"Color, element and chakra correspondences differ slightly between sources; the most common version is shown here.","پلوتو برای صفر قراردادی است.":"Pluto is a convention for zero.","اعداد دو رقمی هم‌رقم که در محاسبه هسته‌ای کاهش داده نمی‌شوند و با ریشه‌شان نوشته می‌شوند: ۱۱/۲، ۲۲/۴، ۳۳/۶.":"Two-digit repeated numbers that are not reduced in core calculations and are written with their root: 11/2, 22/4, 33/6.","ریشه":"Root","برخی مکاتب ۴۴ را هم استاد می‌دانند؛ اکثر منابع آن را به ۸ کاهش می‌دهند.":"Some schools also count 44 as a master number; most sources reduce it to 8.","شماره تاروت ۱۱ در عرشه رایدر-ویت «عدالت» است و در مارسی و توت «قدرت».":"Tarot card 11 is “Justice” in the Rider-Waite deck and “Strength” in the Marseille and Thoth decks.","چهار عدد «دَین کارمایی» که اگر در مسیر کاهش یک عدد هسته‌ای ظاهر شوند، درس ویژه‌ای را نشان می‌دهند.":"Four “karmic debt” numbers that point to a special lesson when they appear while reducing a core number.","کارت تاروت هم‌شماره هر عدد کارمیک (مرگ، اعتدال، برج، خورشید) کلید فهم همان درس است.":"The tarot card with the same number as each karmic number (Death, Temperance, The Tower, The Sun) is the key to that lesson.","این‌ها «مجازات» نیستند؛ بیشتر الگوهای تکرارشونده‌ای‌اند که با آگاهی شکسته می‌شوند.":"These are not “punishments”; they are mostly repeating patterns that break with awareness.","اعداد تکرارشونده و فرشته‌ای":"Repeating & angel numbers","دو بخش «اعداد تکرارشونده» و «فرشته‌شناسی» یکی شده‌اند چون از یک منطق پیروی می‌کنند: تکرار یعنی تأکید.":"The “repeating numbers” and “angelology” sections are merged because they follow the same logic: repetition means emphasis.","ساعت‌خوان: ساعت یا عددی که دیدی را بنویس":"Time reader: type the time or number you saw","سه‌رقمی‌های هم‌رقم":"Triple repeating digits","در این سنت معنای شیطانی ندارد؛ هشدار نرمی برای بازگرداندن تعادل است.":"In this tradition it carries no evil meaning; it is a gentle warning to restore balance.","هرچه تکرار بیشتر (۷، ۷۷، ۷۷۷، ۷۷۷۷)، شدت پیام بیشتر؛ معنای پایه همان عدد است.":"The more repetition (7, 77, 777, 7777), the stronger the message; the core meaning is that of the digit.","الگوهای ترکیبی و ساعت‌های آینه‌ای":"Combined patterns & mirror hours","روش خواندن هر عدد فرشته‌ای":"How to read any angel number","بافت":"Context","کجا دیدی و دقیقاً به چه فکر می‌کردی؟ پیام درباره همان فکر است.":"Where did you see it, and what exactly were you thinking about? The message is about that thought.","تفکیک":"Break it down","عدد ترکیبی را رقم‌به‌رقم بخوان؛ رقم تکراری غالب است (۷۱۷ = ۷ غالب، ۱ در مرکز).":"Read a combined number digit by digit; the repeated digit dominates (717 = 7 dominant, 1 at the center).","جمع":"Sum","رقم‌ها را جمع کن تا ریشه پنهان دیده شود (۷+۱+۷=۱۵ ← ۶: موضوع، خانه و مسئولیت است).":"Add the digits to reveal the hidden root (7+1+7=15 → 6: the theme is home and responsibility).","ثبت":"Record","تاریخ، عدد و حالتت را یادداشت کن؛ الگو معمولاً بعد از چند هفته روشن می‌شود.":"Note the date, the number and your mood; the pattern usually becomes clear after a few weeks.","اعداد و آرکانای کبیر تاروت":"Numbers & the tarot Major Arcana","۲۲ کارت آرکانای کبیر با شماره، عدد ریشه و نشان نجومی (سنت گلدن داون). روی هر ردیف بزنید تا پرونده عدد ریشه‌اش باز شود.":"The 22 Major Arcana cards with number, root number and astrological sign (Golden Dawn tradition). Tap any row to open the profile of its root number.","هر کارت بالای ۹ با جمع ارقام به یک کارت پایه وصل می‌شود (۱۳ مرگ ← ۴ امپراتور): دو روی یک انرژی.":"Every card above 9 links to a base card by adding its digits (13 Death → 4 The Emperor): two faces of one energy.","قدرت (۸":"Strength (8","عدالت (۱۱":"Justice (11","کارت تولد":"Birth card","روز + ماه + سال تولد را جمع کن، سپس ارقام را جمع کن تا به ۲۱ یا کمتر برسی. محاسبه‌گر بخش ۸ این را خودکار حساب می‌کند.":"Add birth day + month + year, then add the digits until you reach 21 or less. The calculator in section 8 does this automatically.","ابله گاهی ۲۲ شمرده می‌شود و با عدد استاد ۲۲ پیوند می‌خورد.":"The Fool is sometimes counted as 22 and linked to master number 22.","مسیر زندگی، سرنوشت و آرزوی روح، به‌علاوه اعداد مکمل؛ اینکه هرکدام از کجا می‌آید و چه می‌گوید.":"Life path, destiny and soul urge, plus the supporting numbers: where each one comes from and what it says.","مثال کامل: ۱۵ ژوئیه ۱۹۹۰":"Full example: 15 July 1990","چرا جداجدا؟ چون جمع یکجای همه ارقام ممکن است عدد استاد یا کارمیک را پنهان کند.":"Why separately? Because adding all digits at once can hide a master or karmic number.","نام کامل شناسنامه‌ای":"Full legal name","برای نام فارسی":"For a Persian name","ابجد":"Abjad","جدول تبدیل حروف":"Letter conversion tables","سه سیستم: فیثاغورثی (رایج‌ترین برای لاتین)، کلدانی (قدیمی‌تر، صوت‌محور) و ابجد (سنت فارسی و عربی).":"Three systems: Pythagorean (most common for Latin letters), Chaldean (older, sound-based) and Abjad (Persian and Arabic tradition).","فیثاغورثی":"Pythagorean","کلدانی":"Chaldean","در کلدانی عدد ۹ به هیچ حرفی داده نمی‌شود چون مقدس شمرده می‌شد؛ عدد مرکب (پیش از کاهش) هم معنای مستقل دارد.":"In Chaldean, no letter is given the number 9 because it was considered sacred; the compound number (before reduction) also has its own meaning.","نتیجه دو سیستم معمولاً فرق دارد؛ اختلاف طبیعی است. یک سیستم را انتخاب کن و به آن وفادار بمان.":"The two systems usually give different results; that is normal. Pick one system and stay with it.","ترتیب حفظی":"Memorization order","حروف ویژه فارسی ارزش هم‌شکل عربی‌شان را می‌گیرند":"Persian-only letters take the value of their Arabic look-alikes","در سنت کلاسیک خودِ جمع ابجد مهم است (مثل ماده‌تاریخ در شعر)؛ کاهش آن به یک رقم، تلفیقی مدرن با اعدادشناسی غربی است.":"In the classical tradition the Abjad total itself matters (as in chronograms in poetry); reducing it to one digit is a modern blend with Western numerology.","تاریخ تولد میلادی و نامت را وارد کن؛ همه‌چیز زنده حساب می‌شود. روی هر نتیجه بزن تا تفسیرش باز شود. نمونه از پیش پر شده است.":"Enter your Gregorian birth date and name; everything is calculated live. Tap any result to open its reading. A sample is pre-filled.","تاریخ تولد (میلادی":"Birth date (Gregorian","نام کامل به لاتین":"Full name in Latin letters","نام کامل به فارسی (برای ابجد":"Full name in Persian (for Abjad","راهنمای عملی و واژه‌نامه":"Practical guide & glossary","ترتیب پیشنهادی برای خواندن یک پرونده کامل.":"Suggested order for reading a full profile.","مسیر زندگی":"Life path","بیان":"Expression","آرزوی روح":"Soul urge","شخصیت":"Personality","عدد تکراری":"Repeated number","استاد و کارمیک":"Master and karmic","سال شخصی":"Personal year","تاروت را به‌عنوان تصویر نمادین کل پرونده نگه دار.":"Keep the tarot as a symbolic picture of the whole profile.","واژه‌نامه کوتاه":"Short glossary","کاهش":"Reduction","جمع ارقام یک عدد تا رسیدن به یک رقم (به‌جز ۱۱، ۲۲، ۳۳).":"Adding the digits of a number until one digit remains (except 11, 22, 33).","عدد مرکب":"Compound number","عدد دو رقمی پیش از کاهش؛ مثل ۱۴ در ۱۴/۵. لایه پنهان معنا.":"The two-digit number before reduction, like 14 in 14/5. The hidden layer of meaning.","عدد ریشه":"Root number","رقم نهایی پس از کاهش؛ انرژی اصلی.":"The final digit after reduction; the core energy.","دَین کارمایی":"Karmic debt","۱۳، ۱۴، ۱۶، ۱۹ به‌عنوان عدد مرکب؛ درسی که تکرار می‌شود.":"13, 14, 16, 19 as compound numbers; a lesson that repeats.","هم‌زمانی":"Synchronicity","تکرار معنادار یک عدد یا رویداد که با فکر لحظه گره خورده.":"A meaningful repetition of a number or event tied to the thought of the moment.","ساعت آینه‌ای":"Mirror hour","ساعتی که از دو طرف یکسان خوانده می‌شود، مثل ۱۲:۲۱.":"A time that reads the same both ways, like 12:21.","چرخه نه‌ساله شخصی؛ هر سال از روز تولد شروع می‌شود.":"A personal nine-year cycle; each year starts on your birthday.","چیدمان":"Layout","خودکار":"Auto","موبایل":"Mobile","دسکتاپ":"Desktop","تلویزیون":"TV","اعدادشناسی ابزاری برای تأمل و خودشناسی است، نه علم تجربی. در تلویزیون با کلیدهای جهت‌نما جابه‌جا شوید و با OK انتخاب کنید.":"Numerology is a tool for reflection and self-knowledge, not an empirical science. On a TV, move with the arrow keys and select with OK.","بخش‌ها":"Sections","جستجو در همه جدول‌ها؛ مثلاً «زحل»، «۷۷۷»، «عدالت":"Search all tables, e.g. “Saturn”, “777”, “Justice","باز کردن پرونده هر عدد":"Open any number’s profile","دایره نه‌گانه اعداد با مثلث ۳-۶-۹ و شش‌ضلعی ۱-۴-۲-۸-۵-۷":"The nine-number circle with the 3-6-9 triangle and the 1-4-2-8-5-7 hexagon","مثلاً ۱۴:۱۴ یا ۷۱۷":"e.g. 14:14 or 717","نمونه‌ها":"Examples","افزودن دونقطه":"Add a colon","ارزش ابجد حروف":"Abjad value of the letters","انتخاب چیدمان":"Choose layout","بستن":"Close","پتانسیل":"Potential","کلیت":"Wholeness","آغاز بی‌شکل":"Formless beginning","بی‌کرانگی":"Infinity","خلأ":"Void","بی‌هدفی":"Aimlessness","سردرگمی":"Confusion","پلوتو":"Pluto","اثیر":"Ether","سفید":"White","نقره‌ای":"Silver","فراتر از تاج":"Beyond the crown","ابله":"The Fool","عشق بی‌قیدوشرط":"Unconditional love","فضای تازه برای شروع":"Fresh space to begin","ایده خام":"Raw idea","شروع از صفر":"Starting from zero","به ناشناخته اعتماد کن؛ خالی بودن یعنی جا داشتن.":"Trust the unknown; being empty means having room.","رهبری":"Leadership","استقلال":"Independence","اراده":"Will","آغاز":"Beginning","خودخواهی":"Selfishness","لجاجت":"Stubbornness","تنهایی":"Loneliness","خورشید":"Sun","آتش":"Fire","قرمز":"Red","جادوگر":"The Magician","به احترام و فضای شخصی نیاز دارد":"Needs respect and personal space","کارآفرینی":"Entrepreneurship","مدیریت":"Management","پیشگامی":"Pioneering","قدم اول را خودت بردار.":"Take the first step yourself.","همکاری":"Cooperation","دیپلماسی":"Diplomacy","حساسیت":"Sensitivity","شهود":"Intuition","وابستگی":"Dependence","تردید":"Doubt","زودرنجی":"Touchiness","ماه":"Moon","آب":"Water","نارنجی":"Orange","ساکرال":"Sacral","کاهنه اعظم":"The High Priestess","شریک وفادار":"Loyal partner","عاشق آرامش و هماهنگی":"Loves calm and harmony","میانجی‌گری":"Mediation","مشاوره":"Counseling","کار تیمی":"Teamwork","به ندای درونت گوش بده.":"Listen to your inner voice.","خلاقیت":"Creativity","شادی":"Joy","ارتباط":"Communication","پراکندگی":"Scattered focus","سطحی‌نگری":"Superficiality","اغراق":"Exaggeration","مشتری":"Jupiter","زرد":"Yellow","شبکه خورشیدی":"Solar plexus","ملکه":"The Empress","شوخ و گرم":"Playful and warm","عاشق ابراز احساس":"Loves expressing feelings","هنر":"Art","نویسندگی":"Writing","رسانه":"Media","اجرا":"Performance","حرفت را بزن، بی‌سانسور.":"Speak your mind, uncensored.","نظم":"Order","ثبات":"Stability","پشتکار":"Perseverance","بنیان":"Foundation","خشکی":"Rigidity","لجبازی":"Obstinacy","محدودنگری":"Narrow-mindedness","اورانوس (راهو":"Uranus (Rahu","خاک":"Earth","سبز":"Green","قلب":"Heart","امپراتور":"The Emperor","وفادار و قابل اتکا":"Loyal and dependable","مهندسی":"Engineering","مالی":"Finance","ساخت‌وساز":"Construction","سیستم":"Systems","آجر به آجر بساز.":"Build brick by brick.","آزادی":"Freedom","تغییر":"Change","ماجراجویی":"Adventure","کنجکاوی":"Curiosity","بی‌قراری":"Restlessness","افراط":"Excess","بی‌مسئولیتی":"Irresponsibility","عطارد":"Mercury","هوا":"Air","آبی":"Blue","گلو":"Throat","کاهن اعظم":"The Hierophant","به هیجان و تنوع نیاز دارد":"Needs excitement and variety","سفر":"Travel","فروش":"Sales","تبلیغات":"Advertising","تغییر را بپذیر، ولی لنگر داشته باش.":"Embrace change, but keep an anchor.","عشق":"Love","مسئولیت":"Responsibility","خانه":"Home","شفابخشی":"Healing","کنترل‌گری":"Controlling","کمال‌گرایی":"Perfectionism","ازخودگذشتگی افراطی":"Excessive self-sacrifice","زهره (ناهید":"Venus (Nahid","نیلی":"Indigo","چشم سوم":"Third eye","عشاق":"The Lovers","خانواده‌محور و حمایتگر":"Family-centered and supportive","درمان":"Therapy","آموزش":"Teaching","طراحی":"Design","مراقبت":"Caregiving","مراقبت از خودت را فراموش نکن.":"Don’t forget to take care of yourself.","تفکر":"Contemplation","معنویت":"Spirituality","تحلیل":"Analysis","خلوت":"Solitude","انزوا":"Isolation","بدبینی":"Cynicism","سردی":"Coldness","نپتون (کتو":"Neptune (Ketu","بنفش":"Violet","تاج":"Crown","ارابه":"The Chariot","به عمق و اعتماد نیاز دارد":"Needs depth and trust","پژوهش":"Research","فلسفه":"Philosophy","علوم":"Science","تحلیل داده":"Data analysis","سکوت، جواب‌ها را می‌آورد.":"Silence brings the answers.","قدرت":"Strength","ثروت":"Wealth","عدالت کارمایی":"Karmic justice","مادی‌گرایی":"Materialism","سلطه‌جویی":"Domination","کارزدگی":"Workaholism","زحل (کیوان":"Saturn (Keyvan","رز":"Rose","زرشکی":"Crimson","پیوند ریشه و تاج":"Linking root and crown","شریک قدرتمند و محافظ":"Powerful, protective partner","بانکداری":"Banking","کسب‌وکار بزرگ":"Big business","قدرت را با انصاف خرج کن.":"Use power fairly.","انسان‌دوستی":"Humanitarianism","پایان":"Endings","خرد":"Wisdom","بخشش":"Forgiveness","دلزدگی":"Disillusionment","فداکاری بی‌حد":"Boundless sacrifice","چسبیدن به گذشته":"Clinging to the past","مریخ (بهرام":"Mars (Bahram","طلایی":"Gold","همه چاکراها":"All chakras","زاهد":"The Hermit","عشق آرمانی و بی‌قیدوشرط":"Idealistic, unconditional love","خیریه":"Charity","کار جهانی":"Global work","رها کن تا جای تازه باز شود.":"Let go so new room can open.","روشن‌بین":"Illuminator","پیام‌آور":"Messenger","الهام":"Inspiration","بیداری معنوی":"Spiritual awakening","کاریزما":"Charisma","اضطراب":"Anxiety","حساسیت عصبی":"Nervous sensitivity","خودتردیدی":"Self-doubt","عدالت":"Justice","رایدر":"Rider","مارسی":"Marseille","معمار بزرگ":"Master builder","رؤیا به‌علاوه عمل":"Vision plus action","ساختن در مقیاس بزرگ":"Building on a large scale","میراث":"Legacy","فشار سنگین":"Heavy pressure","ترس از شکست":"Fear of failure","کنترل":"Control","ابله (در شمارش ۲۲":"The Fool (when counted as 22","معلم استاد":"Master teacher","شفقت":"Compassion","شفا":"Healing","خدمت":"Service","عشق آگاهانه":"Conscious love","شهیدنمایی":"Martyrdom","کشیدن بار دیگران":"Carrying others’ burdens","تنبلی و میان‌بُر زدن":"Laziness and cutting corners","کار پیوسته":"Steady work","تمرکز":"Focus","کارها را تا آخر تمام کن":"Finish what you start","مرگ":"Death","سوءاستفاده از آزادی":"Abuse of freedom","اعتدال":"Temperance","تعهد":"Commitment","مهار هوس":"Taming impulses","آزادی با مرز":"Freedom with boundaries","غرور و خودمحوری":"Pride and self-centeredness","فروریختن نفس":"Collapse of the ego","بیداری":"Awakening","فروتنی":"Humility","دیوار غرور را خودت بردار":"Take down the wall of pride yourself","برج":"The Tower","سوءاستفاده از قدرت":"Abuse of power","استقلال سالم":"Healthy independence","کمک خواستن":"Asking for help","تنها نیستی؛ یاری بخواه":"You are not alone; ask for support","چرخه‌ای از نو؛ دروازه باز است":"A cycle anew; the gate is open","یگانگی":"Oneness","نیت تازه بنویس":"Write a fresh intention","افکارت با سرعت جان می‌گیرند":"Your thoughts take shape quickly","تجلی":"Manifestation","روی خواسته تمرکز کن":"Focus on what you want","نه ترس":"not on fear","همه‌چیز در حال جوانه زدن است":"Everything is sprouting","تعادل":"Balance","اعتماد":"Trust","صبور باش":"Be patient","شریک بجو":"Seek a partner","راهنماها کنارت هستند":"Your guides are beside you","حمایت":"Support","رشد":"Growth","بیافرین و بیان کن":"Create and express","محافظت شده‌ای؛ مسیر درست است":"You are protected; the path is right","امنیت":"Security","به ساختن ادامه بده":"Keep building","تغییر بزرگ در راه است":"Big change is coming","دگرگونی":"Transformation","حرکت":"Movement","کهنه‌ها را رها کن":"Let go of the old","تعادل مادی و معنوی را برگردان":"Restore material and spiritual balance","بازتنظیم":"Reset","از نگرانی به عمل برو":"Move from worry to action","در مسیر روحی درستی هستی":"You are on the right spiritual path","معجزه":"Miracle","هم‌سویی":"Alignment","به خودت اعتماد کن":"Trust yourself","فراوانی در جریان است":"Abundance is flowing","پاداش":"Reward","چرخه کارما":"Karmic cycle","دریافت کن و ببخش":"Receive and give","فصلی تمام می‌شود":"A season is ending","رهایی":"Release","رسالت":"Mission","ببند":"Close","ببخش":"Forgive","آماده شو":"Get ready","تکراری":"Repeating","رشد معنوی":"Spiritual growth","فکر مثبت":"Positive thinking","دیدگاهت را بالا ببر":"Raise your perspective","دروازه بیداری":"Gateway of awakening","آرزو":"Wish","همین لحظه نیت کن":"Set an intention right now","خروج از منطقه امن":"Leaving the comfort zone","یک ریسک حساب‌شده کن":"Take a calculated risk","توالی":"Sequence","گام‌به‌گام":"Step by step","پیشرفت روان":"Smooth progress","مرحله‌ها را جا نینداز":"Don’t skip steps","همه‌چیز سر جایش می‌نشیند":"Everything is falling into place","به روند اعتماد کن":"Trust the process","حمایت مضاعف استادان":"Double support from the masters","کمک بخواه":"Ask for help","دگرگونی بنیادین":"Fundamental transformation","برای تغییر جا باز کن":"Make room for change","آینه‌ای":"Mirror","شروع دوباره":"A fresh start","خودباوری":"Self-belief","از نو شروع کن":"Start over","تعادل رابطه":"Balance in relationships","بازتاب افکار":"Reflection of thoughts","به رابطه‌هایت نگاه کن":"Look at your relationships","خلق مشترک":"Co-creation","با دیگری بساز":"Build with someone","بیان خلاق":"Creative expression","حرف دلت را بزن":"Say what’s in your heart","اورانوس":"Uranus","معصومیت":"Innocence","جهش":"Leap","مهارت":"Skill","راز":"Mystery","دانش پنهان":"Hidden knowledge","زهره":"Venus","باروری":"Fertility","فراوانی":"Abundance","طبیعت":"Nature","حمل":"Aries","اقتدار":"Authority","ساختار":"Structure","پدر":"Father","ثور":"Taurus","سنت":"Tradition","باور":"Belief","جوزا":"Gemini","انتخاب":"Choice","پیوند":"Union","ارزش‌ها":"Values","سرطان":"Cancer","پیروزی":"Victory","جهت":"Direction","اسد":"Leo","شجاعت":"Courage","مهار نرم":"Gentle control","صبر":"Patience","سنبله":"Virgo","جستجو":"Search","خرد درونی":"Inner wisdom","چرخ بخت":"Wheel of Fortune","چرخه":"Cycle","سرنوشت":"Destiny","نقطه عطف":"Turning point","میزان":"Libra","انصاف":"Fairness","حقیقت":"Truth","پیامد":"Consequence","به‌دارآویخته":"The Hanged Man","نپتون":"Neptune","توقف":"Pause","تسلیم":"Surrender","نگاه تازه":"A fresh view","عقرب":"Scorpio","دگردیسی":"Metamorphosis","گذار":"Transition","قوس":"Sagittarius","توازن":"Equilibrium","ترکیب":"Blending","شکیبایی":"Endurance","شیطان":"The Devil","جدی":"Capricorn","وسوسه":"Temptation","مریخ":"Mars","فروپاشی ناگهانی":"Sudden collapse","افشا":"Revelation","ستاره":"The Star","دلو":"Aquarius","امید":"Hope","حوت":"Pisces","توهم":"Illusion","ناخودآگاه":"The unconscious","ترس":"Fear","موفقیت":"Success","روشنی":"Clarity","رستاخیز":"Judgement","فراخوان":"Calling","بازبینی":"Review","جهان":"The World","زحل":"Saturn","تکمیل":"Completion","یکپارچگی":"Integration","رسیدن":"Arrival","تاریخ تولد کامل":"Full birth date","روز، ماه و سال جداگانه کاهش، سپس جمع":"Reduce day, month and year separately, then add","مسیر و درس اصلی عمر":"Your path and main life lesson","عدد تولد":"Birthday number","روز تولد":"Day of birth","فقط روز":"Day only","استعداد ویژه":"Special talent","ابزار کمکی":"Helping tool","نام کامل":"Full name","همه حروف":"All letters","توانایی‌ها و هدف":"Abilities and purpose","فقط حروف صدادار":"Vowels only","خواسته پنهان قلب":"The heart’s hidden desire","فقط حروف بی‌صدا":"Consonants only","تصویری که دیگران می‌بینند":"The image others see","بلوغ":"Maturity","مسیر + بیان":"Path + expression","جمع دو عدد":"Sum of the two numbers","جهت نیمه دوم زندگی":"Direction of the second half of life","روز و ماه تولد + سال جاری":"Birth day and month + current year","جمع، کاهش تا ۱ تا ۹":"Add, reduce to 1–9","انرژی و موضوع امسال":"This year’s energy and theme","روز + ماه + سال":"Day + month + year","جمع ارقام تا ۲۱ یا کمتر":"Add digits to 21 or less","کهن‌الگوی همراه در تاروت":"Your companion archetype in tarot","عدد":"Number","کلیدواژه‌ها":"Keywords","سیاره":"Planet","عنصر":"Element","رنگ":"Color","چاکرا":"Chakra","لقب":"Title","چالش":"Challenge","الگوی گذشته":"Past pattern","درس":"Lesson","راه رهایی":"Way out","الگو":"Pattern","پیام":"Message","اقدام":"Action","نوع":"Type","شماره":"No.","کارت":"Card","۱۱/۲ (استاد":"11/2 (master","نشان نجومی":"Astrological sign","نام":"Name","منبع":"Source","روش":"Method","چه می‌گوید":"What it says","یکان":"Units","دهگان":"Tens","صدگان":"Hundreds","هزار":"Thousand","در عشق":"In love","در کار":"At work","عدد فرشته‌ای":"Angel number","کارت‌های تاروت هم‌ریشه":"Tarot cards with the same root","اعداد استاد و کارمیک با این ریشه":"Master and karmic numbers with this root","عدد استاد":"Master number","عدد کارمیک":"Karmic number","کارت تاروت هم‌شماره":"Tarot card with the same number","از":"from","روز و ماه تولد":"Birth day and month","کارت تولد تاروت":"Tarot birth card","کارت دوم":"Second card","تاریخ تولد را کامل وارد کن.":"Enter the full birth date.","جمع همه حروف":"Sum of all letters","حروف صدادار":"Vowels","حروف بی‌صدا":"Consonants","نام به روش کلدانی":"Name, Chaldean method","مسیر":"Path","نام لاتین فقط حروف A تا Z می‌پذیرد.":"The Latin name accepts only the letters A to Z.","ابجد نام فارسی":"Abjad of the Persian name","جمع ابجد":"Abjad total","برای ابجد، نام را با حروف فارسی بنویس.":"For Abjad, write the name in Persian letters.","عدد آینه‌ای":"Mirror number","جفت تکرارشونده":"Repeating pair","رقم‌ها را جدا بخوان":"Read the digits separately","رقم غالب":"Dominant digit","اعداد دو رقمی ویژه":"Special two-digit numbers","دو بار تکرار: تأکید روی همین درس":"Repeated twice: emphasis on this very lesson","الگوی شناخته‌شده":"Known pattern","جمع کن تا ریشه":"Add up to the root","درس اصلی":"Main lesson","پیام از سطح بالاتر است":"The message comes from a higher level","یک ساعت یا عدد بنویس؛ مثلاً ۱۴:۱۴.":"Type a time or number, e.g. 14:14.","\">پرونده":"Profile","به لحظه‌ای که دیدی برگرد: به چه فکر می‌کردی؟ پیام درباره‌ی همان فکر است.":"Go back to the moment you saw it: what were you thinking about? The message is about that thought.","ردیف":"rows","چیزی پیدا نشد":"Nothing found","تبلت":"Tablet","دستگاه تشخیص‌داده‌شده":"Detected device","پرونده":"Profile","ـ":"—","پرونده عدد":"Profile of","و":"and","روز":"Day","سال":"Year","یا":"or","تولد":"Birth","روح":"Soul","ناهید":"Nahid","کیوان":"Keyvan","بهرام":"Bahram"};
+window.I18N_EXACT = {};
+window.I18N_HOOK = function(){
+  /* بازسازی خروجی‌های پویا با زبان جدید */
+  ['fDate','rdq'].forEach(function(id){ var el = document.getElementById(id); if(el) el.dispatchEvent(new Event('input', {bubbles:true})); });
+};
+(function(){ var st = document.createElement('style'); st.textContent = 'html[lang="en"] td .en{display:none}'; document.head.appendChild(st); })();
+(function(){ var st = document.createElement('style'); st.textContent = 'html[data-layout="mobile"] .i18n-tg{bottom:calc(90px + env(safe-area-inset-bottom,0px))}'; document.head.appendChild(st); })();
+
+/* ===== دوزبانه: فارسی (پیش‌فرض) / English =====
+   متن‌ها در کد فارسی می‌مانند؛ در حالت انگلیسی، متن نمایش‌داده‌شده (DOM، ویژگی‌ها، بوم) با دیکشنری I18N_EN ترجمه می‌شود.
+   منطق و داده‌های برنامه دست نمی‌خورند. */
+(function(){
+  var KEY = 'vibeLang', ATTRS = ['title','aria-label','placeholder','alt'];
+  var DIG = {'۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9','٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9','٫':'.','٬':','};
+  var FA_RE = /[؀-ۿ]/, DIG_RE = /[۰-۹٠-٩٫٬]/g;
+  var L = /[ء-يٱ-ۓۺ-ۿ‌]/; /* حرف فارسی برای مرز کلمه */
+  function digits(s){ return s.replace(DIG_RE, function(d){ return DIG[d]; }); }
+  function norm(s){ return digits(s).replace(/\s+/g,' ').trim(); }
+
+  var SRC = window.I18N_EN || {}, PAT = window.I18N_PAT || [], SKIP = '[data-i18n-skip]' + (window.I18N_SKIP ? ',' + window.I18N_SKIP : '');
+  var D = Object.create(null), keys = [];
+  Object.keys(SRC).forEach(function(k){ var n = norm(k); if(n && SRC[k] != null){ D[n] = SRC[k]; if(FA_RE.test(n)) keys.push(n); } });
+  keys.sort(function(a,b){ return b.length - a.length; });
+  var X = Object.create(null); Object.keys(window.I18N_EXACT || {}).forEach(function(k){ X[norm(k)] = window.I18N_EXACT[k]; });
+  var esc = function(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); };
+  var SUB = keys.length ? new RegExp('(^|[^\\u0621-\\u064A\\u0671-\\u06D3\\u06FA-\\u06FF\\u200C])(' + keys.map(esc).join('|') + ')(?=$|[^\\u0621-\\u064A\\u0671-\\u06D3\\u06FA-\\u06FF\\u200C])','g') : null;
+
+  function punct(s){
+    return s.replace(/‌/g,'').replace(/،\s?/g,', ').replace(/؛\s?/g,'; ').replace(/؟/g,'?').replace(/٪/g,'%').replace(/«\s?([^«»]*?)\s?»/g,'“$1”')
+            .replace(/[←→]/g, function(a){ return a === '←' ? '→' : '←'; });
+  }
+  var cache = Object.create(null);
+  function tr(text){
+    if(!text || !(FA_RE.test(text) || /[←→]/.test(text))) return text;
+    if(text in cache) return cache[text];
+    var lead = text.match(/^\s*/)[0], tail = text.match(/\s*$/)[0], core = norm(text), out;
+    var em = core.match(/^([\s·:،,.\-+()|*«»]*)([\s\S]*?)([\s·:،,.\-+()|*«»]*)$/);
+    if(core in X) out = X[core];
+    else if(core in D) out = D[core];
+    else if(em[2] in D) out = em[1] + D[em[2]] + em[3];
+    else {
+      out = core;
+      for(var i=0;i<PAT.length;i++){ var p = PAT[i]; if(p[0].test(out)){ out = out.replace(p[0], p[1]); break; } }
+      if(FA_RE.test(out) && SUB){ out = out.replace(SUB, function(m, pre, k){ return pre + D[k]; }); }
+      if(FA_RE.test(out) && SUB){ out = out.replace(SUB, function(m, pre, k){ return pre + D[k]; }); }
+    }
+    out = lead + punct(digits(out)).replace(/([.!?]\s+)([a-z])/g, function(m, p, c){ return p + c.toUpperCase(); }) + tail;
+    cache[text] = out; return out;
+  }
+
+  var lang = window.__LANG === 'en' ? 'en' : 'fa', TXT = new WeakMap(), ATT = new WeakMap();
+  function skip(el){ return el && el.closest && el.closest(SKIP); }
+  function doText(n){
+    var p = n.parentNode; if(!p || p.nodeName === 'SCRIPT' || p.nodeName === 'STYLE' || p.nodeName === 'TEXTAREA' || skip(p)) return;
+    var rec = TXT.get(n), cur = n.data;
+    if(rec && rec.tr === cur) return;           /* قبلاً ترجمه شده */
+    var t = tr(cur); if(t === cur) return;
+    if(p.childNodes.length === 1) t = t.replace(/^(\s*)([a-z])/, function(m, s, c){ return s + c.toUpperCase(); });
+    TXT.set(n, {orig:cur, tr:t}); n.data = t;
+  }
+  function doAttrs(el){
+    if(skip(el)) return;
+    var rec = ATT.get(el);
+    if(el !== document.documentElement && el.getAttribute('dir') === 'rtl'){
+      if(!rec){ rec = {}; ATT.set(el, rec); }
+      rec.dir = {orig:'rtl', tr:'ltr'}; el.setAttribute('dir', 'ltr');
+    }
+    if(el.hasAttribute('data-en') && !(rec && rec.__html != null)){
+      if(!rec){ rec = {}; ATT.set(el, rec); }
+      rec.__html = el.innerHTML; el.innerHTML = el.getAttribute('data-en');
+    }
+    for(var i=0;i<ATTRS.length;i++){
+      var a = ATTRS[i], v = el.getAttribute(a); if(v == null) continue;
+      if(rec && rec[a] && rec[a].tr === v) continue;
+      var t = tr(v); if(t === v) continue;
+      if(!rec){ rec = {}; ATT.set(el, rec); } rec[a] = {orig:v, tr:t}; el.setAttribute(a, t);
+    }
+  }
+  function walk(root){
+    if(root.nodeType === 3){ doText(root); return; }
+    if(root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
+    if(root.nodeType === 1) doAttrs(root);
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT), n;
+    while((n = w.nextNode())){ if(n.nodeType === 3) doText(n); else doAttrs(n); }
+  }
+  function restore(){
+    var w = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT), n;
+    while((n = w.nextNode())){
+      if(n.nodeType === 3){ var r = TXT.get(n); if(r && r.tr === n.data) n.data = r.orig; TXT.delete(n); }
+      else { var a = ATT.get(n); if(a){ for(var k in a){ if(k === '__html') n.innerHTML = a[k]; else if(n.getAttribute(k) === a[k].tr) n.setAttribute(k, a[k].orig); } ATT.delete(n); } }
+    }
+  }
+  var mo = new MutationObserver(function(list){
+    if(lang !== 'en') return;
+    for(var i=0;i<list.length;i++){
+      var m = list[i];
+      if(m.type === 'characterData') doText(m.target);
+      else if(m.type === 'attributes') doAttrs(m.target);
+      else for(var j=0;j<m.addedNodes.length;j++) walk(m.addedNodes[j]);
+    }
+  });
+
+  /* متن‌های روی بوم (canvas) */
+  var C = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype;
+  if(C){ ['fillText','strokeText','measureText'].forEach(function(f){ var o = C[f]; C[f] = function(t){ if(lang === 'en' && typeof t === 'string'){ var a = Array.prototype.slice.call(arguments); a[0] = tr(t); return o.apply(this, a); } return o.apply(this, arguments); }; }); }
+
+  function apply(){
+    var r = document.documentElement;
+    r.lang = lang; r.dir = lang === 'en' ? 'ltr' : 'rtl';
+    if(lang === 'en'){ walk(document.documentElement); mo.observe(document.documentElement, {subtree:true, childList:true, characterData:true, attributes:true, attributeFilter:ATTRS.concat(['dir'])}); }
+    else { mo.disconnect(); restore(); }
+    var tt = document.querySelector('title'); if(tt){ if(!tt.__fa) tt.__fa = tt.textContent; document.title = lang === 'en' ? tr(tt.__fa) : tt.__fa; }
+    r.classList.remove('i18n-wait');
+    [].forEach.call(document.querySelectorAll('[data-i18n-switch] [data-l]'), function(b){ b.setAttribute('aria-pressed', String(b.dataset.l === lang)); });
+  }
+  function set(l, save){
+    var changed = l !== lang; lang = l; window.__LANG = l;
+    if(save){ try { localStorage.setItem(KEY, l); } catch(e){} }
+    if(changed){ apply(); if(typeof window.I18N_HOOK === 'function') try { window.I18N_HOOK(l); } catch(e){} try { window.dispatchEvent(new CustomEvent('langchange', {detail:l})); } catch(e){} try { window.dispatchEvent(new Event('resize')); } catch(e){} }
+  }
+
+  /* دکمه‌ی تغییر زبان */
+  var tg = document.createElement('div');
+  tg.className = 'i18n-tg'; tg.setAttribute('data-i18n-skip',''); tg.setAttribute('data-i18n-switch',''); tg.setAttribute('role','group'); tg.setAttribute('aria-label','Language / زبان');
+  tg.innerHTML = '<button type="button" data-l="fa" lang="fa">فا</button><button type="button" data-l="en" lang="en">EN</button>';
+  document.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-i18n-switch] [data-l]'); if(b){ e.stopPropagation(); set(b.dataset.l, true); } }, true);
+  document.body.appendChild(tg);
+
+  /* بار اول: پرسیدن زبان */
+  var saved = null, canSave = true;
+  try { saved = localStorage.getItem(KEY); } catch(e){ canSave = false; }
+  if(canSave && saved !== 'fa' && saved !== 'en'){
+    var ask = document.createElement('div');
+    ask.className = 'i18n-ask'; ask.setAttribute('role','dialog'); ask.setAttribute('aria-modal','true'); ask.setAttribute('aria-labelledby','i18nT');
+    ask.innerHTML = '<div class="box"><h2 id="i18nT"><span lang="fa" dir="rtl">زبان را انتخاب کن</span><span lang="en" dir="ltr">Choose your language</span></h2><p><span lang="fa" dir="rtl">بعداً هم هر وقت خواستی عوضش کن</span><span lang="en" dir="ltr">You can change it anytime later</span></p>' +
+      '<div class="row"><button type="button" class="pri" data-l="fa" lang="fa">فارسی<small>Persian</small></button><button type="button" data-l="en" lang="en">English<small>انگلیسی</small></button></div></div>';
+    var pick = function(l){ set(l, true); ask.remove(); document.removeEventListener('keydown', onKey, true); };
+    var onKey = function(e){ if(e.key === 'Escape'){ e.stopPropagation(); pick('fa'); } };
+    ask.addEventListener('click', function(e){ var b = e.target.closest('button'); if(b) pick(b.dataset.l); else if(e.target === ask) pick('fa'); });
+    document.addEventListener('keydown', onKey, true);
+    ask.setAttribute('data-i18n-skip','');
+    document.body.appendChild(ask);
+    setTimeout(function(){ var b = ask.querySelector('.pri'); if(b) b.focus(); }, 50);
+  }
+  window.I18N = { tr:tr, set:function(l){ set(l, true); }, get lang(){ return lang; } };
+  apply();
+})();
+</script>
+<!--/i18n-->
+</body>
+</html>

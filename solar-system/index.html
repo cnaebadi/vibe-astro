@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<!--i18n-head-->
+<script>
+/* زبان: قبل از رندر، جهت صفحه را تنظیم می‌کند تا پرش دیده نشود */
+(function(){
+  var l = 'fa'; try { l = localStorage.getItem('vibeLang') || 'fa'; } catch(e){}
+  if(l === 'en'){ var r = document.documentElement; r.lang = 'en'; r.dir = 'ltr'; r.classList.add('i18n-wait'); }
+  window.__LANG = l === 'en' ? 'en' : 'fa';
+  window.I18L = function(fa, en){ return window.__LANG === 'en' ? en : fa; };
+})();
+</script>
+<style>
+html.i18n-wait body{visibility:hidden}
+.i18n-tg{position:fixed;z-index:9990;bottom:14px;inset-inline-start:14px;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(18,16,34,.72);border:1px solid rgba(241,212,139,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.i18n-tg button{all:unset;cursor:pointer;font:600 12px/1 Vazirmatn,system-ui,sans-serif;color:rgba(236,239,250,.7);padding:7px 11px;border-radius:999px;transition:background .2s,color .2s}
+.i18n-tg button[aria-pressed="true"]{background:rgba(241,212,139,.92);color:#1a1530}
+.i18n-tg button:focus-visible{outline:2px solid #f1d48b;outline-offset:2px}
+.i18n-ask{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:16px;background:rgba(6,5,14,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:i18nIn .35s ease}
+.i18n-ask .box{width:min(360px,100%);padding:26px 22px 20px;border-radius:22px;text-align:center;background:linear-gradient(160deg,rgba(40,32,72,.96),rgba(20,17,38,.96));border:1px solid rgba(241,212,139,.3);box-shadow:0 20px 60px rgba(0,0,0,.5);color:#eceffa;font-family:Vazirmatn,system-ui,sans-serif}
+.i18n-ask h2{margin:0 0 8px;font-size:1.15rem;font-weight:800;color:#f1d48b}
+.i18n-ask h2 span,.i18n-ask p span{display:block}
+.i18n-ask h2 span[lang=en]{font-size:.92rem;font-weight:600;opacity:.85;margin-top:2px}
+.i18n-ask p{margin:0 0 18px;font-size:.86rem;color:rgba(236,239,250,.6)}
+.i18n-ask .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.i18n-ask button{all:unset;box-sizing:border-box;cursor:pointer;padding:14px 10px;border-radius:14px;font:700 1rem/1.2 Vazirmatn,system-ui,sans-serif;text-align:center;border:1px solid rgba(241,212,139,.35);color:#eceffa;transition:transform .15s,background .2s}
+.i18n-ask button:hover{transform:translateY(-2px);background:rgba(241,212,139,.12)}
+.i18n-ask button.pri{background:rgba(241,212,139,.92);color:#1a1530;border-color:transparent}
+.i18n-ask button:focus-visible{outline:2px solid #f1d48b;outline-offset:3px}
+.i18n-ask small{display:block;font-weight:400;font-size:.72rem;opacity:.7;margin-top:3px}
+@keyframes i18nIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.i18n-ask{animation:none}}
+@media print{.i18n-tg{display:none}}
+</style>
+<!--/i18n-head-->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#02030a">
+<title>منظومه شمسی واقعی</title>
+<!--og-->
+<meta name="description" content="منظومه‌ی شمسی سه‌بعدی با جای واقعی سیاره‌ها در هر لحظه، ماشین زمان و تقویم گرفت‌ها. · A 3D solar system with the planets where they really are, a time machine and an eclipse calendar.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cnaebadi.github.io/vibe-coded/solar-system/">
+<link rel="canonical" href="https://cnaebadi.github.io/vibe-coded/solar-system/">
+<meta property="og:title" content="منظومه شمسی واقعی · The Real Solar System">
+<meta property="og:description" content="منظومه‌ی شمسی سه‌بعدی با جای واقعی سیاره‌ها در هر لحظه، ماشین زمان و تقویم گرفت‌ها. · A 3D solar system with the planets where they really are, a time machine and an eclipse calendar.">
+<meta property="og:image" content="https://cnaebadi.github.io/vibe-coded/solar-system/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="منظومه شمسی واقعی · The Real Solar System">
+<meta name="twitter:description" content="منظومه‌ی شمسی سه‌بعدی با جای واقعی سیاره‌ها در هر لحظه، ماشین زمان و تقویم گرفت‌ها. · A 3D solar system with the planets where they really are, a time machine and an eclipse calendar.">
+<meta name="twitter:image" content="https://cnaebadi.github.io/vibe-coded/solar-system/og.png">
+<!--/og-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var ua = navigator.userAgent || '';
+  var isTV = /SmartTV|SMART-TV|Tizen|Web0S|WebOS|NetCast|BRAVIA|HbbTV|AFT[A-Z]|CrKey|GoogleTV|Android ?TV|Roku|Viera|AQUOS|PhilipsTV|Opera TV|DTV/i.test(ua);
+  var mm = function(q){ try { return matchMedia(q).matches; } catch(e){ return false; } };
+  var coarse = mm('(pointer:coarse)'), short = Math.min(screen.width, screen.height), dev;
+  if (isTV || (mm('(pointer:none)') && innerWidth >= 1200)) dev = 'tv';
+  else if (coarse && short < 600) dev = 'mobile';
+  else if (coarse || mm('(hover:none)')) dev = 'tablet';
+  else dev = 'desktop';
+  var manual = null; try { manual = localStorage.getItem('ssLayout'); } catch(e){}
+  function pick(){
+    if (manual && manual !== 'auto') return manual;
+    if (dev === 'tv') return 'tv';
+    if (dev === 'mobile') return 'mobile';
+    return innerWidth < 820 ? 'mobile' : 'desktop';
+  }
+  var r = document.documentElement; r.dataset.device = dev; r.dataset.layout = pick();
+  window.__ss = { dev:dev, setManual:function(v){ manual=v; try{localStorage.setItem('ssLayout',v);}catch(e){} r.dataset.layout = pick(); } };
+  addEventListener('resize', function(){ r.dataset.layout = pick(); });
+})();
+</script>
+<style>
+:root{
+  --void:#02030a; --ink:#eceffa; --muted:#9ca5c6; --gold:#f1d48b; --violet:#a98bff;
+  --stroke:rgba(255,255,255,.13);
+  --font:'Vazirmatn',Tahoma,'Segoe UI',sans-serif;
+  --r:24px; --blur:24px;
+  --st:env(safe-area-inset-top,0px); --sb:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+}
+html[data-layout="desktop"]{font-size:16px}
+html[data-layout="mobile"]{font-size:14.5px;--r:22px;--blur:18px}
+html[data-layout="tv"]{font-size:clamp(20px,1.2vw,30px)}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:var(--void)}
+body{color:var(--ink);font-family:var(--font);line-height:1.9;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;
+  -webkit-user-select:none;user-select:none;overscroll-behavior:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:12px}
+.lat{direction:ltr;unicode-bidi:isolate}
+#scene{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab;outline:none}
+#scene.drag{cursor:grabbing}
+#scene.hov{cursor:pointer}
+
+/* ---------- شیشه‌ی مایع (از جیوتیش) ---------- */
+.glass{position:relative;isolation:isolate;border-radius:var(--r);
+  background:linear-gradient(150deg,rgba(255,255,255,.12),rgba(255,255,255,.045) 38%,rgba(255,255,255,.02) 70%,rgba(255,255,255,.06));
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(185%);backdrop-filter:blur(var(--blur)) saturate(185%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 1px rgba(255,255,255,.05),0 30px 70px -30px rgba(0,0,0,.85),0 0 0 .5px rgba(255,255,255,.08)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:-1;
+  background:linear-gradient(140deg,rgba(255,255,255,.55),rgba(255,255,255,.08) 28%,rgba(255,255,255,0) 55%,rgba(255,255,255,.08) 80%,rgba(255,255,255,.35));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;opacity:.9;
+  background:radial-gradient(420px circle at var(--mx,25%) var(--my,-10%),rgba(255,255,255,.10),transparent 42%)}
+
+/* ---------- امضا ---------- */
+.credit{position:fixed;left:0;right:0;margin:0;text-align:center;font-size:.6rem;line-height:1.6;color:var(--muted);opacity:.62;z-index:45;pointer-events:none;letter-spacing:.01em}
+.credit b{color:var(--gold);font-weight:500}
+.credit.top{top:calc(3px + var(--st))}
+.credit.bot{bottom:calc(4px + var(--sb));font-size:.7rem;opacity:.75}
+html[data-layout="tv"] .credit.top{font-size:.55rem}
+
+/* ---------- نوار بالا ---------- */
+.topbar{position:fixed;z-index:30;display:flex;align-items:center;gap:8px;padding:6px;border-radius:22px}
+html[data-layout="desktop"] .topbar,html[data-layout="tv"] .topbar{top:calc(22px + var(--st));right:18px}
+html[data-layout="mobile"] .topbar{top:calc(20px + var(--st));left:8px;right:8px;gap:6px;padding:5px}
+.brand{display:flex;align-items:center;gap:9px;padding:0 6px 0 10px;min-width:0}
+.brand i{flex:none;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6d5,#ffc860 40%,#e0731b 75%);box-shadow:0 0 18px rgba(255,190,90,.75)}
+.brand b{display:block;font-weight:900;font-size:1.02rem;line-height:1.55;white-space:nowrap;
+  background:linear-gradient(180deg,#fff 10%,#ffe9b0 60%,#c79a4b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{display:block;font-size:.68rem;color:var(--muted);line-height:1.5;white-space:nowrap}
+html[data-layout="mobile"] .brand{padding:0 4px 0 2px;flex:1}
+html[data-layout="mobile"] .brand i{width:20px;height:20px}
+html[data-layout="mobile"] .brand b{font-size:.86rem}
+html[data-layout="mobile"] .brand small{display:none}
+@media (max-width:460px){html[data-layout="mobile"] .brand div{display:none}html[data-layout="mobile"] .brand{flex:0 0 auto;padding:0 6px}html[data-layout="mobile"] .seg{flex:1}html[data-layout="mobile"] #viewSeg button{flex:1}}
+.seg{display:inline-flex;padding:3px;border-radius:999px;background:rgba(0,0,0,.32);border:1px solid var(--stroke);gap:2px;flex:none}
+.seg button{border:0;background:none;color:var(--muted);padding:5px 13px;border-radius:999px;cursor:pointer;font-size:.8rem;line-height:1.8;white-space:nowrap;transition:all .35s cubic-bezier(.2,.9,.2,1)}
+.seg button[aria-pressed="true"]{background:linear-gradient(135deg,#fff1c4,#e2b660 55%,#c48d3a);color:#140e02;font-weight:700;box-shadow:0 4px 18px -4px rgba(241,212,139,.7)}
+html[data-layout="mobile"] .seg button{padding:4px 10px;font-size:.74rem}
+.ibtn{flex:none;width:40px;height:40px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.06);display:grid;place-items:center;cursor:pointer;transition:background .3s,transform .3s}
+.ibtn:hover{background:rgba(255,255,255,.14)}
+.ibtn:active{transform:scale(.94)}
+.ibtn svg,.tbtn svg,.pill svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ibtn.on{background:rgba(241,212,139,.18);color:var(--gold)}
+html[data-layout="mobile"] .ibtn{width:36px;height:36px;border-radius:13px}
+html[data-layout="tv"] .ibtn{width:56px;height:56px}
+html[data-layout="tv"] .ibtn svg{width:28px;height:28px}
+
+/* ---------- ریل سیاره‌ها ---------- */
+.rail{position:fixed;z-index:30;display:flex;gap:2px;padding:6px;border-radius:24px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail::before,.rail::after{display:none}
+.rail{border:1px solid rgba(255,255,255,.16)}
+.rb{display:flex;flex-direction:column;align-items:center;gap:0;padding:5px 8px 3px;border:0;border-radius:16px;background:none;color:var(--muted);font-size:.68rem;line-height:1.7;cursor:pointer;flex:none;transition:background .3s,color .3s}
+.rb canvas{width:34px;height:34px;display:block}
+.rb:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.rb.on{color:var(--gold);background:rgba(241,212,139,.13);box-shadow:inset 0 0 0 1px rgba(241,212,139,.35)}
+html[data-layout="desktop"] .rail{right:18px;top:50%;transform:translateY(-46%);flex-direction:column;max-height:calc(100vh - 290px);overflow-y:auto}
+html[data-layout="desktop"] .rb{padding:4px 8px 2px}
+html[data-layout="mobile"] .rail{left:8px;right:8px;bottom:calc(196px + var(--sb));overflow-x:auto;padding:4px;border-radius:20px}
+html[data-layout="mobile"] .rb canvas{width:30px;height:30px}
+html[data-layout="tv"] .rail{right:18px;top:50%;transform:translateY(-44%);flex-direction:column;max-height:calc(100vh - 340px);overflow-y:auto}
+html[data-layout="tv"] .rb canvas{width:52px;height:52px}
+
+/* ---------- کارت تمرکز و رویداد بعدی ---------- */
+.focus,.nextev{position:fixed;z-index:30;transition:opacity .45s,transform .55s cubic-bezier(.2,.9,.2,1)}
+html[data-layout="desktop"] .focus,html[data-layout="desktop"] .nextev,html[data-layout="tv"] .focus,html[data-layout="tv"] .nextev{top:calc(22px + var(--st));left:18px}
+html[data-layout="mobile"] .focus,html[data-layout="mobile"] .nextev{top:calc(76px + var(--st));left:8px;right:8px}
+.hide{opacity:0!important;transform:translateY(-10px) scale(.98)!important;pointer-events:none!important}
+.focus{display:flex;align-items:center;gap:12px;padding:9px 12px 9px 10px;border-radius:22px;min-width:300px;max-width:440px}
+.focus canvas{width:58px;height:58px;flex:none}
+.focus .fx{flex:1;min-width:0}
+.focus .fx b{display:block;font-size:1.12rem;font-weight:800;line-height:1.7}
+.focus .fx span{display:block;font-size:.76rem;color:#c9cfe6;line-height:1.75}
+.focus .fb{display:flex;flex-direction:column;gap:6px}
+.focus .fx b .chip{font-style:normal;font-size:.62rem;font-weight:500;vertical-align:middle;margin-right:6px;display:inline-block;line-height:1.7}
+html[data-layout="mobile"] .focus{min-width:0;max-width:none;padding:7px 10px 7px 8px}
+html[data-layout="mobile"] .focus canvas{width:46px;height:46px}
+html[data-layout="mobile"] .focus .fb{flex-direction:row}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);border-radius:999px;padding:5px 14px;font-size:.78rem;line-height:1.8;cursor:pointer;white-space:nowrap;transition:background .3s,transform .3s}
+.pill:hover{background:rgba(255,255,255,.14)}
+.pill:active{transform:scale(.96)}
+.pill.gold{color:#140e02;font-weight:700;border:0;background:linear-gradient(135deg,#fff1c4,#e2b660 55%,#c48d3a);box-shadow:0 8px 26px -10px rgba(241,212,139,.85),inset 0 1px 0 rgba(255,255,255,.7)}
+.pill svg{width:17px;height:17px}
+.pill.sm{padding:3px 10px;font-size:.72rem}
+.x{width:30px;height:30px;padding:0;border-radius:50%}
+.nextev{display:flex;align-items:center;gap:12px;padding:9px 16px 9px 12px;border-radius:22px;border:0;text-align:right;cursor:pointer;max-width:420px}
+.nextev small{display:block;color:var(--gold);font-size:.68rem;line-height:1.6}
+.nextev b{display:block;font-weight:700;font-size:.9rem;line-height:1.7}
+.nextev span{display:block;font-size:.72rem;color:var(--muted);line-height:1.6}
+html[data-layout="mobile"] .nextev{max-width:none;padding:7px 12px 7px 10px}
+
+/* آیکن رویداد */
+.eico{position:relative;flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:1rem;color:var(--c,#fff)}
+.eico.solar{background:radial-gradient(circle,#000 52%,#ffd27a 56%,rgba(255,180,80,.55) 64%,transparent 74%)}
+.eico.lunar{background:radial-gradient(circle at 40% 38%,#ffb08a,#a3341f 60%,#3a0d08);box-shadow:0 0 14px rgba(220,80,50,.55)}
+.eico.lunar.pen{background:radial-gradient(circle at 40% 38%,#f2e9e0,#8d8178 70%,#3b3632);box-shadow:none}
+.eico.conj i{position:absolute;width:15px;height:15px;border-radius:50%;top:9px;box-shadow:0 0 10px currentColor}
+.eico.conj i:first-child{right:5px}.eico.conj i:last-child{left:5px;mix-blend-mode:screen}
+.eico.retro,.eico.direct{border:1.5px solid var(--c);font-weight:900;font-size:1.25rem;line-height:1;box-shadow:0 0 14px -2px var(--c)}
+.eico.season{background:radial-gradient(circle,#fff5d0,#ffbe55 45%,rgba(255,150,40,.0) 72%)}
+.eico.moon{background:radial-gradient(circle at 40% 38%,#f2f3f7,#9aa0b4 70%,#3a3d4a)}
+.eico.moon.new{background:radial-gradient(circle,#15161c 60%,rgba(200,210,255,.6) 64%,transparent 70%)}
+.eico.opp{border:1.5px dashed var(--c)}
+.eico.opp::after{content:"";display:block;width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 12px var(--c)}
+
+/* ---------- نوار زمان ---------- */
+.timebar{position:fixed;z-index:30;display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"date ctrl acts" "scrub scrub scrub";gap:4px 18px;align-items:center;padding:12px 18px 8px;border-radius:26px}
+html[data-layout="desktop"] .timebar,html[data-layout="tv"] .timebar{left:50%;transform:translateX(-50%);bottom:calc(24px + var(--sb));width:min(1040px,calc(100% - 210px))}
+html[data-layout="mobile"] .timebar{left:8px;right:8px;bottom:calc(24px + var(--sb));grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"date acts" "ctrl ctrl" "scrub scrub";gap:2px 10px;padding:10px 12px 6px;border-radius:22px}
+.tb-date{grid-area:date;display:flex;align-items:center;gap:10px;min-width:0}
+.datebtn{border:0;background:none;text-align:right;cursor:pointer;padding:2px 8px;border-radius:16px;transition:background .3s;min-width:0}
+.datebtn:hover{background:rgba(255,255,255,.06)}
+.datebtn b{display:block;font-size:1.12rem;font-weight:800;line-height:1.65;white-space:nowrap}
+.datebtn span{display:block;font-size:.74rem;color:var(--muted);line-height:1.6;white-space:nowrap}
+.datebtn span .lat{margin-right:6px;opacity:.85}
+html[data-layout="mobile"] .datebtn b{font-size:1rem}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;color:var(--muted);white-space:nowrap}
+.live i{width:8px;height:8px;border-radius:50%;background:#556;transition:background .4s,box-shadow .4s}
+.live.on{color:#9ff0c6}
+.live.on i{background:#4fe39a;box-shadow:0 0 0 0 rgba(79,227,154,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(79,227,154,0)}100%{box-shadow:0 0 0 0 rgba(79,227,154,0)}}
+.tb-ctrl{grid-area:ctrl;display:flex;align-items:center;gap:10px;min-width:0;direction:ltr}
+.spd .lbl{direction:ltr}
+.tbtn{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);display:grid;place-items:center;cursor:pointer;transition:background .3s,transform .2s}
+.tbtn:hover{background:rgba(255,255,255,.14)}
+.tbtn:active{transform:scale(.92)}
+.tbtn.play{width:48px;height:48px;color:#140e02;border:0;background:linear-gradient(135deg,#fff1c4,#e2b660 55%,#c48d3a);box-shadow:0 10px 30px -10px rgba(241,212,139,.9),inset 0 1px 0 rgba(255,255,255,.7)}
+.tbtn.play svg{fill:#140e02;stroke:none;width:20px;height:20px}
+.spd{flex:1;min-width:0;display:flex;flex-direction:column;gap:0}
+.spd .lbl{display:flex;justify-content:space-between;font-size:.66rem;color:var(--muted);line-height:1.4;padding:0 4px}
+.spd .lbl b{color:var(--gold);font-weight:700;font-size:.74rem}
+.tb-acts{grid-area:acts;display:flex;gap:8px}
+html[data-layout="mobile"] .tb-acts .pill{padding:4px 10px;font-size:.72rem}
+html[data-layout="mobile"] .tb-acts .pill span{display:none}
+.tb-scrub{grid-area:scrub;display:flex;flex-direction:column;gap:0}
+.ticks{display:flex;justify-content:space-between;direction:ltr;font-size:.62rem;color:rgba(156,165,198,.75);line-height:1.3;padding:0 6px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:26px;background:transparent;margin:0;cursor:pointer;direction:ltr}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:9px;background:var(--trk,rgba(255,255,255,.12));box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
+input[type=range]::-moz-range-track{height:6px;border-radius:9px;background:var(--trk,rgba(255,255,255,.12))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;margin-top:-7px;border-radius:50%;border:0;
+  background:radial-gradient(circle at 35% 30%,#fff8de,#e9bf68 55%,#b57f2e);box-shadow:0 0 0 4px rgba(241,212,139,.18),0 0 18px rgba(241,212,139,.8)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;border:0;background:radial-gradient(circle at 35% 30%,#fff8de,#e9bf68 55%,#b57f2e);box-shadow:0 0 0 4px rgba(241,212,139,.18),0 0 18px rgba(241,212,139,.8)}
+html[data-layout="tv"] input[type=range]::-webkit-slider-thumb{width:28px;height:28px;margin-top:-11px}
+
+/* ---------- پاپ‌اور تنظیمات ---------- */
+.pop{position:fixed;z-index:60;padding:16px 18px;border-radius:24px;display:grid;gap:12px;min-width:300px;transition:opacity .35s,transform .45s cubic-bezier(.2,.9,.2,1);
+  background:linear-gradient(160deg,rgba(40,44,80,.78),rgba(10,12,28,.9))}
+.pop::before,.pop::after{display:none}
+.pop{border:1px solid rgba(255,255,255,.16)}
+html[data-layout="desktop"] .pop,html[data-layout="tv"] .pop{top:calc(84px + var(--st));right:18px;width:min(470px,92vw)}
+html[data-layout="mobile"] .pop{top:calc(72px + var(--st));left:8px;right:8px}
+.pop .row{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.pop .row>span{font-size:.82rem;color:#c9cfe6}
+.pop h4{margin:0;font-size:.9rem;color:var(--gold);font-weight:700}
+.pop p{margin:0;font-size:.72rem;color:var(--muted);line-height:1.8}
+
+/* ---------- کشو ---------- */
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(1,2,8,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .4s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:81;overflow:auto;opacity:0;pointer-events:none;transition:transform .6s cubic-bezier(.2,.9,.2,1),opacity .4s;--r:30px;
+  background:linear-gradient(160deg,rgba(40,44,80,.74),rgba(10,12,28,.88));overscroll-behavior:contain;-webkit-user-select:text;user-select:text;border:1px solid rgba(255,255,255,.16)}
+.drawer::before,.drawer::after{display:none}
+.drawer.open{opacity:1;pointer-events:auto}
+html[data-layout="desktop"] .drawer{top:16px;bottom:16px;left:16px;width:min(500px,92vw);transform:translateX(-110%);padding:28px}
+html[data-layout="desktop"] .drawer.open{transform:none}
+html[data-layout="mobile"] .drawer{left:6px;right:6px;bottom:6px;max-height:86vh;transform:translateY(105%);padding:10px 18px calc(26px + var(--sb))}
+html[data-layout="mobile"] .drawer.open{transform:none}
+html[data-layout="mobile"] .drawer .grab{display:block;width:46px;height:5px;border-radius:9px;background:rgba(255,255,255,.3);margin:2px auto 8px}
+.grab{display:none}
+html[data-layout="tv"] .drawer{top:50%;left:50%;width:min(1200px,88vw);max-height:86vh;transform:translate(-50%,-46%) scale(.95);padding:44px 52px}
+html[data-layout="tv"] .drawer.open{transform:translate(-50%,-50%)}
+.dclose{position:sticky;top:0;float:left;width:42px;height:42px;border-radius:50%;border:1px solid var(--stroke);background:rgba(20,22,44,.9);font-size:1.3rem;cursor:pointer;z-index:3;line-height:1}
+.dh{display:flex;align-items:center;gap:16px;margin-bottom:10px}
+.dh canvas{width:140px;height:140px;flex:none}
+html[data-layout="mobile"] .dh canvas{width:108px;height:108px}
+html[data-layout="tv"] .dh canvas{width:200px;height:200px}
+.dh h4{margin:0;font-weight:900;font-size:2rem;line-height:1.8}
+.dh .en{color:var(--muted);font-size:.9rem;direction:ltr;display:inline-block}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.chip{font-size:.68rem;padding:1px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:#dfe3f5;white-space:nowrap;line-height:1.9}
+.chip.good{border-color:#7fe0a8;color:#a8f0c6;background:rgba(127,224,168,.08)}
+.chip.bad{border-color:#ff7f7f;color:#ffb0b0;background:rgba(255,127,127,.08)}
+.chip.r{border-color:var(--violet);color:#d3c6ff;background:rgba(169,139,255,.08)}
+.chip.g{border-color:var(--gold);color:var(--gold)}
+.blk{padding:12px 0;border-top:1px solid rgba(255,255,255,.07);font-size:.9rem;line-height:2}
+.blk>small{display:block;color:var(--gold);font-size:.74rem;margin-bottom:2px}
+.blk p{margin:0 0 4px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+html[data-layout="tv"] .grid2{grid-template-columns:repeat(4,1fr)}
+.grid2 div{padding:9px 12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);font-size:.86rem;line-height:1.85}
+.grid2 div.w{grid-column:1/-1}
+.grid2 small{display:block;color:var(--gold);font-size:.68rem;line-height:1.6}
+.grid2 em{font-style:normal;color:var(--muted);font-size:.74rem}
+.fact{margin:12px 0 4px;padding:12px 16px;border-radius:16px;background:rgba(241,212,139,.06);border-right:3px solid var(--gold);font-size:.86rem;color:#e3e6f5;line-height:2}
+.dacts{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.dtitle{margin:0 0 4px;font-weight:900;font-size:1.7rem;line-height:1.8;background:linear-gradient(180deg,#fff,#ffe9b0 70%,#c79a4b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dsub{margin:0 0 10px;color:var(--muted);font-size:.82rem}
+
+/* فهرست رویدادها */
+.evf{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 10px 10px 52px;margin:0 -10px;position:sticky;top:-28px;z-index:2;border-radius:18px;
+  background:linear-gradient(180deg,rgba(28,31,60,.97) 70%,rgba(28,31,60,0))}
+html[data-layout="mobile"] .evf{top:-10px;padding-left:62px}
+.evf::-webkit-scrollbar{display:none}
+.evf .pill[aria-pressed="true"]{color:#140e02;font-weight:700;border-color:transparent;background:linear-gradient(135deg,#fff1c4,#e2b660 55%,#c48d3a)}
+.evm{margin:14px 0 6px;font-size:.78rem;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.evm::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(241,212,139,.3),transparent)}
+.evi{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;width:100%;text-align:right;padding:9px 12px;margin:0 0 6px;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.035);cursor:pointer;transition:background .3s,transform .3s}
+.evi:hover,.evi:focus-visible{background:rgba(255,255,255,.08);transform:translateX(-3px)}
+.evi b{display:block;font-weight:700;font-size:.9rem;line-height:1.75}
+.evi div>span{display:block;font-size:.74rem;color:var(--muted);line-height:1.7}
+.evi time{font-size:.72rem;color:#c9cfe6;text-align:left;line-height:1.6;white-space:nowrap}
+.evi time small{display:block;color:var(--muted)}
+.evi.past{opacity:.5}
+.evi.next{border-color:rgba(241,212,139,.55);box-shadow:0 0 30px -12px rgba(241,212,139,.7)}
+.badge{font-style:normal;font-size:.62rem;color:#140e02;background:var(--gold);padding:0 8px;border-radius:999px;margin-right:6px;font-weight:700;vertical-align:middle}
+.nowline{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:.7rem;color:#9ff0c6}
+.nowline::before,.nowline::after{content:"";flex:1;height:1px;background:rgba(79,227,154,.45)}
+.evnav{display:flex;justify-content:space-between;gap:8px;margin-top:14px}
+
+/* ---------- دیالوگ تاریخ ---------- */
+.dlg{position:fixed;z-index:91;left:50%;top:50%;width:min(430px,94vw);padding:22px 22px 18px;border-radius:28px;transform:translate(-50%,-46%) scale(.96);opacity:0;pointer-events:none;
+  transition:opacity .35s,transform .5s cubic-bezier(.2,.9,.2,1);background:linear-gradient(160deg,rgba(44,46,86,.86),rgba(10,12,28,.94));border:1px solid rgba(255,255,255,.16)}
+.dlg::before,.dlg::after{display:none}
+.dlg.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%)}
+.dlg h3{margin:0;font-weight:900;font-size:1.3rem;line-height:1.8}
+.dlg p{margin:0 0 12px;font-size:.78rem;color:var(--muted)}
+.dlg .f3{display:grid;grid-template-columns:1fr 1.4fr 1.2fr;gap:8px;margin:12px 0 8px}
+.dlg label{display:flex;flex-direction:column;gap:3px;font-size:.72rem;color:var(--gold)}
+.dlg input,.dlg select{font-size:.98rem;background:rgba(0,0,0,.3);border:1px solid var(--stroke);border-radius:14px;padding:8px 10px;outline:none;width:100%;min-width:0;color-scheme:dark;-webkit-user-select:text;user-select:text}
+.dlg input:focus,.dlg select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(241,212,139,.14)}
+.dlg select option{background:#10132a}
+.dlg .err{min-height:1.4em;font-size:.76rem;color:#ff9f8a}
+.dlg .acts{display:flex;gap:8px;justify-content:flex-start;margin-top:6px}
+.scrim2{z-index:90}
+
+/* ---------- توست و راهنما ---------- */
+.toast{position:fixed;z-index:70;left:50%;bottom:calc(150px + var(--sb));transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:10px 20px;border-radius:999px;
+  font-size:.84rem;text-align:center;max-width:min(560px,92vw);transition:opacity .45s,transform .55s cubic-bezier(.2,.9,.2,1)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast b{color:var(--gold)}
+html[data-layout="mobile"] .toast{bottom:calc(270px + var(--sb))}
+.hint{position:fixed;z-index:20;left:50%;top:50%;transform:translate(-50%,120px);padding:10px 20px;border-radius:999px;font-size:.8rem;color:#d6dbef;pointer-events:none;white-space:nowrap;transition:opacity 1s}
+html[data-layout="mobile"] .hint{white-space:normal;text-align:center;width:86vw;border-radius:22px;transform:translate(-50%,60px)}
+.hint.off{opacity:0}
+
+.loader{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:var(--void);transition:opacity 1.2s,visibility 1.2s}
+.loader.off{opacity:0;visibility:hidden}
+.loader div{text-align:center}
+.loader i{display:block;width:64px;height:64px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6d5,#ffc860 40%,#e0731b 75%);box-shadow:0 0 60px rgba(255,190,90,.8);animation:breathe 2s ease-in-out infinite}
+.loader b{font-weight:900;font-size:1.6rem;background:linear-gradient(180deg,#fff,#ffe9b0 60%,#c79a4b);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes breathe{50%{transform:scale(1.08);box-shadow:0 0 90px rgba(255,190,90,1)}}
+html[data-layout="tv"] :focus-visible,html[data-layout="tv"] :focus{outline:3px solid var(--gold);outline-offset:4px;box-shadow:0 0 0 10px rgba(241,212,139,.15),0 0 50px rgba(241,212,139,.4)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div><i></i><b>منظومه شمسی واقعی</b></div></div>
+<canvas id="scene" tabindex="0" aria-label="نمای سه‌بعدی منظومه شمسی؛ بکشید تا بچرخد، روی سیاره بزنید"></canvas>
+<p class="credit top">ساخته شده توسط <b class="lat">Sina Ebadi</b></p>
+
+<header class="topbar glass" id="topbar">
+  <div class="brand"><i></i><div><b>منظومه شمسی واقعی</b><small id="brandSub">جای واقعی سیاره‌ها در همین لحظه</small></div></div>
+  <div class="seg" role="group" aria-label="نما" id="viewSeg"><button type="button" data-view="0" aria-pressed="true">خورشیدمرکز</button><button type="button" data-view="1" aria-pressed="false">زمین‌مرکز</button></div>
+  <button class="ibtn" type="button" id="evBtn" aria-label="تقویم رویدادها" title="تقویم رویدادها"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="12" cy="15" r="2.2"/></svg></button>
+  <button class="ibtn" type="button" id="homeBtn" aria-label="نمای کل" title="نمای کل"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="9.5" ry="4"/><path d="M12 2.5v3M12 18.5v3"/></svg></button>
+  <button class="ibtn" type="button" id="setBtn" aria-label="تنظیمات" title="تنظیمات"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/></svg></button>
+</header>
+
+<button class="nextev glass hide" id="nextEv" type="button"></button>
+<div class="focus glass hide" id="focus" aria-live="polite"></div>
+
+<nav class="rail glass" id="rail" aria-label="اجرام منظومه"></nav>
+
+<section class="timebar glass" id="timebar" aria-label="ماشین زمان">
+  <div class="tb-date">
+    <button class="datebtn" type="button" id="dateBtn" aria-label="پرش به تاریخ دلخواه"><b id="dJ">—</b><span id="dS">—</span></button>
+    <span class="live" id="live"><i></i><span>زنده</span></span>
+  </div>
+  <div class="tb-ctrl">
+    <button class="tbtn" type="button" id="stepB" aria-label="یک روز عقب" title="یک روز عقب"><svg viewBox="0 0 24 24"><path d="M10 6l-6 6 6 6M19 6l-6 6 6 6"/></svg></button>
+    <button class="tbtn play" type="button" id="playBtn" aria-label="پخش و توقف"><svg viewBox="0 0 24 24" id="playIco"></svg></button>
+    <button class="tbtn" type="button" id="stepF" aria-label="یک روز جلو" title="یک روز جلو"><svg viewBox="0 0 24 24"><path d="M14 6l6 6-6 6M5 6l6 6-6 6"/></svg></button>
+    <div class="spd">
+      <input type="range" id="speed" min="-8" max="8" step="1" value="1" aria-label="سرعت زمان">
+      <div class="lbl"><span dir="rtl">« عقب</span><b id="spdLbl" dir="rtl">زمان واقعی</b><span dir="rtl">جلو »</span></div>
+    </div>
+  </div>
+  <div class="tb-acts">
+    <button class="pill" type="button" id="nowBtn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span>اکنون</span></button>
+    <button class="pill gold" type="button" id="bdayBtn"><svg viewBox="0 0 24 24"><path d="M4 20h16v-7a2 2 0 00-2-2H6a2 2 0 00-2 2zM4 15c2 1.5 4-1 6 0s4 1.5 6 0 3-1 4 0M12 11V8"/><path d="M12 3.5c1 1.2 1.2 2.4 0 3.5-1.2-1.1-1-2.3 0-3.5z"/></svg><span>روز تولدم</span></button>
+  </div>
+  <div class="tb-scrub">
+    <input type="range" id="scrub" min="1900" max="2100" step="0.0005" value="2026" aria-label="جابه‌جایی در سال‌ها">
+    <div class="ticks"><span>۱۹۰۰</span><span>۱۹۵۰</span><span>۲۰۰۰</span><span>۲۰۵۰</span><span>۲۱۰۰</span></div>
+  </div>
+</section>
+<p class="credit bot">ساخته شده توسط <b class="lat">Sina Ebadi</b></p>
+
+<div class="pop glass hide" id="pop" role="dialog" aria-label="تنظیمات">
+  <h4>تنظیمات نما</h4>
+  <div class="row"><span>فاصله‌ها</span><div class="seg" data-opt="scale"><button type="button" data-v="0" aria-pressed="true">فشرده</button><button type="button" data-v="1" aria-pressed="false">مقیاس واقعی</button></div></div>
+  <div class="row"><span>زودیاک</span><div class="seg" data-opt="sid"><button type="button" data-v="0" aria-pressed="true">گرمسیری</button><button type="button" data-v="1" aria-pressed="false">ودیک (لاهیری)</button></div></div>
+  <div class="row"><span>مدارها و ردها</span><div class="seg" data-opt="orbits"><button type="button" data-v="1" aria-pressed="true">روشن</button><button type="button" data-v="0" aria-pressed="false">خاموش</button></div></div>
+  <div class="row"><span>نام‌ها</span><div class="seg" data-opt="labels"><button type="button" data-v="1" aria-pressed="true">روشن</button><button type="button" data-v="0" aria-pressed="false">خاموش</button></div></div>
+  <div class="row"><span>زبان</span><div class="seg" data-i18n-switch data-i18n-skip><button type="button" data-l="fa" lang="fa">فارسی</button><button type="button" data-l="en" lang="en">English</button></div></div>
+  <div class="row"><span>چیدمان</span><div class="seg" data-opt="lay"><button type="button" data-v="auto">خودکار</button><button type="button" data-v="mobile">موبایل</button><button type="button" data-v="desktop">دسکتاپ</button><button type="button" data-v="tv">تلویزیون</button></div></div>
+  <p id="devInfo"></p>
+  <p>اندازه‌ی سیاره‌ها برای دیده شدن بزرگ‌نمایی شده است. در «مقیاس واقعی» فاصله‌ها با نسبت درست کشیده می‌شوند. محاسبه‌ها داخل همین صفحه انجام می‌شود (دقت حدود چند دقیقه‌ی قوسی؛ زمان رویدادها تقریبی).</p>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer glass" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dT" tabindex="-1">
+  <span class="grab"></span>
+  <button class="dclose" id="dClose" type="button" aria-label="بستن">×</button>
+  <div id="dBody"></div>
+</div>
+
+<div class="scrim scrim2" id="scrim2"></div>
+<div class="dlg glass" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlgT">
+  <h3 id="dlgT">روز تولدت</h3>
+  <p id="dlgP">تاریخ و ساعت تولد را وارد کن؛ آسمان همان لحظه را نشانت می‌دهیم.</p>
+  <div class="seg" data-opt="cal"><button type="button" data-v="j" aria-pressed="true">شمسی</button><button type="button" data-v="g" aria-pressed="false">میلادی</button></div>
+  <div class="f3">
+    <label><span data-en="Day">روز</span><input id="iD" type="number" inputmode="numeric" min="1" max="31"></label>
+    <label><span data-en="Month">ماه</span><select id="iM"></select></label>
+    <label><span data-en="Year">سال</span><input id="iY" type="number" inputmode="numeric"></label>
+  </div>
+  <label>ساعت (به وقت همین دستگاه)<input id="iT" type="time" value="12:00" step="60"></label>
+  <div class="err" id="iErr" role="status"></div>
+  <div class="acts"><button class="pill gold" type="button" id="dlgOk">برو به آن لحظه</button><button class="pill" type="button" id="dlgNo">انصراف</button></div>
+</div>
+
+<div class="toast glass" id="toast" role="status"></div>
+<div class="hint glass" id="hint"></div>
+
+<script>
+/* ===== موتور نجومی (برگرفته از جیوتیش: الگوریتم Schlyter با اغتشاشات ماه، مشتری، زحل، اورانوس) ===== */
+var Astro = (function(){
+  var RAD = Math.PI/180, DEG = 180/Math.PI, AU_KM = 149597870.7, ER_KM = 6378.14;
+  function rev(x){ x = x % 360; return x < 0 ? x + 360 : x; }
+  function wrap(x){ x = rev(x); return x > 180 ? x - 360 : x; }
+  function sind(x){ return Math.sin(x*RAD); } function cosd(x){ return Math.cos(x*RAD); }
+  function jdFromMs(ms){ return ms/86400000 + 2440587.5; }
+  function dFromMs(ms){ return ms/86400000 + 2440587.5 - 2451543.5; }
+  function msFromD(d){ return (d + 2451543.5 - 2440587.5)*86400000; }
+  function kepler(M, e){
+    var E = M + e*DEG*sind(M)*(1+e*cosd(M));
+    for(var i=0;i<12;i++){ var dE = (E - e*DEG*sind(E) - M)/(1 - e*cosd(E)); E -= dE; if(Math.abs(dE)<1e-7) break; }
+    return E;
+  }
+  function elements(body, d){
+    switch(body){
+      case 'Su': return {N:0,i:0,w:282.9404+4.70935e-5*d,a:1,e:0.016709-1.151e-9*d,M:356.0470+0.9856002585*d};
+      case 'Mo': return {N:125.1228-0.0529538083*d,i:5.1454,w:318.0634+0.1643573223*d,a:60.2666,e:0.054900,M:115.3654+13.0649929509*d};
+      case 'Me': return {N:48.3313+3.24587e-5*d,i:7.0047+5.00e-8*d,w:29.1241+1.01444e-5*d,a:0.387098,e:0.205635+5.59e-10*d,M:168.6562+4.0923344368*d};
+      case 'Ve': return {N:76.6799+2.46590e-5*d,i:3.3946+2.75e-8*d,w:54.8910+1.38374e-5*d,a:0.723330,e:0.006773-1.302e-9*d,M:48.0052+1.6021302244*d};
+      case 'Ma': return {N:49.5574+2.11081e-5*d,i:1.8497-1.78e-8*d,w:286.5016+2.92961e-5*d,a:1.523688,e:0.093405+2.516e-9*d,M:18.6021+0.5240207766*d};
+      case 'Ju': return {N:100.4542+2.76854e-5*d,i:1.3030-1.557e-7*d,w:273.8777+1.64505e-5*d,a:5.20256,e:0.048498+4.469e-9*d,M:19.8950+0.0830853001*d};
+      case 'Sa': return {N:113.6634+2.38980e-5*d,i:2.4886-1.081e-7*d,w:339.3939+2.97661e-5*d,a:9.55475,e:0.055546-9.499e-9*d,M:316.9670+0.0334442282*d};
+      case 'Ur': return {N:74.0005+1.3978e-5*d,i:0.7733+1.9e-8*d,w:96.6612+3.0565e-5*d,a:19.18171-1.55e-8*d,e:0.047318+7.45e-9*d,M:142.5905+0.011725806*d};
+      case 'Ne': return {N:131.7806+3.0173e-5*d,i:1.7700-2.55e-7*d,w:272.8461-6.027e-6*d,a:30.05826+3.313e-8*d,e:0.008606+2.15e-9*d,M:260.2471+0.005995147*d};
+    }
+  }
+  function orbitPos(el){
+    var M = rev(el.M), E = kepler(M, el.e);
+    var xv = el.a*(cosd(E)-el.e), yv = el.a*Math.sqrt(1-el.e*el.e)*sind(E);
+    var v = Math.atan2(yv,xv)*DEG, r = Math.sqrt(xv*xv+yv*yv);
+    var N = el.N, w = el.w, i = el.i, vw = v + w;
+    return {x:r*(cosd(N)*cosd(vw) - sind(N)*sind(vw)*cosd(i)),
+            y:r*(sind(N)*cosd(vw) + cosd(N)*sind(vw)*cosd(i)),
+            z:r*sind(vw)*sind(i), r:r, v:v};
+  }
+  /* خورشید زمین‌مرکز */
+  function sun(d){
+    var s = elements('Su', d), p = orbitPos(s), lon = rev(p.v + s.w);
+    return {lon:lon, r:p.r, x:p.r*cosd(lon), y:p.r*sind(lon), z:0};
+  }
+  /* مختصات خورشیدمرکز دایره‌البروجی (واحد نجومی) */
+  function helio(body, d){
+    if(body==='Su') return {x:0,y:0,z:0};
+    if(body==='Ea'){ var s = sun(d); return {x:-s.x, y:-s.y, z:0}; }
+    var el = elements(body, d), h = orbitPos(el);
+    if(body==='Ju' || body==='Sa' || body==='Ur'){
+      var Mj = rev(elements('Ju',d).M), Ms = rev(elements('Sa',d).M), Mu = rev(elements('Ur',d).M);
+      var hl = Math.atan2(h.y,h.x)*DEG, hb = Math.atan2(h.z, Math.sqrt(h.x*h.x+h.y*h.y)), r = h.r;
+      if(body==='Ju'){
+        hl += -0.332*sind(2*Mj-5*Ms-67.6) -0.056*sind(2*Mj-2*Ms+21) +0.042*sind(3*Mj-5*Ms+21) -0.036*sind(Mj-2*Ms)
+              +0.022*cosd(Mj-Ms) +0.023*sind(2*Mj-3*Ms+52) -0.016*sind(Mj-5*Ms-69);
+      } else if(body==='Sa'){
+        hl += 0.812*sind(2*Mj-5*Ms-67.6) -0.229*cosd(2*Mj-4*Ms-2) +0.119*sind(Mj-2*Ms-3) +0.046*sind(2*Mj-6*Ms-69) +0.014*sind(Mj-3*Ms+32);
+        hb += (-0.020*cosd(2*Mj-4*Ms-2) +0.018*sind(2*Mj-6*Ms-49))*RAD;
+      } else {
+        hl += 0.040*sind(Ms-2*Mu+6) +0.035*sind(Ms-3*Mu+33) -0.015*sind(Mj-Mu+20);
+      }
+      h = {x:r*Math.cos(hb)*cosd(hl), y:r*Math.cos(hb)*sind(hl), z:r*Math.sin(hb)};
+    }
+    return {x:h.x, y:h.y, z:h.z};
+  }
+  /* ماه زمین‌مرکز: طول، عرض، فاصله (شعاع زمین) */
+  function moon(d){
+    var s = elements('Su', d), m = elements('Mo', d), p = orbitPos(m);
+    var lon = Math.atan2(p.y,p.x)*DEG, lat = Math.atan2(p.z, Math.sqrt(p.x*p.x+p.y*p.y))*DEG, r = p.r;
+    var Ms = rev(s.M), Mm = rev(m.M), Ls = rev(s.w+Ms), Lm = rev(m.N+m.w+Mm), D = Lm - Ls, F = Lm - m.N;
+    lon += -1.274*sind(Mm-2*D) +0.658*sind(2*D) -0.186*sind(Ms) -0.059*sind(2*Mm-2*D) -0.057*sind(Mm-2*D+Ms)
+           +0.053*sind(Mm+2*D) +0.046*sind(2*D-Ms) +0.041*sind(Mm-Ms) -0.035*sind(D) -0.031*sind(Mm+Ms)
+           -0.015*sind(2*F-2*D) +0.011*sind(Mm-4*D);
+    lat += -0.173*sind(F-2*D) -0.055*sind(Mm-F-2*D) -0.046*sind(Mm+F-2*D) +0.033*sind(F+2*D) +0.017*sind(2*Mm+F);
+    r += -0.58*cosd(Mm-2*D) -0.46*cosd(2*D);
+    lon = rev(lon);
+    var au = r*ER_KM/AU_KM;
+    return {lon:lon, lat:lat, r:r, x:au*cosd(lat)*cosd(lon), y:au*cosd(lat)*sind(lon), z:au*sind(lat)};
+  }
+  function polar(v){ var r = Math.sqrt(v.x*v.x+v.y*v.y+v.z*v.z); return {lon:rev(Math.atan2(v.y,v.x)*DEG), lat:Math.asin(v.z/(r||1))*DEG, dist:r}; }
+  /* بردار زمین‌مرکز (واحد نجومی) */
+  function geo(body, d, earth){
+    if(body==='Mo') return moon(d);
+    if(body==='Su'){ var s = sun(d); return {x:s.x, y:s.y, z:0}; }
+    if(body==='Ea') return {x:0,y:0,z:0};
+    var e = earth || helio('Ea', d), h = helio(body, d);
+    return {x:h.x-e.x, y:h.y-e.y, z:h.z-e.z};
+  }
+  function geoLon(body, d){
+    if(body==='Mo') return moon(d).lon;
+    if(body==='Su') return sun(d).lon;
+    return polar(geo(body, d)).lon;
+  }
+  function ayanamsa(jd){ var T = (jd-2451545)/36525; return 23.85709 + 1.396971278*T + 0.000308*T*T; }
+  var BODIES = ['Su','Me','Ve','Ea','Mo','Ma','Ju','Sa','Ur','Ne'];
+  /* وضعیت کامل همه‌ی اجرام در یک لحظه */
+  function state(ms){
+    var d = dFromMs(ms), E = helio('Ea', d), out = {d:d, jd:jdFromMs(ms), ms:ms};
+    BODIES.forEach(function(b){
+      var h = b==='Mo' ? null : helio(b, d), g;
+      if(b==='Mo'){ var m = moon(d); g = {x:m.x,y:m.y,z:m.z}; h = {x:E.x+g.x, y:E.y+g.y, z:E.z+g.z}; }
+      else g = b==='Ea' ? {x:0,y:0,z:0} : {x:h.x-E.x, y:h.y-E.y, z:h.z-E.z};
+      var p = polar(g), l1 = geoLon(b, d-0.25), l2 = geoLon(b, d+0.25), sp = wrap(l2-l1)*2;
+      out[b] = {h:h, g:g, lon:p.lon, lat:p.lat, dist:p.dist, hdist:Math.sqrt(h.x*h.x+h.y*h.y+h.z*h.z), speed:sp, retro:b!=='Ea' && sp<0};
+    });
+    out.ayan = ayanamsa(out.jd);
+    return out;
+  }
+  /* نقاط مدار برای رسم (همه‌ی آنومالی‌ها با عناصر همان لحظه) */
+  function orbitPoints(body, d, n){
+    var pts = [], el = elements(body==='Ea'?'Su':body, d), M0 = el.M;
+    for(var k=0;k<=n;k++){
+      el.M = M0 + 360*k/n; var p = orbitPos(el);
+      if(body==='Ea') pts.push({x:-p.r*cosd(p.v+el.w), y:-p.r*sind(p.v+el.w), z:0});
+      else pts.push({x:p.x, y:p.y, z:p.z});
+    }
+    return pts;
+  }
+  /* ===== یافتن رویدادها ===== */
+  function bisect(f, a, b, it){
+    var fa_ = f(a);
+    for(var i=0;i<(it||28);i++){ var m = (a+b)/2, fm = f(m); if((fm<0)===(fa_<0)){ a=m; fa_=fm; } else b=m; }
+    return (a+b)/2;
+  }
+  function sunApp(d){ var T = (d-1.5)/36525; return rev(sun(d).lon - 0.00569 - 0.00478*sind(125.04-1934.136*T)); }
+  var PL = ['Me','Ve','Ma','Ju','Sa','Ur','Ne'];
+  function eclipseAt(d, solar){
+    var m = moon(d), s = sun(d), beta = Math.abs(m.lat);
+    var pm = Math.asin(1/m.r)*DEG, sm = 0.2725*pm, ps = 8.794/3600/s.r, ss = 959.63/3600/s.r;
+    if(solar){
+      var gamma = m.r*sind(beta);
+      if(gamma > 1.55) return null;
+      var central = gamma < 0.997, kind = !central ? 'partial' : (sm >= ss ? 'total' : 'annular');
+      return {kind:kind, gamma:gamma, mag: Math.min(1, (1.55-gamma)/0.55)};
+    }
+    var umb = 1.02*(pm + ps - ss), pen = 1.02*(pm + ps + ss);
+    if(beta - sm >= pen) return null;
+    var kind2 = beta + sm < umb ? 'total' : (beta - sm < umb ? 'partial' : 'penumbral');
+    return {kind:kind2, mag:(umb + sm - beta)/(2*sm)};
+  }
+  function events(ms0, ms1){
+    var d0 = Math.floor(dFromMs(ms0)), d1 = Math.ceil(dFromMs(ms1)), out = [], prev = null;
+    var ids = ['Su','Mo'].concat(PL);
+    for(var d=d0; d<=d1; d++){
+      var E = helio('Ea', d), L = {};
+      ids.forEach(function(b){ L[b] = b==='Su' ? sun(d).lon : b==='Mo' ? moon(d).lon : polar(geo(b,d,E)).lon; });
+      L.sunA = sunApp(d);
+      if(prev){
+        var P = prev;
+        // فصل‌ها
+        for(var q=0;q<4;q++){ var a = wrap(P.sunA - q*90), b = wrap(L.sunA - q*90);
+          if(a<0 && b>=0) out.push({t:msFromD(bisect(function(x){ return wrap(sunApp(x)-q*90); }, d-1, d)), type:'season', q:q}); }
+        // ماه نو و کامل + گرفت
+        [0,180].forEach(function(k){
+          var a = wrap(P.Mo - P.Su - k), b = wrap(L.Mo - L.Su - k);
+          if(a<0 && b>=0 && b-a<60){
+            var t = bisect(function(x){ return wrap(moon(x).lon - sun(x).lon - k); }, d-1, d);
+            var ec = eclipseAt(t, k===0);
+            out.push({t:msFromD(t), type: ec ? (k===0?'solar':'lunar') : (k===0?'new':'full'), ec:ec, lon:sun(t).lon});
+          }
+        });
+        // مقارنه‌ها (دو سیاره، و سیاره با خورشید) و مقابله
+        var pairs = [];
+        PL.forEach(function(a,i){ PL.slice(i+1).forEach(function(b){ pairs.push([a,b,0]); }); pairs.push(['Su',a,0]); if(['Ma','Ju','Sa','Ur','Ne'].indexOf(a)>-1) pairs.push(['Su',a,180]); });
+        pairs.forEach(function(pr){
+          var a = wrap(P[pr[0]] - P[pr[1]] - pr[2]), b = wrap(L[pr[0]] - L[pr[1]] - pr[2]);
+          if(((a<0 && b>=0) || (a>0 && b<=0)) && Math.abs(a-b) < 30){
+            var t = bisect(function(x){ var e = helio('Ea',x); return wrap(lonOf(pr[0],x,e) - lonOf(pr[1],x,e) - pr[2]); }, d-1, d);
+            var ea = helio('Ea',t), ga = pr[0]==='Su' ? {x:-ea.x,y:-ea.y,z:0} : geo(pr[0],t,ea), gb = geo(pr[1],t,ea);
+            var sep = Math.abs(polar(ga).lat - (pr[2] ? -polar(gb).lat : polar(gb).lat));
+            out.push({t:msFromD(t), type: pr[2] ? 'opp' : 'conj', a:pr[0], b:pr[1], sep:sep, lon:polar(gb).lon});
+          }
+        });
+        // ایستگاه‌ها (برگشتی و مستقیم شدن)
+        PL.forEach(function(b){
+          var s1 = wrap(L[b] - P[b]), s0 = P['_s'+b];
+          if(s0!==undefined && ((s0>0 && s1<=0) || (s0<0 && s1>=0))){
+            var t = bisect(function(x){ return wrap(lonOf(b,x+0.5) - lonOf(b,x-0.5)); }, d-1.5, d-0.5, 22);
+            out.push({t:msFromD(t), type: s0>0 ? 'retro' : 'direct', a:b, lon:lonOf(b,t)});
+          }
+          L['_s'+b] = s1;
+        });
+      }
+      prev = L;
+    }
+    out.sort(function(x,y){ return x.t-y.t; });
+    return out.filter(function(e){ return e.t>=ms0 && e.t<=ms1; });
+  }
+  function lonOf(b, d, E){ if(b==='Su') return sun(d).lon; if(b==='Mo') return moon(d).lon; return polar(geo(b,d,E)).lon; }
+  return {state:state, helio:helio, geo:geo, moon:moon, sun:sun, polar:polar, orbitPoints:orbitPoints, events:events, eclipseAt:eclipseAt,
+          ayanamsa:ayanamsa, jdFromMs:jdFromMs, dFromMs:dFromMs, msFromD:msFromD, rev:rev, wrap:wrap, elements:elements, AU_KM:AU_KM};
+})();
+if(typeof module!=='undefined') module.exports = Astro;
+
+</script>
+<script>
+(function(){
+'use strict';
+var $ = function(s,el){ return (el||document).querySelector(s); };
+var $$ = function(s,el){ return Array.prototype.slice.call((el||document).querySelectorAll(s)); };
+var RM = false; try{ RM = matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+var root = document.documentElement;
+function lay(){ return root.dataset.layout; }
+var FA = '۰۱۲۳۴۵۶۷۸۹';
+function fa(x){ return String(x).replace(/\d/g,function(d){ return FA[d]; }); }
+var NF = [0,1,2].map(function(n){ return new Intl.NumberFormat('fa-IR',{maximumFractionDigits:n}); });
+function nf(x,n){ return NF[n==null?1:n].format(x); }
+function dms(x){ var d = Math.floor(x), m = Math.floor((x-d)*60); return '⁦'+fa(d)+'°'+fa(m<10?'0'+m:m)+'′⁩'; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+function clamp(x,a,b){ return x<a?a:x>b?b:x; }
+var DAY = 86400000, YEAR = 31556952000, AU = Astro.AU_KM, C_KM = 299792.458;
+var MIN_MS = Date.UTC(1800,0,1), MAX_MS = Date.UTC(2199,11,31);
+
+/* ================= تاریخ شمسی ================= */
+var fJ = null, fJparts = null, fTime = null, fG = null, fMY = null, fDM = null;
+try{
+  fJ = new Intl.DateTimeFormat('fa-IR-u-ca-persian',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  fMY = new Intl.DateTimeFormat('fa-IR-u-ca-persian',{month:'long',year:'numeric'});
+  fDM = new Intl.DateTimeFormat('fa-IR-u-ca-persian',{day:'numeric',month:'long'});
+  fJparts = new Intl.DateTimeFormat('en-US-u-ca-persian',{year:'numeric',month:'numeric',day:'numeric'});
+}catch(e){}
+try{ fTime = new Intl.DateTimeFormat('fa-IR',{hour:'2-digit',minute:'2-digit',hourCycle:'h23'}); }catch(e){}
+try{ fG = new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric'}); }catch(e){}
+function partsOf(f, ms){ var o = {}; f.formatToParts(new Date(ms)).forEach(function(p){ o[p.type] = p.value; }); return o; }
+/* در حالت انگلیسی: تاریخ میلادی، و تاریخ شمسی (به انگلیسی) در جای تاریخ دوم */
+var EN_F = {}; try{
+  EN_F.full = new Intl.DateTimeFormat('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  EN_F.day = new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  EN_F.dm = new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short'});
+  EN_F.my = new Intl.DateTimeFormat('en-GB',{month:'long',year:'numeric'});
+  EN_F.jal = new Intl.DateTimeFormat('en-GB-u-ca-persian',{day:'numeric',month:'short',year:'numeric'});
+}catch(e){}
+function isEn(){ return window.__LANG === 'en' && EN_F.full; }
+function jFull(ms){ if(isEn()) return EN_F.full.format(new Date(ms)); if(!fJ) return new Date(ms).toDateString(); var o = partsOf(fJ, ms); return o.weekday+'، '+o.day+' '+o.month+' '+o.year; }
+function jDay(ms){ if(isEn()) return EN_F.day.format(new Date(ms)); if(!fJ) return new Date(ms).toDateString(); var o = partsOf(fJ, ms); return o.day+' '+o.month+' '+o.year; }
+function jDM(ms){ if(isEn()) return EN_F.dm.format(new Date(ms)); if(!fDM) return jDay(ms); var o = partsOf(fDM, ms); return o.day+' '+o.month; }
+function jMY(ms){ if(isEn()) return EN_F.my.format(new Date(ms)); if(!fMY) return ''; var o = partsOf(fMY, ms); return o.month+' '+o.year; }
+function hm(ms){ return fTime ? fTime.format(new Date(ms)) : fa(new Date(ms).toTimeString().slice(0,5)); }
+function gDay(ms){ if(isEn() && EN_F.jal) return EN_F.jal.format(new Date(ms)).replace(/\s*AP$/,'')+' SH'; return fG ? fG.format(new Date(ms)) : new Date(ms).toISOString().slice(0,10); }
+function jParts(ms){ var o = partsOf(fJparts, ms); return {y:+o.year, m:+o.month, d:+o.day}; }
+/* تبدیل شمسی به میلادی (الگوریتم jalaali) */
+function dv(a,b){ return ~~(a/b); } function md(a,b){ return a - ~~(a/b)*b; }
+function jalCal(jy){
+  var br = [-61,9,38,199,426,686,756,818,1111,1181,1210,1635,2060,2097,2192,2262,2324,2394,2456,3178];
+  var gy = jy+621, leapJ = -14, jp = br[0], jm, jump = 0, n, i;
+  for(i=1;i<br.length;i++){ jm = br[i]; jump = jm-jp; if(jy<jm) break; leapJ += dv(jump,33)*8 + dv(md(jump,33),4); jp = jm; }
+  n = jy-jp; leapJ += dv(n,33)*8 + dv(md(n,33)+3,4);
+  if(md(jump,33)===4 && jump-n===4) leapJ += 1;
+  var leapG = dv(gy,4) - dv((dv(gy,100)+1)*3,4) - 150;
+  return {gy:gy, march:20+leapJ-leapG};
+}
+function g2d(gy,gm,gd){ var d = dv((gy+dv(gm-8,6)+100100)*1461,4) + dv(153*md(gm+9,12)+2,5) + gd - 34840408; return d - dv(dv(gy+100100+dv(gm-8,6),100)*3,4) + 752; }
+function d2g(j){ var x = 4*j+139361631; x = x + dv(dv(4*j+183187720,146097)*3,4)*4 - 3908; var i = dv(md(x,1461),4)*5+308;
+  var gd = dv(md(i,153),5)+1, gm = md(dv(i,153),12)+1, gy = dv(x,1461)-100100+dv(8-gm,6); return {y:gy, m:gm, d:gd}; }
+function j2g(jy,jm,jd){ var r = jalCal(jy); return d2g(g2d(r.gy,3,r.march) + (jm-1)*31 - dv(jm,7)*(jm-7) + jd - 1); }
+
+/* ================= داده‌ها ================= */
+var SIGNS = [
+ {fa:'حمل',gl:'♈',el:0},{fa:'ثور',gl:'♉',el:1},{fa:'جوزا',gl:'♊',el:2},{fa:'سرطان',gl:'♋',el:3},
+ {fa:'اسد',gl:'♌',el:0},{fa:'سنبله',gl:'♍',el:1},{fa:'میزان',gl:'♎',el:2},{fa:'عقرب',gl:'♏',el:3},
+ {fa:'قوس',gl:'♐',el:0},{fa:'جدی',gl:'♑',el:1},{fa:'دلو',gl:'♒',el:2},{fa:'حوت',gl:'♓',el:3}];
+var ELC = ['255,140,70','120,200,120','140,190,255','110,140,255'];
+var ORDER = ['Su','Me','Ve','Ea','Mo','Ma','Ju','Sa','Ur','Ne'];
+var BD = {
+ Su:{fa:'خورشید',en:'Sun',hex:'#ffb347',T:0,col:[[1,.42,.06],[1,.93,.62],[1,.62,.22]],R:2.2,rs:.58,kind:'ستاره، کوتوله‌ی زرد',
+   sci:{dia:1392700,dx:'۱۰۹ برابر زمین',mass:'۳۳۳٬۰۰۰ برابر زمین',g:'۲۷۴',day:'حدود ۲۵ روز در استوا تا ۳۵ روز در قطب‌ها',year:'هر ۲۳۰ میلیون سال یک دور دور مرکز کهکشان',temp:'سطح ۵٬۵۰۰°C، هسته ۱۵ میلیون °C',moons:'—',tilt:'۷٫۲۵°'},
+   fact:'نوری که الان از خورشید می‌بینی حدود ۸ دقیقه و ۲۰ ثانیه پیش راه افتاده است. ۹۹٫۸ درصد جرم کل منظومه در همین یک ستاره است.'},
+ Me:{fa:'عطارد',en:'Mercury',hex:'#b9b3a8',T:3,col:[[.42,.4,.38],[.74,.7,.64],[.55,.9,.72]],R:.17,rs:.64,kind:'سیاره‌ی سنگی',a:.387098,
+   sci:{dia:4879,mass:'۰٫۰۵۵ زمین',g:'۳٫۷',day:'روز خورشیدی ۱۷۶ روز زمینی (چرخش ۵۸٫۶ روز)',year:'۸۸ روز',temp:'−۱۷۳ تا ۴۲۷°C',moons:'ندارد',tilt:'۰٫۰۳°'},
+   fact:'روی عطارد یک «روز» (از طلوع تا طلوع بعدی) دو برابر یک «سال» آن طول می‌کشد.'},
+ Ve:{fa:'زهره',en:'Venus',hex:'#f4d9a8',T:5,col:[[1,.94,.78],[.86,.72,.5],[1,.9,.86]],R:.30,rs:.64,kind:'سیاره‌ی سنگی',a:.72333,
+   sci:{dia:12104,mass:'۰٫۸۱۵ زمین',g:'۸٫۸۷',day:'روز خورشیدی ۱۱۷ روز (چرخش وارونه‌ی ۲۴۳ روز)',year:'۲۲۴٫۷ روز',temp:'۴۶۴°C؛ داغ‌ترین سیاره',moons:'ندارد',tilt:'۱۷۷٫۴°'},
+   fact:'زهره وارونه می‌چرخد؛ آنجا خورشید از غرب طلوع می‌کند. ابرهای اسید سولفوریکش آن را درخشان‌ترین سیاره‌ی آسمان کرده‌اند.'},
+ Ea:{fa:'زمین',en:'Earth',hex:'#5fa8ff',T:9,col:[[.04,.18,.42],[.3,.42,.2],[.45,.72,1]],R:.32,rs:.64,kind:'سیاره‌ی سنگی، خانه',a:1.00000,
+   sci:{dia:12742,mass:'۵٫۹۷ × ۱۰²⁴ کیلوگرم',g:'۹٫۸۱',day:'۲۴ ساعت (چرخش ۲۳ ساعت و ۵۶ دقیقه)',year:'۳۶۵٫۲۵ روز',temp:'میانگین ۱۵°C (−۸۹ تا ۵۷)',moons:'۱',tilt:'۲۳٫۴۴°'},
+   fact:'تنها جایی که می‌دانیم حیات دارد. همین حالا که این را می‌خوانی، با زمین حدود ۳۰ کیلومتر در ثانیه دور خورشید می‌چرخی.'},
+ Mo:{fa:'ماه',en:'Moon',hex:'#dfe6f2',T:1,col:[[.33,.34,.38],[.88,.88,.86],[.7,.76,.95]],R:.10,rs:.64,kind:'قمر زمین',
+   sci:{dia:3474,mass:'۰٫۰۱۲ زمین',g:'۱٫۶۲',day:'۲۹٫۵ روز؛ همیشه یک رویش به ماست',year:'هر ۲۷٫۳ روز یک دور دور زمین',temp:'−۱۷۳ تا ۱۲۷°C',moons:'—',tilt:'۶٫۷°'},
+   fact:'ماه هر سال حدود ۳٫۸ سانتی‌متر از زمین دور می‌شود. اندازه‌ی ظاهری‌اش تقریباً با خورشید برابر است؛ برای همین کسوف کلی ممکن است.'},
+ Ma:{fa:'مریخ',en:'Mars',hex:'#ff6b4a',T:2,col:[[.8,.34,.16],[.33,.13,.07],[1,.45,.3]],R:.22,rs:.64,kind:'سیاره‌ی سنگی',a:1.523688,
+   sci:{dia:6779,mass:'۰٫۱۰۷ زمین',g:'۳٫۷۱',day:'۲۴ ساعت و ۳۷ دقیقه',year:'۶۸۷ روز',temp:'میانگین −۶۳°C (−۱۴۰ تا ۲۰)',moons:'۲ (فوبوس و دیموس)',tilt:'۲۵٫۱۹°'},
+   fact:'بلندترین کوه منظومه، «المپوس»، روی مریخ است؛ تقریباً سه برابر اورست. غروب‌های مریخ آبی‌اند.'},
+ Ju:{fa:'مشتری',en:'Jupiter',hex:'#ffd36b',T:4,col:[[.95,.87,.72],[.66,.46,.3],[1,.78,.45]],R:.85,rs:.64,kind:'غول گازی',a:5.20256,
+   sci:{dia:139820,mass:'۳۱۸ برابر زمین',g:'۲۴٫۸',day:'۹ ساعت و ۵۶ دقیقه؛ سریع‌ترین چرخش',year:'۱۱٫۸۶ سال',temp:'حدود −۱۱۰°C بالای ابرها',moons:'۱۰۱',tilt:'۳٫۱°'},
+   fact:'لکه‌ی سرخ بزرگ طوفانی است بزرگ‌تر از کل زمین که دست‌کم ۳۵۰ سال است می‌وزد.'},
+ Sa:{fa:'زحل',en:'Saturn',hex:'#e8cf8f',T:6,col:[[.94,.86,.64],[.7,.58,.4],[.55,.62,1]],R:.72,rs:.44,kind:'غول گازی',a:9.55475,
+   sci:{dia:116460,mass:'۹۵ برابر زمین',g:'۱۰٫۴',day:'۱۰ ساعت و ۳۴ دقیقه',year:'۲۹٫۴ سال',temp:'حدود −۱۴۰°C',moons:'۲۸۵؛ رکورددار منظومه',tilt:'۲۶٫۷°'},
+   fact:'چگالی زحل از آب کمتر است؛ در یک وان به‌اندازه‌ی کافی بزرگ شناور می‌ماند. حلقه‌هایش ۲۸۰ هزار کیلومتر پهنا دارند اما ضخامتشان اغلب کمتر از یک کیلومتر است.'},
+ Ur:{fa:'اورانوس',en:'Uranus',hex:'#9fe6ee',T:10,col:[[.62,.88,.9],[.47,.76,.84],[.6,.92,1]],R:.48,rs:.64,kind:'غول یخی',a:19.18171,
+   sci:{dia:50724,mass:'۱۴٫۵ برابر زمین',g:'۸٫۷',day:'۱۷ ساعت و ۱۴ دقیقه (وارونه)',year:'۸۴ سال',temp:'حدود −۱۹۵°C',moons:'۲۹',tilt:'۹۷٫۸°'},
+   fact:'اورانوس به پهلو خوابیده می‌چرخد؛ هر قطبش ۴۲ سال روز پیوسته و ۴۲ سال شب پیوسته دارد.'},
+ Ne:{fa:'نپتون',en:'Neptune',hex:'#5b7cff',T:10,col:[[.22,.38,.92],[.12,.2,.66],[.42,.62,1]],R:.46,rs:.64,kind:'غول یخی',a:30.05826,
+   sci:{dia:49244,mass:'۱۷٫۱ برابر زمین',g:'۱۱٫۲',day:'۱۶ ساعت و ۶ دقیقه',year:'۱۶۴٫۸ سال',temp:'حدود −۲۰۰°C',moons:'۱۶',tilt:'۲۸٫۳°'},
+   fact:'تندترین بادهای منظومه، بیش از ۲٬۰۰۰ کیلومتر در ساعت، روی نپتون می‌وزد. نپتون را اول با ریاضی پیدا کردند، بعد با تلسکوپ.'}
+};
+var NODES = {Ra:{fa:'راهو',T:7,col:[[.03,.02,.06],[.5,.3,.85],[.6,.4,1]],rs:.52},Ke:{fa:'کتو',T:8,col:[[.07,.03,.02],[1,.42,.12],[1,.38,.15]],rs:.52}};
+var AST = {
+ Su:{kw:'روح، اقتدار، پدر، حیات، اراده',m:'در طالع‌بینی خورشید «خودِ آگاه» است: هویت، اراده و نوری که با آن دیده می‌شوی. در جیوتیش «سوریا» روح، پدر و اقتدار را نشان می‌دهد.',rule:'اسد',day:'یکشنبه',gem:'یاقوت سرخ',sa:'سوریا',ex:0,own:[4]},
+ Mo:{kw:'ذهن، احساس، مادر، مردم، آرامش',m:'ماه دنیای احساس و نیاز به امنیت است؛ ذهنی که مثل دریا جزر و مد دارد. در جیوتیش «چاندرا» مهم‌ترین نقطه‌ی چارت است و برج اصلی آدم را تعیین می‌کند.',rule:'سرطان',day:'دوشنبه',gem:'مروارید',sa:'چاندرا',ex:1,own:[3]},
+ Me:{kw:'هوش، گفتار، تجارت، یادگیری، طنز',m:'عطارد پیام‌رسان است: فکر، زبان، معامله و سفرهای کوتاه. «بودها» در جیوتیش شاهزاده‌ی جوان و باهوش آسمان است.',rule:'جوزا و سنبله',day:'چهارشنبه',gem:'زمرد',sa:'بودها',ex:5,own:[2,5],
+   retro:'ذهن درون‌نگر و بازنگر؛ وقت مرور، بازنویسی و تأخیر در قرارها. عطارد سالی سه بار، هر بار حدود سه هفته، برگشتی می‌شود.'},
+ Ve:{kw:'عشق، زیبایی، همسر، هنر، رفاه',m:'زهره سیاره‌ی جذب و لذت است: عشق، ذوق، پول و هماهنگی. «شوکرا» در جیوتیش استاد هنرها و نماینده‌ی همسر است.',rule:'ثور و میزان',day:'جمعه',gem:'الماس',sa:'شوکرا',ex:11,own:[1,6],
+   retro:'بازتعریف عشق و ارزش‌ها؛ آدم‌ها و سلیقه‌های قدیمی برمی‌گردند. هر ۱۹ ماه یک بار، حدود ۴۰ روز.'},
+ Ea:{kw:'جایگاه ناظر، بدن، زمین زیر پا',m:'در طالع‌بینی زمین سیاره‌ای در چارت نیست؛ خودِ نقطه‌ی دیدن است و همه‌ی نقشه‌های آسمان از اینجا کشیده می‌شوند. در نگاه خورشیدمرکز، زمین همیشه درست روبه‌روی خورشیدِ زمین‌مرکز است.',rule:'—',day:'—',gem:'—',sa:'بهومی'},
+ Ma:{kw:'انرژی، شجاعت، برادر، زمین، رقابت',m:'مریخ موتور عمل است: خواستن، جنگیدن و شروع کردن. «منگالا» در جیوتیش فرمانده‌ی سپاه آسمان است.',rule:'حمل و عقرب',day:'سه‌شنبه',gem:'مرجان',sa:'منگالا',ex:9,own:[0,7],
+   retro:'انرژی به درون برمی‌گردد: خشم فروخورده، عمل بعد از تأمل طولانی، و جنگیدن با خود به‌جای دیگران. هر ۲۶ ماه یک بار.'},
+ Ju:{kw:'خرد، بخت، فرزند، استاد، ایمان',m:'مشتری بزرگ‌ترین برکت‌دهنده است: رشد، معنا و فرصت. «گورو» در جیوتیش استاد خدایان است و حدود یک سال در هر برج می‌ماند.',rule:'قوس و حوت',day:'پنجشنبه',gem:'یاقوت زرد',sa:'گورو',ex:3,own:[8,11],
+   retro:'خرد درونی‌شده؛ ایمان شخصی به‌جای آیین رسمی. هر سال حدود چهار ماه.'},
+ Sa:{kw:'کارما، انضباط، تأخیر، کار، صبر',m:'زحل معلم سخت‌گیر زمان است: ساختار، مسئولیت و نتیجه‌ای که دیر اما ماندگار می‌رسد. «شانی» در جیوتیش داور کارماست و حدود دو سال و نیم در هر برج می‌ماند.',rule:'جدی و دلو',day:'شنبه',gem:'یاقوت کبود',sa:'شانی',ex:6,own:[9,10],
+   retro:'درس‌های کارمایی درونی‌تر؛ سخت‌گیری با خود و بازنگری در تعهدها. هر سال حدود چهار ماه و نیم.'},
+ Ur:{kw:'نوآوری، شورش، بیداری ناگهانی، آزادی، فناوری',m:'اورانوس سیاره‌ی غافلگیری است: انقلاب، نبوغ و شکستن قالب‌ها. حدود ۷ سال در هر برج می‌ماند و بیشتر روی یک نسل اثر می‌گذارد. در جیوتیش سنتی به کار نمی‌رود.',rule:'دلو (حاکم مدرن)',day:'—',gem:'—',sa:'—',
+   retro:'بیداری درونی؛ تغییرهایی که اول در درون رخ می‌دهند. هر سال حدود پنج ماه.'},
+ Ne:{kw:'رؤیا، شهود، معنویت، هنر، توهم',m:'نپتون مه و موسیقی آسمان است: خیال، شفقت، عرفان و گاهی فریب. حدود ۱۴ سال در هر برج می‌ماند و نسل‌ساز است.',rule:'حوت (حاکم مدرن)',day:'—',gem:'—',sa:'—',
+   retro:'مه کنار می‌رود؛ وقت دیدن حقیقتِ پشت رؤیاها. هر سال حدود پنج ماه.'}
+};
+
+/* ================= سیاره‌های سه‌بعدی (شیدر جیوتیش + زمین و غول‌های یخی + نور واقعی خورشید) ================= */
+var VS = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+var FS = [
+'precision highp float;',
+'uniform vec2 uRes;uniform float uTime,uType,uSeed;uniform vec3 uC1,uC2,uC3,uL;',
+'float hash(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}',
+'float noise(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);',
+' return mix(mix(mix(hash(i),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),',
+'  mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}',
+'float fbm(vec3 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.03+vec3(1.7,9.2,3.1);a*=.5;}return v;}',
+'vec3 rY(vec3 v,float a){float c=cos(a),s=sin(a);return vec3(c*v.x+s*v.z,v.y,-s*v.x+c*v.z);}',
+'vec3 rX(vec3 v,float a){float c=cos(a),s=sin(a);return vec3(v.x,c*v.y-s*v.z,s*v.y+c*v.z);}',
+'vec3 rZ(vec3 v,float a){float c=cos(a),s=sin(a);return vec3(c*v.x-s*v.y,s*v.x+c*v.y,v.z);}',
+'void main(){',
+' vec2 p=gl_FragCoord.xy/uRes*2.-1.;int T=int(uType+.5);bool nd=(T==7||T==8);',
+' float R=T==6?.44:(T==0?.58:(nd?.52:.64));float px=2.5/uRes.x;float d=length(p);',
+' float tilt=T==6?.42:(T==4?.06:(T==9?.41:.25));float view=T==6?.36:.2;',
+' float sp=T==0?.05:(T==4?.24:(T==6?.2:(T==1?.05:(T==5?.035:(nd?.07:(T==9?.08:(T==10?.12:.11)))))));float spin=uTime*sp+uSeed;',
+' vec3 L=normalize(uL);vec4 col=vec4(0.);float zs=-9.;',
+' if(d<R+px){',
+'  float dd=min(d,R);vec3 n=vec3(p/R,sqrt(max(0.,1.-dd*dd/(R*R))));zs=n.z*R;',
+'  vec3 q=rY(rX(rZ(n,tilt),view),spin);vec3 base;float land=0.,cl=0.;',
+'  if(T==0){float f=fbm(q*5.+vec3(0.,uTime*.07,0.));float g=fbm(q*15.-uTime*.04);base=mix(uC1,uC2,smoothstep(.3,.9,f*.75+g*.45));}',
+'  else if(T==1){float m=smoothstep(.42,.62,fbm(q*1.8+uSeed));float f=fbm(q*6.);float c=noise(q*16.);base=mix(uC2,uC1,m*.8)*(.78+.38*f)*(1.-.18*smoothstep(.62,.72,c))+.07*smoothstep(.74,.8,c);}',
+'  else if(T==2){float dk=smoothstep(.45,.7,fbm(q*2.3+3.));float f=fbm(q*7.);base=mix(uC1,uC2,dk)*(.72+.48*f);base=mix(base,vec3(.96,.94,.92),smoothstep(.84,.92,abs(q.y)));}',
+'  else if(T==3){float f=fbm(q*5.);float c=noise(q*13.);base=mix(uC1,uC2,f)*(.82+.3*smoothstep(.55,.7,c))*(1.-.22*smoothstep(.7,.8,noise(q*24.)));}',
+'  else if(T==4||T==6){float w=fbm(q*vec3(2.,7.,2.)+uSeed);float b=q.y*(T==4?9.:6.)+w*(T==4?1.9:.9);float s=.5+.5*sin(b*3.1416);base=mix(uC1,uC2,s)*(.88+.24*fbm(q*vec3(4.,18.,4.)));',
+'   if(T==4){vec3 c0=normalize(vec3(.75,-.33,.55));float e=length((q-c0)*vec3(1.,2.3,1.));base=mix(base,uC3*.82,smoothstep(.24,.12,e));}}',
+'  else if(T==5){vec3 w=q*2.4;float f=fbm(w+vec3(fbm(w*1.6+uTime*.03)*1.7));base=mix(uC2,uC1,f);}',
+'  else if(T==7){float f=fbm(q*3.+vec3(uTime*.06));base=uC1+uC2*.22*f*f;}',
+'  else if(T==9){float c=fbm(q*1.9+vec3(uSeed));land=smoothstep(.5,.54,c);base=mix(uC1*(.75+.5*fbm(q*7.)),uC2*(.65+.7*fbm(q*11.+2.)),land);',
+'   base=mix(base,vec3(.6,.5,.32),land*smoothstep(.62,.72,c)*.6);base=mix(base,vec3(.93,.95,1.),smoothstep(.8,.88,abs(q.y)));',
+'   cl=smoothstep(.5,.78,fbm(q*3.4+vec3(uTime*.012,0.,uSeed)));base=mix(base,vec3(1.),cl*.85);}',
+'  else if(T==10){float w=fbm(q*vec3(2.,6.,2.)+uSeed);float b=q.y*4.+w*.7;base=mix(uC1,uC2,.5+.5*sin(b*3.1416))*(.9+.14*fbm(q*5.));}',
+'  else{float v=fbm(q*3.6);float vein=smoothstep(.46,.5,v)*smoothstep(.54,.5,v);base=uC1+uC2*(vein*1.5+.05*fbm(q*9.));}',
+'  float ndl=dot(n,L);float lit=smoothstep(-.22,.6,ndl);vec3 c;',
+'  if(T==0)c=base*(.55+.6*pow(n.z,.45));',
+'  else if(nd)c=base*(.75+.25*lit);',
+'  else c=base*(.07+1.06*lit)+pow(max(dot(reflect(-L,n),vec3(0,0,1)),0.),22.)*(T==5?.22:(T==9?.4*(1.-land)*(1.-cl):.08));',
+'  if(T==9)c+=vec3(1.,.72,.38)*land*(1.-cl)*smoothstep(.1,-.3,ndl)*smoothstep(.64,.7,noise(q*55.))*.7;',
+'  float fr=pow(1.-n.z,2.4);if(T!=0)c+=uC3*fr*(nd?1.1:.55)*(nd?1.:(.15+lit));',
+'  float a=smoothstep(R+px,R-px,d);col=vec4(c*a,a);',
+' }',
+' float gd=max(d-R,0.);float gi=T==0?1.15:(nd?.95:(T==9?.42:.3));float gk=T==0?4.2:(nd?6.5:12.);',
+' float glow=gi*exp(-gd*gk/R)*smoothstep(1.,.8,d);',
+' if(T!=0&&!nd){vec2 pl=normalize(L.xy+vec2(1e-4));glow*=.35+.65*smoothstep(-.6,.7,dot(normalize(p+1e-4),pl));}',
+' if(T==7||T==0){float an=atan(p.y,p.x);glow*=.55+.6*fbm(vec3(an*2.5,gd*5.-uTime*.25,uSeed+3.));}',
+' if(T==7){float ba=uTime*.35;vec2 bp=vec2(cos(ba),sin(ba))*R;glow+=1.6*exp(-length(p-bp)*26.);}',
+' if(T==8){vec2 dir=normalize(vec2(.86,.38));float al=dot(p,dir);float pe=abs(dot(p,vec2(-dir.y,dir.x)));',
+'  if(al>0.)glow+=1.15*exp(-pe*8./(.12+al))*exp(-al*2.)*smoothstep(R*.7,R*1.15,d)*(.6+.5*fbm(vec3(al*6.-uTime*.6,pe*12.,1.)));}',
+' glow=clamp(glow,0.,1.);vec4 gc=vec4(uC3*glow,glow);',
+' vec4 outc=col+gc*(1.-col.a);',
+' if(T==6){vec3 rn=rZ(rX(vec3(0.,1.,0.),-view),-tilt);float hz=-(rn.x*p.x+rn.y*p.y)/rn.z;float r=length(vec3(p,hz))/R;',
+'  if(r>1.22&&r<2.3){float bnd=fbm(vec3(r*16.,uSeed,0.));',
+'   float ra=smoothstep(1.22,1.3,r)*smoothstep(2.3,2.18,r)*(.4+.6*bnd)*(1.-.85*smoothstep(1.9,1.94,r)*smoothstep(2.,1.96,r));',
+'   vec3 rc=mix(uC2,uC1,bnd)*.95*(.45+.55*clamp(L.z+.6,0.,1.));vec4 rg=vec4(rc*ra,ra);',
+'   if(d>R||hz>zs)outc=rg+outc*(1.-ra);else outc=outc+rg*(1.-outc.a);}}',
+' gl_FragColor=outc;',
+'}'].join('\n');
+var DEF_L = [-.55,.48,.7];
+var GL = (function(){
+  var MAX = 512, cv = document.createElement('canvas'); cv.width = cv.height = MAX;
+  var gl = null; try{ gl = cv.getContext('webgl',{premultipliedAlpha:true, alpha:true, preserveDrawingBuffer:true, antialias:false}); }catch(e){}
+  if(!gl) return null;
+  function sh(t,src){ var s=gl.createShader(t); gl.shaderSource(s,src); gl.compileShader(s); if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){ console.error(gl.getShaderInfoLog(s)); return null;} return s; }
+  var vs = sh(gl.VERTEX_SHADER,VS), fs = sh(gl.FRAGMENT_SHADER,FS); if(!vs||!fs) return null;
+  var pr = gl.createProgram(); gl.attachShader(pr,vs); gl.attachShader(pr,fs); gl.linkProgram(pr);
+  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) return null;
+  gl.useProgram(pr);
+  var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,b); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(pr,'a'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  var U = {}; ['uRes','uTime','uType','uSeed','uC1','uC2','uC3','uL'].forEach(function(n){ U[n]=gl.getUniformLocation(pr,n); });
+  gl.enable(gl.SCISSOR_TEST); gl.clearColor(0,0,0,0);
+  return {MAX:MAX, draw:function(target, b, time, L, px){
+    px = Math.min(MAX, px|0); if(px<4) return;
+    if(target.width!==px){ target.width = target.height = px; }
+    gl.viewport(0,0,px,px); gl.scissor(0,0,px,px); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform2f(U.uRes,px,px); gl.uniform1f(U.uTime,time); gl.uniform1f(U.uType,b.T); gl.uniform1f(U.uSeed,b.T*1.37+.5+(b.seed||0));
+    gl.uniform3fv(U.uC1,b.col[0]); gl.uniform3fv(U.uC2,b.col[1]); gl.uniform3fv(U.uC3,b.col[2]); gl.uniform3fv(U.uL,L||DEF_L);
+    gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+    var x = target._x || (target._x = target.getContext('2d'));
+    x.clearRect(0,0,px,px); x.drawImage(cv,0,MAX-px,px,px,0,0,px,px);
+  }};
+})();
+BD.Ne.seed = 2.3;
+function fallbackDraw(target, b, L, px){
+  px = px|0; if(px<4) return; if(target.width!==px) target.width = target.height = px;
+  var x = target._x || (target._x = target.getContext('2d')), c = b.col, r = px*.5*b.rs, cx = px/2; L = L||DEF_L;
+  function rgb(a,k){ return 'rgb('+a.map(function(v){return Math.round(Math.min(1,v*(k||1))*255);}).join(',')+')'; }
+  x.clearRect(0,0,px,px);
+  var g = x.createRadialGradient(cx+L[0]*r*.5,cx-L[1]*r*.5,r*.1,cx,cx,r); g.addColorStop(0,rgb(c[1])); g.addColorStop(.7,rgb(c[0])); g.addColorStop(1,rgb(c[0],.2));
+  x.shadowColor = rgb(c[2]); x.shadowBlur = px*.1; x.fillStyle = g; x.beginPath(); x.arc(cx,cx,r,0,6.283); x.fill();
+}
+function paint(target, b, time, L, px){ if(GL) GL.draw(target, b, time, L, px); else fallbackDraw(target, b, L, px); }
+/* بوم‌های کوچک داخل رابط */
+var visible = new Set(), io3d = null;
+if('IntersectionObserver' in window) io3d = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) visible.add(e.target); else visible.delete(e.target); }); }, {rootMargin:'40px'});
+function pcv(id, cls){ return '<canvas class="p3d'+(cls?' '+cls:'')+'" data-p="'+id+'" aria-hidden="true"></canvas>'; }
+function scanPlanets(scope){ $$('canvas.p3d', scope||document).forEach(function(c){ if(c._reg) return; c._reg = 1; if(io3d) io3d.observe(c); else visible.add(c); }); }
+function cleanPlanets(){ visible.forEach(function(c){ if(!document.body.contains(c)) visible.delete(c); }); }
+
+/* ================= حالت ================= */
+var SPEEDS = [0,1,60,3600,21600,86400,604800,2629800,31557600];
+var SPL = ['ایستاده','زمان واقعی','۱ دقیقه در ثانیه','۱ ساعت در ثانیه','۶ ساعت در ثانیه','۱ روز در ثانیه','۱ هفته در ثانیه','۱ ماه در ثانیه','۱ سال در ثانیه'];
+var sim = Date.now(), spd = 1, lastSpd = 5, S = Astro.state(sim);
+var viewK = 0, viewW = 0, scaleK = 0, scaleW = 0, sid = false, showOrb = true, showLab = true;
+var cam = {yaw:-1.05, pitch:.48, dist:80, t:[0,0,0]}, want = {yaw:-1.05, pitch:.48, dist:80};
+var follow = null, flight = null, highlight = null, hlUntil = 0, lastInteract = 0, P = {};
+var MOON_D = .95;
+try{ var sv = JSON.parse(localStorage.getItem('ssPrefs')||'{}'); if(sv.sid) sid = true; if(sv.orb===false) showOrb = false; if(sv.lab===false) showLab = false; }catch(e){}
+function savePrefs(){ try{ localStorage.setItem('ssPrefs', JSON.stringify({sid:sid, orb:showOrb, lab:showLab})); }catch(e){} }
+
+function comp(r){ var c = Math.sqrt(r)*10, l = r*10; return c + (l-c)*scaleK; }
+function cvec(v){ var r = Math.sqrt(v.x*v.x+v.y*v.y+v.z*v.z); if(r<1e-12) return [0,0,0]; var k = comp(r)/r; return [v.x*k, v.y*k, v.z*k]; }
+function sunR(){ return 2.2 + (1.0-2.2)*scaleK; }
+function bodyR(id){ return id==='Su' ? sunR() : BD[id].R; }
+function lerp3(a,b,k){ return [a[0]+(b[0]-a[0])*k, a[1]+(b[1]-a[1])*k, a[2]+(b[2]-a[2])*k]; }
+function unit(v){ var r = Math.sqrt(v.x*v.x+v.y*v.y+v.z*v.z)||1; return [v.x/r, v.y/r, v.z/r]; }
+function positions(){
+  var eH = cvec(S.Ea.h), mu = unit(S.Mo.g), mo = [mu[0]*MOON_D, mu[1]*MOON_D, mu[2]*MOON_D];
+  ORDER.forEach(function(id){
+    var h = id==='Mo' ? [eH[0]+mo[0], eH[1]+mo[1], eH[2]+mo[2]] : cvec(S[id].h);
+    var g = id==='Ea' ? [0,0,0] : id==='Mo' ? mo : cvec(S[id].g);
+    P[id] = lerp3(h, g, viewK);
+  });
+}
+
+/* ================= صحنه ================= */
+var scene = $('#scene'), ctx = scene.getContext('2d'), W = 0, H = 0, DPR = 1, focal = 600, CX = 0, CY = 0;
+var B = {cp:[0,0,0], r:[1,0,0], u:[0,0,1], f:[0,1,0]};
+function size(){
+  DPR = Math.min(devicePixelRatio||1, lay()==='mobile' ? 2 : 1.75);
+  W = innerWidth; H = innerHeight; scene.width = Math.round(W*DPR); scene.height = Math.round(H*DPR);
+  focal = Math.min(W,H)*1.15; CX = W/2; CY = H*(lay()==='mobile' ? .44 : .47);
+  starKey = '';
+}
+function basis(){
+  var cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch), cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
+  var o = [cp*cy, cp*sy, sp];
+  B.cp = [cam.t[0]+o[0]*cam.dist, cam.t[1]+o[1]*cam.dist, cam.t[2]+o[2]*cam.dist];
+  B.f = [-o[0],-o[1],-o[2]];
+  var rx = B.f[1], ry = -B.f[0], rl = Math.sqrt(rx*rx+ry*ry)||1; B.r = [rx/rl, ry/rl, 0];
+  B.u = [B.r[1]*B.f[2]-0*B.f[1], 0*B.f[0]-B.r[0]*B.f[2], B.r[0]*B.f[1]-B.r[1]*B.f[0]];
+}
+function proj(p){
+  var x = p[0]-B.cp[0], y = p[1]-B.cp[1], z = p[2]-B.cp[2];
+  var vz = x*B.f[0]+y*B.f[1]+z*B.f[2]; if(vz < .02) return null;
+  var s = focal/vz;
+  return [CX + (x*B.r[0]+y*B.r[1]+z*B.r[2])*s, CY - (x*B.u[0]+y*B.u[1]+z*B.u[2])*s, vz, s];
+}
+function camSpace(v){ return [v[0]*B.r[0]+v[1]*B.r[1]+v[2]*B.r[2], v[0]*B.u[0]+v[1]*B.u[1]+v[2]*B.u[2], -(v[0]*B.f[0]+v[1]*B.f[1]+v[2]*B.f[2])]; }
+
+/* ----- آسمان کهکشانی: ستاره‌ها روی کره‌ی آسمان، کهکشان راه شیری در جای واقعی‌اش ----- */
+var seed = 7; function rnd(){ seed = (seed*16807)%2147483647; return seed/2147483647; }
+function gauss(){ return Math.sqrt(-2*Math.log(rnd()+1e-9))*Math.cos(6.2832*rnd()); }
+var STARS = [], BAND = [], BLOBS = [], TWINK = [];
+function buildSky(){
+  var mob = lay()==='mobile', n = mob ? 1700 : 3000;
+  for(var i=0;i<n;i++){ var z = 2*rnd()-1, ph = 6.2832*rnd(), q = Math.sqrt(1-z*z), m = Math.pow(rnd(),5);
+    var t = rnd(); STARS.push({d:[q*Math.cos(ph), q*Math.sin(ph), z], s:.35+m*1.5, a:.25+.75*Math.min(1,m*2.2+rnd()*.35), c: t<.09 ? '255,214,170' : t<.2 ? '175,195,255' : '255,255,255'}); }
+  STARS.sort(function(a,b){ return b.s-a.s; }); TWINK = STARS.slice(0, mob?40:70); STARS = STARS.slice(mob?40:70);
+  // صفحه‌ی کهکشان در مختصات دایره‌البروجی: قطب شمال کهکشان λ≈180° β≈29.8°، مرکز کهکشان λ≈266.8° β≈−5.6°
+  var nrm = [-.8678,0,.4970], gc = [-.0556,-.9935,-.0976];
+  var e2 = [nrm[1]*gc[2]-nrm[2]*gc[1], nrm[2]*gc[0]-nrm[0]*gc[2], nrm[0]*gc[1]-nrm[1]*gc[0]];
+  function gp(th, b){ var cb = Math.cos(b), sb = Math.sin(b), ct = Math.cos(th), st = Math.sin(th);
+    return [cb*(ct*gc[0]+st*e2[0])+sb*nrm[0], cb*(ct*gc[1]+st*e2[1])+sb*nrm[1], cb*(ct*gc[2]+st*e2[2])+sb*nrm[2]]; }
+  var nb = mob ? 3200 : 6500, nbl = mob ? 700 : 1300;
+  for(var j=0;j<nb;j++){
+    var th = (rnd()*2-1)*Math.PI, w = Math.exp(-th*th/1.1); if(rnd() > .3+.7*w) { j--; continue; }
+    var sig = .07 + .09*w, b = gauss()*sig;
+    BAND.push({d:gp(th,b), a:.18+.5*rnd()*(.5+w), c: w>.5 && rnd()<.6 ? '255,226,190' : '215,225,255'});
+  }
+  for(var k=0;k<nbl;k++){
+    var th2 = (rnd()*2-1)*Math.PI, w2 = Math.exp(-th2*th2/1.0); if(rnd() > .25+.75*w2){ k--; continue; }
+    var b2 = gauss()*(.06+.1*w2); if(Math.abs(b2) < .018 && Math.abs(th2) < 1.1 && rnd()<.8){ k--; continue; }
+    BLOBS.push({d:gp(th2,b2), s:10+rnd()*34*(.5+w2), a:.035+.05*rnd()*(.4+w2), k: w2>.45 ? (rnd()<.7?0:2) : (rnd()<.8?1:2)});
+  }
+}
+function soft(rgb){ var c = document.createElement('canvas'); c.width = c.height = 64; var x = c.getContext('2d'), g = x.createRadialGradient(32,32,0,32,32,32);
+  g.addColorStop(0,'rgba('+rgb+',1)'); g.addColorStop(.35,'rgba('+rgb+',.45)'); g.addColorStop(1,'rgba('+rgb+',0)'); x.fillStyle = g; x.fillRect(0,0,64,64); return c; }
+var SOFT = [soft('255,214,170'), soft('170,190,255'), soft('210,150,255')], GLOW = soft('255,255,255');
+var starCv = document.createElement('canvas'), sctx = starCv.getContext('2d'), starKey = '';
+function drawStarsCache(){
+  var key = cam.yaw.toFixed(5)+','+cam.pitch.toFixed(5)+','+W+','+H;
+  if(key===starKey) return; starKey = key;
+  var sd = Math.min(DPR,1.5); if(starCv.width!==Math.round(W*sd)){ starCv.width = Math.round(W*sd); starCv.height = Math.round(H*sd); }
+  sctx.setTransform(sd,0,0,sd,0,0); sctx.clearRect(0,0,W,H);
+  var r = B.r, u = B.u, f = B.f, fs = focal*.9;
+  sctx.globalCompositeOperation = 'lighter';
+  for(var i=0;i<BLOBS.length;i++){ var o = BLOBS[i], d = o.d, z = d[0]*f[0]+d[1]*f[1]+d[2]*f[2]; if(z<.05) continue;
+    var x = CX + (d[0]*r[0]+d[1]*r[1]+d[2]*r[2])/z*fs, y = CY - (d[0]*u[0]+d[1]*u[1]+d[2]*u[2])/z*fs, s = o.s*(fs/600)/Math.max(.6,z);
+    if(x<-s||x>W+s||y<-s||y>H+s) continue; sctx.globalAlpha = o.a; sctx.drawImage(SOFT[o.k], x-s, y-s, 2*s, 2*s); }
+  sctx.globalAlpha = 1; sctx.globalCompositeOperation = 'source-over';
+  function pts(L, band){ for(var i=0;i<L.length;i++){ var o = L[i], d = o.d, z = d[0]*f[0]+d[1]*f[1]+d[2]*f[2]; if(z<.05) continue;
+    var x = CX + (d[0]*r[0]+d[1]*r[1]+d[2]*r[2])/z*fs, y = CY - (d[0]*u[0]+d[1]*u[1]+d[2]*u[2])/z*fs;
+    if(x<0||x>W||y<0||y>H) continue; var s = band ? .7 : o.s; sctx.fillStyle = 'rgba('+o.c+','+o.a+')'; sctx.fillRect(x-s/2,y-s/2,s,s); } }
+  pts(BAND, true); pts(STARS, false);
+}
+function drawSky(t){
+  ctx.fillStyle = '#02030a'; ctx.fillRect(0,0,W,H);
+  var g = ctx.createRadialGradient(W*.75,-H*.15,0,W*.75,-H*.15,H*1.3); g.addColorStop(0,'rgba(60,40,130,.26)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  drawStarsCache(); ctx.drawImage(starCv, 0, 0, W, H);
+  var r = B.r, u = B.u, f = B.f, fs = focal*.9;
+  for(var i=0;i<TWINK.length;i++){ var o = TWINK[i], d = o.d, z = d[0]*f[0]+d[1]*f[1]+d[2]*f[2]; if(z<.05) continue;
+    var x = CX + (d[0]*r[0]+d[1]*r[1]+d[2]*r[2])/z*fs, y = CY - (d[0]*u[0]+d[1]*u[1]+d[2]*u[2])/z*fs; if(x<0||x>W||y<0||y>H) continue;
+    var a = RM ? .9 : .55+.45*Math.sin(t*.0012*(1+i%5*.3)+i*1.7), s = 1.1+o.s*.8;
+    ctx.globalAlpha = a; ctx.fillStyle = 'rgb('+o.c+')'; ctx.beginPath(); ctx.arc(x,y,s*.6,0,6.283); ctx.fill();
+    ctx.globalAlpha = a*.35; ctx.drawImage(GLOW, x-s*3.2, y-s*3.2, s*6.4, s*6.4);
+    if(i<12){ ctx.globalAlpha = a*.25; ctx.fillRect(x-s*5, y-.4, s*10, .8); ctx.fillRect(x-.4, y-s*5, .8, s*10); }
+  }
+  ctx.globalAlpha = 1;
+}
+
+/* ----- کمربند سیارک‌ها، تروجان‌ها و کمربند کوییپر ----- */
+var BELT = null;
+function buildBelt(){
+  var mob = lay()==='mobile', na = mob?1300:2600, nt = mob?220:420, nk = mob?500:1000, L = [];
+  function add(a, th, inc, om, kind){ L.push({a:a, th:th, n:0.9856076686/Math.pow(a,1.5), inc:inc, om:om, k:kind, j:(rnd()-.5)*.06}); }
+  for(var i=0;i<na;i++){ var a = 2.1+Math.pow(rnd(),.9)*1.25; if(Math.abs(a-2.5)<.03||Math.abs(a-2.82)<.025||Math.abs(a-2.95)<.02){ i--; continue; }
+    add(a, rnd()*360, Math.abs(gauss())*7, rnd()*360, 0); }
+  for(var t=0;t<nt;t++){ add(5.2+gauss()*.12, (t%2?60:-60)+gauss()*13, Math.abs(gauss())*10, rnd()*360, 1); }
+  for(var k=0;k<nk;k++){ add(38+Math.pow(rnd(),1.4)*12+(rnd()<.25?-(38-39.4):0), rnd()*360, Math.abs(gauss())*9, rnd()*360, 2); }
+  BELT = L;
+}
+function drawBelt(alpha){
+  if(!BELT) return; var d = S.d, juL = Math.atan2(S.Ju.h.y, S.Ju.h.x)*180/Math.PI;
+  var cols = ['rgba(214,196,168,','rgba(240,205,150,','rgba(150,180,255,'], base = [.55,.6,.42];
+  var DEG = Math.PI/180;
+  for(var i=0;i<BELT.length;i++){
+    var o = BELT[i], th = (o.k===1 ? juL + o.th : o.th + o.n*d)*DEG, r = o.a*(1+o.j);
+    var z = r*Math.sin(o.inc*DEG)*Math.sin(th - o.om*DEG), x = r*Math.cos(th), y = r*Math.sin(th);
+    var k = comp(r)/r, p = proj([x*k, y*k, z*k]); if(!p) continue;
+    if(p[0]<0||p[0]>W||p[1]<0||p[1]>H) continue;
+    var s = clamp(p[3]*.045, .7, 2.6);
+    ctx.fillStyle = cols[o.k] + (base[o.k]*alpha*clamp(.4+p[3]*.02,.4,1)).toFixed(3) + ')';
+    ctx.fillRect(p[0]-s/2, p[1]-s/2, s, s);
+  }
+}
+
+/* ----- مدارها (خورشیدمرکز) و ردهای حلقه‌ای (زمین‌مرکز) ----- */
+var ORB = {}, orbD = -1e9;
+function orbits(){
+  if(Math.abs(S.d-orbD) < 1500 && ORB.Me) return;
+  orbD = S.d; ['Me','Ve','Ea','Ma','Ju','Sa','Ur','Ne'].forEach(function(id){ ORB[id] = Astro.orbitPoints(id, S.d, id==='Me'?180:150); });
+}
+function path(pts, close){
+  var started = false; ctx.beginPath();
+  for(var i=0;i<pts.length;i++){ var p = proj(pts[i]); if(!p){ started = false; continue; } if(!started){ ctx.moveTo(p[0],p[1]); started = true; } else ctx.lineTo(p[0],p[1]); }
+  ctx.stroke();
+}
+function drawOrbits(alpha){
+  orbits();
+  Object.keys(ORB).forEach(function(id){
+    var sel = follow===id, pts = ORB[id].map(function(q){ return cvec(q); });
+    if(viewK>0){ var off = [P.Su[0], P.Su[1], P.Su[2]]; pts = pts.map(function(q){ return [q[0]+off[0], q[1]+off[1], q[2]+off[2]]; }); }
+    ctx.lineWidth = sel ? 1.6 : 1;
+    ctx.strokeStyle = sel ? hexA(BD[id].hex, .7*alpha) : 'rgba(241,212,139,'+(.2*alpha).toFixed(3)+')';
+    path(pts);
+  });
+}
+function hexA(h, a){ var n = parseInt(h.slice(1),16); return 'rgba('+(n>>16)+','+((n>>8)&255)+','+(n&255)+','+a.toFixed(3)+')'; }
+var TR = {}, trMs = -1e15, trScale = -1, trAt = 0;
+var TRSPAN = {Me:70, Ve:160, Ma:220, Ju:220, Sa:220, Ur:220, Ne:220};
+function trails(now){
+  if(Math.abs(sim-trMs) < DAY*.5 && Math.abs(scaleK-trScale) < .005) return;
+  if(now-trAt < 90 && Math.abs(sim-trMs) < DAY*60) return;
+  trMs = sim; trScale = scaleK; trAt = now;
+  var d0 = Astro.dFromMs(sim);
+  Object.keys(TRSPAN).forEach(function(id){
+    var span = TRSPAN[id], st = Math.max(1, span/70), pts = [];
+    for(var x=-span; x<=span+1e-6; x+=st){ var d = d0+x; pts.push(cvec(Astro.geo(id, d))); }
+    TR[id] = pts;
+  });
+}
+function drawTrails(alpha){
+  var off = P.Ea;
+  Object.keys(TR).forEach(function(id){
+    var pts = TR[id], n = pts.length, mid = (n-1)/2, hl = highlight && highlight.indexOf(id)>-1, sel = follow===id;
+    ctx.lineWidth = hl||sel ? 2 : 1.2;
+    var prev = null;
+    for(var i=0;i<n;i++){
+      var q = pts[i], p = proj([q[0]+off[0], q[1]+off[1], q[2]+off[2]]);
+      if(p && prev){
+        var k = 1-Math.abs(i-mid)/mid, a = alpha*Math.pow(k,.7)*(hl||sel ? .85 : .42)*(i>mid?.7:1);
+        ctx.strokeStyle = hexA(BD[id].hex, a); ctx.beginPath(); ctx.moveTo(prev[0],prev[1]); ctx.lineTo(p[0],p[1]); ctx.stroke();
+      }
+      prev = p;
+    }
+  });
+}
+
+/* ----- حلقه‌ی زودیاک دور زمین ----- */
+function ring(c, R, a0, a1, n){ var pts = []; for(var i=0;i<=n;i++){ var a = (a0+(a1-a0)*i/n)*Math.PI/180; pts.push([c[0]+Math.cos(a)*R, c[1]+Math.sin(a)*R, c[2]]); } return pts; }
+function drawZodiac(alpha){
+  var c = P.Ea, Rz = comp(40), R2 = Rz*1.1, off = sid ? S.ayan : 0, DEG = Math.PI/180;
+  ctx.save(); ctx.globalAlpha = alpha;
+  // رنگ عنصرها
+  for(var s=0;s<12;s++){
+    var a0 = s*30+off, a1 = a0+30, inner = ring(c, Rz, a0, a1, 10), outer = ring(c, R2, a1, a0, 10), poly = inner.concat(outer), ok = true;
+    ctx.beginPath(); for(var i=0;i<poly.length;i++){ var p = proj(poly[i]); if(!p){ ok = false; break; } if(i) ctx.lineTo(p[0],p[1]); else ctx.moveTo(p[0],p[1]); }
+    if(ok){ ctx.closePath(); ctx.fillStyle = 'rgba('+ELC[SIGNS[s].el]+','+(s%2?.05:.085)+')'; ctx.fill(); }
+  }
+  ctx.strokeStyle = 'rgba(241,212,139,.42)'; ctx.lineWidth = 1; path(ring(c,Rz,0,360,160)); path(ring(c,R2,0,360,160));
+  ctx.strokeStyle = 'rgba(241,212,139,.14)'; path(ring(c,Rz*.62,0,360,120));
+  for(var k=0;k<360;k+=5){
+    var a = (k+off)*DEG, big = k%30===0, r1 = big ? Rz : Rz*(k%10?1.0:1.0), r2 = big ? R2 : Rz*(k%10?1.018:1.032);
+    var p1 = proj([c[0]+Math.cos(a)*r1, c[1]+Math.sin(a)*r1, c[2]]), p2 = proj([c[0]+Math.cos(a)*r2, c[1]+Math.sin(a)*r2, c[2]]);
+    if(p1&&p2){ ctx.strokeStyle = big ? 'rgba(241,212,139,.55)' : 'rgba(241,212,139,.3)'; ctx.beginPath(); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]); ctx.stroke(); }
+  }
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.direction = 'rtl';
+  for(var s2=0;s2<12;s2++){
+    var am = (s2*30+15+off)*DEG, p = proj([c[0]+Math.cos(am)*Rz*1.05, c[1]+Math.sin(am)*Rz*1.05, c[2]]); if(!p) continue;
+    var fsz = clamp(p[3]*Rz*.045, 9, lay()==='tv'?26:19), al = clamp(.35+p[3]*Rz*.004, .35, 1);
+    ctx.globalAlpha = alpha*al;
+    ctx.fillStyle = '#f1d48b'; ctx.font = '400 '+(fsz*1.05).toFixed(1)+'px "Segoe UI Symbol","Noto Sans Symbols 2",sans-serif'; ctx.fillText(SIGNS[s2].gl+'︎', p[0], p[1]-fsz*.62);
+    ctx.fillStyle = '#e9ecf8'; ctx.font = '500 '+(fsz*.82).toFixed(1)+'px Vazirmatn,Tahoma,sans-serif'; ctx.fillText(SIGNS[s2].fa, p[0], p[1]+fsz*.62);
+  }
+  ctx.globalAlpha = alpha;
+  // پرتو هر سیاره تا زودیاک
+  ORDER.forEach(function(id){
+    if(id==='Ea') return;
+    var lon = S[id].lon*DEG, hl = highlight && highlight.indexOf(id)>-1, sel = follow===id;
+    var q = [c[0]+Math.cos(lon)*Rz, c[1]+Math.sin(lon)*Rz, c[2]], pq = proj(q), pp = proj(P[id]);
+    if(!pq) return;
+    if(pp){ ctx.setLineDash([2,5]); ctx.lineWidth = hl||sel ? 1.6 : 1; ctx.strokeStyle = hexA(BD[id].hex, hl||sel ? .75 : .22);
+      ctx.beginPath(); ctx.moveTo(pp[0],pp[1]); ctx.lineTo(pq[0],pq[1]); ctx.stroke(); ctx.setLineDash([]); }
+    var rr = hl||sel ? 5 : 3.2; ctx.fillStyle = BD[id].hex; ctx.shadowColor = BD[id].hex; ctx.shadowBlur = 12;
+    ctx.beginPath(); ctx.arc(pq[0],pq[1],rr,0,6.283); ctx.fill(); ctx.shadowBlur = 0;
+  });
+  // راهو و کتو (گره‌های ماه)
+  var ra = Astro.rev(125.1228-0.0529538083*S.d);
+  [['Ra',ra],['Ke',ra+180]].forEach(function(x){
+    var a = x[1]*DEG, p = proj([c[0]+Math.cos(a)*Rz*.94, c[1]+Math.sin(a)*Rz*.94, c[2]]); if(!p) return;
+    var rpx = clamp(p[3]*.5, 5, 16), spr = sprite(x[0]), px = Math.round(rpx*2/NODES[x[0]].rs*DPR/8)*8+8;
+    if(frameNo%3===0 || !spr._ok){ paint(spr, NODES[x[0]], tsec, DEF_L, px); spr._ok = 1; }
+    var h = rpx/NODES[x[0]].rs; ctx.drawImage(spr, p[0]-h, p[1]-h, 2*h, 2*h);
+    if(showLab){ ctx.globalAlpha = alpha*.8; ctx.fillStyle = '#c9b8ff'; ctx.font = '500 11px Vazirmatn,Tahoma,sans-serif'; ctx.fillText(NODES[x[0]].fa, p[0], p[1]+rpx+10); ctx.globalAlpha = alpha; }
+  });
+  ctx.restore();
+}
+
+/* ----- اجرام ----- */
+var SPR = {}; function sprite(id){ return SPR[id] || (SPR[id] = document.createElement('canvas')); }
+var frameNo = 0, tsec = 0;
+function drawSun(p, rpx){
+  var x = p[0], y = p[1];
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  var g = ctx.createRadialGradient(x,y,rpx*.5,x,y,rpx*9); g.addColorStop(0,'rgba(255,200,120,.42)'); g.addColorStop(.25,'rgba(255,160,70,.12)'); g.addColorStop(1,'rgba(255,120,40,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x,y,rpx*9,0,6.283); ctx.fill();
+  var g2 = ctx.createRadialGradient(x,y,0,x,y,rpx*26); g2.addColorStop(0,'rgba(255,190,110,.10)'); g2.addColorStop(1,'rgba(255,150,60,0)');
+  ctx.fillStyle = g2; ctx.beginPath(); ctx.arc(x,y,rpx*26,0,6.283); ctx.fill();
+  if(!RM){ ctx.translate(x,y); ctx.rotate(tsec*.03);
+    for(var i=0;i<10;i++){ ctx.rotate(Math.PI/5); var L = rpx*(5+3*Math.sin(tsec*.4+i*2.1)), gr = ctx.createLinearGradient(0,0,L,0);
+      gr.addColorStop(0,'rgba(255,210,140,.16)'); gr.addColorStop(1,'rgba(255,210,140,0)'); ctx.fillStyle = gr;
+      ctx.beginPath(); ctx.moveTo(0,-rpx*.16); ctx.lineTo(L,0); ctx.lineTo(0,rpx*.16); ctx.fill(); } }
+  ctx.restore();
+}
+function drawBody(o){
+  var id = o.id, b = BD[id], p = o.p, rpx = bodyR(id)*p[3];
+  var ext = id==='Su' ? rpx*26 : rpx*3; if(p[0]+ext<0||p[0]-ext>W||p[1]+ext<0||p[1]-ext>H) return;
+  o.rpx = rpx;
+  if(id==='Su') drawSun(p, rpx);
+  if(rpx < 2.4){
+    var rr = Math.max(1.3, rpx); ctx.globalAlpha = .9; ctx.drawImage(GLOW, p[0]-rr*4, p[1]-rr*4, rr*8, rr*8);
+    ctx.fillStyle = b.hex; ctx.beginPath(); ctx.arc(p[0],p[1],rr,0,6.283); ctx.fill(); ctx.globalAlpha = 1; return;
+  }
+  var half = rpx/b.rs, px = clamp(Math.ceil(half*2*DPR/16)*16, 32, 512), spr = sprite(id);
+  var every = rpx > 40 ? 1 : rpx > 12 ? 2 : 4;
+  if(!spr._ok || spr.width!==px || (frameNo+ORDER.indexOf(id))%every===0){
+    var L = DEF_L;
+    if(id!=='Su'){ var s = P.Su, q = P[id], v = [s[0]-q[0], s[1]-q[1], s[2]-q[2]], cs = camSpace(v), l = Math.sqrt(cs[0]*cs[0]+cs[1]*cs[1]+cs[2]*cs[2])||1; L = [cs[0]/l, cs[1]/l, cs[2]/l]; }
+    paint(spr, b, tsec, L, px); spr._ok = 1;
+    if(id==='Mo'){ var ec = moonShade(); if(ec>0){ var sx = spr._x || spr.getContext('2d'); sx.save(); sx.globalCompositeOperation = 'source-atop';
+      sx.fillStyle = 'rgba(120,28,10,'+(.82*ec).toFixed(3)+')'; sx.fillRect(0,0,px,px); sx.restore(); } }
+  }
+  ctx.drawImage(spr, p[0]-half, p[1]-half, half*2, half*2);
+}
+var LBOX = [];
+function lprio(o){ return (follow===o.id?100:0) + (highlight && highlight.indexOf(o.id)>-1 ? 50 : 0) + {Su:9,Ea:8,Ju:7,Sa:6,Ma:5,Ve:4,Me:3,Ur:2,Ne:2,Mo:1}[o.id]; }
+/* سایه‌ی زمین روی ماه هنگام خسوف */
+function moonShade(){
+  var g = S.Mo.g, s = S.Su.g, c = -(g.x*s.x+g.y*s.y+g.z*s.z)/(Math.hypot(g.x,g.y,g.z)*Math.hypot(s.x,s.y,s.z));
+  var ang = Math.acos(clamp(c,-1,1))*180/Math.PI; return clamp((1.25-ang)/0.75, 0, 1);
+}
+function drawLabel(o){
+  if(o.rpx==null) return; var id = o.id, p = o.p;
+  if(id==='Mo'){ var e = PR.Ea; if(e && Math.hypot(e[0]-p[0], e[1]-p[1]) < 26) return; }
+  var big = lay()==='tv', fs = big ? 17 : 12, sel = follow===id;
+  var t = BD[id].fa, rt = viewK>.5 && S[id].retro;
+  ctx.font = (sel?'700 ':'500 ')+(sel?fs+1:fs)+'px Vazirmatn,Tahoma,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.direction = 'rtl';
+  var y = p[1] + Math.max(o.rpx, 3) + 6, tw = ctx.measureText(t).width, bx = [p[0]-tw/2-3, y-1, p[0]+tw/2+3, y+fs+3];
+  for(var i=0;i<LBOX.length;i++){ var q = LBOX[i]; if(bx[0]<q[2] && bx[2]>q[0] && bx[1]<q[3] && bx[3]>q[1]) return; }
+  LBOX.push(bx);
+  ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fillText(t, p[0]+1, y+1);
+  ctx.fillStyle = sel ? '#f1d48b' : 'rgba(225,230,248,.86)'; ctx.fillText(t, p[0], y);
+  if(rt){ var rx = p[0]-tw/2-9, ry = y+fs*.62, rr = fs*.36; ctx.strokeStyle = '#c9b8ff'; ctx.lineWidth = 1.3; ctx.beginPath(); ctx.arc(rx, ry, rr, -2.4, 2.2); ctx.stroke();
+    ctx.fillStyle = '#c9b8ff'; ctx.beginPath(); ctx.moveTo(rx+Math.cos(2.2)*rr-2.6, ry+Math.sin(2.2)*rr-.5); ctx.lineTo(rx+Math.cos(2.2)*rr+1.8, ry+Math.sin(2.2)*rr-2.4); ctx.lineTo(rx+Math.cos(2.2)*rr+1, ry+Math.sin(2.2)*rr+2.4); ctx.fill(); }
+}
+function drawSelection(){
+  if(!follow || !PR[follow]) return; var p = PR[follow], r = Math.max(bodyR(follow)*p[3], 4)/(follow==='Sa'?.62:1) + 9;
+  ctx.save(); ctx.strokeStyle = 'rgba(241,212,139,.7)'; ctx.lineWidth = 1.2; ctx.setLineDash([3,6]); ctx.lineDashOffset = -tsec*12;
+  ctx.beginPath(); ctx.arc(p[0],p[1],r,0,6.283); ctx.stroke(); ctx.restore();
+}
+var PR = {}, LIST = [];
+function render(t){
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  basis(); drawSky(t);
+  var aH = clamp(1-viewK*1.6, 0, 1), aG = clamp((viewK-.25)/.75, 0, 1);
+  ctx.lineCap = 'round';
+  if(showOrb && aH>0.01) drawOrbits(aH);
+  if(aH>0.01) drawBelt(aH);
+  if(aG>0.01){ drawZodiac(aG); if(showOrb){ trails(t); drawTrails(aG); } }
+  if(PR.Ea || true){ ctx.strokeStyle = 'rgba(223,230,242,.16)'; ctx.lineWidth = 1; path(ring(P.Ea, MOON_D, 0, 360, 72)); }
+  PR = {}; LIST = [];
+  ORDER.forEach(function(id){ var p = proj(P[id]); if(p){ PR[id] = p; LIST.push({id:id, p:p}); } });
+  LIST.sort(function(a,b){ return b.p[2]-a.p[2]; });
+  LIST.forEach(drawBody);
+  if(showLab){ LBOX = []; LIST.slice().sort(function(a,b){ return lprio(b)-lprio(a); }).forEach(drawLabel); }
+  drawSelection();
+}
+
+/* ================= دوربین و تعامل ================= */
+function compW(r){ return scaleW ? r*10 : Math.sqrt(r)*10; }
+function fitDist(){ var ext = viewW ? compW(40)*1.12 : compW(10.2), port = H > W*1.15; return ext*2.05*(port ? (viewW ? 1.25 : 1.05) : (viewW ? 1.12 : 1)); }
+function viewDist(id){ var r = id==='Su' ? (2.2+(1-2.2)*scaleW) : BD[id].R; return id==='Ea' ? 3.6 : id==='Mo' ? 1.5 : id==='Su' ? r*7 : id==='Sa' ? r*8 : r*7.5; }
+function minDist(){ return follow ? bodyR(follow)*(follow==='Su'?2.2:2.6) : 1.2; }
+function flyTo(id, dist){
+  flight = {from:cam.t.slice(), id:id, t0:performance.now(), dur:RM?10:1500};
+  follow = id; want.dist = dist || viewDist(id);
+  syncFocus(true); syncRail();
+}
+function home(){
+  follow = null; flight = {from:cam.t.slice(), id:null, t0:performance.now(), dur:RM?10:1400};
+  want.dist = fitDist(); want.pitch = viewW ? 1.08 : .48; syncFocus(true); syncRail();
+}
+function camUpdate(dt, now){
+  var tgt;
+  if(flight){
+    var k = clamp((now-flight.t0)/flight.dur, 0, 1), e = k<.5 ? 4*k*k*k : 1-Math.pow(-2*k+2,3)/2;
+    var to = flight.id ? P[flight.id] : (viewW ? P.Ea : P.Su);
+    if(!flight.id && viewK>0 && viewK<1) to = lerp3(P.Su, P.Ea, viewK);
+    tgt = lerp3(flight.from, to, e); if(k>=1) flight = null;
+  } else if(follow) tgt = P[follow].slice();
+  else tgt = lerp3(P.Su, P.Ea, viewK);
+  cam.t = tgt;
+  var a = 1-Math.pow(.0005, dt/1000), ad = 1-Math.pow(.002, dt/1000);
+  if(!RM && !follow && !flight && now-lastInteract > 12000) want.yaw += dt*.000018;
+  want.dist = clamp(want.dist, minDist(), scaleW ? 1500 : 420);
+  cam.yaw += (want.yaw-cam.yaw)*a; cam.pitch += (want.pitch-cam.pitch)*a;
+  cam.dist = Math.exp(Math.log(cam.dist) + (Math.log(want.dist)-Math.log(cam.dist))*ad);
+}
+var ptrs = {}, drag = null, pinch = 0;
+scene.addEventListener('pointerdown', function(e){
+  scene.setPointerCapture(e.pointerId); ptrs[e.pointerId] = {x:e.clientX, y:e.clientY};
+  var ids = Object.keys(ptrs);
+  if(ids.length===1) drag = {x:e.clientX, y:e.clientY, sx:e.clientX, sy:e.clientY, t:performance.now(), moved:0};
+  else if(ids.length===2){ var a = ptrs[ids[0]], b = ptrs[ids[1]]; pinch = Math.hypot(a.x-b.x, a.y-b.y); drag = null; }
+  lastInteract = performance.now(); hideHint();
+});
+scene.addEventListener('pointermove', function(e){
+  if(!ptrs[e.pointerId]){ hover(e); return; }
+  ptrs[e.pointerId] = {x:e.clientX, y:e.clientY}; var ids = Object.keys(ptrs);
+  if(ids.length===2){ var a = ptrs[ids[0]], b = ptrs[ids[1]], d = Math.hypot(a.x-b.x, a.y-b.y); if(pinch>0){ want.dist *= pinch/d; } pinch = d; }
+  else if(drag){
+    var dx = e.clientX-drag.x, dy = e.clientY-drag.y; drag.x = e.clientX; drag.y = e.clientY; drag.moved += Math.abs(dx)+Math.abs(dy);
+    want.yaw -= dx*.0055; want.pitch = clamp(want.pitch + dy*.0045, -1.5, 1.5);
+    if(drag.moved>6) scene.classList.add('drag');
+  }
+  lastInteract = performance.now();
+});
+function endPtr(e){
+  if(drag && ptrs[e.pointerId] && Object.keys(ptrs).length===1 && drag.moved < 8 && performance.now()-drag.t < 600) tap(e.clientX, e.clientY);
+  delete ptrs[e.pointerId]; if(Object.keys(ptrs).length<2) pinch = 0; if(!Object.keys(ptrs).length){ drag = null; scene.classList.remove('drag'); }
+}
+scene.addEventListener('pointerup', endPtr); scene.addEventListener('pointercancel', endPtr);
+scene.addEventListener('wheel', function(e){ e.preventDefault(); want.dist *= Math.exp(clamp(e.deltaY,-120,120)*.0013); lastInteract = performance.now(); hideHint(); }, {passive:false});
+function hit(x, y){
+  var best = null, bd = 1e9;
+  LIST.forEach(function(o){ if(o.rpx==null) return; var r = Math.max(o.rpx*(o.id==='Sa'?1.6:1.1)+8, lay()==='mobile'?26:20), d = Math.hypot(o.p[0]-x, o.p[1]-y);
+    if(d<r && d-r*.3<bd){ bd = d-r*.3; best = o.id; } });
+  return best;
+}
+function hover(e){ var h = hit(e.clientX, e.clientY); scene.classList.toggle('hov', !!h); }
+function tap(x, y){ var id = hit(x, y); if(id){ if(follow===id && !flight) openDossier(id); else flyTo(id); } }
+
+/* ================= زمان ================= */
+function setSpeed(i){
+  spd = clamp(i|0, -8, 8); if(spd!==0) lastSpd = spd;
+  var el = $('#speed'); el.value = spd; var pc = (spd+8)/16*100, c = 50;
+  el.style.setProperty('--trk', 'linear-gradient(90deg,rgba(255,255,255,.12) '+Math.min(pc,c)+'%,'+(spd<0?'#a98bff':'#f1d48b')+' '+Math.min(pc,c)+'%,'+(spd<0?'#a98bff':'#f1d48b')+' '+Math.max(pc,c)+'%,rgba(255,255,255,.12) '+Math.max(pc,c)+'%)');
+  $('#spdLbl').textContent = (spd<0 ? 'به عقب: ' : '') + SPL[Math.abs(spd)];
+  $('#playIco').innerHTML = spd===0 ? '<path d="M16.5 5.5v13L6 12z"/>' : '<rect x="6.5" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.9" y="5.5" width="3.6" height="13" rx="1"/>';
+  $('#playBtn').setAttribute('aria-label', spd===0 ? 'پخش' : 'توقف');
+}
+function setSim(ms, quiet){
+  sim = clamp(ms, MIN_MS, MAX_MS); S = Astro.state(sim); positions(); trMs = -1e15;
+  if(!quiet) ensureEvents();
+  uiTick(true);
+}
+function isLive(){ return spd===1 && Math.abs(sim-Date.now()) < 5000; }
+$('#speed').addEventListener('input', function(){ setSpeed(+this.value); });
+$('#playBtn').addEventListener('click', function(){ setSpeed(spd===0 ? (lastSpd===1 && !isLive() ? 5 : lastSpd) : 0); });
+$('#stepB').addEventListener('click', function(){ setSim(sim-DAY); });
+$('#stepF').addEventListener('click', function(){ setSim(sim+DAY); });
+$('#nowBtn').addEventListener('click', function(){ setSim(Date.now()); setSpeed(1); toast('بازگشت به <b>همین لحظه</b>'); });
+var scrub = $('#scrub'), scrubbing = false;
+function yearOf(ms){ return 1970 + ms/YEAR; }
+scrub.addEventListener('input', function(){ scrubbing = true; setSim((+this.value-1970)*YEAR, true); });
+scrub.addEventListener('change', function(){ scrubbing = false; ensureEvents(); });
+
+/* ================= رابط: ریل، کارت تمرکز، تاریخ ================= */
+$('#rail').innerHTML = ORDER.map(function(id){ return '<button type="button" class="rb" data-body="'+id+'" aria-label="'+BD[id].fa+'">'+pcv(id)+'<span>'+BD[id].fa+'</span></button>'; }).join('');
+function syncRail(){ $$('.rb').forEach(function(b){ var on = b.dataset.body===follow; b.classList.toggle('on', on);
+  if(on && lay()==='mobile'){ var r = $('#rail'); r.scrollTo({left: b.offsetLeft - r.clientWidth/2 + b.clientWidth/2, behavior: RM?'auto':'smooth'}); } }); }
+function signTxt(lon){ var l = sid ? Astro.rev(lon - S.ayan) : lon; return SIGNS[Math.floor(l/30)%12].fa+' '+dms(l%30); }
+function kmOf(id){ return id==='Mo' ? Astro.moon(S.d).r*6378.14 : S[id].dist*AU; }
+function fmtKm(km){ if(km < 1e6) return nf(Math.round(km/100)*100,0)+' کیلومتر'; if(km < 1e9) return nf(km/1e6,1)+' میلیون کیلومتر'; return nf(km/1e9,2)+' میلیارد کیلومتر'; }
+function fmtDur(s){ if(s < 60) return nf(s,1)+' ثانیه'; if(s < 3600){ var m = Math.floor(s/60); return fa(m)+' دقیقه و '+fa(Math.round(s-m*60))+' ثانیه'; }
+  var h = Math.floor(s/3600); return fa(h)+' ساعت و '+fa(Math.round((s-h*3600)/60))+' دقیقه'; }
+function focusHTML(id){
+  var b = BD[id], line;
+  if(id==='Ea') line = 'خانه‌ی ما، '+fmtKm(S.Ea.hdist*AU)+' تا خورشید';
+  else line = signTxt(S[id].lon)+'، '+fmtKm(kmOf(id))+' از زمین';
+  var chip = (id!=='Su'&&id!=='Mo'&&id!=='Ea'&&S[id].retro) ? ' <i class="chip r">برگشتی ↺</i>' : '';
+  return pcv(id)+'<div class="fx"><b style="color:'+b.hex+'">'+b.fa+chip+'</b><span data-fl>'+line+'</span></div>'+
+    '<div class="fb"><button class="pill sm gold" type="button" data-open="'+id+'">پرونده</button><button class="pill sm x" type="button" data-unfollow aria-label="رها کردن">×</button></div>';
+}
+var focusId = null;
+function syncFocus(force){
+  var f = $('#focus'), n = $('#nextEv');
+  if(follow){
+    n.classList.add('hide');
+    if(focusId!==follow || force){ focusId = follow; f.innerHTML = focusHTML(follow); scanPlanets(f); }
+    f.classList.remove('hide'); n.classList.add('hide');
+  } else { focusId = null; f.classList.add('hide'); if(n.innerHTML) n.classList.remove('hide'); setTimeout(cleanPlanets, 600); }
+}
+function uiTick(force){
+  $('#dJ').textContent = jFull(sim);
+  $('#dS').innerHTML = hm(sim)+'<span class="lat">'+gDay(sim)+'</span>';
+  $('#live').classList.toggle('on', isLive());
+  if(!scrubbing) scrub.value = yearOf(sim);
+  var pc = (yearOf(sim)-1900)/2;
+  scrub.style.setProperty('--trk','linear-gradient(90deg,rgba(241,212,139,.55) '+pc+'%,rgba(255,255,255,.12) '+pc+'%)');
+  if(follow && focusId===follow){ var fl = $('[data-fl]'); if(fl){ var tmp = document.createElement('div'); tmp.innerHTML = focusHTML(follow); var nl = tmp.querySelector('[data-fl]').innerHTML; if(fl.innerHTML!==nl) fl.innerHTML = nl;
+    var bnow = $('#focus .fx b'), bnew = tmp.querySelector('.fx b'); if(bnow.innerHTML!==bnew.innerHTML) bnow.innerHTML = bnew.innerHTML; } }
+  if(drawer.classList.contains('open') && drawerKind && drawerKind[0]==='p') liveFill();
+  syncNext();
+}
+
+/* ================= پرونده‌ی سیاره ================= */
+function vis(id){
+  if(id==='Su'||id==='Ea') return '—';
+  var g = S[id].g, s = S.Su.g, cosE = (g.x*s.x+g.y*s.y+g.z*s.z)/(Math.hypot(g.x,g.y,g.z)*Math.hypot(s.x,s.y,s.z)), el = Math.acos(clamp(cosE,-1,1))*180/Math.PI;
+  var east = Astro.wrap(S[id].lon - S.Su.lon) > 0;
+  if(el < (id==='Mo'?8:12)) return 'در نور خورشید پنهان (فاصله‌ی زاویه‌ای '+nf(el,0)+'°)';
+  if(el > 150) return 'تقریباً تمام شب در آسمان، '+nf(el,0)+'° از خورشید';
+  return (east ? 'آسمان شامگاهی، بعد از غروب' : 'آسمان صبحگاهی، پیش از طلوع')+'، '+nf(el,0)+'° از خورشید';
+}
+function phaseOf(id){
+  var h = S[id].h, g = S[id].g; if(id==='Mo') h = {x:S.Ea.h.x+g.x, y:S.Ea.h.y+g.y, z:S.Ea.h.z+g.z};
+  var c = (h.x*g.x+h.y*g.y+h.z*g.z)/(Math.hypot(h.x,h.y,h.z)*Math.hypot(g.x,g.y,g.z)); return (1+c)/2;
+}
+function moonPhaseName(){
+  var E = Astro.rev(S.Mo.lon - S.Su.lon);
+  return E<8||E>352 ? 'ماه نو' : E<82 ? 'هلال رو به افزایش' : E<98 ? 'تربیع اول' : E<172 ? 'کوژ رو به افزایش' : E<188 ? 'ماه کامل (بدر)' : E<262 ? 'کوژ رو به کاهش' : E<278 ? 'تربیع آخر' : 'هلال رو به کاهش';
+}
+function orbSpeed(id){
+  if(id==='Su') return 'حدود ۲۳۰ کیلومتر در ثانیه دور مرکز کهکشان';
+  if(id==='Mo') return 'حدود ۱ کیلومتر در ثانیه دور زمین';
+  var r = S[id].hdist*AU, a = BD[id].a*AU; return nf(Math.sqrt(1.32712440018e11*(2/r-1/a)),1)+' کیلومتر در ثانیه';
+}
+function dignity(id){
+  var A = AST[id]; if(A.ex==null) return '';
+  var s = Math.floor(Astro.rev(S[id].lon - S.ayan)/30);
+  if(A.ex===s) return '<span class="chip good">در اعتلا (ودیک)</span>';
+  if((A.ex+6)%12===s) return '<span class="chip bad">در هبوط (ودیک)</span>';
+  if(A.own.indexOf(s)>-1) return '<span class="chip good">در خانه‌ی خود (ودیک)</span>';
+  return '';
+}
+function liveVals(id){
+  var v = {};
+  if(id==='Ea'){ v.dEarth = 'اینجایی که ایستاده‌ای'; v.light = '—'; }
+  else { var km = kmOf(id); v.dEarth = fmtKm(km); v.light = fmtDur(km/C_KM); }
+  v.dSun = id==='Su' ? '—' : fmtKm((id==='Mo' ? S.Ea.hdist : S[id].hdist)*AU);
+  v.speed = orbSpeed(id);
+  var l = Astro.rev(S[id].lon - S.ayan); v.sid = id==='Ea' ? '—' : SIGNS[Math.floor(l/30)].fa+' '+dms(l%30);
+  var tl = id==='Ea' ? Astro.rev(S.Su.lon+180) : S[id].lon; v.trop = SIGNS[Math.floor(tl/30)].fa+' '+dms(tl%30);
+  v.motion = (id==='Su'||id==='Mo'||id==='Ea') ? 'همیشه مستقیم' : (S[id].retro ? '<b style="color:#d3c6ff">برگشتی ↺</b>' : 'مستقیم') + ' <em>('+nf(Math.abs(S[id].speed),2)+'° در روز)</em>';
+  v.vis = vis(id);
+  if(id==='Mo') v.phase = moonPhaseName()+'، '+nf(phaseOf('Mo')*100,0)+'٪ روشن';
+  else if(id==='Me'||id==='Ve'||id==='Ma') v.phase = nf(phaseOf(id)*100,0)+'٪ قرص روشن';
+  return v;
+}
+function liveFill(){
+  var id = drawerKind.slice(2), v = liveVals(id);
+  $$('#dBody [data-lv]').forEach(function(el){ var k = el.getAttribute('data-lv'); if(v[k]!=null && el.innerHTML!==v[k]) el.innerHTML = v[k]; });
+}
+function bidi(x){ return String(x).replace(/[−+-]?[۰-۹0-9][۰-۹0-9٬٫,.]*\s?°C?/g, function(m){ return '\u2066'+m+'\u2069'; }); }
+function blk(t, b){ return '<div class="blk"><small>'+t+'</small>'+b+'</div>'; }
+function cell(t, k, w){ return '<div'+(w?' class="w"':'')+'><small>'+t+'</small><span data-lv="'+k+'"></span></div>'; }
+function sc(t, v, w){ return '<div'+(w?' class="w"':'')+'><small>'+t+'</small>'+v+'</div>'; }
+function planetHTML(id){
+  var b = BD[id], A = AST[id], s = b.sci, h = '';
+  h += '<div class="dh">'+pcv(id)+'<div><h4 id="dT" style="color:'+b.hex+'">'+b.fa+'</h4><span class="en">'+b.en+'</span><div class="chips"><span class="chip g">'+b.kind+'</span>'+
+    (id!=='Su'&&id!=='Mo'&&id!=='Ea'&&S[id].retro?'<span class="chip r">برگشتی ↺</span>':'')+dignity(id)+'</div></div></div>';
+  h += '<div class="grid2">'+cell('فاصله از زمین','dEarth')+cell('زمان رسیدن نور به ما','light')+cell('فاصله از خورشید','dSun')+cell('سرعت مداری','speed')+
+    (id==='Mo'||id==='Me'||id==='Ve'||id==='Ma' ? cell('فاز','phase',true) : '')+cell('دیده شدن از زمین','vis',true)+'</div>';
+  h += '<p class="dsub">مقدارهای بالا مال لحظه‌ی نمایش‌اند: <b>'+jDay(sim)+'، ساعت '+hm(sim)+'</b>. با ماشین زمان تغییر می‌کنند.</p>';
+  h += blk('شناسنامه‌ی علمی', '<div class="grid2">'+sc('قطر', nf(s.dia,0)+' کیلومتر'+(s.dx?' <em>('+s.dx+')</em>':''))+sc('جرم', s.mass)+sc('طول روز', s.day, true)+sc('طول سال', s.year)+
+    sc('گرانش سطح', s.g+' متر بر مجذور ثانیه')+sc('دما', bidi(s.temp), true)+sc('قمرها', s.moons)+sc('کجی محور', s.tilt)+'</div><div class="fact">'+b.fact+'</div>');
+  h += blk('معنای نجومی', '<p><b style="color:var(--gold)">'+A.kw+'</b></p><p>'+A.m+'</p>'+
+    '<div class="grid2">'+(id!=='Ea' ? cell('برج گرمسیری (غربی)','trop')+cell('برج ودیک (سایدریال)','sid') : cell('زمین دیده از خورشید','trop',true))+
+    (id!=='Ea' ? cell('حرکت ظاهری','motion',true) : '')+
+    (A.rule!=='—' ? sc('حاکم بر', A.rule) : '')+(A.sa!=='—' ? sc('نام سانسکریت', A.sa) : '')+(A.day!=='—' ? sc('روز هفته', A.day) : '')+(A.gem!=='—' ? sc('سنگ', A.gem) : '')+'</div>'+
+    (A.retro ? '<p style="margin-top:6px"><b style="color:#d3c6ff">وقتی برگشتی است: </b>'+A.retro+'</p>' : ''));
+  var mine = EV ? EV.list.filter(function(e){ return e.t > sim && evInvolves(e, id) && e.type!=='new' && e.type!=='full'; }).slice(0,4) : [];
+  if(mine.length) h += blk('رویدادهای پیش رو', mine.map(evItem).join(''));
+  h += '<div class="dacts"><button class="pill gold" type="button" data-fly="'+id+'">پرواز به '+b.fa+'</button><button class="pill" type="button" data-home>نمای کل</button><button class="pill" type="button" data-evopen>تقویم رویدادها</button></div>';
+  return h;
+}
+var drawer = $('#drawer'), scrim = $('#scrim'), lastFocus = null, drawerKind = null;
+function openDrawer(html, kind){
+  $('#dBody').innerHTML = html; drawerKind = kind;
+  if(!drawer.classList.contains('open')) lastFocus = document.activeElement;
+  drawer.classList.add('open'); scrim.classList.add('open'); drawer.scrollTop = 0;
+  scanPlanets(drawer); if(kind && kind[0]==='p') liveFill(); closePop();
+  setTimeout(function(){ $('#dClose').focus({preventScroll:true}); }, 60);
+}
+function closeDrawer(){ drawer.classList.remove('open'); scrim.classList.remove('open'); drawerKind = null; if(lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true}); setTimeout(cleanPlanets, 600); }
+function openDossier(id){ openDrawer(planetHTML(id), 'p:'+id); }
+scrim.addEventListener('click', closeDrawer); $('#dClose').addEventListener('click', closeDrawer);
+
+/* ================= تقویم رویدادها ================= */
+var EV = null, evFilter = 'all';
+function ensureEvents(force){
+  if(!force && EV && sim > EV.from+20*DAY && sim < EV.to-90*DAY) return;
+  var from = force ? force[0] : sim - 100*DAY, to = force ? force[1] : sim + 440*DAY;
+  from = Math.max(from, MIN_MS); to = Math.min(to, MAX_MS);
+  EV = {from:from, to:to, list:Astro.events(from, to)};
+  EV.list.forEach(function(e,i){ e.i = i; });
+  if(drawerKind==='ev') renderEvents(true);
+}
+function evInvolves(e, id){ return e.a===id || e.b===id || ((e.type==='solar'||e.type==='lunar') && (id==='Mo'||id==='Su'||id==='Ea')) || (e.type==='season' && (id==='Ea'||id==='Su')); }
+var EK = {solar:{total:'کسوف کلی',annular:'کسوف حلقوی',partial:'کسوف جزئی'}, lunar:{total:'خسوف کلی (ماه خونین)',partial:'خسوف جزئی',penumbral:'خسوف نیم‌سایه‌ای'}};
+var SEAS = [['اعتدال بهاری، تحویل سال نو','خورشید به حمل می‌رود؛ لحظه‌ی نوروز.'],['انقلاب تابستانی','بلندترین روز سال در نیم‌کره‌ی شمالی.'],['اعتدال پاییزی','روز و شب برابر؛ آغاز پاییز.'],['انقلاب زمستانی، شب یلدا','بلندترین شب سال؛ از فردا روزها بلند می‌شوند.']];
+function signAt(lon){ var l = sid ? Astro.rev(lon - Astro.ayanamsa(Astro.jdFromMs(sim))) : lon; return SIGNS[Math.floor(l/30)%12].fa; }
+function evInfo(e){
+  var t, s, ico, cls = '';
+  switch(e.type){
+    case 'solar': t = EK.solar[e.ec.kind]; s = (e.ec.kind==='total' ? 'ماه کامل جلوی خورشید را می‌گیرد؛ روز برای چند دقیقه شب می‌شود.' : e.ec.kind==='annular' ? 'ماه کوچک‌تر از خورشید است؛ «حلقه‌ی آتش» دیده می‌شود.' : 'ماه بخشی از خورشید را می‌پوشاند.')+' در برج '+signAt(e.lon)+'.'; ico = '<span class="eico solar"></span>'; break;
+    case 'lunar': t = EK.lunar[e.ec.kind]; s = (e.ec.kind==='total' ? 'ماه کامل در سایه‌ی زمین فرو می‌رود و سرخ می‌شود.' : e.ec.kind==='partial' ? 'بخشی از ماه وارد سایه‌ی زمین می‌شود.' : 'ماه فقط از نیم‌سایه‌ی زمین می‌گذرد؛ کم‌رنگ‌تر.')+' ماه در '+signAt(Astro.rev(e.lon+180))+'.'; ico = '<span class="eico lunar'+(e.ec.kind==='penumbral'?' pen':'')+'"></span>'; break;
+    case 'conj':
+      if(e.a==='Su'){ var inf = (e.b==='Me'||e.b==='Ve') ? (Astro.state(e.t)[e.b].dist < 1 ? ' (داخلی)' : ' (بیرونی)') : '';
+        t = 'مقارنه‌ی '+BD[e.b].fa+' با خورشید'+inf; s = BD[e.b].fa+' پشت نور خورشید پنهان است. در برج '+signAt(e.lon)+'.';
+        ico = '<span class="eico conj"><i style="background:#ffb347;color:#ffb347"></i><i style="background:'+BD[e.b].hex+';color:'+BD[e.b].hex+'"></i></span>'; }
+      else { t = 'مقارنه‌ی '+BD[e.a].fa+' و '+BD[e.b].fa; s = 'فاصله‌ی ظاهری '+nf(e.sep,1)+'°، در برج '+signAt(e.lon)+(e.sep<1?'، بسیار نزدیک':'');
+        ico = '<span class="eico conj"><i style="background:'+BD[e.a].hex+';color:'+BD[e.a].hex+'"></i><i style="background:'+BD[e.b].hex+';color:'+BD[e.b].hex+'"></i></span>'; }
+      break;
+    case 'opp': t = 'مقابله‌ی '+BD[e.b].fa; s = 'روبه‌روی خورشید؛ نزدیک‌ترین و درخشان‌ترین حالت، تمام شب پیدا. در برج '+signAt(e.lon)+'.'; ico = '<span class="eico opp" style="--c:'+BD[e.b].hex+'"></span>'; break;
+    case 'retro': t = BD[e.a].fa+' برگشتی می‌شود'; s = 'ایستگاه؛ از این لحظه در آسمان عقب‌عقب می‌رود. در برج '+signAt(e.lon)+'.'; ico = '<span class="eico retro" style="--c:'+BD[e.a].hex+'">↺</span>'; break;
+    case 'direct': t = BD[e.a].fa+' مستقیم می‌شود'; s = 'پایان دوره‌ی برگشتی؛ دوباره رو به جلو. در برج '+signAt(e.lon)+'.'; ico = '<span class="eico direct" style="--c:'+BD[e.a].hex+'">↻</span>'; break;
+    case 'season': t = SEAS[e.q][0]; s = SEAS[e.q][1]; ico = '<span class="eico season"></span>'; break;
+    case 'new': t = 'ماه نو'; s = 'ماه میان زمین و خورشید؛ آغاز ماه قمری. در برج '+signAt(e.lon)+'.'; ico = '<span class="eico moon new"></span>'; break;
+    case 'full': var r = Astro.moon(Astro.dFromMs(e.t)).r; t = r < 56.9 ? 'اَبَرماه (ماه کامل)' : 'ماه کامل'; s = 'ماه روبه‌روی خورشید، تمام‌قرص. در برج '+signAt(Astro.rev(e.lon+180))+'.'; ico = '<span class="eico moon"></span>'; break;
+  }
+  return {t:t, s:s, ico:ico};
+}
+var EVF = [['all','همه'],['ecl','گرفت‌ها'],['conj','مقارنه‌ها'],['retro','برگشتی‌ها'],['season','فصل‌ها'],['moon','ماه نو و کامل']];
+function evPass(e, f){
+  if(f==='all') return e.type!=='new' && e.type!=='full' && !(e.type==='conj' && e.a!=='Su' && e.sep>4);
+  if(f==='ecl') return e.type==='solar'||e.type==='lunar';
+  if(f==='conj') return e.type==='conj'||e.type==='opp';
+  if(f==='retro') return e.type==='retro'||e.type==='direct';
+  if(f==='season') return e.type==='season';
+  if(f==='moon') return e.type==='new'||e.type==='full'||e.type==='solar'||e.type==='lunar';
+}
+function evItem(e){
+  var I = evInfo(e), past = e.t < sim - 60000;
+  return '<button type="button" class="evi'+(past?' past':'')+(e._next?' next':'')+'" data-ev="'+e.i+'">'+I.ico+'<div><b>'+I.t+(e._next?'<i class="badge">بعدی</i>':'')+'</b><span>'+I.s+'</span></div><time>'+jDM(e.t)+'<small>'+hm(e.t)+'</small></time></button>';
+}
+function renderEvents(keep){
+  var L = EV.list.filter(function(e){ return evPass(e, evFilter); }), h = '', mon = '', nowDone = false;
+  L.forEach(function(e){ e._next = false; }); var nx = L.filter(function(e){ return e.t >= sim; })[0]; if(nx) nx._next = true;
+  h += '<h4 class="dtitle" id="dT">تقویم آسمان</h4><p class="dsub">از '+jDay(EV.from)+' تا '+jDay(EV.to)+'، روی هر رویداد بزن تا زمان به همان لحظه برود. زمان‌ها به وقت همین دستگاه و تقریبی‌اند.</p>';
+  h += '<div class="evf" role="group">'+EVF.map(function(f){ return '<button type="button" class="pill sm" data-evf="'+f[0]+'" aria-pressed="'+(f[0]===evFilter)+'">'+f[1]+'</button>'; }).join('')+'</div>';
+  L.forEach(function(e){
+    var m = jMY(e.t); if(m!==mon){ mon = m; h += '<div class="evm">'+m+'</div>'; }
+    if(!nowDone && e.t >= sim){ nowDone = true; h += '<div class="nowline">لحظه‌ی نمایش، '+jDay(sim)+'</div>'; }
+    h += evItem(e);
+  });
+  if(!L.length) h += '<p class="dsub">در این بازه رویدادی از این نوع نیست.</p>';
+  h += '<div class="evnav"><button class="pill" type="button" data-evshift="-1">سال قبل »</button><button class="pill" type="button" data-evshift="1">« سال بعد</button></div>';
+  var st = drawer.scrollTop;
+  if(keep && drawerKind==='ev'){ $('#dBody').innerHTML = h; drawer.scrollTop = st; }
+  else { openDrawer(h, 'ev'); var n = $('#dBody .evi.next'); if(n) setTimeout(function(){ n.scrollIntoView({block:'center'}); }, 80); }
+}
+function openEvents(){ ensureEvents(); renderEvents(false); }
+function jumpEvent(e){
+  setSpeed(0); setSim(e.t); highlight = null;
+  var I = evInfo(e), eL = Math.atan2(S.Ea.h.y, S.Ea.h.x);
+  if(e.type==='solar'||e.type==='lunar'||e.type==='new'||e.type==='full'||e.type==='season'){
+    setView(0, true); follow = 'Ea'; flyTo('Ea', e.type==='season' ? 4.2 : 3.1); want.yaw = eL + Math.PI/2*(e.type==='lunar'?-1:1); want.pitch = e.type==='season' ? .35 : .14;
+  } else {
+    setView(1, true); highlight = e.a==='Su' ? [e.b] : [e.a].concat(e.b?[e.b]:[]); hlUntil = performance.now()+30000;
+    var tgt = highlight[highlight.length-1]; follow = null; flight = {from:cam.t.slice(), id:null, t0:performance.now(), dur:1400};
+    want.dist = fitDist()*.92; want.pitch = 1.12; var lon = S[tgt].lon*Math.PI/180; want.yaw = lon + Math.PI;
+    syncFocus(true); syncRail();
+  }
+  closeDrawer();
+  toast('<b>'+I.t+'</b>، '+jDay(e.t)+'، '+hm(e.t));
+}
+function syncNext(){
+  if(!EV) return; var n = $('#nextEv'), e = EV.list.filter(function(x){ return x.t > sim && evPass(x,'all') && !(x.type==='conj' && (x.a==='Su' || x.sep>2)); })[0];
+  if(!e || Math.abs(spd)>=6){ n._k = null; n.classList.add('hide'); return; }
+  var key = e.i+':'+Math.floor((e.t-sim)/DAY); if(n._k===key) return; n._k = key; n.dataset.ev = e.i;
+  var I = evInfo(e), days = (e.t-sim)/DAY, when = days < 1 ? 'کمتر از یک روز دیگر' : nf(Math.floor(days),0)+' روز دیگر';
+  n.innerHTML = I.ico+'<div><small>رویداد بعدی: '+when+'</small><b>'+I.t+'</b><span>'+jDay(e.t)+'، ساعت '+hm(e.t)+'</span></div>';
+  if(!follow && n.innerHTML) n.classList.remove('hide');
+}
+
+/* ================= نماها و تنظیمات ================= */
+function setView(v, keep){
+  viewW = v; $$('#viewSeg button').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.dataset.view===v)); });
+  $('#brandSub').textContent = v ? 'آسمان از چشم زمین، با زودیاک' : 'جای واقعی سیاره‌ها در همین لحظه';
+  if(!keep){ if(!follow){ flight = {from:cam.t.slice(), id:null, t0:performance.now(), dur:1400}; want.dist = fitDist(); want.pitch = v ? 1.08 : .48; } }
+}
+$$('#viewSeg button').forEach(function(b){ b.addEventListener('click', function(){ setView(+b.dataset.view); }); });
+function segSet(opt, v){ $$('[data-opt="'+opt+'"] button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.v===String(v))); }); }
+$$('.pop .seg button').forEach(function(b){ b.addEventListener('click', function(){
+  var o = b.parentNode.dataset.opt, v = b.dataset.v;
+  if(o==='scale'){ scaleW = +v; if(!follow) want.dist = fitDist(); else want.dist = viewDist(follow); }
+  if(o==='sid'){ sid = v==='1'; savePrefs(); }
+  if(o==='orbits'){ showOrb = v==='1'; savePrefs(); }
+  if(o==='labels'){ showLab = v==='1'; savePrefs(); }
+  if(o==='lay'){ window.__ss.setManual(v); onResize(); syncLay(); }
+  segSet(o, v);
+}); });
+segSet('sid', sid?1:0); segSet('orbits', showOrb?1:0); segSet('labels', showLab?1:0);
+var devNames = {mobile:'موبایل',tablet:'تبلت',desktop:'دسکتاپ',tv:'تلویزیون'};
+function syncLay(){ var cur = 'auto'; try{ cur = localStorage.getItem('ssLayout')||'auto'; }catch(e){} segSet('lay', cur);
+  $('#devInfo').textContent = 'چیدمان فعلی: '+devNames[lay()]+'، دستگاه: '+devNames[root.dataset.device]; }
+syncLay();
+var pop = $('#pop');
+function closePop(){ pop.classList.add('hide'); $('#setBtn').classList.remove('on'); }
+$('#setBtn').addEventListener('click', function(e){ e.stopPropagation(); var h = pop.classList.toggle('hide'); this.classList.toggle('on', !h); });
+document.addEventListener('pointerdown', function(e){ if(!pop.classList.contains('hide') && !pop.contains(e.target) && !e.target.closest('#setBtn')) closePop(); });
+$('#evBtn').addEventListener('click', openEvents);
+$('#homeBtn').addEventListener('click', home);
+
+/* ================= دیالوگ تاریخ / روز تولد ================= */
+var dlg = $('#dlg'), scrim2 = $('#scrim2'), dlgMode = 'birth', dlgCal = 'j';
+var JM = ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+var GM = ['ژانویه','فوریه','مارس','آوریل','مه','ژوئن','ژوئیه','اوت','سپتامبر','اکتبر','نوامبر','دسامبر'];
+function fillMonths(){ $('#iM').innerHTML = (dlgCal==='j'?JM:GM).map(function(m,i){ return '<option value="'+(i+1)+'">'+m+'</option>'; }).join(''); }
+function dlgSetFrom(ms){
+  var d = new Date(ms);
+  if(dlgCal==='j' && fJparts){ var p = jParts(ms); $('#iY').value = p.y; $('#iM').value = p.m; $('#iD').value = p.d; }
+  else { $('#iY').value = d.getFullYear(); $('#iM').value = d.getMonth()+1; $('#iD').value = d.getDate(); }
+  $('#iT').value = String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+}
+function dlgRead(){
+  var y = parseInt($('#iY').value,10), m = +$('#iM').value, d = parseInt($('#iD').value,10), t = /^(\d{1,2}):(\d{2})/.exec($('#iT').value||'12:00');
+  if(!(y && d>=1 && d<=31)) return null;
+  var g = dlgCal==='j' ? j2g(y,m,d) : {y:y, m:m, d:d}, dt = new Date(2000,0,1);
+  dt.setFullYear(g.y, g.m-1, g.d); dt.setHours(t?+t[1]:12, t?+t[2]:0, 0, 0);
+  return dt.getTime();
+}
+function openDlg(mode){
+  dlgMode = mode; fillMonths();
+  $('#dlgT').textContent = mode==='birth' ? 'روز تولدت' : 'پرش به یک لحظه';
+  $('#dlgP').textContent = mode==='birth' ? 'تاریخ و ساعت تولد را وارد کن تا آسمان همان لحظه را ببینی. فقط در همین مرورگر ذخیره می‌شود.' : 'هر تاریخی از سال ۱۸۰۰ تا ۲۲۰۰ میلادی (۱۱۷۹ تا ۱۵۷۸ شمسی).';
+  $('#dlgOk').textContent = mode==='birth' ? 'ذخیره و برو به آن لحظه' : 'برو به آن لحظه';
+  var b = null; try{ b = +localStorage.getItem('ssBirth') || null; }catch(e){}
+  segSet('cal', dlgCal); dlgSetFrom(mode==='birth' ? (b || new Date(1991,2,21,12,0).getTime()) : sim);
+  $('#iErr').textContent = '';
+  dlg.classList.add('open'); scrim2.classList.add('open'); closePop();
+  setTimeout(function(){ $('#iD').focus(); }, 80);
+}
+function closeDlg(){ dlg.classList.remove('open'); scrim2.classList.remove('open'); }
+$$('[data-opt="cal"] button').forEach(function(b){ b.addEventListener('click', function(){ var ms = dlgRead(); dlgCal = b.dataset.v; segSet('cal', dlgCal); fillMonths(); if(ms) dlgSetFrom(ms); }); });
+$('#dlgNo').addEventListener('click', closeDlg); scrim2.addEventListener('click', closeDlg);
+$('#dlgOk').addEventListener('click', function(){
+  var ms = dlgRead();
+  if(ms==null || isNaN(ms)){ $('#iErr').textContent = 'تاریخ را کامل وارد کن.'; return; }
+  if(ms < MIN_MS || ms > MAX_MS){ $('#iErr').textContent = 'این تاریخ بیرون از بازه‌ی ۱۸۰۰ تا ۲۲۰۰ میلادی است.'; return; }
+  closeDlg();
+  if(dlgMode==='birth'){ try{ localStorage.setItem('ssBirth', String(ms)); }catch(e){} goBirth(ms); }
+  else { setSpeed(0); setSim(ms); toast('<b>'+jFull(ms)+'</b>، ساعت '+hm(ms)); }
+});
+function goBirth(ms){
+  setSpeed(0); setSim(ms); setView(1, true); follow = null; highlight = null;
+  flight = {from:cam.t.slice(), id:null, t0:performance.now(), dur:1600}; want.dist = fitDist()*.95; want.pitch = 1.38;
+  syncFocus(true); syncRail();
+  var l = Astro.rev(S.Su.lon - (sid?S.ayan:0)), m = Astro.rev(S.Mo.lon - (sid?S.ayan:0));
+  toast('آسمان لحظه‌ی تولدت، خورشید در <b>'+SIGNS[Math.floor(l/30)].fa+'</b>، ماه در <b>'+SIGNS[Math.floor(m/30)].fa+'</b>', 6500);
+}
+$('#bdayBtn').addEventListener('click', function(){ if(lp==='x'){ lp = null; return; } var b = null; try{ b = +localStorage.getItem('ssBirth') || null; }catch(e){} if(b) goBirth(b); else openDlg('birth'); });
+var lp = null; $('#bdayBtn').addEventListener('contextmenu', function(e){ e.preventDefault(); openDlg('birth'); });
+$('#bdayBtn').addEventListener('pointerdown', function(){ lp = setTimeout(function(){ lp = 'x'; openDlg('birth'); }, 650); });
+$('#bdayBtn').addEventListener('pointerup', function(){ if(lp && lp!=='x') clearTimeout(lp); });
+$('#dateBtn').addEventListener('click', function(){ openDlg('goto'); });
+
+/* ================= کلیک‌های عمومی، توست، راهنما ================= */
+document.addEventListener('click', function(e){
+  var t = e.target; if(!t.closest) return;
+  var x; if(t.closest('button')) hideHint();
+  if((x = t.closest('[data-body]'))){ var id = x.dataset.body; if(follow===id && !flight) openDossier(id); else flyTo(id); return; }
+  if((x = t.closest('[data-open]'))){ openDossier(x.dataset.open); return; }
+  if(t.closest('[data-unfollow]')){ home(); return; }
+  if((x = t.closest('[data-fly]'))){ flyTo(x.dataset.fly); if(lay()!=='desktop') closeDrawer(); return; }
+  if(t.closest('[data-home]')){ home(); closeDrawer(); return; }
+  if(t.closest('[data-evopen]')){ openEvents(); return; }
+  if((x = t.closest('[data-evf]'))){ evFilter = x.dataset.evf; renderEvents(true); return; }
+  if((x = t.closest('[data-evshift]'))){ var k = +x.dataset.evshift*365*DAY; ensureEvents([EV.from+k, EV.to+k]); renderEvents(true); drawer.scrollTop = 0; return; }
+  if((x = t.closest('[data-ev]'))){ var ev = EV.list[+x.dataset.ev]; if(ev) jumpEvent(ev); return; }
+});
+var toastT = null;
+function toast(html, ms){ var el = $('#toast'); el.innerHTML = html; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function(){ el.classList.remove('on'); }, ms||4200); }
+var hintEl = $('#hint'), hintDone = false;
+hintEl.textContent = (root.dataset.device==='mobile'||root.dataset.device==='tablet') ? 'بکش تا بچرخد، دو انگشت برای زوم، روی هر سیاره بزن' : lay()==='tv' ? 'کلیدهای جهت‌نما برای جابه‌جایی، OK برای انتخاب' : 'بکش تا بچرخد، اسکرول برای زوم، روی هر سیاره کلیک کن';
+function hideHint(){ if(hintDone) return; hintDone = true; hintEl.classList.add('off'); }
+setTimeout(hideHint, 9000);
+document.addEventListener('pointermove', function(e){
+  var g = e.target.closest && e.target.closest('.glass'); if(!g) return;
+  var r = g.getBoundingClientRect(); g.style.setProperty('--mx',(e.clientX-r.left)+'px'); g.style.setProperty('--my',(e.clientY-r.top)+'px');
+}, {passive:true});
+
+/* ================= کیبورد و تلویزیون ================= */
+function visEl(el){ var r = el.getBoundingClientRect(); return r.width>0 && r.height>0 && getComputedStyle(el).visibility!=='hidden' && !el.closest('.hide'); }
+function spatial(dir){
+  var scope = dlg.classList.contains('open') ? dlg : drawer.classList.contains('open') ? drawer : document;
+  var els = $$('button,input,select,[tabindex="0"]', scope).filter(visEl), cur = document.activeElement;
+  if(!cur || cur===document.body || els.indexOf(cur)<0){ var f = els[0]; if(f) f.focus(); return; }
+  var a = cur.getBoundingClientRect(), ax = a.left+a.width/2, ay = a.top+a.height/2, best = null, bs = Infinity;
+  els.forEach(function(el){ if(el===cur) return; var b = el.getBoundingClientRect(), dx = b.left+b.width/2-ax, dy = b.top+b.height/2-ay, m, s;
+    if(dir==='right'){ if(dx<=4) return; m=dx; s=Math.abs(dy); } else if(dir==='left'){ if(dx>=-4) return; m=-dx; s=Math.abs(dy); }
+    else if(dir==='down'){ if(dy<=4) return; m=dy; s=Math.abs(dx); } else { if(dy>=-4) return; m=-dy; s=Math.abs(dx); }
+    var sc2 = m + s*2.2; if(sc2<bs){ bs=sc2; best=el; } });
+  if(best){ best.focus({preventScroll:true}); best.scrollIntoView({block:'nearest',inline:'nearest'}); }
+  else if(scope===drawer && (dir==='down'||dir==='up')) drawer.scrollBy({top:(dir==='down'?1:-1)*innerHeight*.35, behavior:'smooth'});
+}
+document.addEventListener('keydown', function(e){
+  var k = e.key, tag = (e.target.tagName||'');
+  var back = k==='Escape' || k==='GoBack' || k==='BrowserBack' || (k==='Backspace' && !/INPUT|SELECT|TEXTAREA/.test(tag));
+  if(back){ if(dlg.classList.contains('open')){ e.preventDefault(); closeDlg(); return; } if(drawer.classList.contains('open')){ e.preventDefault(); closeDrawer(); return; }
+    if(!pop.classList.contains('hide')){ closePop(); return; } if(document.activeElement===scene && lay()==='tv'){ e.preventDefault(); var r1 = $('.rb'); if(r1) r1.focus(); return; } if(follow){ home(); return; } }
+  var onScene = document.activeElement===scene || (lay()!=='tv' && document.activeElement===document.body);
+  var dirs = {ArrowRight:'right',ArrowLeft:'left',ArrowUp:'up',ArrowDown:'down'};
+  if(dirs[k] && onScene && !drawer.classList.contains('open') && !dlg.classList.contains('open')){
+    e.preventDefault(); lastInteract = performance.now(); hideHint();
+    if(k==='ArrowLeft') want.yaw += .12; if(k==='ArrowRight') want.yaw -= .12;
+    if(k==='ArrowUp') want.pitch = clamp(want.pitch+.08,-1.5,1.5); if(k==='ArrowDown') want.pitch = clamp(want.pitch-.08,-1.5,1.5);
+    return;
+  }
+  if(lay()==='tv' && dirs[k]){ if(/INPUT/.test(tag) && e.target.type==='range' && (k==='ArrowLeft'||k==='ArrowRight')) return; if(/INPUT|SELECT/.test(tag) && e.target.type!=='range' && (k==='ArrowLeft'||k==='ArrowRight')) return; e.preventDefault(); spatial(dirs[k]); return; }
+  if(/INPUT|SELECT|TEXTAREA/.test(tag)) return;
+  if(k===' ' && !e.target.closest('button')){ e.preventDefault(); $('#playBtn').click(); }
+  else if(k==='+'||k==='='||k==='PageUp'||k==='ChannelUp'){ want.dist *= .82; }
+  else if(k==='-'||k==='_'||k==='PageDown'||k==='ChannelDown'){ want.dist *= 1.22; }
+  else if(k===']'||k==='FastForward'||k==='MediaFastForward'){ setSpeed(spd+1); }
+  else if(k==='['||k==='Rewind'||k==='MediaRewind'){ setSpeed(spd-1); }
+  else if(k==='MediaPlayPause'){ $('#playBtn').click(); }
+  else if((k==='Enter') && document.activeElement===scene && follow){ openDossier(follow); }
+});
+
+/* ================= حلقه‌ی اصلی ================= */
+function onResize(){ size(); syncLay(); }
+var rz; addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(onResize, 120); });
+var last = performance.now(), uiAt = 0, miniAt = 0;
+function loop(now){
+  requestAnimationFrame(loop);
+  if(document.hidden){ last = now; return; }
+  var dt = Math.min(100, now-last); last = now;
+  var mob = lay()==='mobile';
+  if(spd!==0 && !scrubbing){
+    var nx = sim + dt*SPEEDS[Math.abs(spd)]*(spd<0?-1:1);
+    if(spd===1 && Math.abs(nx-Date.now()) < 3000) nx = Date.now();
+    if(nx<=MIN_MS || nx>=MAX_MS){ setSpeed(0); toast('به مرز بازه‌ی محاسبه (۱۸۰۰ تا ۲۲۰۰) رسیدی.'); }
+    sim = clamp(nx, MIN_MS, MAX_MS); S = Astro.state(sim);
+  }
+  viewK += (viewW-viewK)*(1-Math.pow(.02, dt/1000)); if(Math.abs(viewW-viewK)<.001) viewK = viewW;
+  scaleK += (scaleW-scaleK)*(1-Math.pow(.03, dt/1000)); if(Math.abs(scaleW-scaleK)<.001) scaleK = scaleW;
+  if(highlight && now>hlUntil) highlight = null;
+  positions(); camUpdate(dt, now);
+  tsec = RM ? 2 : now/1000; frameNo++;
+  render(now);
+  if(now-miniAt > (mob?120:50)){ miniAt = now;
+    visible.forEach(function(c){ var id = c.getAttribute('data-p'), b = BD[id]; if(!b) return; paint(c, b, tsec, DEF_L, Math.round(c.clientWidth*Math.min(devicePixelRatio||1,2))); }); }
+  if(now-uiAt > 250){ uiAt = now; uiTick(); if(EV && (sim < EV.from+20*DAY || sim > EV.to-90*DAY) && !scrubbing) ensureEvents(); }
+}
+size(); buildSky(); buildBelt(); setSpeed(1); positions();
+cam.dist = want.dist = fitDist()*1.9; want.dist = fitDist(); cam.t = P.Su.slice();
+scanPlanets();
+uiTick(true);
+setTimeout(function(){ ensureEvents(); syncNext(); syncFocus(); }, 300);
+requestAnimationFrame(loop);
+setTimeout(function(){ $('#loader').classList.add('off'); }, 500);
+/* تغییر زبان: بازسازی بخش‌های پویا */
+window.addEventListener('langchange', function(){
+  var n = $('#nextEv'); if(n) n._k = null;
+  setView(viewW, true); syncFocus(true); uiTick(true);
+  if(drawerKind==='ev') renderEvents(true);
+  else if(drawerKind && drawerKind[0]==='p'){ $('#dBody').innerHTML = planetHTML(drawerKind.slice(2)); scanPlanets(drawer); liveFill(); }
+});
+})();
+
+</script>
+<!--i18n-->
+<script>
+window.I18N_EN = {"منظومه شمسی واقعی":"The Real Solar System","ساخته شده توسط":"Made by","جای واقعی سیاره‌ها در همین لحظه":"Where the planets really are, right now","خورشیدمرکز":"Heliocentric","زمین‌مرکز":"Geocentric","زنده":"Live","عقب":"Back","زمان واقعی":"Real time","جلو":"Forward","اکنون":"Now","روز تولدم":"My birthday","تنظیمات نما":"View settings","فاصله‌ها":"Distances","فشرده":"Compact","مقیاس واقعی":"True scale","زودیاک":"Zodiac","گرمسیری":"Tropical","ودیک (لاهیری":"Vedic (Lahiri","مدارها و ردها":"Orbits & trails","روشن":"On","خاموش":"Off","نام‌ها":"Names","چیدمان":"Layout","خودکار":"Auto","موبایل":"Mobile","دسکتاپ":"Desktop","تلویزیون":"TV","اندازه‌ی سیاره‌ها برای دیده شدن بزرگ‌نمایی شده است. در «مقیاس واقعی» فاصله‌ها با نسبت درست کشیده می‌شوند. محاسبه‌ها داخل همین صفحه انجام می‌شود (دقت حدود چند دقیقه‌ی قوسی؛ زمان رویدادها تقریبی).":"Planet sizes are enlarged so they can be seen. In “True scale”, distances are drawn in correct proportion. All calculations run inside this page (accurate to a few arcminutes; event times are approximate).","روز تولدت":"Your birthday","تاریخ و ساعت تولد را وارد کن؛ آسمان همان لحظه را نشانت می‌دهیم.":"Enter your birth date and time; we’ll show you the sky at that moment.","شمسی":"Solar Hijri","میلادی":"Gregorian","روز":"days","ماه":"Moon","سال":"years","ساعت (به وقت همین دستگاه":"Time (this device’s time zone","برو به آن لحظه":"Go to that moment","انصراف":"Cancel","نمای سه‌بعدی منظومه شمسی؛ بکشید تا بچرخد، روی سیاره بزنید":"3D view of the solar system; drag to rotate, tap a planet","نما":"View","تقویم رویدادها":"Events calendar","نمای کل":"Overview","تنظیمات":"Settings","اجرام منظومه":"Bodies","ماشین زمان":"Time machine","پرش به تاریخ دلخواه":"Jump to any date","یک روز عقب":"One day back","پخش و توقف":"Play and pause","یک روز جلو":"One day forward","سرعت زمان":"Time speed","جابه‌جایی در سال‌ها":"Move through the years","بستن":"Close","حمل":"Aries","ثور":"Taurus","جوزا":"Gemini","سرطان":"Cancer","اسد":"Leo","سنبله":"Virgo","میزان":"Libra","عقرب":"Scorpio","قوس":"Sagittarius","جدی":"Capricorn","دلو":"Aquarius","حوت":"Pisces","خورشید":"Sun","ستاره":"Star","کوتوله‌ی زرد":"Yellow dwarf","۱۰۹ برابر زمین":"109 × Earth","۳۳۳٬۰۰۰ برابر زمین":"333,000 × Earth","حدود ۲۵ روز در استوا تا ۳۵ روز در قطب‌ها":"About 25 days at the equator to 35 days at the poles","هر ۲۳۰ میلیون سال یک دور دور مرکز کهکشان":"One lap around the galactic center every 230 million years","سطح ۵٬۵۰۰°C":"Surface 5,500°C","هسته ۱۵ میلیون °C":"Core 15 million °C","نوری که الان از خورشید می‌بینی حدود ۸ دقیقه و ۲۰ ثانیه پیش راه افتاده است. ۹۹٫۸ درصد جرم کل منظومه در همین یک ستاره است.":"The light you see from the Sun right now left it about 8 minutes and 20 seconds ago. 99.8 percent of the whole solar system’s mass is in this one star.","عطارد":"Mercury","سیاره‌ی سنگی":"Rocky planet","۰٫۰۵۵ زمین":"0.055 Earth","روز خورشیدی ۱۷۶ روز زمینی (چرخش ۵۸٫۶ روز":"Solar day of 176 Earth days (rotation 58.6 days","۸۸ روز":"88 days","−۱۷۳ تا ۴۲۷°C":"−173 to 427°C","ندارد":"None","روی عطارد یک «روز» (از طلوع تا طلوع بعدی) دو برابر یک «سال» آن طول می‌کشد.":"On Mercury one “day” (sunrise to sunrise) lasts twice as long as its “year”.","زهره":"Venus","۰٫۸۱۵ زمین":"0.815 Earth","روز خورشیدی ۱۱۷ روز (چرخش وارونه‌ی ۲۴۳ روز":"Solar day of 117 days (retrograde rotation of 243 days","۲۲۴٫۷ روز":"224.7 days","۴۶۴°C؛ داغ‌ترین سیاره":"464°C; the hottest planet","زهره وارونه می‌چرخد؛ آنجا خورشید از غرب طلوع می‌کند. ابرهای اسید سولفوریکش آن را درخشان‌ترین سیاره‌ی آسمان کرده‌اند.":"Venus spins backwards; there the Sun rises in the west. Its sulfuric acid clouds make it the brightest planet in the sky.","زمین":"Earth","خانه":"Home","۵٫۹۷ × ۱۰²⁴ کیلوگرم":"5.97 × 10²⁴ kg","۲۴ ساعت (چرخش ۲۳ ساعت و ۵۶ دقیقه":"24 hours (rotation 23 h 56 min","۳۶۵٫۲۵ روز":"365.25 days","میانگین ۱۵°C (−۸۹ تا ۵۷":"Average 15°C (−89 to 57","تنها جایی که می‌دانیم حیات دارد. همین حالا که این را می‌خوانی، با زمین حدود ۳۰ کیلومتر در ثانیه دور خورشید می‌چرخی.":"The only place we know has life. Right now, as you read this, you are circling the Sun with Earth at about 30 kilometers per second.","قمر زمین":"Earth’s moon","۰٫۰۱۲ زمین":"0.012 Earth","۲۹٫۵ روز؛ همیشه یک رویش به ماست":"29.5 days; it always shows us the same face","هر ۲۷٫۳ روز یک دور دور زمین":"One lap around Earth every 27.3 days","−۱۷۳ تا ۱۲۷°C":"−173 to 127°C","ماه هر سال حدود ۳٫۸ سانتی‌متر از زمین دور می‌شود. اندازه‌ی ظاهری‌اش تقریباً با خورشید برابر است؛ برای همین کسوف کلی ممکن است.":"The Moon drifts about 3.8 centimeters farther from Earth every year. Its apparent size is almost the same as the Sun’s; that is why total solar eclipses are possible.","مریخ":"Mars","۰٫۱۰۷ زمین":"0.107 Earth","۲۴ ساعت و ۳۷ دقیقه":"24 h 37 min","۶۸۷ روز":"687 days","میانگین −۶۳°C (−۱۴۰ تا ۲۰":"Average −63°C (−140 to 20","۲ (فوبوس و دیموس":"2 (Phobos and Deimos","بلندترین کوه منظومه، «المپوس»، روی مریخ است؛ تقریباً سه برابر اورست. غروب‌های مریخ آبی‌اند.":"The tallest mountain in the solar system, Olympus Mons, is on Mars; almost three times Everest. Sunsets on Mars are blue.","مشتری":"Jupiter","غول گازی":"Gas giant","۳۱۸ برابر زمین":"318 × Earth","۹ ساعت و ۵۶ دقیقه؛ سریع‌ترین چرخش":"9 h 56 min; the fastest spin","۱۱٫۸۶ سال":"11.86 years","حدود −۱۱۰°C بالای ابرها":"About −110°C at the cloud tops","لکه‌ی سرخ بزرگ طوفانی است بزرگ‌تر از کل زمین که دست‌کم ۳۵۰ سال است می‌وزد.":"The Great Red Spot is a storm bigger than the whole Earth that has been blowing for at least 350 years.","زحل":"Saturn","۹۵ برابر زمین":"95 × Earth","۱۰ ساعت و ۳۴ دقیقه":"10 h 34 min","۲۹٫۴ سال":"29.4 years","حدود −۱۴۰°C":"About −140°C","۲۸۵؛ رکورددار منظومه":"285; the solar system record","چگالی زحل از آب کمتر است؛ در یک وان به‌اندازه‌ی کافی بزرگ شناور می‌ماند. حلقه‌هایش ۲۸۰ هزار کیلومتر پهنا دارند اما ضخامتشان اغلب کمتر از یک کیلومتر است.":"Saturn is less dense than water; it would float in a big enough bathtub. Its rings are 280,000 kilometers wide but usually less than one kilometer thick.","اورانوس":"Uranus","غول یخی":"Ice giant","۱۴٫۵ برابر زمین":"14.5 × Earth","۱۷ ساعت و ۱۴ دقیقه (وارونه":"17 h 14 min (retrograde","۸۴ سال":"84 years","حدود −۱۹۵°C":"About −195°C","اورانوس به پهلو خوابیده می‌چرخد؛ هر قطبش ۴۲ سال روز پیوسته و ۴۲ سال شب پیوسته دارد.":"Uranus spins lying on its side; each pole gets 42 years of continuous day and 42 years of continuous night.","نپتون":"Neptune","۱۷٫۱ برابر زمین":"17.1 × Earth","۱۶ ساعت و ۶ دقیقه":"16 h 6 min","۱۶۴٫۸ سال":"164.8 years","حدود −۲۰۰°C":"About −200°C","تندترین بادهای منظومه، بیش از ۲٬۰۰۰ کیلومتر در ساعت، روی نپتون می‌وزد. نپتون را اول با ریاضی پیدا کردند، بعد با تلسکوپ.":"The fastest winds in the solar system, over 2,000 kilometers per hour, blow on Neptune. Neptune was found first with math, then with a telescope.","راهو":"Rahu","کتو":"Ketu","روح":"Soul","اقتدار":"Authority","پدر":"Father","حیات":"Vitality","اراده":"Will","در طالع‌بینی خورشید «خودِ آگاه» است: هویت، اراده و نوری که با آن دیده می‌شوی. در جیوتیش «سوریا» روح، پدر و اقتدار را نشان می‌دهد.":"In astrology the Sun is the “conscious self”: identity, will and the light you are seen by. In Jyotish, “Surya” represents the soul, the father and authority.","یکشنبه":"Sunday","یاقوت سرخ":"Ruby","سوریا":"Surya","ذهن":"Mind","احساس":"Emotion","مادر":"Mother","مردم":"People","آرامش":"Calm","ماه دنیای احساس و نیاز به امنیت است؛ ذهنی که مثل دریا جزر و مد دارد. در جیوتیش «چاندرا» مهم‌ترین نقطه‌ی چارت است و برج اصلی آدم را تعیین می‌کند.":"The Moon is the world of feeling and the need for safety; a mind with tides like the sea. In Jyotish, “Chandra” is the most important point in the chart and sets a person’s main sign.","دوشنبه":"Monday","مروارید":"Pearl","چاندرا":"Chandra","هوش":"Intelligence","گفتار":"Speech","تجارت":"Trade","یادگیری":"Learning","طنز":"Humor","عطارد پیام‌رسان است: فکر، زبان، معامله و سفرهای کوتاه. «بودها» در جیوتیش شاهزاده‌ی جوان و باهوش آسمان است.":"Mercury is the messenger: thought, language, deals and short trips. In Jyotish, “Budha” is the young, clever prince of the sky.","جوزا و سنبله":"Gemini and Virgo","چهارشنبه":"Wednesday","زمرد":"Emerald","بودها":"Budha","ذهن درون‌نگر و بازنگر؛ وقت مرور، بازنویسی و تأخیر در قرارها. عطارد سالی سه بار، هر بار حدود سه هفته، برگشتی می‌شود.":"An inward, reflective mind; a time for review, rewriting and delayed plans. Mercury turns retrograde three times a year, about three weeks each time.","عشق":"Love","زیبایی":"Beauty","همسر":"Spouse","هنر":"Art","رفاه":"Comfort","زهره سیاره‌ی جذب و لذت است: عشق، ذوق، پول و هماهنگی. «شوکرا» در جیوتیش استاد هنرها و نماینده‌ی همسر است.":"Venus is the planet of attraction and pleasure: love, taste, money and harmony. In Jyotish, “Shukra” is the master of the arts and represents the spouse.","ثور و میزان":"Taurus and Libra","جمعه":"Friday","الماس":"Diamond","شوکرا":"Shukra","بازتعریف عشق و ارزش‌ها؛ آدم‌ها و سلیقه‌های قدیمی برمی‌گردند. هر ۱۹ ماه یک بار، حدود ۴۰ روز.":"Redefining love and values; old people and old tastes come back. Once every 19 months, for about 40 days.","جایگاه ناظر":"The observer’s place","بدن":"Body","زمین زیر پا":"The ground beneath your feet","در طالع‌بینی زمین سیاره‌ای در چارت نیست؛ خودِ نقطه‌ی دیدن است و همه‌ی نقشه‌های آسمان از اینجا کشیده می‌شوند. در نگاه خورشیدمرکز، زمین همیشه درست روبه‌روی خورشیدِ زمین‌مرکز است.":"In astrology Earth is not a planet in the chart; it is the point of view itself, and every sky map is drawn from here. In the heliocentric view, Earth is always exactly opposite the geocentric Sun.","بهومی":"Bhumi","انرژی":"Energy","شجاعت":"Courage","برادر":"Brother","رقابت":"Competition","مریخ موتور عمل است: خواستن، جنگیدن و شروع کردن. «منگالا» در جیوتیش فرمانده‌ی سپاه آسمان است.":"Mars is the engine of action: wanting, fighting and starting. In Jyotish, “Mangala” is the commander of the sky’s army.","حمل و عقرب":"Aries and Scorpio","سه‌شنبه":"Tuesday","مرجان":"Coral","منگالا":"Mangala","انرژی به درون برمی‌گردد: خشم فروخورده، عمل بعد از تأمل طولانی، و جنگیدن با خود به‌جای دیگران. هر ۲۶ ماه یک بار.":"Energy turns inward: suppressed anger, action after long reflection, and fighting yourself instead of others. Once every 26 months.","خرد":"Wisdom","بخت":"Luck","فرزند":"Children","استاد":"Teacher","ایمان":"Faith","مشتری بزرگ‌ترین برکت‌دهنده است: رشد، معنا و فرصت. «گورو» در جیوتیش استاد خدایان است و حدود یک سال در هر برج می‌ماند.":"Jupiter is the great giver of blessings: growth, meaning and opportunity. In Jyotish, “Guru” is the teacher of the gods and stays about a year in each sign.","قوس و حوت":"Sagittarius and Pisces","پنجشنبه":"Thursday","یاقوت زرد":"Yellow sapphire","گورو":"Guru","خرد درونی‌شده؛ ایمان شخصی به‌جای آیین رسمی. هر سال حدود چهار ماه.":"Internalized wisdom; personal faith instead of formal ritual. About four months every year.","کارما":"Karma","انضباط":"Discipline","تأخیر":"Delay","کار":"Work","صبر":"Patience","زحل معلم سخت‌گیر زمان است: ساختار، مسئولیت و نتیجه‌ای که دیر اما ماندگار می‌رسد. «شانی» در جیوتیش داور کارماست و حدود دو سال و نیم در هر برج می‌ماند.":"Saturn is time’s strict teacher: structure, responsibility and results that arrive late but last. In Jyotish, “Shani” is the judge of karma and stays about two and a half years in each sign.","جدی و دلو":"Capricorn and Aquarius","شنبه":"Saturday","یاقوت کبود":"Blue sapphire","شانی":"Shani","درس‌های کارمایی درونی‌تر؛ سخت‌گیری با خود و بازنگری در تعهدها. هر سال حدود چهار ماه و نیم.":"More inward karmic lessons; being strict with yourself and reviewing commitments. About four and a half months every year.","نوآوری":"Innovation","شورش":"Rebellion","بیداری ناگهانی":"Sudden awakening","آزادی":"Freedom","فناوری":"Technology","اورانوس سیاره‌ی غافلگیری است: انقلاب، نبوغ و شکستن قالب‌ها. حدود ۷ سال در هر برج می‌ماند و بیشتر روی یک نسل اثر می‌گذارد. در جیوتیش سنتی به کار نمی‌رود.":"Uranus is the planet of surprise: revolution, genius and breaking molds. It stays about 7 years in each sign and mostly shapes a generation. It is not used in traditional Jyotish.","دلو (حاکم مدرن":"Aquarius (modern ruler","بیداری درونی؛ تغییرهایی که اول در درون رخ می‌دهند. هر سال حدود پنج ماه.":"Inner awakening; changes that happen inside first. About five months every year.","رؤیا":"Dream","شهود":"Intuition","معنویت":"Spirituality","توهم":"Illusion","نپتون مه و موسیقی آسمان است: خیال، شفقت، عرفان و گاهی فریب. حدود ۱۴ سال در هر برج می‌ماند و نسل‌ساز است.":"Neptune is the mist and music of the sky: imagination, compassion, mysticism and sometimes deception. It stays about 14 years in each sign and shapes generations.","حوت (حاکم مدرن":"Pisces (modern ruler","مه کنار می‌رود؛ وقت دیدن حقیقتِ پشت رؤیاها. هر سال حدود پنج ماه.":"The mist clears; time to see the truth behind the dreams. About five months every year.","ایستاده":"Paused","۱ دقیقه در ثانیه":"1 minute per second","۱ ساعت در ثانیه":"1 hour per second","۶ ساعت در ثانیه":"6 hours per second","۱ روز در ثانیه":"1 day per second","۱ هفته در ثانیه":"1 week per second","۱ ماه در ثانیه":"1 month per second","۱ سال در ثانیه":"1 year per second","به عقب":"Backward","پخش":"Play","توقف":"Pause","بازگشت به":"Back to","همین لحظه":"This moment","کیلومتر":"km","میلیون کیلومتر":"million km","میلیارد کیلومتر":"billion km","ثانیه":"s","دقیقه و":"min","ساعت و":"h","دقیقه":"min","خانه‌ی ما":"Our home","تا خورشید":"to the Sun","از زمین":"from Earth","برگشتی ↺":"Retrograde ↺","در نور خورشید پنهان (فاصله‌ی زاویه‌ای":"Hidden in the Sun’s glare (elongation","تقریباً تمام شب در آسمان":"Visible almost all night","° از خورشید":"° from the Sun","آسمان شامگاهی":"Evening sky","بعد از غروب":"after sunset","آسمان صبحگاهی":"Morning sky","پیش از طلوع":"before sunrise","ماه نو":"New moon","هلال رو به افزایش":"Waxing crescent","تربیع اول":"First quarter","کوژ رو به افزایش":"Waxing gibbous","ماه کامل (بدر":"Full moon","کوژ رو به کاهش":"Waning gibbous","تربیع آخر":"Last quarter","هلال رو به کاهش":"Waning crescent","حدود ۲۳۰ کیلومتر در ثانیه دور مرکز کهکشان":"About 230 kilometers per second around the galactic center","حدود ۱ کیلومتر در ثانیه دور زمین":"About 1 kilometer per second around Earth","کیلومتر در ثانیه":"km/s","در اعتلا (ودیک":"Exalted (Vedic","در هبوط (ودیک":"Debilitated (Vedic","در خانه‌ی خود (ودیک":"In its own sign (Vedic","اینجایی که ایستاده‌ای":"Right here where you stand","همیشه مستقیم":"Always direct","مستقیم":"Direct","° در روز":"° per day","٪ روشن":"% lit","٪ قرص روشن":"% of the disc lit","فاصله از زمین":"Distance from Earth","زمان رسیدن نور به ما":"Light travel time to us","فاصله از خورشید":"Distance from the Sun","سرعت مداری":"Orbital speed","فاز":"Phase","دیده شدن از زمین":"Visibility from Earth","مقدارهای بالا مال لحظه‌ی نمایش‌اند":"The values above are for the moment shown","ساعت":"at",". با ماشین زمان تغییر می‌کنند.":". They change with the time machine.","شناسنامه‌ی علمی":"Scientific profile","قطر":"Diameter","جرم":"Mass","طول روز":"Length of day","طول سال":"Length of year","گرانش سطح":"Surface gravity","متر بر مجذور ثانیه":"m/s²","دما":"Temperature","قمرها":"Moons","کجی محور":"Axial tilt","معنای نجومی":"Astrological meaning","برج گرمسیری (غربی":"Tropical sign (Western","برج ودیک (سایدریال":"Vedic sign (sidereal","زمین دیده از خورشید":"Earth seen from the Sun","حرکت ظاهری":"Apparent motion","حاکم بر":"Rules","نام سانسکریت":"Sanskrit name","روز هفته":"Weekday","سنگ":"Gemstone","وقتی برگشتی است":"When retrograde","رویدادهای پیش رو":"Upcoming events","\">پرواز به":"Fly to","کسوف کلی":"Total solar eclipse","کسوف حلقوی":"Annular solar eclipse","کسوف جزئی":"Partial solar eclipse","خسوف کلی (ماه خونین":"Total lunar eclipse (blood moon","خسوف جزئی":"Partial lunar eclipse","خسوف نیم‌سایه‌ای":"Penumbral lunar eclipse","اعتدال بهاری":"March equinox","تحویل سال نو":"Persian New Year","خورشید به حمل می‌رود؛ لحظه‌ی نوروز.":"The Sun enters Aries; the moment of Nowruz.","انقلاب تابستانی":"June solstice","بلندترین روز سال در نیم‌کره‌ی شمالی.":"The longest day of the year in the Northern Hemisphere.","اعتدال پاییزی":"September equinox","روز و شب برابر؛ آغاز پاییز.":"Equal day and night; autumn begins.","انقلاب زمستانی":"December solstice","شب یلدا":"Yalda night","بلندترین شب سال؛ از فردا روزها بلند می‌شوند.":"The longest night of the year; from tomorrow the days get longer.","ماه کامل جلوی خورشید را می‌گیرد؛ روز برای چند دقیقه شب می‌شود.":"The Moon fully covers the Sun; day turns to night for a few minutes.","ماه کوچک‌تر از خورشید است؛ «حلقه‌ی آتش» دیده می‌شود.":"The Moon is smaller than the Sun; a “ring of fire” is visible.","ماه بخشی از خورشید را می‌پوشاند.":"The Moon covers part of the Sun.","در برج":"in","ماه کامل در سایه‌ی زمین فرو می‌رود و سرخ می‌شود.":"The full Moon sinks into Earth’s shadow and turns red.","بخشی از ماه وارد سایه‌ی زمین می‌شود.":"Part of the Moon enters Earth’s shadow.","ماه فقط از نیم‌سایه‌ی زمین می‌گذرد؛ کم‌رنگ‌تر.":"The Moon only passes through Earth’s penumbra; a fainter dimming.","ماه در":"Moon in","داخلی":"inferior","بیرونی":"superior","مقارنه‌ی":"Conjunction of","با خورشید":"with the Sun","پشت نور خورشید پنهان است. در برج":"is hidden in the Sun’s glare. In","فاصله‌ی ظاهری":"Apparent separation","بسیار نزدیک":"very close","مقابله‌ی":"Opposition of","روبه‌روی خورشید؛ نزدیک‌ترین و درخشان‌ترین حالت، تمام شب پیدا. در برج":"Opposite the Sun; closest and brightest, visible all night. In","برگشتی می‌شود":"turns retrograde","ایستگاه؛ از این لحظه در آسمان عقب‌عقب می‌رود. در برج":"Station; from this moment it moves backward in the sky. In","مستقیم می‌شود":"turns direct","پایان دوره‌ی برگشتی؛ دوباره رو به جلو. در برج":"End of the retrograde period; moving forward again. In","ماه میان زمین و خورشید؛ آغاز ماه قمری. در برج":"The Moon between Earth and the Sun; the start of the lunar month. In","اَبَرماه (ماه کامل":"Supermoon (full moon","ماه کامل":"Full moon","ماه روبه‌روی خورشید، تمام‌قرص. در برج":"The Moon opposite the Sun, fully lit. In","همه":"All","گرفت‌ها":"Eclipses","مقارنه‌ها":"Conjunctions","برگشتی‌ها":"Retrogrades","فصل‌ها":"Seasons","ماه نو و کامل":"New & full moons","بعدی":"Next","تقویم آسمان":"Sky calendar","از":"From","تا":"to","روی هر رویداد بزن تا زمان به همان لحظه برود. زمان‌ها به وقت همین دستگاه و تقریبی‌اند.":"tap any event to jump to that moment. Times are in this device’s time zone and approximate.","لحظه‌ی نمایش":"Moment shown","در این بازه رویدادی از این نوع نیست.":"No events of this type in this range.","سال قبل":"Previous year","سال بعد":"Next year","کمتر از یک روز دیگر":"Less than a day left","روز دیگر":"days left","رویداد بعدی":"Next event","آسمان از چشم زمین":"The sky as seen from Earth","با زودیاک":"with the zodiac","تبلت":"Tablet","چیدمان فعلی":"Current layout","دستگاه":"Device","فروردین":"Farvardin","اردیبهشت":"Ordibehesht","خرداد":"Khordad","تیر":"Tir","مرداد":"Mordad","شهریور":"Shahrivar","مهر":"Mehr","آبان":"Aban","آذر":"Azar","دی":"Dey","بهمن":"Bahman","اسفند":"Esfand","ژانویه":"January","فوریه":"February","مارس":"March","آوریل":"April","مه":"May","ژوئن":"June","ژوئیه":"July","اوت":"August","سپتامبر":"September","اکتبر":"October","نوامبر":"November","دسامبر":"December","پرش به یک لحظه":"Jump to a moment","تاریخ و ساعت تولد را وارد کن تا آسمان همان لحظه را ببینی. فقط در همین مرورگر ذخیره می‌شود.":"Enter your birth date and time to see the sky at that moment. It is saved only in this browser.","هر تاریخی از سال ۱۸۰۰ تا ۲۲۰۰ میلادی (۱۱۷۹ تا ۱۵۷۸ شمسی).":"Any date from 1800 to 2200 CE (1179 to 1578 SH).","ذخیره و برو به آن لحظه":"Save and go to that moment","تاریخ را کامل وارد کن.":"Enter the full date.","این تاریخ بیرون از بازه‌ی ۱۸۰۰ تا ۲۲۰۰ میلادی است.":"This date is outside the 1800–2200 CE range.","آسمان لحظه‌ی تولدت":"The sky at the moment you were born","خورشید در":"Sun in","بکش تا بچرخد":"Drag to rotate","دو انگشت برای زوم":"two fingers to zoom","روی هر سیاره بزن":"tap any planet","کلیدهای جهت‌نما برای جابه‌جایی":"Arrow keys to move around","OK برای انتخاب":"OK to select","بکش تا بچرخد، اسکرول برای زوم، روی هر سیاره کلیک کن":"Drag to rotate, scroll to zoom, click any planet","به مرز بازه‌ی محاسبه (۱۸۰۰ تا ۲۲۰۰) رسیدی.":"You reached the edge of the calculation range (1800 to 2200).","پرواز به":"Fly to","بالای ابرها":"at the cloud tops","سطح":"Surface","هسته":"Core","میلیون":"million","داغ‌ترین سیاره":"the hottest planet","زبان":"Language","میانگین":"Average","حدود":"About","پرونده":"Profile","و":"and","از خورشید":"from the Sun","در روز":"per day","با":"with","سال قبل »":"‹ Previous year","« سال بعد":"Next year ›","رها کردن":"Unfollow","برابر زمین":"× Earth"};
+window.I18N_EXACT = {};
+(function(){ var st = document.createElement('style'); st.textContent = 'html[lang="en"] .dh .en{display:none}html[data-layout="mobile"] .i18n-tg{display:none}'; document.head.appendChild(st); })();
+
+/* ===== دوزبانه: فارسی (پیش‌فرض) / English =====
+   متن‌ها در کد فارسی می‌مانند؛ در حالت انگلیسی، متن نمایش‌داده‌شده (DOM، ویژگی‌ها، بوم) با دیکشنری I18N_EN ترجمه می‌شود.
+   منطق و داده‌های برنامه دست نمی‌خورند. */
+(function(){
+  var KEY = 'vibeLang', ATTRS = ['title','aria-label','placeholder','alt'];
+  var DIG = {'۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9','٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9','٫':'.','٬':','};
+  var FA_RE = /[؀-ۿ]/, DIG_RE = /[۰-۹٠-٩٫٬]/g;
+  var L = /[ء-يٱ-ۓۺ-ۿ‌]/; /* حرف فارسی برای مرز کلمه */
+  function digits(s){ return s.replace(DIG_RE, function(d){ return DIG[d]; }); }
+  function norm(s){ return digits(s).replace(/\s+/g,' ').trim(); }
+
+  var SRC = window.I18N_EN || {}, PAT = window.I18N_PAT || [], SKIP = '[data-i18n-skip]' + (window.I18N_SKIP ? ',' + window.I18N_SKIP : '');
+  var D = Object.create(null), keys = [];
+  Object.keys(SRC).forEach(function(k){ var n = norm(k); if(n && SRC[k] != null){ D[n] = SRC[k]; if(FA_RE.test(n)) keys.push(n); } });
+  keys.sort(function(a,b){ return b.length - a.length; });
+  var X = Object.create(null); Object.keys(window.I18N_EXACT || {}).forEach(function(k){ X[norm(k)] = window.I18N_EXACT[k]; });
+  var esc = function(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); };
+  var SUB = keys.length ? new RegExp('(^|[^\\u0621-\\u064A\\u0671-\\u06D3\\u06FA-\\u06FF\\u200C])(' + keys.map(esc).join('|') + ')(?=$|[^\\u0621-\\u064A\\u0671-\\u06D3\\u06FA-\\u06FF\\u200C])','g') : null;
+
+  function punct(s){
+    return s.replace(/‌/g,'').replace(/،\s?/g,', ').replace(/؛\s?/g,'; ').replace(/؟/g,'?').replace(/٪/g,'%').replace(/«\s?([^«»]*?)\s?»/g,'“$1”')
+            .replace(/[←→]/g, function(a){ return a === '←' ? '→' : '←'; });
+  }
+  var cache = Object.create(null);
+  function tr(text){
+    if(!text || !(FA_RE.test(text) || /[←→]/.test(text))) return text;
+    if(text in cache) return cache[text];
+    var lead = text.match(/^\s*/)[0], tail = text.match(/\s*$/)[0], core = norm(text), out;
+    var em = core.match(/^([\s·:،,.\-+()|*«»]*)([\s\S]*?)([\s·:،,.\-+()|*«»]*)$/);
+    if(core in X) out = X[core];
+    else if(core in D) out = D[core];
+    else if(em[2] in D) out = em[1] + D[em[2]] + em[3];
+    else {
+      out = core;
+      for(var i=0;i<PAT.length;i++){ var p = PAT[i]; if(p[0].test(out)){ out = out.replace(p[0], p[1]); break; } }
+      if(FA_RE.test(out) && SUB){ out = out.replace(SUB, function(m, pre, k){ return pre + D[k]; }); }
+      if(FA_RE.test(out) && SUB){ out = out.replace(SUB, function(m, pre, k){ return pre + D[k]; }); }
+    }
+    out = lead + punct(digits(out)).replace(/([.!?]\s+)([a-z])/g, function(m, p, c){ return p + c.toUpperCase(); }) + tail;
+    cache[text] = out; return out;
+  }
+
+  var lang = window.__LANG === 'en' ? 'en' : 'fa', TXT = new WeakMap(), ATT = new WeakMap();
+  function skip(el){ return el && el.closest && el.closest(SKIP); }
+  function doText(n){
+    var p = n.parentNode; if(!p || p.nodeName === 'SCRIPT' || p.nodeName === 'STYLE' || p.nodeName === 'TEXTAREA' || skip(p)) return;
+    var rec = TXT.get(n), cur = n.data;
+    if(rec && rec.tr === cur) return;           /* قبلاً ترجمه شده */
+    var t = tr(cur); if(t === cur) return;
+    if(p.childNodes.length === 1) t = t.replace(/^(\s*)([a-z])/, function(m, s, c){ return s + c.toUpperCase(); });
+    TXT.set(n, {orig:cur, tr:t}); n.data = t;
+  }
+  function doAttrs(el){
+    if(skip(el)) return;
+    var rec = ATT.get(el);
+    if(el !== document.documentElement && el.getAttribute('dir') === 'rtl'){
+      if(!rec){ rec = {}; ATT.set(el, rec); }
+      rec.dir = {orig:'rtl', tr:'ltr'}; el.setAttribute('dir', 'ltr');
+    }
+    if(el.hasAttribute('data-en') && !(rec && rec.__html != null)){
+      if(!rec){ rec = {}; ATT.set(el, rec); }
+      rec.__html = el.innerHTML; el.innerHTML = el.getAttribute('data-en');
+    }
+    for(var i=0;i<ATTRS.length;i++){
+      var a = ATTRS[i], v = el.getAttribute(a); if(v == null) continue;
+      if(rec && rec[a] && rec[a].tr === v) continue;
+      var t = tr(v); if(t === v) continue;
+      if(!rec){ rec = {}; ATT.set(el, rec); } rec[a] = {orig:v, tr:t}; el.setAttribute(a, t);
+    }
+  }
+  function walk(root){
+    if(root.nodeType === 3){ doText(root); return; }
+    if(root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
+    if(root.nodeType === 1) doAttrs(root);
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT), n;
+    while((n = w.nextNode())){ if(n.nodeType === 3) doText(n); else doAttrs(n); }
+  }
+  function restore(){
+    var w = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT), n;
+    while((n = w.nextNode())){
+      if(n.nodeType === 3){ var r = TXT.get(n); if(r && r.tr === n.data) n.data = r.orig; TXT.delete(n); }
+      else { var a = ATT.get(n); if(a){ for(var k in a){ if(k === '__html') n.innerHTML = a[k]; else if(n.getAttribute(k) === a[k].tr) n.setAttribute(k, a[k].orig); } ATT.delete(n); } }
+    }
+  }
+  var mo = new MutationObserver(function(list){
+    if(lang !== 'en') return;
+    for(var i=0;i<list.length;i++){
+      var m = list[i];
+      if(m.type === 'characterData') doText(m.target);
+      else if(m.type === 'attributes') doAttrs(m.target);
+      else for(var j=0;j<m.addedNodes.length;j++) walk(m.addedNodes[j]);
+    }
+  });
+
+  /* متن‌های روی بوم (canvas) */
+  var C = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype;
+  if(C){ ['fillText','strokeText','measureText'].forEach(function(f){ var o = C[f]; C[f] = function(t){ if(lang === 'en' && typeof t === 'string'){ var a = Array.prototype.slice.call(arguments); a[0] = tr(t); return o.apply(this, a); } return o.apply(this, arguments); }; }); }
+
+  function apply(){
+    var r = document.documentElement;
+    r.lang = lang; r.dir = lang === 'en' ? 'ltr' : 'rtl';
+    if(lang === 'en'){ walk(document.documentElement); mo.observe(document.documentElement, {subtree:true, childList:true, characterData:true, attributes:true, attributeFilter:ATTRS.concat(['dir'])}); }
+    else { mo.disconnect(); restore(); }
+    var tt = document.querySelector('title'); if(tt){ if(!tt.__fa) tt.__fa = tt.textContent; document.title = lang === 'en' ? tr(tt.__fa) : tt.__fa; }
+    r.classList.remove('i18n-wait');
+    [].forEach.call(document.querySelectorAll('[data-i18n-switch] [data-l]'), function(b){ b.setAttribute('aria-pressed', String(b.dataset.l === lang)); });
+  }
+  function set(l, save){
+    var changed = l !== lang; lang = l; window.__LANG = l;
+    if(save){ try { localStorage.setItem(KEY, l); } catch(e){} }
+    if(changed){ apply(); if(typeof window.I18N_HOOK === 'function') try { window.I18N_HOOK(l); } catch(e){} try { window.dispatchEvent(new CustomEvent('langchange', {detail:l})); } catch(e){} try { window.dispatchEvent(new Event('resize')); } catch(e){} }
+  }
+
+  /* دکمه‌ی تغییر زبان */
+  var tg = document.createElement('div');
+  tg.className = 'i18n-tg'; tg.setAttribute('data-i18n-skip',''); tg.setAttribute('data-i18n-switch',''); tg.setAttribute('role','group'); tg.setAttribute('aria-label','Language / زبان');
+  tg.innerHTML = '<button type="button" data-l="fa" lang="fa">فا</button><button type="button" data-l="en" lang="en">EN</button>';
+  document.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-i18n-switch] [data-l]'); if(b){ e.stopPropagation(); set(b.dataset.l, true); } }, true);
+  document.body.appendChild(tg);
+
+  /* بار اول: پرسیدن زبان */
+  var saved = null, canSave = true;
+  try { saved = localStorage.getItem(KEY); } catch(e){ canSave = false; }
+  if(canSave && saved !== 'fa' && saved !== 'en'){
+    var ask = document.createElement('div');
+    ask.className = 'i18n-ask'; ask.setAttribute('role','dialog'); ask.setAttribute('aria-modal','true'); ask.setAttribute('aria-labelledby','i18nT');
+    ask.innerHTML = '<div class="box"><h2 id="i18nT"><span lang="fa" dir="rtl">زبان را انتخاب کن</span><span lang="en" dir="ltr">Choose your language</span></h2><p><span lang="fa" dir="rtl">بعداً هم هر وقت خواستی عوضش کن</span><span lang="en" dir="ltr">You can change it anytime later</span></p>' +
+      '<div class="row"><button type="button" class="pri" data-l="fa" lang="fa">فارسی<small>Persian</small></button><button type="button" data-l="en" lang="en">English<small>انگلیسی</small></button></div></div>';
+    var pick = function(l){ set(l, true); ask.remove(); document.removeEventListener('keydown', onKey, true); };
+    var onKey = function(e){ if(e.key === 'Escape'){ e.stopPropagation(); pick('fa'); } };
+    ask.addEventListener('click', function(e){ var b = e.target.closest('button'); if(b) pick(b.dataset.l); else if(e.target === ask) pick('fa'); });
+    document.addEventListener('keydown', onKey, true);
+    ask.setAttribute('data-i18n-skip','');
+    document.body.appendChild(ask);
+    setTimeout(function(){ var b = ask.querySelector('.pri'); if(b) b.focus(); }, 50);
+  }
+  window.I18N = { tr:tr, set:function(l){ set(l, true); }, get lang(){ return lang; } };
+  apply();
+})();
+</script>
+<!--/i18n-->
+</body>
+</html>

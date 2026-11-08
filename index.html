@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vibe Coded · سینا عبادی</title>
+<meta name="description" content="سه پروژه‌ی تک‌فایلی که با وایب کدینگ ساخته شده‌اند: جیوتیش، رمز اعداد، منظومه شمسی واقعی. · Three single-file projects built by vibe coding.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cnaebadi.github.io/vibe-coded/">
+<meta property="og:title" content="Vibe Coded · سینا عبادی">
+<meta property="og:description" content="سه پروژه‌ی تک‌فایلی که با وایب کدینگ ساخته شده‌اند. · Three single-file projects built by vibe coding.">
+<meta property="og:image" content="https://cnaebadi.github.io/vibe-coded/solar-system/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cnaebadi.github.io/vibe-coded/">
+<style>
+:root{--bg:#07060f;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.1);--ink:#eceffa;--muted:rgba(236,239,250,.62);--gold:#f1d48b}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(1200px 600px at 80% -10%,rgba(125,90,220,.22),transparent 60%),radial-gradient(900px 500px at 0% 110%,rgba(241,180,90,.12),transparent 60%),var(--bg);color:var(--ink);font:16px/1.7 Vazirmatn,Tahoma,system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:56px 16px 40px}
+header{margin-bottom:34px}
+h1{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.15;color:var(--gold);font-weight:800}
+h1 small{display:block;font-size:.42em;color:var(--muted);font-weight:500;letter-spacing:.02em;margin-top:6px}
+.lead{max-width:62ch;color:var(--muted);margin:14px 0 0}
+.lead span{display:block}
+.badge{display:inline-flex;gap:8px;align-items:center;margin-top:16px;padding:6px 12px;border:1px solid rgba(241,212,139,.35);border-radius:999px;font-size:.82rem;color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+a.card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .2s,border-color .2s}
+a.card:hover,a.card:focus-visible{transform:translateY(-3px);border-color:rgba(241,212,139,.45);outline:none}
+a.card img{display:block;width:100%;aspect-ratio:1200/630;object-fit:cover;background:#111}
+.body{padding:16px 18px 18px}
+.body h2{margin:0;font-size:1.25rem}
+.body h2 span{display:block;font-size:.8rem;color:var(--muted);font-weight:500}
+.body p{margin:8px 0 0;font-size:.92rem;color:var(--muted)}
+.body p[lang=en]{direction:ltr;text-align:left}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem}
+footer a{color:var(--gold)}
+@media (prefers-reduced-motion:reduce){a.card{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Vibe Coded<small>سینا عبادی · Sina Ebadi</small></h1>
+  <p class="lead"><span>سه پروژه که با «وایب کدینگ» ساخته شده‌اند: طراحی، تست و جهت‌دهی با من، بیشترِ کد با هوش مصنوعی (Claude). هر کدام یک فایل HTML تنهاست و بدون نصب یا وابستگی کار می‌کند.</span>
+  <span lang="en" dir="ltr" style="text-align:left">Three projects built by vibe coding: I directed the design and tested, AI (Claude) wrote most of the code. Each is a single HTML file that works on its own.</span></p>
+  <span class="badge">✦ Vibe coded with Claude</span>
+</header>
+<div class="grid">
+  <a class="card" href="jyotish/">
+    <img src="jyotish/og.png" alt="" loading="lazy">
+    <div class="body"><h2>جیوتیش<span>Jyotish</span></h2>
+      <p>نقشه‌ی آسمان لحظه‌ی تولد با جیوتیش ودیک: چارت، سیاره‌ها، خانه‌ها، دشا و یوگاها.</p>
+      <p lang="en">A Vedic birth chart: planets, houses, dasha periods and yogas.</p></div>
+  </a>
+  <a class="card" href="ramz-adad/">
+    <img src="ramz-adad/og.png" alt="" loading="lazy">
+    <div class="body"><h2>رمز اعداد<span>Number Codes</span></h2>
+      <p>چیت‌شیت اعدادشناسی: اعداد استاد و کارمیک، اعداد فرشته‌ای، تاروت، ابجد و محاسبه‌گر.</p>
+      <p lang="en">A numerology cheat sheet with a calculator and an angel-number reader.</p></div>
+  </a>
+  <a class="card" href="solar-system/">
+    <img src="solar-system/og.png" alt="" loading="lazy">
+    <div class="body"><h2>منظومه شمسی واقعی<span>The Real Solar System</span></h2>
+      <p>منظومه‌ی سه‌بعدی با جای واقعی سیاره‌ها، ماشین زمان و تقویم گرفت‌ها.</p>
+      <p lang="en">A 3D solar system with real planet positions, a time machine and an eclipse calendar.</p></div>
+  </a>
+</div>
+<footer>کد و توضیحات · Source: <a href="https://github.com/cnaebadi/vibe-coded">github.com/cnaebadi/vibe-coded</a></footer>
+</main>
+</body>
+</html>

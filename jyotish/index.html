@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<!--i18n-head-->
+<script>
+/* زبان: قبل از رندر، جهت صفحه را تنظیم می‌کند تا پرش دیده نشود */
+(function(){
+  var l = 'fa'; try { l = localStorage.getItem('vibeLang') || 'fa'; } catch(e){}
+  if(l === 'en'){ var r = document.documentElement; r.lang = 'en'; r.dir = 'ltr'; r.classList.add('i18n-wait'); }
+  window.__LANG = l === 'en' ? 'en' : 'fa';
+  window.I18L = function(fa, en){ return window.__LANG === 'en' ? en : fa; };
+})();
+</script>
+<style>
+html.i18n-wait body{visibility:hidden}
+.i18n-tg{position:fixed;z-index:9990;bottom:14px;inset-inline-start:14px;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(18,16,34,.72);border:1px solid rgba(241,212,139,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.i18n-tg button{all:unset;cursor:pointer;font:600 12px/1 Vazirmatn,system-ui,sans-serif;color:rgba(236,239,250,.7);padding:7px 11px;border-radius:999px;transition:background .2s,color .2s}
+.i18n-tg button[aria-pressed="true"]{background:rgba(241,212,139,.92);color:#1a1530}
+.i18n-tg button:focus-visible{outline:2px solid #f1d48b;outline-offset:2px}
+.i18n-ask{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:16px;background:rgba(6,5,14,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:i18nIn .35s ease}
+.i18n-ask .box{width:min(360px,100%);padding:26px 22px 20px;border-radius:22px;text-align:center;background:linear-gradient(160deg,rgba(40,32,72,.96),rgba(20,17,38,.96));border:1px solid rgba(241,212,139,.3);box-shadow:0 20px 60px rgba(0,0,0,.5);color:#eceffa;font-family:Vazirmatn,system-ui,sans-serif}
+.i18n-ask h2{margin:0 0 8px;font-size:1.15rem;font-weight:800;color:#f1d48b}
+.i18n-ask h2 span,.i18n-ask p span{display:block}
+.i18n-ask h2 span[lang=en]{font-size:.92rem;font-weight:600;opacity:.85;margin-top:2px}
+.i18n-ask p{margin:0 0 18px;font-size:.86rem;color:rgba(236,239,250,.6)}
+.i18n-ask .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.i18n-ask button{all:unset;box-sizing:border-box;cursor:pointer;padding:14px 10px;border-radius:14px;font:700 1rem/1.2 Vazirmatn,system-ui,sans-serif;text-align:center;border:1px solid rgba(241,212,139,.35);color:#eceffa;transition:transform .15s,background .2s}
+.i18n-ask button:hover{transform:translateY(-2px);background:rgba(241,212,139,.12)}
+.i18n-ask button.pri{background:rgba(241,212,139,.92);color:#1a1530;border-color:transparent}
+.i18n-ask button:focus-visible{outline:2px solid #f1d48b;outline-offset:3px}
+.i18n-ask small{display:block;font-weight:400;font-size:.72rem;opacity:.7;margin-top:3px}
+@keyframes i18nIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.i18n-ask{animation:none}}
+@media print{.i18n-tg{display:none}}
+</style>
+<!--/i18n-head-->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جیوتیش؛ نقشه آسمان تولد</title>
+<!--og-->
+<meta name="description" content="نقشه‌ی آسمان لحظه‌ی تولد با جیوتیش ودیک: چارت، سیاره‌ها، خانه‌ها، دشا و یوگاها. · Your Vedic birth chart: planets, houses, dasha periods and yogas, calculated in the browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cnaebadi.github.io/vibe-coded/jyotish/">
+<link rel="canonical" href="https://cnaebadi.github.io/vibe-coded/jyotish/">
+<meta property="og:title" content="جیوتیش · Jyotish">
+<meta property="og:description" content="نقشه‌ی آسمان لحظه‌ی تولد با جیوتیش ودیک: چارت، سیاره‌ها، خانه‌ها، دشا و یوگاها. · Your Vedic birth chart: planets, houses, dasha periods and yogas, calculated in the browser.">
+<meta property="og:image" content="https://cnaebadi.github.io/vibe-coded/jyotish/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="جیوتیش · Jyotish">
+<meta name="twitter:description" content="نقشه‌ی آسمان لحظه‌ی تولد با جیوتیش ودیک: چارت، سیاره‌ها، خانه‌ها، دشا و یوگاها. · Your Vedic birth chart: planets, houses, dasha periods and yogas, calculated in the browser.">
+<meta name="twitter:image" content="https://cnaebadi.github.io/vibe-coded/jyotish/og.png">
+<!--/og-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var ua = navigator.userAgent || '';
+  var isTV = /SmartTV|SMART-TV|Tizen|Web0S|WebOS|NetCast|BRAVIA|HbbTV|AFT[A-Z]|CrKey|GoogleTV|Android ?TV|Roku|Viera|AQUOS|PhilipsTV|Opera TV|DTV/i.test(ua);
+  var mm = function(q){ try { return matchMedia(q).matches; } catch(e){ return false; } };
+  var coarse = mm('(pointer:coarse)'), short = Math.min(screen.width, screen.height), dev;
+  if (isTV || (mm('(pointer:none)') && innerWidth >= 1200)) dev = 'tv';
+  else if (coarse && short < 600) dev = 'mobile';
+  else if (coarse || mm('(hover:none)')) dev = 'tablet';
+  else dev = 'desktop';
+  var manual = null; try { manual = localStorage.getItem('jyLayout'); } catch(e){}
+  function pick(){
+    if (manual && manual !== 'auto') return manual;
+    if (dev === 'tv') return 'tv';
+    if (dev === 'mobile') return 'mobile';
+    return innerWidth < 820 ? 'mobile' : 'desktop';
+  }
+  var r = document.documentElement; r.dataset.device = dev; r.dataset.layout = pick();
+  window.__jy = { dev:dev, setManual:function(v){ manual=v; try{localStorage.setItem('jyLayout',v);}catch(e){} r.dataset.layout = pick(); } };
+  addEventListener('resize', function(){ r.dataset.layout = pick(); });
+})();
+</script>
+<style>
+:root{
+  /* جهان: شب عمیق کهکشانی با شیشه‌ی مایع؛ چیدمان: داک شیشه‌ای شناور + ستون محتوا */
+  --void:#02030a;
+  --ink:#eceffa;
+  --muted:#9ca5c6;
+  --gold:#f1d48b;
+  --violet:#a98bff;
+  --stroke:rgba(255,255,255,.13);
+  --display:'Vazirmatn',Tahoma,sans-serif;
+  --body:'Vazirmatn',Tahoma,'Segoe UI',sans-serif;
+  --latin:'Cormorant Garamond','Times New Roman',serif;
+  --r:28px;
+  --blur:26px;
+  color-scheme:dark;
+}
+html[data-layout="desktop"]{font-size:16.5px}
+html[data-layout="mobile"]{font-size:15px;--r:24px;--blur:18px}
+html[data-layout="tv"]{font-size:clamp(20px,1.25vw,32px)}
+*{box-sizing:border-box}
+html{background:var(--void);scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;color:var(--ink);font-family:var(--body);line-height:1.85;background:var(--void);
+  padding-top:env(safe-area-inset-top);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#sky{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.page{position:relative;z-index:1}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:12px}
+.lat{font-family:var(--latin);direction:ltr;unicode-bidi:isolate}
+button{font:inherit;color:inherit}
+
+/* ---------- شیشه‌ی مایع ---------- */
+.glass{position:relative;isolation:isolate;border-radius:var(--r);
+  background:linear-gradient(150deg,rgba(255,255,255,.12),rgba(255,255,255,.045) 38%,rgba(255,255,255,.02) 70%,rgba(255,255,255,.06));
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(185%);backdrop-filter:blur(var(--blur)) saturate(185%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 1px rgba(255,255,255,.05),0 30px 70px -30px rgba(0,0,0,.85),0 0 0 .5px rgba(255,255,255,.08)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:-1;
+  background:linear-gradient(140deg,rgba(255,255,255,.55),rgba(255,255,255,.08) 28%,rgba(255,255,255,0) 55%,rgba(255,255,255,.08) 80%,rgba(255,255,255,.35));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;opacity:.9;
+  background:radial-gradient(520px circle at var(--mx,25%) var(--my,-10%),rgba(255,255,255,.11),transparent 42%)}
+.tap{cursor:pointer;transition:transform .45s cubic-bezier(.2,.9,.2,1.2),box-shadow .4s}
+.tap:hover,.tap:focus-visible{transform:translateY(-4px) scale(1.012)}
+.tap:active{transform:scale(.98)}
+
+/* ---------- داک ناوبری ---------- */
+.dock{position:fixed;z-index:50;display:flex;gap:4px;padding:8px}
+.dock a{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--muted);border-radius:18px;padding:8px 12px;font-size:.84rem;
+  transition:color .3s,background .3s}
+.dock a svg{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.dock a:hover{color:var(--ink)}
+.dock a.on{color:#120d02;background:linear-gradient(135deg,#ffe7a8,#d9ae58);box-shadow:0 6px 24px -6px rgba(241,212,139,.7)}
+html[data-layout="desktop"] .dock{right:22px;top:50%;transform:translateY(-50%);flex-direction:column;border-radius:26px}
+html[data-layout="desktop"] main{padding:0 230px 0 40px;max-width:1500px;margin:0 auto}
+html[data-layout="mobile"] .dock{left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));border-radius:26px;overflow-x:auto;scrollbar-width:none;padding:6px}
+html[data-layout="mobile"] .dock::-webkit-scrollbar{display:none}
+html[data-layout="mobile"] .dock a{flex-direction:column;gap:1px;padding:7px 11px;font-size:.66rem;white-space:nowrap}
+html[data-layout="mobile"] main{padding:0 14px 120px}
+html[data-layout="tv"] .dock{position:sticky;top:12px;margin:12px auto 0;width:max-content;max-width:96vw;border-radius:26px;flex-wrap:wrap;justify-content:center}
+html[data-layout="tv"] main{padding:0 3.5vw 40px;max-width:1800px;margin:0 auto}
+html[data-layout="tv"] :focus-visible,html[data-layout="tv"] :focus{outline:3px solid var(--gold);outline-offset:5px;box-shadow:0 0 0 10px rgba(241,212,139,.15),0 0 50px rgba(241,212,139,.4)}
+
+/* ---------- هیرو ---------- */
+.credit{position:relative;z-index:3;text-align:center;font-size:.7rem;color:var(--muted);opacity:.7;margin:14px 0 0;letter-spacing:.02em}
+.credit .lat{color:var(--gold);font-size:1.15em}
+.hero{position:relative;height:clamp(440px,64vw,640px);margin:0 auto}
+html[data-layout="mobile"] .hero{height:540px}
+html[data-layout="tv"] .hero{height:min(62vh,700px)}
+.orbit-path{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.orb{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;padding:0;cursor:pointer;will-change:transform;opacity:0}
+.orb canvas{display:block;filter:drop-shadow(0 10px 30px rgba(0,0,0,.6))}
+.orb span{font-size:.76rem;color:var(--muted);white-space:nowrap;text-shadow:0 2px 8px #000;transition:color .3s}
+.orb:hover span,.orb:focus-visible span{color:var(--gold)}
+.hero-title{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+.hero-title h1,.hero-title p{position:relative;z-index:20}
+.hero-title .btn{position:relative;z-index:40}
+html[data-layout="mobile"] .hero-title p{max-width:62vw;font-size:.86rem;line-height:1.75}
+html[data-layout="mobile"] .hero-title h1{font-size:3.7rem}
+.hero-title h1{margin:0 0 6px;font-family:var(--display);font-weight:900;line-height:1.35;letter-spacing:-.02em;font-size:clamp(3.6rem,10vw,7.6rem);padding-top:.12em;
+  background:linear-gradient(180deg,#ffffff 8%,#ffe9b0 45%,#c79a4b 70%,#9d86ff 110%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 40px rgba(241,212,139,.25)) drop-shadow(0 6px 18px rgba(0,0,0,.8));animation:emerge 2.2s cubic-bezier(.2,.8,.2,1) both}
+.hero-title p{margin:-6px 0 18px;color:#c9cfe6;font-size:1rem;max-width:30em;text-shadow:0 2px 12px #000;animation:emerge 2.2s .35s cubic-bezier(.2,.8,.2,1) both}
+.hero-title .btn{pointer-events:auto;animation:emerge 2.2s .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes emerge{from{opacity:0;transform:translateY(24px) scale(.96);filter:blur(12px)}}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 26px;border-radius:999px;text-decoration:none;font-weight:700;color:#140e02;
+  background:linear-gradient(135deg,#fff1c4,#e2b660 55%,#c48d3a);box-shadow:0 10px 40px -10px rgba(241,212,139,.8),inset 0 1px 0 rgba(255,255,255,.7);
+  transition:transform .3s,box-shadow .3s;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 50px -10px rgba(241,212,139,.95),inset 0 1px 0 rgba(255,255,255,.7)}
+
+/* ---------- بخش‌ها ---------- */
+section.sec{padding:46px 0 10px}
+.head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.head .no{font-family:var(--latin);font-style:italic;font-size:1.05rem;color:var(--gold);letter-spacing:.2em;opacity:.8}
+.head h2{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.6vw,2.5rem);line-height:1.5;letter-spacing:-.01em;
+  background:linear-gradient(180deg,#fff,#d8deff);-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance}
+.head p{flex-basis:100%;margin:0;color:var(--muted);max-width:62ch}
+.pad{padding:22px}
+html[data-layout="mobile"] .pad{padding:16px}
+
+/* فرم تولد */
+.birth{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:20px;align-items:start}
+html[data-layout="mobile"] .birth{grid-template-columns:1fr}
+.form{display:grid;gap:12px}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form label{display:flex;flex-direction:column;gap:5px;font-size:.78rem;color:var(--gold)}
+.form input,.form select{font:inherit;font-size:.98rem;color:var(--ink);background:rgba(0,0,0,.28);border:1px solid var(--stroke);border-radius:14px;padding:10px 12px;outline:none;width:100%;min-width:0;
+  transition:border-color .25s,box-shadow .25s;color-scheme:dark}
+.form input:focus,.form select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(241,212,139,.14)}
+.form select option,.form select optgroup{background:#10132a;color:var(--ink)}
+.form .hint{font-size:.74rem;color:var(--muted);margin-top:-4px}
+.form .err{font-size:.78rem;color:#ff9f8a;min-height:1em}
+#manual[hidden]{display:none}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.74rem;color:var(--muted);border-top:1px solid var(--stroke);padding-top:10px}
+.meta b{color:var(--ink);font-weight:500}
+.big3{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+html[data-layout="tv"] .big3{grid-template-columns:repeat(4,1fr)}
+.tile{padding:18px 20px;min-height:140px;display:flex;flex-direction:column;gap:4px;text-align:right;border:0}
+.tile small{color:var(--gold);font-size:.75rem}
+.tile b{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:2}
+.tile span{color:#c9cfe6;font-size:.85rem}
+.tile .lat{color:var(--muted);font-size:1rem;font-style:italic}
+
+/* چارت */
+.chartwrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:20px;align-items:start}
+html[data-layout="mobile"] .chartwrap{grid-template-columns:1fr}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin-bottom:14px}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:rgba(0,0,0,.3);border:1px solid var(--stroke);gap:2px}
+.seg button{border:0;background:none;color:var(--muted);padding:7px 15px;border-radius:999px;cursor:pointer;font-size:.82rem;transition:all .35s cubic-bezier(.2,.9,.2,1)}
+.seg button[aria-pressed="true"]{background:rgba(255,255,255,.14);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 4px 14px rgba(0,0,0,.4)}
+#chart svg{display:block;width:100%;max-width:620px;margin:0 auto;overflow:visible}
+#chart .ln{fill:none;stroke:url(#gl);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.8s cubic-bezier(.6,.1,.2,1) forwards}
+#chart .ln.l2{animation-delay:.35s}#chart .ln.l3{animation-delay:.7s}
+@keyframes draw{to{stroke-dashoffset:0}}
+#chart .hz{fill:rgba(255,255,255,0);cursor:pointer;transition:fill .3s}
+#chart .hz:hover,#chart .hz:focus{fill:rgba(241,212,139,.08);outline:none}
+#chart .hz.lag{fill:rgba(241,212,139,.06)}
+#chart text{font-family:var(--body);pointer-events:none}
+#chart .sn{fill:rgba(236,239,250,.38);font-size:11px}
+#chart .hn{fill:var(--gold);opacity:.8;font-size:10.5px;font-weight:700}
+.ckey{margin:10px 0 0;font-size:12px;color:var(--muted);text-align:center}
+.ckey b{color:var(--gold);font-weight:700}
+#chart .pt{font-size:14px;font-weight:700;opacity:0;animation:pop .7s cubic-bezier(.2,.9,.3,1.4) forwards}
+#chart .pd{font-size:9px;fill:var(--muted);font-weight:400}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+#chart .ctr{fill:var(--muted);font-size:12px}
+#chart .ctr.t{fill:var(--gold);font-size:16px;font-weight:800}
+.legend{display:grid;gap:6px}
+.lg{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:8px 12px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.05);cursor:pointer;text-align:right;transition:background .3s}
+.lg:hover,.lg:focus-visible{background:rgba(255,255,255,.08)}
+.lg i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 12px var(--c)}
+.lg b{font-weight:500}
+.lg span{font-size:.8rem;color:var(--muted)}
+
+/* سیاره‌ها */
+.planets{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+html[data-layout="mobile"] .planets{grid-template-columns:1fr;gap:12px}
+html[data-layout="tv"] .planets{grid-template-columns:repeat(3,1fr);gap:22px}
+.pcard{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center;padding:16px 18px;text-align:right;border:0}
+html[data-layout="tv"] .pcard{grid-template-columns:130px 1fr}
+.pcard canvas{width:92px;height:92px}
+html[data-layout="tv"] .pcard canvas{width:130px;height:130px}
+.pcard h3{margin:0 0 6px;padding-bottom:.15em;font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:2.1;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.pcard .pos,.pcard .sub{line-height:2}
+.pcard h3 em{font-family:var(--body);font-style:normal;font-weight:400;font-size:.75rem;color:var(--muted);line-height:1}
+.pcard .pos{font-size:.88rem}
+.pcard .sub{font-size:.76rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.chip{font-size:.68rem;padding:1px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:#dfe3f5;white-space:nowrap}
+.chip.good{border-color:#7fe0a8;color:#a8f0c6;background:rgba(127,224,168,.08)}
+.chip.ok{border-color:#9fc6ff;color:#c4dcff}
+.chip.mid{color:var(--muted)}
+.chip.warn{border-color:#ffb37a;color:#ffcfa8}
+.chip.bad{border-color:#ff7f7f;color:#ffb0b0;background:rgba(255,127,127,.08)}
+.chip.r{border-color:var(--violet);color:#d3c6ff}
+.chip.g{border-color:var(--gold);color:var(--gold)}
+
+/* خانه‌ها */
+.houses{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+html[data-layout="mobile"] .houses{grid-template-columns:repeat(2,1fr);gap:10px}
+html[data-layout="tv"] .houses{grid-template-columns:repeat(6,1fr)}
+.hcard{padding:16px;text-align:right;border:0;display:flex;flex-direction:column;gap:3px;min-height:150px}
+.hcard .n{font-family:var(--latin);font-size:2.4rem;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(241,212,139,.8)}
+.hcard b{font-weight:500;font-size:.9rem}
+.hcard small{color:var(--muted);font-size:.74rem;line-height:1.6}
+.dots{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;padding-top:6px}
+.dots i{font-style:normal;font-size:.7rem;padding:0 7px;border-radius:999px;color:#0b0b14;background:var(--c);font-weight:700}
+
+/* نظرها */
+.asp{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+html[data-layout="mobile"] .asp{grid-template-columns:1fr}
+.alist{display:grid;gap:8px}
+.arow{display:grid;gap:4px;padding:12px 14px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);font-size:.86rem}
+.arow .who{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pchip{display:inline-flex;align-items:center;gap:6px;padding:1px 10px 1px 4px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);cursor:pointer;font-size:.82rem}
+.pchip i{width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c)}
+.arow .arr{color:var(--gold);font-size:.75rem}
+.arow p{margin:0;color:#c9cfe6;font-size:.82rem}
+h3.sub{margin:0 0 10px;font-size:.95rem;color:var(--gold);font-weight:700}
+
+/* دشا */
+.tl{position:relative;height:74px;border-radius:20px;overflow:hidden;display:flex;margin:6px 0 30px;background:rgba(0,0,0,.3);border:1px solid var(--stroke)}
+.tl .seg2{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:.72rem;color:#0b0b14;font-weight:700;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--c) 92%,#fff),color-mix(in srgb,var(--c) 70%,#000));border-left:1px solid rgba(0,0,0,.35);overflow:hidden;cursor:pointer;border-top:0;border-bottom:0;border-right:0;padding:0;min-width:0}
+.tl .seg2 small{font-weight:400;opacity:.8;font-size:.62rem}
+.tl .seg2.cur{box-shadow:inset 0 0 0 2px #fff,inset 0 0 30px rgba(255,255,255,.6)}
+.tl .now{position:absolute;top:-4px;bottom:-4px;width:2px;background:#fff;box-shadow:0 0 14px #fff,0 0 30px var(--gold);pointer-events:none}
+.tl .now::after{content:"اکنون";position:absolute;top:2px;right:6px;font-size:.62rem;color:#fff;background:rgba(0,0,0,.6);padding:0 6px;border-radius:6px;white-space:nowrap}
+.dlist{display:grid;gap:10px}
+details.md{border-radius:22px;overflow:hidden}
+details.md summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 18px}
+details.md summary::-webkit-details-marker{display:none}
+details.md summary i{width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:0 0 16px var(--c)}
+details.md summary b{font-weight:500}
+details.md summary span{color:var(--muted);font-size:.8rem}
+details.md.cur{box-shadow:0 0 0 1px var(--gold),0 0 40px -10px rgba(241,212,139,.6)}
+details.md .body{padding:0 18px 16px;font-size:.86rem;color:#c9cfe6}
+.ads{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px;margin-top:10px}
+.ad{padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:.76rem}
+.ad b{display:block;font-weight:500;font-size:.84rem}
+.ad.cur{border-color:var(--gold);background:rgba(241,212,139,.08)}
+.badge{font-size:.66rem;color:#140e02;background:var(--gold);padding:1px 8px;border-radius:999px;margin-right:6px}
+
+/* یوگاها */
+.yogas{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+html[data-layout="mobile"] .yogas{grid-template-columns:1fr}
+.ycard{padding:18px 20px}
+.ycard h3{margin:0 0 4px;font-family:var(--display);font-weight:800;font-size:1.15rem;line-height:2;color:var(--gold)}
+.ycard .cond{font-size:.75rem;color:var(--muted)}
+.ycard p{margin:6px 0 0;font-size:.88rem}
+.ycard .ex{font-size:.78rem;color:#c9cfe6;margin-top:6px}
+.ycard .who{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.ycard::after{background:radial-gradient(400px circle at 10% 0%,rgba(241,212,139,.14),transparent 50%)}
+details.off{margin-top:16px;border-radius:22px}
+details.off summary{cursor:pointer;padding:14px 18px;color:var(--muted);font-size:.86rem}
+details.off ul{margin:0;padding:0 36px 16px 18px;font-size:.82rem;color:var(--muted)}
+
+/* جدول‌های مرجع */
+.tbl{overflow-x:auto;border-radius:var(--r)}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th{text-align:right;font-weight:500;color:var(--gold);font-size:.76rem;padding:12px 14px;border-bottom:1px solid var(--stroke);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:rgba(255,255,255,.035)}
+td .en{display:block;font-family:var(--latin);font-style:italic;color:var(--muted);direction:ltr;text-align:right}
+td.dim{color:var(--muted)}
+html[data-layout="mobile"] .tbl{overflow:visible;background:none;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+html[data-layout="mobile"] .tbl::before,html[data-layout="mobile"] .tbl::after{display:none}
+html[data-layout="mobile"] .tbl table,html[data-layout="mobile"] .tbl tbody{display:block}
+html[data-layout="mobile"] .tbl thead{display:none}
+html[data-layout="mobile"] .tbl tr{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin-bottom:10px;padding:14px;border-radius:20px;
+  background:linear-gradient(150deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08)}
+html[data-layout="mobile"] .tbl td{display:block;padding:0;border:0;grid-column:1/-1}
+html[data-layout="mobile"] .tbl td::before{content:attr(data-label);display:block;font-size:.68rem;color:var(--gold)}
+html[data-layout="mobile"] .tbl td:nth-child(-n+2){grid-column:auto;font-weight:700;align-self:center}
+html[data-layout="mobile"] .tbl td:nth-child(-n+2)::before{display:none}
+.note{margin:12px 0 26px;padding:14px 18px;border-radius:18px;background:rgba(241,212,139,.05);border-right:3px solid var(--gold);font-size:.86rem;color:#d6dbef;max-width:86ch}
+.note b{color:var(--gold)}
+.note ul{margin:4px 0 0;padding-right:18px}
+
+footer{padding:50px 0 60px;text-align:center;color:var(--muted);font-size:.84rem}
+footer .seg{margin:10px 0}
+footer .credit-end{margin-top:14px;font-size:.9rem}
+footer .credit-end .lat{color:var(--gold);font-size:1.15em}
+
+/* کشو */
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(1,2,8,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .4s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:81;overflow:auto;opacity:0;pointer-events:none;transition:transform .6s cubic-bezier(.2,.9,.2,1),opacity .4s;--r:30px;
+  background:linear-gradient(160deg,rgba(40,44,80,.72),rgba(10,12,28,.86));overscroll-behavior:contain}
+.drawer.open{opacity:1;pointer-events:auto}
+.drawer::before,.drawer::after,.dock::before,.dock::after{display:none}
+.drawer,.dock{border:1px solid rgba(255,255,255,.16)}
+html[data-layout="desktop"] .drawer{top:16px;bottom:16px;left:16px;width:min(520px,92vw);transform:translateX(-110%);padding:30px}
+html[data-layout="desktop"] .drawer.open{transform:none}
+html[data-layout="mobile"] .drawer{left:8px;right:8px;bottom:8px;max-height:88vh;transform:translateY(105%);padding:10px 20px calc(26px + env(safe-area-inset-bottom))}
+html[data-layout="mobile"] .drawer.open{transform:none}
+html[data-layout="mobile"] .drawer .grab{display:block;width:46px;height:5px;border-radius:9px;background:rgba(255,255,255,.3);margin:2px auto 8px}
+.grab{display:none}
+html[data-layout="tv"] .drawer{top:50%;left:50%;width:min(1200px,88vw);max-height:86vh;transform:translate(-50%,-46%) scale(.95);padding:44px 52px}
+html[data-layout="tv"] .drawer.open{transform:translate(-50%,-50%)}
+.dclose{position:sticky;top:0;float:left;width:42px;height:42px;border-radius:50%;border:1px solid var(--stroke);background:rgba(20,22,44,.9);font-size:1.3rem;cursor:pointer;z-index:3}
+.dh{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+.dh canvas{width:150px;height:150px;flex:none}
+html[data-layout="mobile"] .dh canvas{width:116px;height:116px}
+.dh h4{margin:0 0 4px;font-family:var(--display);font-weight:800;font-size:1.9rem;line-height:1.9}
+.dh .lat{color:var(--muted);font-style:italic;font-size:1.05rem}
+.dh .num{font-family:var(--latin);font-size:5rem;line-height:1;color:transparent;-webkit-text-stroke:1.2px var(--gold)}
+.blk{padding:12px 0;border-top:1px solid rgba(255,255,255,.07);font-size:.9rem}
+.blk small{display:block;color:var(--gold);font-size:.72rem;margin-bottom:2px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+html[data-layout="tv"] .grid2{grid-template-columns:repeat(4,1fr)}
+.grid2 div{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);font-size:.86rem}
+.grid2 small{display:block;color:var(--gold);font-size:.68rem}
+
+
+/* پتانسیل */
+.scores{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+html[data-layout="mobile"] .scores{grid-template-columns:1fr}
+#radar svg{direction:ltr;display:block;width:100%;max-width:520px;margin:0 auto;overflow:visible}
+#radar .poly{transform-origin:200px 200px;animation:bloom 1.6s cubic-bezier(.2,.9,.2,1) both}
+#radar .dot{animation:bloom 1.6s cubic-bezier(.2,.9,.2,1) both;transform-origin:200px 200px}
+@keyframes bloom{from{transform:scale(0);opacity:0}}
+#radar text{font-family:var(--body);fill:#c9cfe6;font-size:12.5px}
+html[data-layout="mobile"] #radar text{font-size:15px}
+#radar text.v{fill:var(--gold);font-weight:800;font-size:12px}
+html[data-layout="mobile"] #radar text.v{font-size:14px}
+#radar .ax{cursor:pointer}
+#radar .ax:hover text,#radar .ax:focus text{fill:#fff}
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:8.5em 1fr 2.6em;gap:12px;align-items:center;padding:8px 10px;border-radius:14px;cursor:pointer;background:none;border:0;text-align:right;transition:background .3s}
+.bar:hover,.bar:focus-visible{background:rgba(255,255,255,.06)}
+.bar b{font-weight:500;font-size:.88rem}
+.bar .trk{height:10px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.5)}
+.bar .fill{display:block;height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,var(--c2),var(--c1));box-shadow:0 0 14px var(--c1);transition:width 1.4s cubic-bezier(.2,.9,.2,1)}
+.bar>span:last-child{font-weight:800;font-size:.95rem;color:var(--c1);text-align:left;direction:ltr}
+.fac{display:grid;grid-template-columns:1fr auto;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.86rem}
+.fac b{font-weight:800;direction:ltr}
+.fac b.p{color:#8ff0b8}.fac b.n{color:#ff9f9f}
+.meter{height:12px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin:6px 0 4px}
+.meter i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--c2),var(--c1));box-shadow:0 0 16px var(--c1)}
+
+
+.omen{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);opacity:0;transition:opacity .7s}
+.omen.on{opacity:1}
+.omen-card{position:relative;width:min(440px,100%);padding:30px 26px 22px;border-radius:28px;text-align:center;background:linear-gradient(160deg,rgba(60,20,30,.6),rgba(8,6,14,.9));border:1px solid rgba(255,120,120,.25);box-shadow:0 0 80px -10px rgba(255,60,60,.35)}
+.omen-card small{display:block;color:#ff9f9f;font-size:.74rem;margin-top:14px}
+.omen-card b{display:block;font-size:1.9rem;font-weight:900;line-height:1.9;color:#ffe1e1}
+.omen-card p{margin:0;color:#e9cfd4}
+.omen-card em{display:block;font-style:normal;color:#9b8e98;font-size:.7rem;margin-top:16px}
+.ow{display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:8px 10px;margin-top:6px;border-radius:12px;background:rgba(255,255,255,.04);font-size:.82rem;text-align:right}
+.ow span:last-child{color:#ff9f9f}
+.omen .ring{position:absolute;top:14px;left:14px;width:30px;height:30px;transform:rotate(-90deg)}
+.omen .ring circle{fill:none;stroke:#ff8a8a;stroke-width:3;stroke-dasharray:126;stroke-dashoffset:0;animation:omenT 10s linear forwards}
+@keyframes omenT{to{stroke-dashoffset:126}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}#chart .ln{stroke-dashoffset:0}#chart .pt{opacity:1}.orb{opacity:1}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="page">
+<nav class="dock glass" id="dock" aria-label="بخش‌ها">
+  <a href="#birth"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.6L20 9.3l-4.4 3.9 1.3 5.8L12 16l-4.9 3 1.3-5.8L4 9.3l5.8-.7z"/></svg><span>تولد</span></a>
+  <a href="#chart"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 3l18 18M21 3L3 21M12 3l9 9-9 9-9-9z"/></svg><span>چارت</span></a>
+  <a href="#scores"><svg viewBox="0 0 24 24"><path d="M12 3l8 5v8l-8 5-8-5V8z"/><path d="M12 8l4 2.5v3L12 16l-4-2.5v-3z"/></svg><span>پتانسیل</span></a>
+  <a href="#planets"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-20 12 12)"/></svg><span>سیاره‌ها</span></a>
+  <a href="#houses"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>خانه‌ها</span></a>
+  <a href="#aspects"><svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 6.3l10 .5M6 8l5 9.3M18 9l-5 8.3"/></svg><span>تأثیرات</span></a>
+  <a href="#dasha"><svg viewBox="0 0 24 24"><path d="M3 12h18M7 8v8M12 6v12M17 9v6"/></svg><span>دشا</span></a>
+  <a href="#yogas"><svg viewBox="0 0 24 24"><path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M19 5l-4 4M9 15l-4 4"/></svg><span>یوگاها</span></a>
+  <a href="#ref"><svg viewBox="0 0 24 24"><path d="M4 4h7a3 3 0 013 3v13a2 2 0 00-2-2H4zM20 4h-5a3 3 0 00-3 3"/><path d="M20 4v14h-6"/></svg><span>مرجع</span></a>
+</nav>
+
+<main>
+  <p class="credit">ساخته شده توسط <span class="lat">Sina Ebadi</span></p>
+  <header class="hero" id="hero">
+    <svg class="orbit-path" id="orbitPath" aria-hidden="true"></svg>
+    <div id="orbs"></div>
+    <div class="hero-title">
+      <h1>جیوتیش</h1>
+      <p>نقشه‌ی آسمانِ لحظه‌ی تولدت، با منطق ودیک: سایدریال، آیانامشای لاهیری، خانه‌های برج‌کامل.</p>
+      <a class="btn" href="#birth">نقشه‌ی آسمانت را بکش</a>
+    </div>
+  </header>
+
+  <section class="sec" id="birth">
+    <div class="head"><span class="no">I</span><h2>لحظه‌ی تولد</h2><p>تاریخ میلادی، ساعت و شهر را وارد کن. چارت همان لحظه دوباره کشیده می‌شود. نمونه از پیش پر شده است.</p></div>
+    <div class="birth">
+      <form class="form glass pad" id="bform" novalidate>
+        <label for="fName">نام (اختیاری)<input id="fName" type="text" value="" placeholder="مثلاً سینا" autocomplete="off"></label>
+        <div class="row">
+          <label for="fDate">تاریخ تولد (میلادی)<input id="fDate" type="date" value="1990-07-15" min="1800-01-01" max="2100-12-31"></label>
+          <label for="fTime">ساعت و دقیقه<input id="fTime" type="time" value="08:30" step="60"></label>
+        </div>
+        <span class="hint" id="jalali"></span>
+        <label for="fCity">محل تولد<select id="fCity"></select></label>
+        <div id="manual" hidden>
+          <div class="row">
+            <label for="fLat">عرض جغرافیایی<input id="fLat" type="number" step="0.0001" min="-90" max="90" value="35.6892" dir="ltr"></label>
+            <label for="fLon">طول جغرافیایی<input id="fLon" type="number" step="0.0001" min="-180" max="180" value="51.3890" dir="ltr"></label>
+          </div>
+          <label for="fTz" style="margin-top:10px">منطقه‌ی زمانی<select id="fTz" dir="ltr"></select></label>
+          <span class="hint">عرض شمال مثبت، جنوب منفی؛ طول شرق مثبت، غرب منفی.</span>
+        </div>
+        <span class="err" id="ferr" role="status"></span>
+        <div class="meta" id="meta"></div>
+      </form>
+      <div class="big3" id="big3"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="chart">
+    <div class="head"><span class="no">II</span><h2>چارت</h2><p>روی هر خانه بزن تا معنایش، سیاره‌های داخلش و نظرهایی که می‌گیرد باز شود.</p></div>
+    <div class="chartwrap">
+      <div class="glass pad">
+        <div class="toolbar">
+          <div class="seg" role="group" aria-label="سبک چارت"><button type="button" data-style="north" aria-pressed="true">شمال هند</button><button type="button" data-style="south" aria-pressed="false">جنوب هند</button></div>
+          <div class="seg" role="group" aria-label="نوع چارت"><button type="button" data-div="1" aria-pressed="true">راشی D1</button><button type="button" data-div="9" aria-pressed="false">ناوامشا D9</button></div>
+        </div>
+        <div id="chartSvg"></div>
+        <p class="ckey" id="chartKey"></p>
+      </div>
+      <div class="glass pad"><h3 class="sub" id="legendTitle">جایگاه سیاره‌ها</h3><div class="legend" id="legend"></div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="scores">
+    <div class="head"><span class="no">III</span><h2>پتانسیل زندگی</h2><p>هر حوزه از ۰ تا ۱۰۰ بر اساس قدرت خانه‌ها، صاحب‌خانه‌ها، سیاره‌های نماینده، نظرها و یوگاهای مرتبط. روی هر حوزه بزن تا ببینی چه چیزی امتیازش را بالا یا پایین برده.</p></div>
+    <div class="scores">
+      <div class="glass pad radar-wrap"><div id="radar"></div></div>
+      <div class="glass pad"><div class="bars" id="bars"></div></div>
+    </div>
+    <div class="note">امتیازها قدرت نسبی هر حوزه را در همین چارت با قواعد کلاسیک جیوتیش نشان می‌دهند، نه پیش‌بینی قطعی. امتیاز پایین یعنی آن حوزه برای رشد به تلاش و آگاهی بیشتری نیاز دارد.</div>
+  </section>
+
+  <section class="sec" id="planets">
+    <div class="head"><span class="no">IV</span><h2>نُه گراها</h2><p>هر سیاره با برج، درجه، ناکشاترا، خانه و شأن. برای تفسیر کامل روی کارت بزن.</p></div>
+    <div class="planets" id="pcards"></div>
+  </section>
+
+  <section class="sec" id="houses">
+    <div class="head"><span class="no">V</span><h2>دوازده بهاوا</h2><p>خانه‌ها به روش برج‌کامل: برج طالع، خانه‌ی اول است.</p></div>
+    <div class="houses" id="hcards"></div>
+  </section>
+
+  <section class="sec" id="aspects">
+    <div class="head"><span class="no">VI</span><h2>تأثیرات متقابل</h2><p>همنشینی (هم‌برجی) و نظرهای ودیک (دریشتی). همه نظر هفتم دارند؛ مریخ ۴ و ۸، مشتری ۵ و ۹، زحل ۳ و ۱۰، راهو و کتو ۵ و ۹.</p></div>
+    <div class="asp">
+      <div class="glass pad"><h3 class="sub">همنشینی‌ها</h3><div class="alist" id="conj"></div></div>
+      <div class="glass pad"><h3 class="sub">نظرها</h3><div class="alist" id="drishti"></div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="dasha">
+    <div class="head"><span class="no">VII</span><h2>دشای ویمشوتری</h2><p>چرخه‌ی ۱۲۰ ساله‌ی دوره‌های سیاره‌ای، از ناکشاترای ماه در لحظه‌ی تولد. تاریخ‌ها شمسی‌اند.</p></div>
+    <div class="glass pad">
+      <div class="tl" id="tl"></div>
+      <div class="dlist" id="dlist"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="yogas">
+    <div class="head"><span class="no">VIII</span><h2>یوگاها</h2><p>ترکیب‌های کلاسیک که در این چارت فعال‌اند.</p></div>
+    <div class="yogas" id="ylist"></div>
+    <details class="off glass" id="yoff"><summary>یوگاهای بررسی‌شده که فعال نیستند</summary><ul id="yoffList"></ul></details>
+  </section>
+
+  <section class="sec" id="ref">
+    <div class="head"><span class="no">IX</span><h2>چیت‌شیت مرجع</h2><p>جدول‌های کلیدواژه‌ای جیوتیش؛ توضیح هر جدول زیرش آمده.</p></div>
+    <h3 class="sub">گراها (سیاره‌ها)</h3>
+    <div class="tbl glass" id="rG"></div>
+    <div class="note"><ul>
+      <li data-en="<b>Exaltation</b> and <b>debilitation</b> are always opposite each other. The exact exaltation degree is in each planet’s profile."><b>اعتلا</b> و <b>هبوط</b> همیشه روبه‌روی هم‌اند. درجه‌ی دقیق اعتلا در پرونده‌ی هر سیاره آمده است.</li>
+      <li data-en="Rahu and Ketu are not physical planets; they are the nodes of the Moon’s orbit. The <b>mean node</b> is used here, as is common in traditional Jyotish. Their exaltation differs between sources (Taurus/Scorpio or Gemini/Sagittarius).">راهو و کتو سیاره‌ی فیزیکی نیستند؛ گره‌های مدار ماه‌اند. اینجا از <b>گره میانگین</b> استفاده شده که در جیوتیش سنتی رایج است. اعتلای آن‌ها در منابع مختلف فرق دارد (ثور/عقرب یا جوزا/قوس).</li>
+      <li><b>احتراق:</b> سیاره‌ای که خیلی نزدیک خورشید باشد قدرت مستقلش کم می‌شود.</li>
+    </ul></div>
+    <h3 class="sub">راشی‌ها (برج‌ها)</h3>
+    <div class="tbl glass" id="rS"></div>
+    <div class="note" data-en="In Vedic astrology the signs are <b>sidereal</b>, about 24 degrees behind the Western signs. That is why most people’s Sun falls one sign earlier in Vedic.">در ودیک برج‌ها <b>سایدریال</b>اند؛ یعنی حدود ۲۴ درجه عقب‌تر از برج‌های غربی. برای همین خورشید بیشتر آدم‌ها در ودیک یک برج عقب‌تر می‌افتد.</div>
+    <h3 class="sub">بهاواها (خانه‌ها)</h3>
+    <div class="tbl glass" id="rH"></div>
+    <div class="note"><ul>
+      <li data-en="<b>Kendra</b> (1, 4, 7, 10) are the pillars of the chart. <b>Trikona</b> (1, 5, 9) are the houses of fortune. <b>Dusthana</b> (6, 8, 12) are the houses of challenge."><b>کندرا</b> (۱، ۴، ۷، ۱۰) ستون‌های چارت‌اند. <b>تریکونا</b> (۱، ۵، ۹) خانه‌های بخت‌اند. <b>دوستانا</b> (۶، ۸، ۱۲) خانه‌های چالش‌اند.</li>
+      <li data-en="<b>Upachaya</b> (3, 6, 10, 11) improve with time; malefic planets work well in them."><b>اوپاچایا</b> (۳، ۶، ۱۰، ۱۱) با گذر زمان بهتر می‌شوند؛ سیاره‌های بدشگون در آن‌ها خوب کار می‌کنند.</li>
+    </ul></div>
+    <h3 class="sub">۲۷ ناکشاترا</h3>
+    <div class="tbl glass" id="rN"></div>
+    <div class="note">هر ناکشاترا ۱۳°۲۰′ است و به ۴ پادای ۳°۲۰′ تقسیم می‌شود. ناکشاترای ماه (جانما ناکشاترا) مهم‌ترین است و آغاز دشا را تعیین می‌کند.</div>
+  </section>
+
+  <footer>
+    <div>چیدمان: <span id="devInfo"></span></div>
+    <div class="seg" role="group" aria-label="انتخاب چیدمان">
+      <button type="button" data-lay="auto">خودکار</button><button type="button" data-lay="mobile">موبایل</button><button type="button" data-lay="desktop">دسکتاپ</button><button type="button" data-lay="tv">تلویزیون</button>
+    </div>
+    <p>محاسبه‌ها با فرمول‌های نجومی داخل خود صفحه انجام می‌شود (دقت حدود ۰٫۲ درجه). جیوتیش سنتی تفسیری است، نه علم تجربی. در تلویزیون با کلیدهای جهت‌نما جابه‌جا شوید.</p>
+    <p class="credit-end">ساخته شده توسط <span class="lat">Sina Ebadi</span></p>
+  </footer>
+</main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer glass" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dT" tabindex="-1">
+  <span class="grab"></span>
+  <button class="dclose" id="dClose" type="button" aria-label="بستن">×</button>
+  <div id="dBody"></div>
+</div>
+
+<script>
+/* ===== موتور نجومی (الگوریتم Schlyter با اغتشاشات ماه، مشتری، زحل) ===== */
+var Astro = (function(){
+  var RAD = Math.PI/180, DEG = 180/Math.PI;
+  function rev(x){ x = x % 360; return x < 0 ? x + 360 : x; }
+  function sind(x){ return Math.sin(x*RAD); } function cosd(x){ return Math.cos(x*RAD); }
+  function jdFromMs(ms){ return ms/86400000 + 2440587.5; }
+  function kepler(M, e){
+    var E = M + e*DEG*sind(M)*(1+e*cosd(M));
+    for(var i=0;i<12;i++){ var dE = (E - e*DEG*sind(E) - M)/(1 - e*cosd(E)); E -= dE; if(Math.abs(dE)<1e-7) break; }
+    return E;
+  }
+  function elements(body, d){
+    switch(body){
+      case 'Su': return {N:0,i:0,w:282.9404+4.70935e-5*d,a:1,e:0.016709-1.151e-9*d,M:356.0470+0.9856002585*d};
+      case 'Mo': return {N:125.1228-0.0529538083*d,i:5.1454,w:318.0634+0.1643573223*d,a:60.2666,e:0.054900,M:115.3654+13.0649929509*d};
+      case 'Me': return {N:48.3313+3.24587e-5*d,i:7.0047+5.00e-8*d,w:29.1241+1.01444e-5*d,a:0.387098,e:0.205635+5.59e-10*d,M:168.6562+4.0923344368*d};
+      case 'Ve': return {N:76.6799+2.46590e-5*d,i:3.3946+2.75e-8*d,w:54.8910+1.38374e-5*d,a:0.723330,e:0.006773-1.302e-9*d,M:48.0052+1.6021302244*d};
+      case 'Ma': return {N:49.5574+2.11081e-5*d,i:1.8497-1.78e-8*d,w:286.5016+2.92961e-5*d,a:1.523688,e:0.093405+2.516e-9*d,M:18.6021+0.5240207766*d};
+      case 'Ju': return {N:100.4542+2.76854e-5*d,i:1.3030-1.557e-7*d,w:273.8777+1.64505e-5*d,a:5.20256,e:0.048498+4.469e-9*d,M:19.8950+0.0830853001*d};
+      case 'Sa': return {N:113.6634+2.38980e-5*d,i:2.4886-1.081e-7*d,w:339.3939+2.97661e-5*d,a:9.55475,e:0.055546-9.499e-9*d,M:316.9670+0.0334442282*d};
+    }
+  }
+  function orbitPos(el){
+    var M = rev(el.M), E = kepler(M, el.e);
+    var xv = el.a*(cosd(E)-el.e), yv = el.a*Math.sqrt(1-el.e*el.e)*sind(E);
+    var v = Math.atan2(yv,xv)*DEG, r = Math.sqrt(xv*xv+yv*yv);
+    var N = el.N, w = el.w, i = el.i, vw = v + w;
+    var x = r*(cosd(N)*cosd(vw) - sind(N)*sind(vw)*cosd(i));
+    var y = r*(sind(N)*cosd(vw) + cosd(N)*sind(vw)*cosd(i));
+    var z = r*sind(vw)*sind(i);
+    return {x:x,y:y,z:z,r:r,v:v};
+  }
+  /* طول دایره‌البروجی زمین‌مرکز، استوایی اعتدال همان تاریخ (تروپیکال) */
+  function tropical(body, d){
+    var sun = elements('Su', d), sp = orbitPos(sun);
+    var lonSun = rev(sp.v + sun.w);
+    if(body==='Su') return lonSun;
+    if(body==='Ra') return rev(125.1228-0.0529538083*d);
+    if(body==='Ke') return rev(125.1228-0.0529538083*d+180);
+    if(body==='Mo'){
+      var m = elements('Mo', d), p = orbitPos(m);
+      var lon = Math.atan2(p.y,p.x)*DEG;
+      var Ms = rev(sun.M), Mm = rev(m.M), Ls = rev(sun.w+Ms), Lm = rev(m.N+m.w+Mm);
+      var D = Lm - Ls, F = Lm - m.N;
+      lon += -1.274*sind(Mm-2*D) +0.658*sind(2*D) -0.186*sind(Ms) -0.059*sind(2*Mm-2*D) -0.057*sind(Mm-2*D+Ms)
+             +0.053*sind(Mm+2*D) +0.046*sind(2*D-Ms) +0.041*sind(Mm-Ms) -0.035*sind(D) -0.031*sind(Mm+Ms)
+             -0.015*sind(2*F-2*D) +0.011*sind(Mm-4*D);
+      return rev(lon);
+    }
+    var el = elements(body, d), h = orbitPos(el);
+    if(body==='Ju' || body==='Sa'){
+      var Mj = rev(elements('Ju',d).M), Mss = rev(elements('Sa',d).M);
+      var hl = Math.atan2(h.y,h.x)*DEG, hb = Math.atan2(h.z, Math.sqrt(h.x*h.x+h.y*h.y)), r = h.r;
+      if(body==='Ju'){
+        hl += -0.332*sind(2*Mj-5*Mss-67.6) -0.056*sind(2*Mj-2*Mss+21) +0.042*sind(3*Mj-5*Mss+21) -0.036*sind(Mj-2*Mss)
+              +0.022*cosd(Mj-Mss) +0.023*sind(2*Mj-3*Mss+52) -0.016*sind(Mj-5*Mss-69);
+      } else {
+        hl += 0.812*sind(2*Mj-5*Mss-67.6) -0.229*cosd(2*Mj-4*Mss-2) +0.119*sind(Mj-2*Mss-3) +0.046*sind(2*Mj-6*Mss-69) +0.014*sind(Mj-3*Mss+32);
+        hb += (-0.020*cosd(2*Mj-4*Mss-2) +0.018*sind(2*Mj-6*Mss-49))*RAD;
+      }
+      h = {x:r*Math.cos(hb)*cosd(hl), y:r*Math.cos(hb)*sind(hl), z:r*Math.sin(hb)};
+    }
+    var xs = sp.r*cosd(lonSun), ys = sp.r*sind(lonSun);
+    return rev(Math.atan2(h.y+ys, h.x+xs)*DEG);
+  }
+  /* آیانامشای لاهیری */
+  function ayanamsa(jd){ var T = (jd-2451545)/36525; return 23.85709 + 1.396971278*T + 0.000308*T*T; }
+  function obliquity(d){ return 23.4393 - 3.563e-7*d; }
+  function gmst(jd){ var T=(jd-2451545)/36525; return rev(280.46061837 + 360.98564736629*(jd-2451545) + 0.000387933*T*T - T*T*T/38710000); }
+  function ascendant(jd, lat, lon){
+    var d = jd - 2451543.5, ramc = rev(gmst(jd)+lon), eps = obliquity(d);
+    var asc = Math.atan2(cosd(ramc), -(sind(ramc)*cosd(eps) + Math.tan(lat*RAD)*sind(eps)))*DEG;
+    return rev(asc);
+  }
+  var BODIES = ['Su','Mo','Ma','Me','Ju','Ve','Sa','Ra','Ke'];
+  function compute(utcMs, lat, lon){
+    var jd = jdFromMs(utcMs), d = jd - 2451543.5, ay = ayanamsa(jd), out = {};
+    BODIES.forEach(function(b){
+      var l = tropical(b, d), l1 = tropical(b, d-0.5), l2 = tropical(b, d+0.5);
+      var sp = l2 - l1; if(sp>180) sp-=360; if(sp<-180) sp+=360;
+      out[b] = {trop:l, sid:rev(l-ay), speed:sp, retro: (b==='Ra'||b==='Ke') ? true : sp<0};
+    });
+    var at = ascendant(jd, lat, lon);
+    out.As = {trop:at, sid:rev(at-ay), speed:0, retro:false};
+    out.ayanamsa = ay; out.jd = jd;
+    return out;
+  }
+  /* بررسی: ارتفاع یک نقطه دایره‌البروج بر افق (برای تست طالع) */
+  function eclAltitude(jd, lat, lon, lambda){
+    var d = jd-2451543.5, eps = obliquity(d);
+    var ra = Math.atan2(sind(lambda)*cosd(eps), cosd(lambda))*DEG, dec = Math.asin(sind(eps)*sind(lambda))*DEG;
+    var H = rev(gmst(jd)+lon-ra);
+    var alt = Math.asin(sind(lat)*sind(dec)+cosd(lat)*cosd(dec)*cosd(H))*DEG;
+    return {alt:alt, H:H};
+  }
+  return {compute:compute, tropical:tropical, ayanamsa:ayanamsa, jdFromMs:jdFromMs, eclAltitude:eclAltitude, rev:rev};
+})();
+if(typeof module!=='undefined') module.exports = Astro;
+
+/* ===== داده‌های تفسیری جیوتیش ===== */
+var G = {
+ Su:{fa:'خورشید',sa:'سوریا',en:'Sun',ab:'خو',hex:'#ffb347',type:0,kw:'روح، اقتدار، پدر، حیات، دولت',short:'اقتدار و هویت',nat:'بدشگون ملایم',day:'یکشنبه',gem:'یاقوت سرخ',
+  own:[4],ex:0,exd:10,mt:[4,0,20],fr:['Mo','Ma','Ju'],en_:['Ve','Sa'],yrs:6,
+  retro:'خورشید هیچ‌وقت برگشتی نمی‌شود.',
+  dasha:'دوره‌ی خودنمایی، مسئولیت و تماس با اقتدار؛ موضوع پدر، دولت و هویت پررنگ می‌شود.',
+  house:['اعتمادبه‌نفس، حضور پررنگ و رهبری؛ مراقب غرور باش.','درآمد از اقتدار یا دولت، گفتار محکم؛ تنش خانوادگی ممکن است.','شجاعت و ابتکار؛ موفقیت با تلاش شخصی.','آرامش درونی با کار به دست می‌آید؛ غرور در خانه و نسبت با مادر.','هوش خلاق و رهبری؛ افتخار به فرزندان.','پیروزی بر رقیب، بنیه‌ی قوی، موفقیت در خدمت.','شریک قوی یا مسلط؛ کشمکش «من» و «ما».','کشش به رازها و دگرگونی‌های عمیق؛ انرژی حیاتی را حفظ کن.','پدر یا استاد مهم، باور قوی؛ بخت از راه درستکاری.','قوی‌ترین جایگاه خورشید: جایگاه بالا، شهرت و مدیریت.','درآمد از ارتباطات بزرگ؛ آرزوها محقق می‌شوند.','کار پشت صحنه یا در خارج، کشش معنوی؛ هزینه برای اعتبار.']},
+ Mo:{fa:'ماه',sa:'چاندرا',en:'Moon',ab:'ما',hex:'#dfe6f2',type:1,kw:'ذهن، احساس، مادر، مردم، آرامش',short:'ذهن و احساس',nat:'خوش‌یُمن',day:'دوشنبه',gem:'مروارید',
+  own:[3],ex:1,exd:3,mt:[1,3,30],fr:['Su','Me'],en_:[],yrs:10,
+  retro:'ماه هیچ‌وقت برگشتی نمی‌شود.',
+  dasha:'دوره‌ی احساسات، خانه، مادر و ارتباط با مردم؛ ذهن حساس‌تر و نیاز به امنیت بیشتر.',
+  house:['احساساتی، جذاب و تغییرپذیر؛ چهره‌ای روشن.','درآمد نوسانی، گفتار دلنشین، پیوند خانوادگی.','ذهن کنجکاو، سفرهای کوتاه، نوشتن.','قوی‌ترین جایگاه ماه: آرامش، خانه‌دوستی، مادر مهم.','تخیل قوی، عشق احساسی، دلبستگی به فرزند.','نگرانی و حساسیت گوارشی؛ مهارت در مراقبت از دیگران.','نیاز به شریک عاطفی، محبوب نزد مردم.','احساسات عمیق، شهود قوی، نوسان روحی.','ایمان، سفر، و مادر یا راهنمای معنوی.','شغل مرتبط با عموم؛ شهرت متغیر.','دوستان زیاد، درآمد از مردم.','خیال‌پردازی، خواب‌های پرمعنا، نیاز به خلوت.']},
+ Ma:{fa:'مریخ',sa:'منگالا',en:'Mars',ab:'مر',hex:'#ff6b4a',type:2,kw:'انرژی، شجاعت، برادر، زمین، رقابت',short:'انرژی و جنگندگی',nat:'بدشگون',day:'سه‌شنبه',gem:'مرجان',
+  own:[0,7],ex:9,exd:28,mt:[0,0,12],fr:['Su','Mo','Ju'],en_:['Me'],yrs:7,asp:[4,8],
+  retro:'انرژی به درون برمی‌گردد: خشم فروخورده، عمل بعد از تأمل طولانی، و جنگیدن با خود به‌جای دیگران.',
+  dasha:'دوره‌ی عمل، رقابت، ملک و انرژی بالا؛ مناسب شروع‌های جسورانه، مراقب تصادف و دعوا.',
+  house:['پرانرژی، رک و ورزشکار؛ گاهی کج‌خلق (مانگلیک).','گفتار تند، تلاش زیاد برای ثروت.','شجاعت ممتاز، رقابت، رابطه با برادر.','تنش در خانه؛ ملک و زمین (مانگلیک).','اراده‌ی خلاق، ورزش، عشق پرشور.','شکست دشمن؛ عالی برای رقابت، ورزش و جراحی.','شریک پرشور، اصطکاک در رابطه (مانگلیک).','تغییرات ناگهانی، شجاعت در بحران (مانگلیک).','مجاهد باورها؛ تنش با پدر ممکن است.','قوی‌ترین جایگاه مریخ: فرمانده، مهندس، جاه‌طلب.','درآمد از تلاش، دوستان پرانرژی.','خرج انرژی، کار پنهان، خشم سرکوب‌شده (مانگلیک).']},
+ Me:{fa:'عطارد',sa:'بودها',en:'Mercury',ab:'عط',hex:'#6fd3a0',type:3,kw:'هوش، گفتار، تجارت، یادگیری، طنز',short:'هوش و ارتباط',nat:'خوش‌یُمن (تابع همنشین)',day:'چهارشنبه',gem:'زمرد',
+  own:[2,5],ex:5,exd:15,mt:[5,15,20],fr:['Su','Ve'],en_:['Mo'],yrs:17,
+  retro:'ذهن درون‌نگر و بازنگر؛ عالی برای پژوهش و نوشتن عمیق، تصمیم‌گیری کندتر.',
+  dasha:'دوره‌ی یادگیری، تجارت، نوشتن و ارتباط؛ ذهن فعال و فرصت‌های تحصیلی.',
+  house:['قوی‌ترین جایگاه عطارد: باهوش، شوخ و جوان‌نما.','گفتار شیرین، درآمد از تجارت.','نویسنده، ارتباط‌گیر، مهارت دست.','تحصیل خوب، خانه‌ای پر از کتاب.','ذهن تحلیلی، هوش ریاضی.','حل مسئله و حسابداری؛ نگرانی ذهنی.','شریک جوان یا باهوش، تجارت مشترک.','پژوهش و علوم پنهان؛ ذهن کاوشگر.','فلسفه و آموزش عالی.','شغل ارتباطی، تجارت، رسانه.','درآمد از شبکه‌سازی و ایده.','تخیل، زبان خارجی، ذهن ناآرام شبانه.']},
+ Ju:{fa:'مشتری',sa:'گورو',en:'Jupiter',ab:'مش',hex:'#ffd36b',type:4,kw:'خرد، بخت، فرزند، استاد، ایمان',short:'خرد و برکت',nat:'خوش‌یُمن بزرگ',day:'پنجشنبه',gem:'یاقوت زرد',
+  own:[8,11],ex:3,exd:5,mt:[8,0,10],fr:['Su','Mo','Ma'],en_:['Me','Ve'],yrs:16,asp:[5,9],
+  retro:'خرد درونی‌شده؛ ایمان شخصی به‌جای آیین رسمی، معلمی که از تجربه‌ی خودش یاد گرفته.',
+  dasha:'دوره‌ی رشد، آموزش، فرزند و برکت؛ معمولاً از بهترین دوره‌های زندگی.',
+  house:['قوی‌ترین جایگاه مشتری: خردمند، خوش‌اقبال و محافظت‌شده.','ثروت، گفتار مؤثر، خانواده‌ی بزرگ.','اراده‌ی آرام، ارتباط آموزنده.','خانه‌ی پربرکت، تحصیل خوب.','فرزند خوب، هوش، استعداد مشاوره.','غلبه بر دشمن با خرد؛ مراقب وزن و کبد باش.','همسر فرهیخته، شراکت خوب.','عمر طولانی، ارث، دانش پنهان.','بخت عالی، استاد معنوی، ایمان.','شغل محترم، آموزش، مدیریت اخلاقی.','درآمد فراوان، آرزوهای برآورده.','معنویت، خیریه، خرج سخاوتمندانه.']},
+ Ve:{fa:'زهره',sa:'شوکرا',en:'Venus',ab:'زه',hex:'#f4b8d4',type:5,kw:'عشق، زیبایی، همسر، هنر، رفاه',short:'عشق و زیبایی',nat:'خوش‌یُمن',day:'جمعه',gem:'الماس',
+  own:[1,6],ex:11,exd:27,mt:[6,0,15],fr:['Me','Sa'],en_:['Su','Mo'],yrs:20,
+  retro:'بازتعریف عشق و ارزش‌ها؛ روابط کارمایی و سلیقه‌ای خاص و غیرمتعارف.',
+  dasha:'دوره‌ی عشق، ازدواج، هنر، رفاه و لذت؛ طولانی‌ترین دشا (۲۰ سال).',
+  house:['جذاب، هنرمند و دوست‌داشتنی.','ثروت، صدای زیبا، ذوق غذا.','هنر بیانی، رابطه‌ی خوب با خواهر و برادر.','قوی‌ترین جایگاه زهره: خانه‌ی زیبا، وسیله‌ی نقلیه، آسایش.','عشق رمانتیک، خلاقیت هنری.','چالش در رابطه یا تعادل هورمونی؛ خدمت هنری.','همسر جذاب، ازدواج مهم؛ گاهی افراط در لذت.','ارث از همسر، جذابیت مرموز.','بخت از هنر، ایمانی مهربان.','شغل هنری یا مرتبط با زیبایی، محبوبیت.','درآمد از هنر و روابط.','لذت‌های پنهان، سفر خارج، معنویت عاشقانه.']},
+ Sa:{fa:'زحل',sa:'شانی',en:'Saturn',ab:'زح',hex:'#8aa2ff',type:6,kw:'کارما، انضباط، تأخیر، کار، صبر',short:'انضباط و کارما',nat:'بدشگون بزرگ',day:'شنبه',gem:'یاقوت کبود',
+  own:[9,10],ex:6,exd:20,mt:[10,0,20],fr:['Me','Ve'],en_:['Su','Mo','Ma'],yrs:19,asp:[3,10],
+  retro:'درس‌های کارمایی درونی‌تر؛ سخت‌گیری با خود، مسئولیتی که از گذشته مانده.',
+  dasha:'دوره‌ی کار سخت، مسئولیت، ساختن و صبر؛ نتیجه دیر اما ماندگار می‌آید.',
+  house:['جدی و صبور؛ رشد کند اما پایدار.','ثروت دیرهنگام، گفتار سنجیده.','پشتکار عالی؛ موفقیت با گذشت زمان.','سختی در خانه یا رابطه با مادر؛ آرامش دیر می‌رسد.','تأخیر در فرزند، ذهن جدی.','پیروزی آهسته بر رقیب، خدمت پرتلاش.','قوی‌ترین جایگاه زحل: ازدواج دیر یا با فرد پخته‌تر، تعهد.','عمر طولانی؛ رنج‌هایی که حکمت می‌آورند.','باور سنتی، پدر سخت‌گیر.','جاه‌طلبی؛ صعود آهسته تا قله.','درآمد پایدار و رو به افزایش.','خلوت، کار در نهادهای بسته، انضباط معنوی.']},
+ Ra:{fa:'راهو',sa:'راهو',en:'Rahu',ab:'را',hex:'#a07cff',type:7,kw:'عطش، وسوسه، نوآوری، بیگانه، توهم',short:'عطش و جاه‌طلبی',nat:'سایه‌ای بدشگون',day:'ـ',gem:'عقیق هسونیت',
+  own:[],ex:1,exd:20,fr:['Me','Ve','Sa'],en_:['Su','Mo','Ma'],yrs:18,asp:[5,9],
+  retro:'راهو و کتو همیشه برگشتی‌اند؛ این حالت طبیعی آن‌هاست و معنای ویژه‌ای ندارد.',
+  dasha:'دوره‌ی جاه‌طلبی، تغییرات ناگهانی، خارج و تکنولوژی؛ اوج‌ها و سردرگمی‌های غیرمنتظره.',
+  house:['شخصیت غیرمتعارف، عطش هویت.','ثروت از راه غیرمعمول، گفتار اغراق‌آمیز.','جسارت عالی، رسانه، تکنولوژی.','بی‌قراری در خانه، جابه‌جایی.','ذهن نوآور، عشق غیرمعمول.','غلبه بر دشمن؛ عالی برای رقابت.','شریک خارجی یا متفاوت.','علوم پنهان، تحولات ناگهانی.','باورهای غیرسنتی، سفر به خارج.','جاه‌طلبی شدید، شهرت ناگهانی.','بهترین جایگاه راهو: درآمد زیاد و شبکه‌ی گسترده.','خارج، خواب‌های عجیب، هزینه‌های پنهان.']},
+ Ke:{fa:'کتو',sa:'کتو',en:'Ketu',ab:'کت',hex:'#ff8a3d',type:8,kw:'رهایی، معنویت، جدایی، شهود، گذشته',short:'رهایی و شهود',nat:'سایه‌ای بدشگون',day:'ـ',gem:'چشم گربه',
+  own:[],ex:7,exd:20,fr:['Ma','Ju'],en_:['Su','Mo'],yrs:7,asp:[5,9],
+  retro:'راهو و کتو همیشه برگشتی‌اند؛ این حالت طبیعی آن‌هاست و معنای ویژه‌ای ندارد.',
+  dasha:'دوره‌ی درون‌گرایی، جدایی از وابستگی‌ها و بیداری معنوی؛ اتفاق‌های ناگهانی و پایان‌ها.',
+  house:['درون‌گرا و شهودی؛ بی‌اعتنا به ظاهر.','بی‌علاقگی به مال، گفتار کوتاه.','شجاعت بی‌ادعا.','فاصله‌ی عاطفی از خانه؛ جستجوی آرامش درونی.','هوش شهودی، فاصله با فرزند.','شفا، غلبه بر دشمن.','فاصله در رابطه، شریک معنوی.','عرفان، تجربه‌های فراحسی.','معنویت شخصی، تردید در آیین رسمی.','تغییر مسیر شغلی، کار بی‌نام‌ونشان.','بی‌علاقگی به سود؛ دوستان کم اما خاص.','بهترین جایگاه کتو: رهایی، مدیتیشن، موکشا.']}
+};
+var ORDER = ['Su','Mo','Ma','Me','Ju','Ve','Sa','Ra','Ke'];
+var SIGNS = [
+ {fa:'حمل',sa:'مِشا',en:'Aries',el:'آتش',q:'متحرک',lord:'Ma',kw:'شروع، شجاعت، شتاب'},
+ {fa:'ثور',sa:'ورِشابا',en:'Taurus',el:'خاک',q:'ثابت',lord:'Ve',kw:'ثبات، لذت، ثروت'},
+ {fa:'جوزا',sa:'میتونا',en:'Gemini',el:'هوا',q:'دوگانه',lord:'Me',kw:'ارتباط، کنجکاوی، دوگانگی'},
+ {fa:'سرطان',sa:'کارکا',en:'Cancer',el:'آب',q:'متحرک',lord:'Mo',kw:'احساس، خانه، مراقبت'},
+ {fa:'اسد',sa:'سیمها',en:'Leo',el:'آتش',q:'ثابت',lord:'Su',kw:'افتخار، رهبری، نمایش'},
+ {fa:'سنبله',sa:'کانیا',en:'Virgo',el:'خاک',q:'دوگانه',lord:'Me',kw:'دقت، خدمت، تحلیل'},
+ {fa:'میزان',sa:'تولا',en:'Libra',el:'هوا',q:'متحرک',lord:'Ve',kw:'تعادل، رابطه، زیبایی'},
+ {fa:'عقرب',sa:'ورِشچیکا',en:'Scorpio',el:'آب',q:'ثابت',lord:'Ma',kw:'عمق، راز، دگرگونی'},
+ {fa:'قوس',sa:'دانو',en:'Sagittarius',el:'آتش',q:'دوگانه',lord:'Ju',kw:'باور، آزادی، سفر'},
+ {fa:'جدی',sa:'ماکارا',en:'Capricorn',el:'خاک',q:'متحرک',lord:'Sa',kw:'جاه‌طلبی، انضباط، ساختار'},
+ {fa:'دلو',sa:'کومبها',en:'Aquarius',el:'هوا',q:'ثابت',lord:'Sa',kw:'نوآوری، جمع، انسان‌دوستی'},
+ {fa:'حوت',sa:'مینا',en:'Pisces',el:'آب',q:'دوگانه',lord:'Ju',kw:'خیال، شفقت، معنویت'}
+];
+var HOUSES = [
+ {sa:'تنو',kw:'بدن، خود، ظاهر، سلامت، مسیر کلی زندگی'},
+ {sa:'دانا',kw:'ثروت، خانواده، گفتار، غذا، ارزش‌ها'},
+ {sa:'ساهاجا',kw:'شجاعت، خواهر و برادر کوچک، مهارت، ارتباط'},
+ {sa:'سوکا',kw:'مادر، خانه، آرامش، ملک، وسیله‌ی نقلیه'},
+ {sa:'پوترا',kw:'فرزند، خلاقیت، هوش، عشق، کارمای خوب گذشته'},
+ {sa:'ریپو',kw:'دشمن، بیماری، بدهی، خدمت، رقابت'},
+ {sa:'کالاترا',kw:'ازدواج، شریک، قرارداد، مردم'},
+ {sa:'آیوس',kw:'عمر، دگرگونی، راز، ارث، علوم پنهان'},
+ {sa:'دارما',kw:'بخت، پدر و استاد، باور، سفر دور'},
+ {sa:'کارما',kw:'شغل، شهرت، جایگاه اجتماعی، عمل'},
+ {sa:'لابا',kw:'درآمد، آرزو، دوستان، برادر بزرگ'},
+ {sa:'ویایا',kw:'هزینه، رهایی، خارج، خواب، موکشا'}
+];
+function houseTypes(h){ var t=[]; if([1,4,7,10].indexOf(h)>-1) t.push('کندرا'); if([1,5,9].indexOf(h)>-1) t.push('تریکونا'); if([6,8,12].indexOf(h)>-1) t.push('دوستانا'); if([3,6,10,11].indexOf(h)>-1) t.push('اوپاچایا'); if([2,7].indexOf(h)>-1) t.push('ماراکا'); return t; }
+var NAK = [
+ ['اشوینی','Ke','اشوین‌ها (پزشکان آسمانی)','سر اسب','سرعت، شفا، آغاز'],
+ ['بهارانی','Ve','یاما','زهدان','تحمل، تولد و مرگ، مسئولیت'],
+ ['کریتیکا','Su','آگنی','تیغ و شعله','برندگی، پالایش، شجاعت'],
+ ['روهینی','Mo','برهما','ارابه‌ی گاو','زیبایی، باروری، جذابیت'],
+ ['مریگاشیرا','Ma','سوما','سر آهو','جستجو، کنجکاوی، لطافت'],
+ ['آردرا','Ra','رودرا','قطره‌ی اشک','طوفان، دگرگونی، هوش تیز'],
+ ['پوناروسو','Ju','آدیتی','تیردان','بازگشت، امید، تجدید'],
+ ['پوشیا','Sa','بریهاسپاتی','گل و پستان گاو','تغذیه، حمایت، برکت'],
+ ['آشلشا','Me','ناگاها (مارها)','مار چنبره‌زده','رمز، نفوذ، شهود'],
+ ['ماگها','Ke','پیتارها (نیاکان)','تخت شاهی','اقتدار، اصالت، میراث'],
+ ['پوروا پالگونی','Ve','بهاگا','ننو و تخت','لذت، عشق، آسایش'],
+ ['اوتارا پالگونی','Su','آریامان','پایه‌های تخت','تعهد، دوستی، سخاوت'],
+ ['هستا','Mo','ساویتار','دست','مهارت، چاره‌جویی، شوخ‌طبعی'],
+ ['چیترا','Ma','ویشواکارما','مروارید درخشان','طراحی، زیبایی‌آفرینی، درخشش'],
+ ['سواتی','Ra','وایو','جوانه در باد','استقلال، انعطاف، تجارت'],
+ ['ویشاکها','Ju','ایندرا و آگنی','دروازه‌ی پیروزی','هدف‌گرایی، عزم، رقابت'],
+ ['انورادها','Sa','میترا','نیلوفر','دوستی، وفاداری، سازمان‌دهی'],
+ ['جیشتا','Me','ایندرا','گوشواره و چتر','بزرگی، حمایت، قدرت پنهان'],
+ ['مولا','Ke','نیریتی','ریشه‌های بسته','ریشه‌کنی، کاوش، حقیقت'],
+ ['پوروا آشادها','Ve','آپاس (آب‌ها)','بادبزن','شکست‌ناپذیری، پالایش، اقناع'],
+ ['اوتارا آشادها','Su','ویشودِوا','عاج فیل','پیروزی ماندگار، درستکاری'],
+ ['شراوانا','Mo','ویشنو','گوش','شنیدن، یادگیری، ارتباط'],
+ ['دانیشتا','Ma','هشت واسو','طبل','ریتم، ثروت، شهرت'],
+ ['شاتابیشا','Ra','وارونا','دایره‌ی تهی','شفا، راز، استقلال'],
+ ['پوروا بهادراپادا','Ju','آجا اکاپادا','شمشیر','آتش درونی، آرمان، شدت'],
+ ['اوتارا بهادراپادا','Sa','آهیر بودنیا','مار ژرفا','عمق، صبر، خرد'],
+ ['ریواتی','Me','پوشان','ماهی','مراقبت، سفر امن، پایان خوش']
+];
+var DASHA_SEQ = ['Ke','Ve','Su','Mo','Ma','Ra','Ju','Sa','Me'];
+var DIGNITY = {
+ ex:{fa:'اعتلا',cls:'good',t:'در اوج قدرت است؛ بهترین نتایج این سیاره را می‌دهد.'},
+ mt:{fa:'مولاتریکونا',cls:'good',t:'در «دفتر کار» خود است؛ بسیار قوی و کارآمد.'},
+ own:{fa:'خانه‌ی خود',cls:'good',t:'در خانه‌ی خودش است؛ راحت، مطمئن و قوی.'},
+ fr:{fa:'برج دوست',cls:'ok',t:'مهمان دوست است؛ نتایج خوب و روان.'},
+ neu:{fa:'برج خنثی',cls:'mid',t:'در برج خنثی است؛ نتیجه به خانه و همنشین‌ها بستگی دارد.'},
+ en:{fa:'برج دشمن',cls:'warn',t:'در برج دشمن است؛ اصطکاک و تلاش بیشتر.'},
+ de:{fa:'هبوط',cls:'bad',t:'در ضعیف‌ترین حالت است؛ درس‌هایش سخت‌تر است، مگر اینکه هبوطش شکسته شود (نیچا بنگا).'}
+};
+var PAIRS = {
+ 'Su-Me':'بودهادیتیا: هوش درخشان، فصاحت و قدرت تحلیل.',
+ 'Mo-Ju':'خرد عاطفی، آرامش ذهن و محبوبیت.',
+ 'Mo-Ma':'چاندرا-منگالا: جسارت مالی، احساسات تند و پرشور.',
+ 'Ju-Ra':'گورو-چاندالا: باورهای غیرسنتی؛ مراقب استاد یا راهنمای دروغین باش.',
+ 'Su-Sa':'تنش با پدر یا اقتدار؛ مسئولیت سنگین و دیر به ثمر نشستن.',
+ 'Mo-Sa':'ویش یوگا: جدیت و سنگینی عاطفی؛ با کار درونی به بلوغ می‌رسد.',
+ 'Su-Ra':'گرهان (کسوف): ابهام در هویت یا رابطه با پدر؛ عطش دیده شدن.',
+ 'Su-Ke':'گرهان (کسوف): بی‌اعتنایی به منیت، کشش معنوی، تردید به خود.',
+ 'Mo-Ra':'گرهان (خسوف): ذهن مضطرب و پرخیال؛ شهود قوی اما ناآرام.',
+ 'Mo-Ke':'گرهان (خسوف): جدایی عاطفی، حس‌های فراحسی.',
+ 'Ma-Sa':'ترمز و گاز با هم؛ خطر حادثه، اما پشتکار آهنین.',
+ 'Ve-Sa':'وفاداری و هنر ماندگار؛ عشقی که دیر اما محکم می‌آید.',
+ 'Ma-Ve':'جاذبه‌ی پرشور و هنر پرانرژی.',
+ 'Ma-Ra':'آنگاراکا: انرژی انفجاری؛ جسارت بی‌مهار، مراقب خشم باش.',
+ 'Me-Ve':'هنر کلام، ذوق تجاری‌ـهنری.',
+ 'Ju-Ve':'دو استاد ناهمسو: کشمکش میان معنویت و لذت.',
+ 'Sa-Ra':'تأخیرهای کارمایی؛ پشتکار در شرایط سخت.',
+ 'Ma-Ke':'دقت جراحانه، خشم ناگهانی.',
+ 'Su-Ma':'اراده‌ی آتشین و رهبری جنگنده.',
+ 'Ju-Sa':'تعادل خرد و انضباط؛ مسیر حرفه‌ای جدی و اخلاقی.',
+ 'Su-Ju':'شکوه، اخلاق و رهبری محترم.',
+ 'Mo-Me':'ذهن سریع و حساس؛ مراقب پراکندگی فکر باش.',
+ 'Mo-Ve':'لطافت، ذوق هنری و محبوبیت.',
+ 'Su-Ve':'خلاقیت هنری؛ گاهی رقابت میان خود و شریک.',
+ 'Me-Sa':'ذهن ساختارمند و عملی.',
+ 'Ma-Me':'ذهن تیز و زبان برنده.',
+ 'Ma-Ju':'گورو-منگالا: شجاعت اخلاقی، رهبری درستکار.',
+ 'Me-Ju':'دانش و خرد؛ آموزش و مشاوره.',
+ 'Ve-Ra':'لذت‌جویی شدید، هنر نوآورانه.',
+ 'Me-Ra':'ذهن نوآور و فناورانه؛ گاهی فریب‌کار.',
+ 'Ju-Ke':'معنویت عمیق و خرد شهودی.',
+ 'Ve-Ke':'جدایی از لذت‌ها، عشق معنوی.',
+ 'Sa-Ke':'زهد، کار بی‌نام، انضباط معنوی.',
+ 'Me-Ke':'شهود ذهنی، ذهن غیرخطی.',
+ 'Ma-Mo':'',
+ 'Ra-Ke':''
+};
+var YOGA_INFO = {
+ gaja:{fa:'گاجاکساری یوگا',t:'مشتری در کندرا (۱، ۴، ۷، ۱۰) از ماه',m:'خرد، شهرت، احترام و توان غلبه بر مشکلات؛ «فیل و شیر».'},
+ budh:{fa:'بودهادیتیا یوگا',t:'خورشید و عطارد در یک برج',m:'هوش درخشان، فصاحت و موفقیت تحصیلی.'},
+ chma:{fa:'چاندرا-منگالا یوگا',t:'ماه و مریخ در یک برج',m:'جسارت مالی و توان کسب ثروت با تلاش.'},
+ ruch:{fa:'روچاکا یوگا',t:'مریخ در خانه‌ی خود یا اعتلا و در کندرا',m:'یکی از پنج مهاپوروشا: شجاعت، فرماندهی، بدن قوی.'},
+ bhad:{fa:'بهادرا یوگا',t:'عطارد در خانه‌ی خود یا اعتلا و در کندرا',m:'مهاپوروشا: هوش، سخنوری و مهارت تجاری.'},
+ hams:{fa:'هامسا یوگا',t:'مشتری در خانه‌ی خود یا اعتلا و در کندرا',m:'مهاپوروشا: خرد، پاکی، احترام و معنویت.'},
+ malv:{fa:'مالاویا یوگا',t:'زهره در خانه‌ی خود یا اعتلا و در کندرا',m:'مهاپوروشا: زیبایی، هنر، رفاه و ازدواج خوب.'},
+ sasa:{fa:'شاشا یوگا',t:'زحل در خانه‌ی خود یا اعتلا و در کندرا',m:'مهاپوروشا: قدرت سازمانی، رهبری مردم و پشتکار.'},
+ raja:{fa:'راجا یوگا',t:'صاحب کندرا و صاحب تریکونا همنشین یا در نظر متقابل',m:'قدرت، جایگاه و موفقیت، به‌ویژه در دوره‌ی دشای این سیاره‌ها.'},
+ vipa:{fa:'ویپاریتا راجا یوگا',t:'صاحب خانه‌های ۶، ۸ یا ۱۲ در خانه‌های ۶، ۸ یا ۱۲',m:'موفقیت از دل بحران؛ سختی‌ها به سکوی پرش تبدیل می‌شوند.'},
+ neec:{fa:'نیچا بنگا راجا یوگا',t:'سیاره‌ی در هبوط که صاحب برجش در کندرا از طالع یا ماه است',m:'ضعف به قدرت تبدیل می‌شود؛ صعود پس از سختی.'},
+ kema:{fa:'کمادروما یوگا',t:'هیچ سیاره‌ای (جز خورشید و گره‌ها) در خانه‌های دوم و دوازدهم ماه و همراه آن نیست',m:'احساس تنهایی یا بی‌پشتوانگی؛ با سیاره‌های قوی در کندرا خنثی می‌شود.'},
+ guru:{fa:'گورو-چاندالا یوگا',t:'مشتری همنشین راهو',m:'باورهای غیرسنتی؛ هشدار درباره‌ی راهنماهای دروغین.'},
+ grah:{fa:'گرهان یوگا',t:'خورشید یا ماه همنشین راهو یا کتو',m:'آشفتگی در هویت یا ذهن؛ شهود قوی اما ناآرام.'},
+ kala:{fa:'کالا سارپا یوگا',t:'همه‌ی هفت سیاره در یک طرف محور راهو و کتو',m:'زندگی پرنوسان و سرنوشت‌محور؛ اوج‌های بزرگ پس از تلاش.'}
+};
+var CITIES = [
+ ['ایران',[['تهران',35.6892,51.3890],['مشهد',36.2605,59.6168],['اصفهان',32.6546,51.6680],['شیراز',29.5918,52.5837],['تبریز',38.0800,46.2919],['کرج',35.8400,50.9391],['اهواز',31.3183,48.6706],['قم',34.6399,50.8759],['کرمانشاه',34.3142,47.0650],['ارومیه',37.5527,45.0761],['رشت',37.2808,49.5832],['زاهدان',29.4963,60.8629],['کرمان',30.2839,57.0834],['همدان',34.7983,48.5146],['یزد',31.8974,54.3569],['اردبیل',38.2498,48.2933],['بندرعباس',27.1832,56.2666],['اراک',34.0954,49.7013],['زنجان',36.6736,48.4787],['سنندج',35.3219,46.9862],['قزوین',36.2797,50.0049],['خرم‌آباد',33.4878,48.3558],['گرگان',36.8456,54.4393],['ساری',36.5633,53.0601],['بوشهر',28.9234,50.8203],['بیرجند',32.8663,59.2211],['ایلام',33.6374,46.4227],['شهرکرد',32.3256,50.8644],['یاسوج',30.6682,51.5880],['سمنان',35.5729,53.3971],['بجنورد',37.4747,57.3290],['کاشان',33.9850,51.4100],['آمل',36.4696,52.3507],['بابل',36.5383,52.6783],['دزفول',32.3830,48.4010],['نیشابور',36.2133,58.7958],['سبزوار',36.2126,57.6819],['آبادان',30.3392,48.3043],['قشم',26.9581,56.2719],['کیش',26.5578,53.9800]].map(function(c){ return c.concat(['Asia/Tehran']); })],
+ ['جهان',[['دبی',25.2048,55.2708,'Asia/Dubai'],['استانبول',41.0082,28.9784,'Europe/Istanbul'],['لندن',51.5074,-0.1278,'Europe/London'],['پاریس',48.8566,2.3522,'Europe/Paris'],['برلین',52.52,13.405,'Europe/Berlin'],['هامبورگ',53.5511,9.9937,'Europe/Berlin'],['آمستردام',52.3676,4.9041,'Europe/Amsterdam'],['استکهلم',59.3293,18.0686,'Europe/Stockholm'],['وین',48.2082,16.3738,'Europe/Vienna'],['رم',41.9028,12.4964,'Europe/Rome'],['مسکو',55.7558,37.6173,'Europe/Moscow'],['ایروان',40.1792,44.4991,'Asia/Yerevan'],['باکو',40.4093,49.8671,'Asia/Baku'],['کابل',34.5553,69.2075,'Asia/Kabul'],['هرات',34.3482,62.1997,'Asia/Kabul'],['دوشنبه',38.5598,68.7870,'Asia/Dushanbe'],['بغداد',33.3152,44.3661,'Asia/Baghdad'],['دوحه',25.2854,51.5310,'Asia/Qatar'],['دهلی',28.6139,77.2090,'Asia/Kolkata'],['بمبئی',19.0760,72.8777,'Asia/Kolkata'],['کوالالامپور',3.1390,101.6869,'Asia/Kuala_Lumpur'],['توکیو',35.6762,139.6503,'Asia/Tokyo'],['سیدنی',-33.8688,151.2093,'Australia/Sydney'],['ملبورن',-37.8136,144.9631,'Australia/Melbourne'],['تورنتو',43.6532,-79.3832,'America/Toronto'],['ونکوور',49.2827,-123.1207,'America/Vancouver'],['نیویورک',40.7128,-74.0060,'America/New_York'],['لس‌آنجلس',34.0522,-118.2437,'America/Los_Angeles']]]
+];
+
+var FA='۰۱۲۳۴۵۶۷۸۹';
+function fa(x){ return String(x).replace(/\d/g,function(d){return FA[d];}); }
+/* ===== منطق چارت: جایگاه‌ها، شأن، نظرها، دشا، یوگاها ===== */
+var NAKLEN = 40/3, YEAR_MS = 365.2425*86400000;
+function signOf(l){ return Math.floor(l/30)%12; }
+function hasArr(a,x){ return a && a.indexOf(x)>-1; }
+function dignityOf(b, sign, deg){
+  var g = G[b];
+  if(g.ex===sign) return 'ex';
+  if((g.ex+6)%12===sign) return 'de';
+  if(g.mt && g.mt[0]===sign && deg>=g.mt[1] && deg<g.mt[2]) return 'mt';
+  if(hasArr(g.own,sign)) return 'own';
+  var lord = SIGNS[sign].lord;
+  if(lord===b) return 'own';
+  if(hasArr(g.fr,lord)) return 'fr';
+  if(hasArr(g.en_,lord)) return 'en';
+  return 'neu';
+}
+var COMB = {Mo:12,Ma:17,Me:14,Ju:11,Ve:10,Sa:15};
+function angDist(a,b){ var d=Math.abs(a-b)%360; return d>180?360-d:d; }
+function aspectsFrom(b, house){
+  var list = [7].concat(G[b].asp||[]);
+  return list.map(function(n){ return {n:n, h:((house-1+n-1)%12)+1}; });
+}
+function buildChart(utcMs, lat, lon){
+  var pos = Astro.compute(utcMs, lat, lon);
+  var asc = pos.As.sid, lag = signOf(asc);
+  var C = {utc:utcMs, lat:lat, lon:lon, ayan:pos.ayanamsa, lagna:{sid:asc, sign:lag, deg:asc%30, nak:Math.floor(asc/NAKLEN), pada:Math.floor((asc%NAKLEN)/(NAKLEN/4))+1, d9:Math.floor(asc/(10/3))%12, cusp:nearCusp(asc%30, ASC_MARGIN)}, P:{}, houses:[]};
+  for(var h=1;h<=12;h++) C.houses.push({n:h, sign:(lag+h-1)%12, occ:[], aspBy:[]});
+  ORDER.forEach(function(b){
+    var p = pos[b], s = signOf(p.sid), deg = p.sid%30, house = ((s-lag+12)%12)+1;
+    var o = {id:b, sid:p.sid, sign:s, deg:deg, retro:p.retro, speed:p.speed, house:house,
+      nak:Math.floor(p.sid/NAKLEN), pada:Math.floor((p.sid%NAKLEN)/(NAKLEN/4))+1, d9:Math.floor(p.sid/(10/3))%12,
+      dig:dignityOf(b,s,deg), cusp:nearCusp(deg, cuspMargin(p.speed))};
+    o.varg = o.d9===s;
+    if(COMB[b]){ var orb = COMB[b]; if(b==='Me'&&p.retro) orb=12; if(b==='Ve'&&p.retro) orb=8; o.comb = angDist(p.sid,pos.Su.sid) < orb; }
+    o.asp = aspectsFrom(b, house);
+    C.P[b] = o; C.houses[house-1].occ.push(b);
+  });
+  ORDER.forEach(function(b){ C.P[b].asp.forEach(function(a){ C.houses[a.h-1].aspBy.push({by:b,n:a.n}); }); });
+  // روابط میان سیاره‌ها
+  C.conj = []; C.aspects = [];
+  for(var i=0;i<ORDER.length;i++) for(var j=i+1;j<ORDER.length;j++){
+    var a=ORDER[i], b=ORDER[j];
+    if(C.P[a].house===C.P[b].house && !((a==='Ra'&&b==='Ke'))) C.conj.push([a,b]);
+  }
+  ORDER.forEach(function(a){
+    C.P[a].asp.forEach(function(as){
+      C.houses[as.h-1].occ.forEach(function(b){ if(b!==a) C.aspects.push({from:a,to:b,n:as.n}); });
+    });
+  });
+  C.aspects.forEach(function(x){ x.mutual = C.aspects.some(function(y){ return y.from===x.to && y.to===x.from; }); });
+  C.dasha = buildDasha(C.P.Mo.sid, utcMs);
+  C.yogas = findYogas(C);
+  return C;
+}
+/* ===== لب مرز برج =====
+   خطای موتور زیر ۰٫۰۵ درجه است (تست‌ها)، اما ساعت تولد معمولاً تا ۵ دقیقه گرد می‌شود.
+   حاشیه = ۰٫۱ درجه + مسافتی که جسم در ۵ دقیقه می‌رود. طالع در ۵ دقیقه حدود ۱٫۲۵ درجه جابه‌جا می‌شود. */
+var CUSP_MIN = 5, ASC_MARGIN = 1.5;
+function cuspMargin(speedPerDay){ return 0.1 + Math.abs(speedPerDay||0)*CUSP_MIN/1440; }
+function nearCusp(deg, margin){ return deg < margin ? -1 : (30-deg) < margin ? 1 : 0; } /* ۱-: نزدیک برج قبل، ۱: نزدیک برج بعد */
+function lordOfHouse(C, h){ return SIGNS[C.houses[h-1].sign].lord; }
+function buildDasha(moonSid, birth){
+  var idx = Math.floor(moonSid/NAKLEN), lord = NAK[idx][1], frac = (moonSid%NAKLEN)/NAKLEN;
+  var k = DASHA_SEQ.indexOf(lord), start = birth - frac*G[lord].yrs*YEAR_MS, list = [];
+  for(var i=0;i<10;i++){
+    var L = DASHA_SEQ[(k+i)%9], len = G[L].yrs*YEAR_MS, md = {lord:L, start:start, end:start+len, sub:[]};
+    var s2 = start, k2 = DASHA_SEQ.indexOf(L);
+    for(var j=0;j<9;j++){ var A = DASHA_SEQ[(k2+j)%9], l2 = G[L].yrs*G[A].yrs/120*YEAR_MS; md.sub.push({lord:A, start:s2, end:s2+l2}); s2 += l2; }
+    list.push(md); start += len;
+    if(start > birth + 121*YEAR_MS) break;
+  }
+  return {list:list, balance:(1-frac)*G[lord].yrs, first:lord};
+}
+function findYogas(C){
+  var P = C.P, Y = [], kendra=[1,4,7,10];
+  function rel(a,b){ return ((P[b].sign-P[a].sign+12)%12)+1; }
+  function add(id, who, extra){ Y.push({id:id, who:who||[], extra:extra||''}); }
+  if(hasArr(kendra, rel('Mo','Ju'))) add('gaja',['Ju','Mo']);
+  if(P.Su.sign===P.Me.sign) add('budh',['Su','Me']);
+  if(P.Mo.sign===P.Ma.sign) add('chma',['Mo','Ma']);
+  [['Ma','ruch'],['Me','bhad'],['Ju','hams'],['Ve','malv'],['Sa','sasa']].forEach(function(x){
+    var p=P[x[0]]; if((p.dig==='own'||p.dig==='mt'||p.dig==='ex') && hasArr(kendra,p.house)) add(x[1],[x[0]]);
+  });
+  // راجا یوگا
+  var kl = {}, tl = {}, seen = {};
+  [1,4,7,10].forEach(function(h){ kl[lordOfHouse(C,h)] = (kl[lordOfHouse(C,h)]||[]).concat(h); });
+  [1,5,9].forEach(function(h){ tl[lordOfHouse(C,h)] = (tl[lordOfHouse(C,h)]||[]).concat(h); });
+  Object.keys(kl).forEach(function(a){
+    if(tl[a] && kl[a].some(function(h){return h!==1;}) && tl[a].some(function(h){return h!==1;})) {
+      if(!seen[a]){ seen[a]=1; add('raja',[a],I18L('یوگاکارکا: '+G[a].fa+' هم صاحب کندرا ('+kl[a].filter(function(h){return h!==1;}).map(fa).join('، ')+') است هم صاحب تریکونا ('+tl[a].filter(function(h){return h!==1;}).map(fa).join('، ')+').', 'Yogakaraka: '+G[a].fa+' rules both a kendra ('+kl[a].filter(function(h){return h!==1;}).map(fa).join('، ')+') and a trikona ('+tl[a].filter(function(h){return h!==1;}).map(fa).join('، ')+').')); }
+    }
+    Object.keys(tl).forEach(function(b){
+      if(a===b) return; var key=[a,b].sort().join();
+      if(seen[key]) return;
+      var conj = P[a].house===P[b].house;
+      var mut = P[a].asp.some(function(x){return x.h===P[b].house;}) && P[b].asp.some(function(x){return x.h===P[a].house;});
+      var exch = SIGNS[P[a].sign].lord===b && SIGNS[P[b].sign].lord===a;
+      if(conj||mut||exch){ seen[key]=1; add('raja',[a,b], G[a].fa+' (صاحب '+kl[a].map(fa).join('، ')+') و '+G[b].fa+' (صاحب '+tl[b].map(fa).join('، ')+') '+(conj?'همنشین‌اند.':exch?'جای هم را عوض کرده‌اند (پاریوارتانا).':'به هم نظر متقابل دارند.')); }
+    });
+  });
+  // ویپاریتا
+  [6,8,12].forEach(function(h){ var l=lordOfHouse(C,h); if(hasArr([6,8,12],P[l].house)) add('vipa',[l],'صاحب خانه‌ی '+fa(h)+' ('+G[l].fa+') در خانه‌ی '+fa(P[l].house)+'.'); });
+  // نیچا بنگا
+  ORDER.forEach(function(b){
+    if(P[b].dig!=='de' || b==='Ra' || b==='Ke') return;
+    var disp = SIGNS[P[b].sign].lord, exl = ORDER.filter(function(x){ return G[x].ex===P[b].sign && x!=='Ra' && x!=='Ke'; })[0];
+    var ok = [disp, exl].filter(Boolean).some(function(x){ return hasArr(kendra,P[x].house) || hasArr(kendra, rel('Mo',x)); });
+    if(ok) add('neec',[b],G[b].fa+' در هبوط است اما هبوطش شکسته شده.');
+  });
+  // کمادروما
+  var mh = P.Mo.house, near = [mh, (mh%12)+1, ((mh+10)%12)+1];
+  var any = ['Ma','Me','Ju','Ve','Sa'].some(function(x){ return hasArr(near, P[x].house); });
+  if(!any) add('kema',['Mo']);
+  if(P.Ju.sign===P.Ra.sign || P.Ju.sign===P.Ke.sign) add('guru',['Ju', P.Ju.sign===P.Ra.sign?'Ra':'Ke']);
+  ['Su','Mo'].forEach(function(l){ ['Ra','Ke'].forEach(function(n){ if(P[l].sign===P[n].sign) add('grah',[l,n]); }); });
+  var r = P.Ra.sid, side = ['Su','Mo','Ma','Me','Ju','Ve','Sa'].map(function(x){ return ((P[x].sid - r + 360)%360) < 180; });
+  if(side.every(Boolean) || side.every(function(v){return !v;})) add('kala',['Ra','Ke']);
+  return Y;
+}
+
+/* ===== امتیاز پتانسیل حوزه‌های زندگی (۰ تا ۱۰۰) ===== */
+var BENEF = {Ju:8, Ve:6, Me:4, Mo:4};
+var MALEF = {Sa:1, Ma:1, Ra:1, Ke:1, Su:1};
+var ASP_W = {Ju:6, Ve:3, Me:2, Mo:2, Sa:-4, Ma:-3, Ra:-2, Ke:-2, Su:-1};
+var DIG_W = {ex:12, mt:10, own:9, fr:4, neu:0, en:-5, de:-12};
+var UPA = [3,6,10,11], DUS = [6,8,12], GOODH = [1,4,5,7,9,10];
+var AREAS = [
+ {id:'wealth', fa:'ثروت', h:[2,11,9], k:['Ju','Ve'], y:['gaja','chma','raja','malv'], d:'پول، دارایی، درآمد و انباشت'},
+ {id:'career', fa:'شغل و جایگاه', h:[10,11,1], k:['Su','Sa','Me'], y:['raja','ruch','sasa','bhad','budh'], d:'حرفه، پیشرفت شغلی و موقعیت اجتماعی'},
+ {id:'love', fa:'عشق و ازدواج', h:[7,5,2], k:['Ve','Mo'], y:['malv'], d:'رابطه، همسر، شراکت عاطفی'},
+ {id:'abroad', fa:'مهاجرت و خارج', h:[12,9,7], k:['Ra'], y:[], d:'زندگی در خارج، سفرهای دور، فاصله از زادگاه', custom:'abroad'},
+ {id:'health', fa:'سلامت و بنیه', h:[1,6,8], k:['Su'], y:['ruch'], d:'بنیه‌ی بدنی، انرژی حیاتی و توان بهبود', custom:'health'},
+ {id:'mind', fa:'تحصیل و هوش', h:[4,5,2], k:['Me','Ju'], y:['budh','bhad','hams'], d:'یادگیری، تحصیل و هوش تحلیلی'},
+ {id:'home', fa:'خانه و خانواده', h:[4,2], k:['Mo','Ve'], y:[], d:'آرامش، خانه، ملک و رابطه با خانواده'},
+ {id:'kids', fa:'فرزند و خلاقیت', h:[5,9], k:['Ju'], y:['hams'], d:'فرزند، خلاقیت و بیان شخصی'},
+ {id:'fame', fa:'شهرت', h:[10,11,5], k:['Su','Ra'], y:['raja','gaja'], d:'دیده شدن، اعتبار و نفوذ'},
+ {id:'courage', fa:'شجاعت و رقابت', h:[3,6], k:['Ma'], y:['ruch'], d:'جسارت، پیروزی بر رقیب و پشتکار'},
+ {id:'spirit', fa:'معنویت', h:[9,12,5], k:['Ju','Ke'], y:['hams'], d:'ایمان، شهود و رشد درونی', custom:'spirit'}
+];
+function houseFactors(C, h){
+  var F = [], lord = SIGNS[C.houses[h-1].sign].lord, lp = C.P[lord];
+  var dw = DIG_W[lp.dig]; if(dw) F.push({t:'صاحب خانه‌ی '+fa(h)+' ('+G[lord].fa+') '+DIGNITY[lp.dig].fa, v:dw});
+  var pv = 0, pt = '';
+  if(hasArr(DUS,h) && hasArr(DUS,lp.house)) { pv = 3; pt = 'در دوستانا (ویپاریتا)'; }
+  else if(hasArr(GOODH, lp.house)) { pv = 6; pt = 'در کندرا یا تریکونا'; }
+  else if(lp.house===11) { pv = 5; pt = 'در خانه‌ی سود'; }
+  else if(hasArr(DUS, lp.house)) { pv = -6; pt = 'در خانه‌ی '+fa(lp.house)+' (دوستانا)'; }
+  if(pv) F.push({t:'صاحب خانه‌ی '+fa(h)+' '+pt, v:pv});
+  if(lp.comb) F.push({t:G[lord].fa+' (صاحب '+fa(h)+') محترق', v:-4});
+  C.houses[h-1].occ.forEach(function(b){
+    var v, p = C.P[b];
+    if(BENEF[b]) v = BENEF[b]; else v = hasArr(UPA,h) ? 4 : (b==='Su' ? -3 : -5);
+    if(p.dig==='ex'||p.dig==='own'||p.dig==='mt') v += 3; else if(p.dig==='de') v -= 3;
+    F.push({t:G[b].fa+' در خانه‌ی '+fa(h), v:v});
+  });
+  C.houses[h-1].aspBy.forEach(function(a){
+    var v = ASP_W[a.by]; if(v<0 && hasArr(UPA,h)) v = -1;
+    if(v) F.push({t:I18L('نظر '+G[a.by].fa+' به خانه‌ی '+fa(h), G[a.by].fa+'’s aspect on house '+fa(h)), v:v});
+  });
+  return F;
+}
+function customFactors(C, kind){
+  var P = C.P, F = [], ll = SIGNS[C.lagna.sign].lord;
+  if(kind==='abroad'){
+    if(hasArr([1,7,9,12], P.Ra.house)) F.push({t:'راهو در خانه‌ی '+fa(P.Ra.house), v:8});
+    if(hasArr([9,12], P[ll].house)) F.push({t:'صاحب طالع در خانه‌ی '+fa(P[ll].house), v:7});
+    var l4 = SIGNS[C.houses[3].sign].lord; if(hasArr(DUS, P[l4].house)) F.push({t:'صاحب خانه‌ی ۴ (زادگاه) در خانه‌ی '+fa(P[l4].house), v:5});
+    var l12 = SIGNS[C.houses[11].sign].lord; if(hasArr([1,12], P[l12].house)) F.push({t:'صاحب خانه‌ی ۱۲ در خانه‌ی '+fa(P[l12].house), v:4});
+    if(P.Mo.house===12) F.push({t:'ماه در خانه‌ی ۱۲', v:3});
+    if(SIGNS[C.lagna.sign].q==='متحرک') F.push({t:'طالع در برج متحرک', v:3});
+    var n12 = C.houses[11].occ.length; if(n12) F.push({t:fa(n12)+' سیاره در خانه‌ی ۱۲', v:2*n12});
+  }
+  if(kind==='health'){
+    var lp = P[ll], dw = DIG_W[lp.dig]; if(dw) F.push({t:'صاحب طالع ('+G[ll].fa+') '+DIGNITY[lp.dig].fa, v:dw});
+    if(hasArr(DUS, lp.house)) F.push({t:'صاحب طالع در خانه‌ی '+fa(lp.house), v:-5});
+    ['Sa','Ra','Ke','Ma'].forEach(function(b){ if(P[b].house===1) F.push({t:G[b].fa+' در طالع', v:-3}); });
+  }
+  if(kind==='spirit'){
+    if(P.Ke.house===12) F.push({t:'کتو در خانه‌ی ۱۲ (موکشا)', v:8});
+    if(hasArr([5,9,12], P.Ju.house)) F.push({t:'مشتری در خانه‌ی '+fa(P.Ju.house), v:5});
+    var s12 = C.houses[11].occ.length; if(s12) F.push({t:fa(s12)+' سیاره در خانه‌ی ۱۲', v:2*s12});
+  }
+  return F;
+}
+function karakaFactors(C, b, area){
+  var p = C.P[b], F = [], dw = DIG_W[p.dig];
+  if(dw) F.push({t:'نماینده: '+G[b].fa+' '+DIGNITY[p.dig].fa, v:Math.round(dw*.8)});
+  var goodDus = area==='abroad' || area==='spirit';
+  if(hasArr(GOODH, p.house)) F.push({t:'نماینده: '+G[b].fa+' در خانه‌ی '+fa(p.house), v:3});
+  else if(hasArr(DUS, p.house) && !goodDus) F.push({t:'نماینده: '+G[b].fa+' در خانه‌ی '+fa(p.house), v:-3});
+  if(p.comb) F.push({t:'نماینده: '+G[b].fa+' محترق', v:-3});
+  return F;
+}
+function scoreAreas(C){
+  var yset = {}; C.yogas.forEach(function(y){ yset[y.id] = (yset[y.id]||0)+1; });
+  return AREAS.map(function(A){
+    var F = [], W = [1,.6,.4];
+    A.h.forEach(function(h,i){ houseFactors(C,h).forEach(function(f){ F.push({t:f.t, v:Math.round(f.v*W[i]*10)/10}); }); });
+    A.k.forEach(function(b){ F = F.concat(karakaFactors(C,b,A.id)); });
+    if(A.custom) F = F.concat(customFactors(C, A.custom));
+    A.y.forEach(function(y){ if(yset[y]) F.push({t:YOGA_INFO[y].fa, v:6*Math.min(2,yset[y])}); });
+    var sum = F.reduce(function(a,f){ return a+f.v; }, 0);
+    var score = Math.round(50 + 46*Math.tanh(sum/38));
+    F.sort(function(a,b){ return Math.abs(b.v)-Math.abs(a.v); });
+    return {a:A, score:Math.max(3,Math.min(98,score)), F:F.filter(function(f){ return f.v; })};
+  });
+}
+function scoreBand(s){
+  if(s>=75) return ['پتانسیل بالا','این حوزه در چارت پشتیبانی قوی دارد؛ با تلاش کم‌تر نتیجه‌ی بیشتری می‌دهد.'];
+  if(s>=58) return ['خوب','زمینه‌ی مساعدی هست؛ با تمرکز و زمان‌بندی درست رشد می‌کند.'];
+  if(s>=42) return ['متوسط','نتیجه بیشتر به تلاش و انتخاب‌های خودت بستگی دارد تا به چارت.'];
+  return ['چالشی','جای کار و رشد زیادی دارد؛ درس‌های این حوزه با صبر و آگاهی حل می‌شوند.'];
+}
+
+/* ===== ساعت محلی ← UTC (با تاریخچه‌ی منطقه‌های زمانی IANA) ===== */
+function tzOffset(tz, ms){
+  var f = new Intl.DateTimeFormat('en-US',{timeZone:tz,hourCycle:'h23',year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'numeric',second:'numeric'});
+  var o = {}; f.formatToParts(new Date(ms)).forEach(function(p){ o[p.type]=p.value; });
+  var asUTC = Date.UTC(+o.year, +o.month-1, +o.day, +o.hour%24, +o.minute, +o.second);
+  return (asUTC - ms)/60000;
+}
+function localToUTC(y,mo,d,h,mi,tz){
+  var guess = Date.UTC(y,mo-1,d,h,mi), off = tzOffset(tz,guess), utc = guess - off*60000, off2 = tzOffset(tz,utc);
+  if(off2!==off) utc = guess - off2*60000;
+  return {utc:utc, off:tzOffset(tz,utc)};
+}
+
+</script>
+<script>
+(function(){
+'use strict';
+var $ = function(s,el){ return (el||document).querySelector(s); };
+var $$ = function(s,el){ return Array.prototype.slice.call((el||document).querySelectorAll(s)); };
+var RM = false; try{ RM = matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+var root = document.documentElement;
+function lay(){ return root.dataset.layout; }
+function dms(x){ var d = Math.floor(x), m = Math.floor((x-d)*60); return '\u2066'+fa(d)+'°'+fa(m<10?'0'+m:m)+'′\u2069'; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+var ORD = {7:'هفتم',4:'چهارم',8:'هشتم',5:'پنجم',9:'نهم',3:'سوم',10:'دهم'};
+var fmtJ = null, fmtJm = null;
+try{ fmtJ = new Intl.DateTimeFormat('fa-IR-u-ca-persian',{year:'numeric',month:'long',day:'numeric',timeZone:'UTC'}); fmtJm = new Intl.DateTimeFormat('fa-IR-u-ca-persian',{year:'numeric',month:'long',timeZone:'UTC'}); }catch(e){}
+var fmtE = null, fmtEm = null; try{ fmtE = new Intl.DateTimeFormat('en-GB',{year:'numeric',month:'short',day:'numeric',timeZone:'UTC'}); fmtEm = new Intl.DateTimeFormat('en-GB',{year:'numeric',month:'short',timeZone:'UTC'}); }catch(e){}
+function jDate(ms, short){ var d = new Date(ms); if(window.__LANG==='en' && fmtE) return (short?fmtEm:fmtE).format(d); if(fmtJ) return (short?fmtJm:fmtJ).format(d); return fa(d.getUTCFullYear()+'/'+(d.getUTCMonth()+1)); }
+
+/* ================= آسمان ================= */
+var sky = $('#sky'), sctx = sky.getContext('2d'), stars = [], milky = null, shoot = null, SW=0, SH=0;
+function vnoise(){
+  var p = new Uint8Array(512), i; for(i=0;i<256;i++) p[i]=i;
+  var s=1337; for(i=255;i>0;i--){ s=(s*16807)%2147483647; var j=s%(i+1), t=p[i]; p[i]=p[j]; p[j]=t; }
+  for(i=0;i<256;i++) p[i+256]=p[i];
+  function f(x,y){ var X=Math.floor(x)&255, Y=Math.floor(y)&255; x-=Math.floor(x); y-=Math.floor(y);
+    var u=x*x*(3-2*x), v=y*y*(3-2*y), a=p[p[X]+Y]/255, b=p[p[X+1]+Y]/255, c=p[p[X]+Y+1]/255, d=p[p[X+1]+Y+1]/255;
+    return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v; }
+  return function(x,y){ var v=0,a=.5; for(var o=0;o<5;o++){ v+=a*f(x,y); x*=2.03; y*=2.03; a*=.5; } return v; };
+}
+var fbm2 = vnoise();
+function buildMilky(){
+  var w = 300, h = 200, c = document.createElement('canvas'); c.width=w; c.height=h;
+  var x = c.getContext('2d'), img = x.createImageData(w,h), D = img.data;
+  for(var j=0;j<h;j++) for(var i=0;i<w;i++){
+    var u=i/w, v=j/h, band = Math.abs((v-0.18) - (u*0.62)) ;
+    var n = fbm2(u*6, v*6), n2 = fbm2(u*14+5, v*14+3);
+    var core = Math.exp(-band*band*38) * (0.55+0.9*n);
+    var dust = Math.max(0, n2-0.52)*2.2*Math.exp(-band*band*90);
+    var neb1 = Math.exp(-((u-.82)*(u-.82)+(v-.72)*(v-.72))*22)*(.6+.6*n);
+    var neb2 = Math.exp(-((u-.12)*(u-.12)+(v-.82)*(v-.82))*30)*(.5+.6*n2);
+    var k=(j*w+i)*4, a = Math.min(1, core*0.75 - dust*0.6 + neb1*.45 + neb2*.35);
+    var warm = Math.exp(-((u-.45)*(u-.45))*14);
+    D[k]   = 120*core + 150*warm*core + 60*neb1 + 30*neb2;
+    D[k+1] = 110*core + 110*warm*core + 30*neb1 + 70*neb2;
+    D[k+2] = 210*core + 60*warm*core + 160*neb1 + 150*neb2;
+    D[k+3] = Math.max(0,a)*255*0.55;
+  }
+  x.putImageData(img,0,0); return c;
+}
+function sizeSky(){
+  var dpr = Math.min(devicePixelRatio||1, 1.5); SW = innerWidth; SH = innerHeight;
+  sky.width = SW*dpr; sky.height = SH*dpr; sctx.setTransform(dpr,0,0,dpr,0,0);
+  stars = []; var n = Math.round(SW*SH/2600), s = 99;
+  function r(){ s=(s*16807)%2147483647; return s/2147483647; }
+  for(var i=0;i<n;i++){ var z=r(); stars.push({x:r()*SW, y:r()*SH*1.6, z:z, s:.3+z*z*1.6, ph:r()*6.28, sp:.5+r()*2, c: r()<.08 ? '255,214,160' : r()<.15 ? '170,190,255' : '255,255,255'}); }
+}
+var lastSky = 0;
+function drawSky(t){
+  var sy = window.scrollY || 0;
+  sctx.clearRect(0,0,SW,SH);
+  var g = sctx.createRadialGradient(SW*.7,-SH*.1,0,SW*.7,-SH*.1,SH*1.3);
+  g.addColorStop(0,'rgba(60,40,130,.35)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  sctx.fillStyle = g; sctx.fillRect(0,0,SW,SH);
+  if(milky){ var oy = -(sy*.06 % (SH*.4)); sctx.globalAlpha = .95; sctx.drawImage(milky, -SW*.1, oy - SH*.05, SW*1.2, SH*1.3); sctx.globalAlpha = 1; }
+  for(var i=0;i<stars.length;i++){
+    var st = stars[i], y = (st.y - sy*(0.04+st.z*.12)) % (SH*1.6); if(y<0) y += SH*1.6; if(y>SH) continue;
+    var a = (.35+.65*st.z) * (RM ? 1 : (.65+.35*Math.sin(t*.001*st.sp+st.ph)));
+    sctx.fillStyle = 'rgba('+st.c+','+a.toFixed(3)+')';
+    sctx.beginPath(); sctx.arc(st.x, y, st.s, 0, 6.283); sctx.fill();
+    if(st.s>1.5){ sctx.fillStyle='rgba('+st.c+','+(a*.15).toFixed(3)+')'; sctx.beginPath(); sctx.arc(st.x,y,st.s*3.2,0,6.283); sctx.fill(); }
+  }
+  if(!RM){
+    if(!shoot && Math.random()<.004) shoot = {x:Math.random()*SW, y:Math.random()*SH*.5, vx:-(6+Math.random()*6), vy:3+Math.random()*3, life:1};
+    if(shoot){
+      var s = shoot, gr = sctx.createLinearGradient(s.x, s.y, s.x - s.vx*14, s.y - s.vy*14);
+      gr.addColorStop(0,'rgba(255,255,255,'+s.life+')'); gr.addColorStop(1,'rgba(255,255,255,0)');
+      sctx.strokeStyle = gr; sctx.lineWidth = 1.4; sctx.beginPath(); sctx.moveTo(s.x,s.y); sctx.lineTo(s.x - s.vx*14, s.y - s.vy*14); sctx.stroke();
+      s.x += s.vx; s.y += s.vy; s.life -= .018; if(s.life<=0) shoot = null;
+    }
+  }
+}
+
+/* ================= سیاره‌های سه‌بعدی (WebGL، شیدر اختصاصی) ================= */
+var PCOL = {
+ Su:[[1,.42,.06],[1,.93,.62],[1,.62,.22]], Mo:[[.33,.34,.38],[.88,.88,.86],[.7,.76,.95]], Ma:[[.8,.34,.16],[.33,.13,.07],[1,.45,.3]],
+ Me:[[.42,.4,.38],[.74,.7,.64],[.55,.9,.72]], Ju:[[.95,.87,.72],[.66,.46,.3],[1,.78,.45]], Ve:[[1,.94,.78],[.86,.72,.5],[1,.9,.86]],
+ Sa:[[.94,.86,.64],[.7,.58,.4],[.55,.62,1]], Ra:[[.03,.02,.06],[.5,.3,.85],[.6,.4,1]], Ke:[[.07,.03,.02],[1,.42,.12],[1,.38,.15]]
+};
+var VS = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+var FS = [
+'precision highp float;',
+'uniform vec2 uRes;uniform float uTime,uType,uSeed;uniform vec3 uC1,uC2,uC3;',
+'float hash(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}',
+'float noise(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);',
+' return mix(mix(mix(hash(i),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),',
+'  mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}',
+'float fbm(vec3 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.03+vec3(1.7,9.2,3.1);a*=.5;}return v;}',
+'vec3 rY(vec3 v,float a){float c=cos(a),s=sin(a);return vec3(c*v.x+s*v.z,v.y,-s*v.x+c*v.z);}',
+'vec3 rX(vec3 v,float a){float c=cos(a),s=sin(a);return vec3(v.x,c*v.y-s*v.z,s*v.y+c*v.z);}',
+'vec3 rZ(vec3 v,float a){float c=cos(a),s=sin(a);return vec3(c*v.x-s*v.y,s*v.x+c*v.y,v.z);}',
+'void main(){',
+' vec2 p=gl_FragCoord.xy/uRes*2.-1.;int T=int(uType+.5);',
+' float R=T==6?.44:(T==0?.58:(T>=7?.52:.64));float px=2.5/uRes.x;float d=length(p);',
+' float tilt=T==6?.42:(T==4?.06:.25);float view=T==6?.36:.2;',
+' float sp=T==0?.05:(T==4?.24:(T==6?.2:(T==1?.05:(T==5?.035:(T>=7?.07:.11)))));float spin=uTime*sp+uSeed;',
+' vec3 L=normalize(vec3(-.55,.48,.7));vec4 col=vec4(0.);float zs=-9.;',
+' if(d<R+px){',
+'  float dd=min(d,R);vec3 n=vec3(p/R,sqrt(max(0.,1.-dd*dd/(R*R))));zs=n.z*R;',
+'  vec3 q=rY(rX(rZ(n,tilt),view),spin);vec3 base;',
+'  if(T==0){float f=fbm(q*5.+vec3(0.,uTime*.07,0.));float g=fbm(q*15.-uTime*.04);base=mix(uC1,uC2,smoothstep(.3,.9,f*.75+g*.45));}',
+'  else if(T==1){float m=smoothstep(.42,.62,fbm(q*1.8+uSeed));float f=fbm(q*6.);float c=noise(q*16.);base=mix(uC2,uC1,m*.8)*(.78+.38*f)*(1.-.18*smoothstep(.62,.72,c))+.07*smoothstep(.74,.8,c);}',
+'  else if(T==2){float dk=smoothstep(.45,.7,fbm(q*2.3+3.));float f=fbm(q*7.);base=mix(uC1,uC2,dk)*(.72+.48*f);base=mix(base,vec3(.96,.94,.92),smoothstep(.84,.92,abs(q.y)));}',
+'  else if(T==3){float f=fbm(q*5.);float c=noise(q*13.);base=mix(uC1,uC2,f)*(.82+.3*smoothstep(.55,.7,c))*(1.-.22*smoothstep(.7,.8,noise(q*24.)));}',
+'  else if(T==4||T==6){float w=fbm(q*vec3(2.,7.,2.)+uSeed);float b=q.y*(T==4?9.:6.)+w*(T==4?1.9:.9);float s=.5+.5*sin(b*3.1416);base=mix(uC1,uC2,s)*(.88+.24*fbm(q*vec3(4.,18.,4.)));',
+'   if(T==4){vec3 c0=normalize(vec3(.75,-.33,.55));float e=length((q-c0)*vec3(1.,2.3,1.));base=mix(base,uC3*.82,smoothstep(.24,.12,e));}}',
+'  else if(T==5){vec3 w=q*2.4;float f=fbm(w+vec3(fbm(w*1.6+uTime*.03)*1.7));base=mix(uC2,uC1,f);}',
+'  else if(T==7){float f=fbm(q*3.+vec3(uTime*.06));base=uC1+uC2*.22*f*f;}',
+'  else{float v=fbm(q*3.6);float vein=smoothstep(.46,.5,v)*smoothstep(.54,.5,v);base=uC1+uC2*(vein*1.5+.05*fbm(q*9.));}',
+'  float ndl=dot(n,L);float lit=smoothstep(-.22,.6,ndl);vec3 c;',
+'  if(T==0)c=base*(.55+.6*pow(n.z,.45));',
+'  else if(T>=7)c=base*(.75+.25*lit);',
+'  else c=base*(.04+1.1*lit)+pow(max(dot(reflect(-L,n),vec3(0,0,1)),0.),22.)*(T==5?.22:.08);',
+'  float fr=pow(1.-n.z,2.4);if(T!=0)c+=uC3*fr*(T>=7?1.1:.55)*(T>=7?1.:(.2+lit));',
+'  float a=smoothstep(R+px,R-px,d);col=vec4(c*a,a);',
+' }',
+' float gd=max(d-R,0.);float gi=T==0?1.15:(T>=7?.95:.32);float gk=T==0?4.2:(T>=7?6.5:12.);',
+' float glow=gi*exp(-gd*gk/R)*smoothstep(1.,.8,d);',
+' if(T==7||T==0){float an=atan(p.y,p.x);glow*=.55+.6*fbm(vec3(an*2.5,gd*5.-uTime*.25,uSeed+3.));}',
+' if(T==7){float ba=uTime*.35;vec2 bp=vec2(cos(ba),sin(ba))*R;glow+=1.6*exp(-length(p-bp)*26.);}',
+' if(T==8){vec2 dir=normalize(vec2(.86,.38));float al=dot(p,dir);float pe=abs(dot(p,vec2(-dir.y,dir.x)));',
+'  if(al>0.)glow+=1.15*exp(-pe*8./(.12+al))*exp(-al*2.)*smoothstep(R*.7,R*1.15,d)*(.6+.5*fbm(vec3(al*6.-uTime*.6,pe*12.,1.)));}',
+' glow=clamp(glow,0.,1.);vec4 gc=vec4(uC3*glow,glow);',
+' vec4 outc=col+gc*(1.-col.a);',
+' if(T==6){vec3 rn=rZ(rX(vec3(0.,1.,0.),-view),-tilt);float hz=-(rn.x*p.x+rn.y*p.y)/rn.z;float r=length(vec3(p,hz))/R;',
+'  if(r>1.22&&r<2.3){float bnd=fbm(vec3(r*16.,uSeed,0.));',
+'   float ra=smoothstep(1.22,1.3,r)*smoothstep(2.3,2.18,r)*(.4+.6*bnd)*(1.-.85*smoothstep(1.9,1.94,r)*smoothstep(2.,1.96,r));',
+'   vec3 rc=mix(uC2,uC1,bnd)*.95;vec4 rg=vec4(rc*ra,ra);',
+'   if(d>R||hz>zs)outc=rg+outc*(1.-ra);else outc=outc+rg*(1.-outc.a);}}',
+' gl_FragColor=outc;',
+'}'].join('\n');
+var GL = (function(){
+  var MAX = 400, cv = document.createElement('canvas'); cv.width = cv.height = MAX;
+  var gl = null; try{ gl = cv.getContext('webgl',{premultipliedAlpha:true, alpha:true, preserveDrawingBuffer:true, antialias:false}); }catch(e){}
+  if(!gl) return null;
+  function sh(t,src){ var s=gl.createShader(t); gl.shaderSource(s,src); gl.compileShader(s); if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){ console.error(gl.getShaderInfoLog(s)); return null;} return s; }
+  var vs = sh(gl.VERTEX_SHADER,VS), fs = sh(gl.FRAGMENT_SHADER,FS); if(!vs||!fs) return null;
+  var pr = gl.createProgram(); gl.attachShader(pr,vs); gl.attachShader(pr,fs); gl.linkProgram(pr);
+  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) return null;
+  gl.useProgram(pr);
+  var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,b); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(pr,'a'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  var U = {}; ['uRes','uTime','uType','uSeed','uC1','uC2','uC3'].forEach(function(n){ U[n]=gl.getUniformLocation(pr,n); });
+  gl.enable(gl.SCISSOR_TEST); gl.clearColor(0,0,0,0);
+  return {MAX:MAX, draw:function(target, id, time){
+    var w = target.clientWidth; if(!w) return;
+    var px = Math.min(MAX, Math.round(w*Math.min(devicePixelRatio||1,2)));
+    if(target.width!==px){ target.width = target.height = px; }
+    gl.viewport(0,0,px,px); gl.scissor(0,0,px,px); gl.clear(gl.COLOR_BUFFER_BIT);
+    var c = PCOL[id];
+    gl.uniform2f(U.uRes,px,px); gl.uniform1f(U.uTime,time); gl.uniform1f(U.uType,G[id].type); gl.uniform1f(U.uSeed,G[id].type*1.37+.5);
+    gl.uniform3fv(U.uC1,c[0]); gl.uniform3fv(U.uC2,c[1]); gl.uniform3fv(U.uC3,c[2]);
+    gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+    var x = target._x || (target._x = target.getContext('2d'));
+    x.clearRect(0,0,px,px); x.drawImage(cv,0,MAX-px,px,px,0,0,px,px);
+  }};
+})();
+function fallbackDraw(target, id){
+  var w = target.clientWidth; if(!w || target._fb===w) return; target._fb = w;
+  var px = Math.round(w*Math.min(devicePixelRatio||1,2)); target.width = target.height = px;
+  var x = target.getContext('2d'), c = PCOL[id], r = px*.32, cx = px/2;
+  function rgb(a,k){ return 'rgb('+a.map(function(v){return Math.round(v*255*(k||1));}).join(',')+')'; }
+  var g = x.createRadialGradient(cx-r*.4,cx-r*.4,r*.1,cx,cx,r); g.addColorStop(0,rgb(c[1])); g.addColorStop(.7,rgb(c[0])); g.addColorStop(1,rgb(c[0],.25));
+  x.shadowColor = rgb(c[2]); x.shadowBlur = px*.12; x.fillStyle = g; x.beginPath(); x.arc(cx,cx,r,0,6.283); x.fill();
+}
+var visible = new Set(), io3d = null;
+if('IntersectionObserver' in window) io3d = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) visible.add(e.target); else visible.delete(e.target); }); }, {rootMargin:'80px'});
+function planetCanvas(id, cls){ return '<canvas class="p3d'+(cls?' '+cls:'')+'" data-p="'+id+'" aria-hidden="true"></canvas>'; }
+function scanPlanets(scope){
+  $$('canvas.p3d', scope||document).forEach(function(c){ if(c._reg) return; c._reg = 1; if(io3d) io3d.observe(c); else visible.add(c); });
+}
+function cleanPlanets(){ visible.forEach(function(c){ if(!document.body.contains(c)) visible.delete(c); }); }
+
+/* ================= هیرو: مدار نُه گراها ================= */
+var hero = $('#hero'), orbsEl = $('#orbs'), orbPath = $('#orbitPath'), heroStart = null, heroPaused = false;
+orbsEl.innerHTML = ORDER.map(function(id){ return '<button type="button" class="orb" data-planet="'+id+'" aria-label="پرونده‌ی '+G[id].fa+'">'+planetCanvas(id)+'<span>'+G[id].fa+'</span></button>'; }).join('');
+var orbs = $$('.orb', orbsEl);
+orbs.forEach(function(o){ o.addEventListener('mouseenter',function(){heroPaused=true;}); o.addEventListener('mouseleave',function(){heroPaused=false;}); o.addEventListener('focus',function(){heroPaused=true;}); o.addEventListener('blur',function(){heroPaused=false;}); });
+var heroAngle = 0, heroGeom = {};
+function heroSize(){
+  var w = hero.clientWidth, h = hero.clientHeight, L = lay();
+  var base = L==='mobile' ? 66 : L==='tv' ? 150 : 112;
+  heroGeom = {w:w, h:h, cx:w/2, cy:h*.5, rx:w*(L==='mobile'?.42:.42), ry:h*(L==='mobile'?.4:.33), base:base};
+  orbs.forEach(function(o){ var c = o.firstChild; c.style.width = c.style.height = base+'px'; });
+  orbPath.setAttribute('viewBox','0 0 '+w+' '+h);
+  orbPath.innerHTML = '<defs><linearGradient id="og" x1="0" x2="1"><stop offset="0" stop-color="#f1d48b" stop-opacity="0"/><stop offset=".5" stop-color="#f1d48b" stop-opacity=".55"/><stop offset="1" stop-color="#a98bff" stop-opacity="0"/></linearGradient></defs>'+
+    '<ellipse cx="'+heroGeom.cx+'" cy="'+heroGeom.cy+'" rx="'+heroGeom.rx+'" ry="'+heroGeom.ry+'" fill="none" stroke="url(#og)" stroke-width="1"/>'+
+    '<ellipse cx="'+heroGeom.cx+'" cy="'+heroGeom.cy+'" rx="'+(heroGeom.rx*.72)+'" ry="'+(heroGeom.ry*.72)+'" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1" stroke-dasharray="2 6"/>';
+}
+function heroFrame(t){
+  if(!heroGeom.w) return;
+  if(heroStart===null) heroStart = t;
+  var k = RM ? 1 : Math.min(1, (t-heroStart)/2600), e = 1-Math.pow(1-k,4);
+  if(!heroPaused && !RM) heroAngle += 0.00012*16;
+  orbs.forEach(function(o,i){
+    var a = heroAngle + i*2*Math.PI/9 + Math.PI/2;
+    var rr = .25 + .75*e, x = heroGeom.cx + Math.cos(a)*heroGeom.rx*rr, y = heroGeom.cy + Math.sin(a)*heroGeom.ry*rr;
+    var depth = (Math.sin(a)+1)/2, s = .55 + .55*depth;
+    var w = heroGeom.base;
+    o.style.transform = 'translate('+(x-w/2)+'px,'+(y-w/2-10)+'px) scale('+s.toFixed(3)+')';
+    o.style.zIndex = depth>.5 ? 30 : 10;
+    o.style.opacity = Math.min(1, e*1.4) * (.45 + .55*depth);
+  });
+}
+
+/* ================= فرم و محاسبه ================= */
+var citySel = $('#fCity'), tzSel = $('#fTz');
+citySel.innerHTML = CITIES.map(function(g,gi){ return '<optgroup label="'+g[0]+'">'+g[1].map(function(c,ci){ return '<option value="'+gi+':'+ci+'">'+c[0]+'</option>'; }).join('')+'</optgroup>'; }).join('') + '<option value="manual">ورود دستی مختصات…</option>';
+var tzs = []; try{ tzs = Intl.supportedValuesOf('timeZone'); }catch(e){}
+if(!tzs.length){ var seen={}; CITIES.forEach(function(g){ g[1].forEach(function(c){ seen[c[3]]=1; }); }); tzs = Object.keys(seen).concat(['UTC']); }
+tzSel.innerHTML = tzs.map(function(z){ return '<option'+(z==='Asia/Tehran'?' selected':'')+'>'+z+'</option>'; }).join('');
+function fmtOff(m){ var s = m<0?'−':'+'; m=Math.abs(m); return 'UTC'+s+fa(Math.floor(m/60))+':'+fa(String(m%60).padStart(2,'0')); }
+var CH = null, style = 'north', div = 1;
+function readForm(){
+  var err = [], dv = $('#fDate').value, tv = $('#fTime').value || '12:00';
+  var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dv), t = /^(\d{1,2}):(\d{2})/.exec(tv);
+  if(!m) err.push('تاریخ تولد را کامل وارد کن.');
+  var lat, lon, tz, place;
+  if(citySel.value==='manual'){
+    lat = parseFloat($('#fLat').value); lon = parseFloat($('#fLon').value); tz = tzSel.value; place = fa(lat.toFixed(2))+'، '+fa(lon.toFixed(2));
+    if(!(lat>=-89 && lat<=89) || !(lon>=-180 && lon<=180)) err.push('مختصات معتبر نیست؛ عرض بین ۸۹- و ۸۹ و طول بین ۱۸۰- و ۱۸۰.');
+  } else { var k = citySel.value.split(':'), c = CITIES[+k[0]][1][+k[1]]; lat=c[1]; lon=c[2]; tz=c[3]; place=c[0]; }
+  $('#ferr').textContent = err.join(' ');
+  if(err.length) return null;
+  var r = localToUTC(+m[1],+m[2],+m[3],+t[1],+t[2],tz);
+  return {utc:r.utc, off:r.off, lat:lat, lon:lon, tz:tz, place:place, name:$('#fName').value.trim(), local:Date.UTC(+m[1],+m[2]-1,+m[3],+t[1],+t[2])};
+}
+function recompute(){
+  var f = readForm(); if(!f) return;
+  CH = buildChart(f.utc, f.lat, f.lon); CH.f = f;
+  $('#jalali').textContent = 'معادل شمسی: ' + jDate(f.local);
+  $('#meta').innerHTML = '<span>ساعت جهانی <b>'+fa(new Date(f.utc).toISOString().slice(11,16))+'</b></span><span>اختلاف <b dir="ltr">'+fmtOff(f.off)+'</b></span><span>آیانامشا <b>'+dms(CH.ayan)+'</b></span><span>'+esc(f.tz)+'</span>';
+  renderAll();
+}
+citySel.addEventListener('change', function(){ $('#manual').hidden = citySel.value!=='manual'; recompute(); });
+['fDate','fTime','fLat','fLon','fTz','fName'].forEach(function(id){ $('#'+id).addEventListener(id==='fTz'?'change':'input', recompute); });
+$('#bform').addEventListener('submit', function(e){ e.preventDefault(); recompute(); });
+
+/* ================= رندر ================= */
+function chipD(p){
+  var d = DIGNITY[p.dig], h = '<span class="chip '+d.cls+'">'+d.fa+'</span>';
+  if(p.retro && p.id!=='Ra' && p.id!=='Ke') h += '<span class="chip r">برگشتی</span>';
+  if(p.comb) h += '<span class="chip warn">محترق</span>';
+  if(p.varg) h += '<span class="chip g">وارگوتاما</span>';
+  if(p.cusp) h += cuspChip(p.cusp, p.cusp>0 ? 30-p.deg : p.deg, (p.sign+p.cusp+12)%12);
+  return h;
+}
+function cuspChip(dir, dist, other){
+  var tip = I18L('فقط '+dms(dist)+' با برج '+SIGNS[other].fa+' فاصله دارد؛ اگر ساعت تولد چند دقیقه جابه‌جا باشد، ممکن است در آن برج بیفتد.',
+                 'Only '+dms(dist)+' from '+SIGNS[other].fa+'; if the birth time is off by a few minutes, it may fall in that sign.');
+  return '<span class="chip warn" title="'+esc(tip).replace(/"/g,'&quot;')+'">'+I18L('لب مرز برج','Near sign edge')+'</span>';
+}
+function pchip(id){ return '<span class="pchip" data-planet="'+id+'" tabindex="0" style="--c:'+G[id].hex+'"><i></i>'+G[id].fa+'</span>'; }
+function renderBig3(){
+  var L = CH.lagna, M = CH.P.Mo, cur = currentDasha();
+  var t = [
+    ['لگنا (طالع)', SIGNS[L.sign].fa, dms(L.deg)+' · '+NAK[L.nak][0]+'، پادای '+fa(L.pada)+(L.cusp ? ' · '+I18L('لب مرز برج؛ به دقیقه‌ی تولد حساس است','near the sign edge; sensitive to the exact birth minute') : ''), SIGNS[L.sign].en, 'h:1'],
+    ['راشی ماه', SIGNS[M.sign].fa, 'برج اصلی در ودیک · '+SIGNS[M.sign].kw, SIGNS[M.sign].en, 'p:Mo'],
+    ['ناکشاترای ماه', NAK[M.nak][0], 'پادای '+fa(M.pada)+' · حاکم: '+G[NAK[M.nak][1]].fa, '', 'n:'+M.nak],
+    ['دشای جاری', cur ? G[cur.md.lord].fa+' / '+G[cur.ad.lord].fa : '—', cur ? 'تا '+jDate(cur.ad.end,true) : '', '', 'd']
+  ];
+  $('#big3').innerHTML = t.map(function(x){ return '<button type="button" class="tile glass tap" data-act="'+x[4]+'"><small>'+x[0]+'</small><b>'+x[1]+'</b><span>'+x[2]+'</span>'+(x[3]?'<span class="lat">'+x[3]+'</span>':'')+'</button>'; }).join('');
+}
+var NORTH = {
+  poly:[[[200,0],[300,100],[200,200],[100,100]],[[0,0],[200,0],[100,100]],[[0,0],[100,100],[0,200]],[[0,200],[100,100],[200,200],[100,300]],[[0,200],[100,300],[0,400]],[[0,400],[100,300],[200,400]],
+        [[200,400],[100,300],[200,200],[300,300]],[[200,400],[300,300],[400,400]],[[400,400],[300,300],[400,200]],[[400,200],[300,300],[200,200],[300,100]],[[400,200],[300,100],[400,0]],[[400,0],[300,100],[200,0]]],
+  c:[[200,96],[100,36],[36,100],[100,196],[36,300],[100,362],[200,300],[300,362],[364,300],[300,196],[364,100],[300,36]],
+  n:[[200,176],[100,84],[84,100],[178,200],[84,300],[100,318],[200,226],[300,318],[316,300],[222,200],[316,100],[300,84]],
+  cap:[3,2,1,3,1,2,3,2,1,3,1,2],
+  /* جای شماره‌ی خانه: نزدیک لبه‌ی بیرونی هر بخش، دور از شماره‌ی برج و سیاره‌ها */
+  h:[[200,44],[150,22],[17,154],[40,204],[17,254],[150,386],[200,364],[250,386],[383,254],[360,204],[383,154],[250,22]]
+};
+var SOUTH_POS = [[1,0],[2,0],[3,0],[3,1],[3,2],[3,3],[2,3],[1,3],[0,3],[0,2],[0,1],[0,0]];
+function tokens(list, cx, cy, cap, big){
+  var h = '', rows = [], i; for(i=0;i<list.length;i+=cap) rows.push(list.slice(i,i+cap));
+  var lh = big?30:26, y0 = cy - (rows.length-1)*lh/2, delay = 0;
+  rows.forEach(function(r,ri){
+    var w = big?44:42, x0 = cx + (r.length-1)*w/2;
+    r.forEach(function(t,ti){
+      var x = x0 - ti*w, y = y0 + ri*lh;
+      h += '<text class="pt" x="'+x+'" y="'+y+'" text-anchor="middle" fill="'+t.c+'" style="animation-delay:'+(1.2+t.i*.08)+'s">'+t.ab+(t.r?'<tspan font-size="9" dy="-6">↺</tspan>':'')+'<tspan class="pd" x="'+x+'" dy="'+(t.r?17:11)+'">'+t.dg+'</tspan></text>';
+    });
+  });
+  return h;
+}
+function chartData(){
+  var lagSign = div===1 ? CH.lagna.sign : CH.lagna.d9, H = [];
+  for(var h=0;h<12;h++) H.push({sign:(lagSign+h)%12, list:[]});
+  if(div===1) H[0].list.push({ab:'لگ',c:'#f1d48b',dg:fa(Math.floor(CH.lagna.deg))+'°',r:false,i:0});
+  ORDER.forEach(function(id,i){
+    var p = CH.P[id], s = div===1 ? p.sign : p.d9, hh = (s - lagSign + 12)%12;
+    H[hh].list.push({ab:G[id].ab, c:G[id].hex, dg: div===1 ? fa(Math.floor(p.deg))+'°' : SIGNS[s].fa, r:p.retro && id!=='Ra' && id!=='Ke', i:i+1});
+  });
+  return {H:H, lag:lagSign};
+}
+function renderChart(){
+  var D = chartData(), h = '<svg viewBox="-6 -6 412 412" role="img" aria-label="چارت '+(div===1?'راشی':'ناوامشا')+'"><defs><linearGradient id="gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff2c9"/><stop offset=".5" stop-color="#e2b660"/><stop offset="1" stop-color="#a98bff"/></linearGradient>'+
+    '<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#glow)">';
+  if(style==='north'){
+    h += '<rect class="ln" pathLength="1" x="0" y="0" width="400" height="400" rx="6"/><path class="ln l2" pathLength="1" d="M0 0L400 400M400 0L0 400"/><path class="ln l3" pathLength="1" d="M200 0L400 200L200 400L0 200Z"/></g>';
+    NORTH.poly.forEach(function(pg,i){ h += '<polygon class="hz'+(i===0?' lag':'')+'" tabindex="0" data-house="'+(i+1)+'" points="'+pg.map(function(p){return p.join(',');}).join(' ')+'"><title>خانه‌ی '+fa(i+1)+'</title></polygon>'; });
+    D.H.forEach(function(x,i){ var n = NORTH.n[i], hp = NORTH.h[i]; h += '<text class="sn" x="'+n[0]+'" y="'+(n[1]+4)+'" text-anchor="middle">'+fa(x.sign+1)+'</text><text class="hn" x="'+hp[0]+'" y="'+hp[1]+'" text-anchor="middle">'+I18L('خ','H')+fa(i+1)+'</text>'; h += tokens(x.list, NORTH.c[i][0], NORTH.c[i][1]+(NORTH.cap[i]===3?0:2), NORTH.cap[i], NORTH.cap[i]===3); });
+  } else {
+    h += '<rect class="ln" pathLength="1" x="0" y="0" width="400" height="400" rx="6"/><path class="ln l2" pathLength="1" d="M100 0V400M300 0V400M0 100H400M0 300H400"/><rect class="ln l3" pathLength="1" x="100" y="100" width="200" height="200"/></g>';
+    var bySign = {}; D.H.forEach(function(x,i){ bySign[x.sign] = {list:x.list, house:i+1}; });
+    for(var s=0;s<12;s++){
+      var pos = SOUTH_POS[s], x0 = pos[0]*100, y0 = pos[1]*100, info = bySign[s];
+      h += '<rect class="hz'+(info.house===1?' lag':'')+'" tabindex="0" data-house="'+info.house+'" x="'+x0+'" y="'+y0+'" width="100" height="100"><title>'+SIGNS[s].fa+'، خانه‌ی '+fa(info.house)+'</title></rect>';
+      h += '<text class="sn" x="'+(x0+94)+'" y="'+(y0+15)+'" text-anchor="start" direction="rtl">'+SIGNS[s].fa+'</text><text class="sn" x="'+(x0+6)+'" y="'+(y0+94)+'" text-anchor="start" direction="ltr">'+fa(info.house)+'</text>';
+      if(info.house===1) h += '<path d="M'+(x0+100)+' '+(y0+20)+'L'+(x0+80)+' '+y0+'" stroke="#f1d48b" stroke-width="1.5"/>';
+      h += tokens(info.list, x0+50, y0+52, 2, false);
+    }
+    var nm = CH.f.name ? esc(CH.f.name) : (div===1?'راشی':'ناوامشا');
+    h += '<text class="ctr t" x="200" y="180" text-anchor="middle">'+nm+'</text><text class="ctr" x="200" y="212" text-anchor="middle">'+(div===1?'چارت راشی D1':'چارت ناوامشا D9')+'</text><text class="ctr" x="200" y="236" text-anchor="middle">'+esc(CH.f.place)+'</text>';
+  }
+  $('#chartSvg').innerHTML = h + '</svg>';
+  $('#chartKey').innerHTML = style==='north'
+    ? I18L('عدد کم‌رنگ = شماره‌ی برج (۱ حمل … ۱۲ حوت) · <b>خ</b> + عدد = شماره‌ی خانه', 'Faint number = sign number (1 Aries … 12 Pisces) · <b>H</b> + number = house number')
+    : I18L('نام برج بالای هر خانه، شماره‌ی خانه پایین آن', 'Sign name at the top of each house, house number at the bottom');
+  $('#legendTitle').textContent = div===1 ? 'جایگاه سیاره‌ها' : 'جایگاه در ناوامشا';
+  $('#legend').innerHTML = '<div class="lg" data-act="h:1" tabindex="0" style="--c:#f1d48b"><i></i><b>لگنا</b><span>'+SIGNS[div===1?CH.lagna.sign:CH.lagna.d9].fa+(div===1?' '+dms(CH.lagna.deg):'')+'</span></div>'+
+    ORDER.map(function(id){ var p = CH.P[id], s = div===1?p.sign:p.d9; return '<div class="lg" data-planet="'+id+'" tabindex="0" style="--c:'+G[id].hex+'"><i></i><b>'+G[id].fa+(p.retro&&id!=='Ra'&&id!=='Ke'?' ↺':'')+'</b><span>'+SIGNS[s].fa+(div===1?' '+dms(p.deg)+' · خانه‌ی '+fa(p.house):'')+'</span></div>'; }).join('');
+}
+function renderPlanets(){
+  $('#pcards').innerHTML = ORDER.map(function(id){
+    var p = CH.P[id];
+    return '<button type="button" class="pcard glass tap" data-planet="'+id+'">'+planetCanvas(id)+
+      '<div><h3>'+G[id].fa+'<em>'+G[id].sa+'</em></h3><div class="pos">'+SIGNS[p.sign].fa+' '+dms(p.deg)+' · خانه‌ی '+fa(p.house)+'</div>'+
+      '<div class="sub">'+NAK[p.nak][0]+'، پادای '+fa(p.pada)+' · ناوامشا: '+SIGNS[p.d9].fa+'</div><div class="chips">'+chipD(p)+'</div></div></button>';
+  }).join('');
+}
+function renderHouses(){
+  $('#hcards').innerHTML = CH.houses.map(function(h){
+    var lord = SIGNS[h.sign].lord;
+    return '<button type="button" class="hcard glass tap" data-act="h:'+h.n+'"><span class="n">'+h.n+'</span><b>'+HOUSES[h.n-1].sa+' · '+SIGNS[h.sign].fa+'</b><small>'+HOUSES[h.n-1].kw.split('، ').slice(0,3).join('، ')+'</small><small>صاحب: '+G[lord].fa+' در خانه‌ی '+fa(CH.P[lord].house)+'</small>'+
+      '<span class="dots">'+h.occ.map(function(b){ return '<i style="--c:'+G[b].hex+'">'+G[b].ab+'</i>'; }).join('')+'</span></button>';
+  }).join('');
+}
+function relText(a,b){
+  var ab = hasArr(G[a].fr,b)?1:hasArr(G[a].en_,b)?-1:0, ba = hasArr(G[b].fr,a)?1:hasArr(G[b].en_,a)?-1:0;
+  if(ab===1 && ba===1) return 'رابطه‌ی طبیعی‌شان دوستانه است؛ همدیگر را تقویت می‌کنند.';
+  if(ab===-1 || ba===-1) return 'رابطه‌ی طبیعی‌شان پرتنش است؛ میان این دو حوزه کشمکش هست.';
+  return 'رابطه‌شان خنثی یا مختلط است؛ نتیجه به برج و خانه بستگی دارد.';
+}
+function pairNote(a,b){ return PAIRS[a+'-'+b] || PAIRS[b+'-'+a] || ''; }
+function conjText(a,b){ var n = pairNote(a,b); return I18L('«'+G[a].short+'» با «'+G[b].short+'» درمی‌آمیزد. ', '“'+G[a].short+'” blends with “'+G[b].short+'”. ')+relText(a,b)+(n?' '+n:''); }
+function aspText(x){ return I18L(G[x.from].fa+' با نظر '+ORD[x.n]+'، «'+G[x.from].short+'» را بر '+G[x.to].fa+' می‌تاباند. ', G[x.from].fa+' casts its '+ORD[x.n]+' aspect, shining “'+G[x.from].short+'” onto '+G[x.to].fa+'. ')+relText(x.from,x.to); }
+function renderAspects(){
+  $('#conj').innerHTML = CH.conj.length ? CH.conj.map(function(c){
+    return '<div class="arow"><div class="who">'+pchip(c[0])+'<span class="arr">همنشین در خانه‌ی '+fa(CH.P[c[0]].house)+'</span>'+pchip(c[1])+'</div><p>'+conjText(c[0],c[1])+'</p></div>';
+  }).join('') : '<p class="arow">در این چارت هیچ دو سیاره‌ای هم‌برج نیستند.</p>';
+  var done = {};
+  $('#drishti').innerHTML = CH.aspects.map(function(x){
+    if(x.mutual){ var k=[x.from,x.to].sort().join(); if(done[k]) return ''; done[k]=1; }
+    return '<div class="arow"><div class="who">'+pchip(x.from)+'<span class="arr">'+(x.mutual?'⇄ نظر متقابل':I18L('← نظر '+ORD[x.n], '→ '+ORD[x.n]+' aspect'))+'</span>'+pchip(x.to)+'</div><p>'+aspText(x)+(x.mutual?' نظر دوطرفه است و این پیوند را پررنگ‌تر می‌کند.':'')+'</p></div>';
+  }).join('') || '<p class="arow">نظری میان سیاره‌ها نیست.</p>';
+}
+function currentDasha(at){
+  var now = at || Date.now(), md = null, ad = null;
+  CH.dasha.list.forEach(function(m){ if(now>=m.start && now<m.end){ md=m; m.sub.forEach(function(a){ if(now>=a.start && now<a.end) ad=a; }); } });
+  return md && ad ? {md:md, ad:ad} : null;
+}
+function renderDasha(){
+  var L = CH.dasha.list, t0 = Math.max(L[0].start, CH.utc), t1 = Math.min(L[L.length-1].end, CH.utc+120*YEAR_MS), span = t1-t0, cur = currentDasha(), now = Date.now();
+  var h = '';
+  L.forEach(function(m){
+    var s = Math.max(m.start,t0), e = Math.min(m.end,t1); if(e<=s) return;
+    var w = (e-s)/span*100;
+    h += '<button type="button" class="seg2'+(cur&&cur.md===m?' cur':'')+'" data-md="'+L.indexOf(m)+'" style="width:'+w+'%;--c:'+G[m.lord].hex+'" title="'+G[m.lord].fa+'">'+(w>5?G[m.lord].fa:'')+(w>8?'<small>'+fa(new Date(s).getUTCFullYear())+'</small>':'')+'</button>';
+  });
+  if(now>t0 && now<t1) h += '<span class="now" style="right:'+((now-t0)/span*100)+'%"></span>';
+  $('#tl').innerHTML = h; $('#tl').style.direction = 'rtl';
+  $('#dlist').innerHTML = L.filter(function(m){ return m.end>CH.utc && m.start<t1; }).map(function(m){
+    var isCur = cur && cur.md===m;
+    return '<details class="md glass'+(isCur?' cur':'')+'" id="md'+L.indexOf(m)+'"'+(isCur?' open':'')+'><summary style="--c:'+G[m.lord].hex+'"><i></i><b>'+I18L('دوره‌ی '+G[m.lord].fa, G[m.lord].fa+' period')+(isCur?'<span class="badge">جاری</span>':'')+'</b><span>'+jDate(Math.max(m.start,CH.utc),true)+' تا '+jDate(m.end,true)+' · '+fa(G[m.lord].yrs)+' سال</span></summary>'+
+      '<div class="body">'+G[m.lord].dasha+'<div class="ads">'+m.sub.map(function(a){ var c = cur && cur.ad===a; return '<div class="ad'+(c?' cur':'')+'"><b>'+G[m.lord].fa+' / '+G[a.lord].fa+'</b>'+jDate(a.start,true)+' تا '+jDate(a.end,true)+'</div>'; }).join('')+'</div></div></details>';
+  }).join('');
+}
+function renderYogas(){
+  var on = CH.yogas, ids = {};
+  on.forEach(function(y){ ids[y.id]=1; });
+  $('#ylist').innerHTML = on.length ? on.map(function(y){
+    var I = YOGA_INFO[y.id];
+    return '<div class="ycard glass"><h3>'+I.fa+'</h3><div class="cond">'+I.t+'</div><p>'+I.m+'</p>'+(y.extra?'<div class="ex">'+y.extra+'</div>':'')+'<div class="who">'+y.who.map(pchip).join('')+'</div></div>';
+  }).join('') : '<div class="ycard glass"><p>هیچ‌کدام از یوگاهای کلاسیک فهرست در این چارت فعال نیست.</p></div>';
+  $('#yoffList').innerHTML = Object.keys(YOGA_INFO).filter(function(k){ return !ids[k]; }).map(function(k){ return '<li><b>'+YOGA_INFO[k].fa+'</b>: '+YOGA_INFO[k].t+'</li>'; }).join('');
+}
+
+function scoreCol(s){ return s>=75?'#7ff0c0':s>=58?'#f1d48b':s>=42?'#ffb37a':'#ff8f8f'; }
+function renderScores(){
+  CH.scores = scoreAreas(CH);
+  var S = CH.scores, n = S.length, cx = 200, cy = 200, R = 135;
+  function pt(i, r){ var a = -Math.PI/2 - i*2*Math.PI/n; return [cx+Math.cos(a)*r, cy+Math.sin(a)*r]; }
+  var h = '<svg viewBox="-40 -20 480 440" role="img" aria-label="نمودار پتانسیل حوزه‌های زندگی"><defs><radialGradient id="rf" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#f1d48b" stop-opacity=".55"/><stop offset="1" stop-color="#a98bff" stop-opacity=".25"/></radialGradient>'+
+    '<filter id="rg" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+  [25,50,75,100].forEach(function(r){ h += '<polygon points="'+S.map(function(x,i){ return pt(i,R*r/100).join(','); }).join(' ')+'" fill="none" stroke="rgba(255,255,255,'+(r===100?.16:.07)+')" stroke-width="1"/>'; });
+  S.forEach(function(x,i){ var p = pt(i,R); h += '<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="rgba(255,255,255,.07)"/>'; });
+  h += '<polygon class="poly" points="'+S.map(function(x,i){ return pt(i,R*x.score/100).join(','); }).join(' ')+'" fill="url(#rf)" stroke="#f1d48b" stroke-width="1.6" stroke-linejoin="round" filter="url(#rg)"/>';
+  S.forEach(function(x,i){ var p = pt(i,R*x.score/100); h += '<circle class="dot" cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="'+scoreCol(x.score)+'" style="animation-delay:'+(.4+i*.05)+'s"/>'; });
+  S.forEach(function(x,i){
+    var p = pt(i,R+30), anc = Math.abs(p[0]-cx)<12 ? 'middle' : (p[0]>cx ? 'start' : 'end');
+    h += '<g class="ax" tabindex="0" data-act="a:'+x.a.id+'"><text x="'+p[0]+'" y="'+(p[1]-2)+'" text-anchor="'+anc+'">'+x.a.fa+'</text><text class="v" x="'+p[0]+'" y="'+(p[1]+13)+'" text-anchor="'+anc+'" dy="'+(lay()==='mobile'?3:0)+'">'+fa(x.score)+'</text></g>';
+  });
+  $('#radar').innerHTML = h + '</svg>';
+  $('#bars').innerHTML = S.map(function(x){ var c = scoreCol(x.score); return '<button type="button" class="bar" data-act="a:'+x.a.id+'" style="--c1:'+c+';--c2:#5b4bc4"><b>'+x.a.fa+'</b><span class="trk"><i class="fill" data-w="'+x.score+'"></i></span><span>'+fa(x.score)+'</span></button>'; }).join('');
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ $$('#bars .fill').forEach(function(f){ f.style.width = f.getAttribute('data-w')+'%'; }); }); });
+}
+function areaHTML(id){
+  var x = CH.scores.filter(function(s){ return s.a.id===id; })[0], b = scoreBand(x.score), c = scoreCol(x.score), cur = currentDasha(), act = '';
+  if(cur){ [cur.md.lord, cur.ad.lord].forEach(function(L){ var rules = x.a.h.filter(function(h){ return SIGNS[CH.houses[h-1].sign].lord===L; }), sits = x.a.h.indexOf(CH.P[L].house)>-1 || x.a.k.indexOf(L)>-1;
+    if((rules.length || sits) && act.indexOf(G[L].fa)<0) act += (act?' و ':'')+G[L].fa; }); }
+  var pos = x.F.filter(function(f){return f.v>0;}), neg = x.F.filter(function(f){return f.v<0;});
+  function row(f){ return '<div class="fac"><span>'+f.t+'</span><b class="'+(f.v>0?'p':'n')+'">'+(f.v>0?'+':'−')+fa(Math.abs(Math.round(f.v)))+'</b></div>'; }
+  return '<div class="dh"><span class="num" style="-webkit-text-stroke-color:'+c+'">'+x.score+'</span><div><h4 id="dT">'+x.a.fa+'</h4><span>'+x.a.d+'</span><div class="chips"><span class="chip g">'+b[0]+'</span>'+(act?'<span class="chip r">فعال در دشای جاری</span>':'')+'</div></div></div>'+
+    '<div class="meter" style="--c1:'+c+';--c2:#5b4bc4"><i style="width:'+x.score+'%"></i></div>'+
+    blk('خلاصه', b[1]+(act?' دوره‌ی جاری ('+act+') مستقیماً به این حوزه وصل است؛ الان زمان فعال شدنش است.':''))+
+    blk('خانه‌ها و نماینده‌ها', 'خانه‌های '+x.a.h.map(fa).join('، ')+' · نماینده: '+x.a.k.map(function(k){return G[k].fa;}).join('، '))+
+    (pos.length ? blk('عوامل تقویت‌کننده', pos.map(row).join('')) : '')+
+    (neg.length ? blk('عوامل تضعیف‌کننده (جای رشد)', neg.map(row).join('')) : '');
+}
+function renderAll(){
+  renderBig3(); renderChart(); renderScores(); renderPlanets(); renderHouses(); renderAspects(); renderDasha(); renderYogas();
+  cleanPlanets(); scanPlanets();
+}
+
+/* ================= جدول‌های مرجع ================= */
+function table(id, heads, rows){
+  $('#'+id).innerHTML = '<table><thead><tr>'+heads.map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+
+    rows.map(function(r){ return '<tr>'+r.map(function(c,i){ return '<td data-label="'+heads[i]+'"'+(i>=heads.length-1?' class="dim"':'')+'>'+c+'</td>'; }).join('')+'</tr>'; }).join('')+'</tbody></table>';
+}
+function nm(a){ return (a||[]).map(function(x){return G[x].fa;}).join('، ') || '—'; }
+table('rG',['سیاره','سانسکریت','کارکا (نماینده‌ی)','طبیعت','خانه‌ی خود','اعتلا / هبوط','دوستان','دشمنان','دشا','روز / سنگ'],
+  ORDER.map(function(id){ var g=G[id]; return ['<span style="color:'+g.hex+'">●</span> '+g.fa, g.sa+'<span class="en">'+g.en+'</span>', g.kw, g.nat, g.own.length?g.own.map(function(s){return SIGNS[s].fa;}).join('، '):'—', SIGNS[g.ex].fa+' / '+SIGNS[(g.ex+6)%12].fa, nm(g.fr), nm(g.en_), fa(g.yrs)+' سال', g.day+' · '+g.gem]; }));
+table('rS',['#','برج','سانسکریت','عنصر','کیفیت','حاکم','کلیدواژه‌ها'], SIGNS.map(function(s,i){ return [fa(i+1), s.fa+'<span class="en">'+s.en+'</span>', s.sa, s.el, s.q, G[s.lord].fa, s.kw]; }));
+table('rH',['خانه','نام','موضوعات','نوع'], HOUSES.map(function(h,i){ return [fa(i+1), h.sa, h.kw, houseTypes(i+1).join('، ')||'—']; }));
+table('rN',['#','ناکشاترا','بازه (سایدریال)','حاکم','ایزد','نماد','کلیدواژه‌ها'], NAK.map(function(n,i){
+  var a = i*NAKLEN, b = a+NAKLEN; return [fa(i+1), n[0], SIGNS[signOf(a)].fa+' '+dms(a%30)+' تا '+SIGNS[signOf(b-0.0001)].fa+' '+dms(((b-1e-6)%30)+1e-6), G[n[1]].fa, n[2], n[3], n[4]]; }));
+
+/* ================= کشو ================= */
+var drawer = $('#drawer'), scrim = $('#scrim'), lastFocus = null;
+function openDrawer(html){
+  $('#dBody').innerHTML = html;
+  if(!drawer.classList.contains('open')) lastFocus = document.activeElement;
+  drawer.classList.add('open'); scrim.classList.add('open'); drawer.scrollTop = 0;
+  scanPlanets(drawer);
+  setTimeout(function(){ $('#dClose').focus({preventScroll:true}); }, 60);
+}
+function closeDrawer(){ drawer.classList.remove('open'); scrim.classList.remove('open'); if(lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true}); setTimeout(cleanPlanets, 600); }
+function blk(t, b){ return '<div class="blk"><small>'+t+'</small>'+b+'</div>'; }
+function planetHTML(id){
+  var g = G[id], p = CH.P[id], s = SIGNS[p.sign], n = NAK[p.nak], dg = DIGNITY[p.dig];
+  var h = '<div class="dh">'+planetCanvas(id)+'<div><h4 id="dT" style="color:'+g.hex+'">'+g.fa+'</h4><span>'+g.sa+'</span> · <span class="lat">'+g.en+'</span><div class="chips">'+chipD(p)+'</div></div></div>';
+  h += '<div class="grid2"><div><small>برج</small>'+s.fa+' '+dms(p.deg)+'</div><div><small>خانه</small>'+fa(p.house)+' · '+HOUSES[p.house-1].sa+'</div><div><small>ناکشاترا</small>'+n[0]+'، پادای '+fa(p.pada)+'</div><div><small>ناوامشا</small>'+SIGNS[p.d9].fa+'</div></div>';
+  h += blk('کلیدواژه‌ها', g.kw+' · طبیعت: '+g.nat);
+  h += blk('در برج '+s.fa, I18L(g.fa+' در '+s.fa+': «'+g.short+'» با رنگ «'+s.kw+'» بیان می‌شود. ', g.fa+' in '+s.fa+': “'+g.short+'” is expressed through the color of “'+s.kw+'”. ')+dg.t);
+  h += blk('در خانه‌ی '+fa(p.house), g.house[p.house-1]);
+  h += blk('در ناکشاترای '+n[0], 'حاکم: '+G[n[1]].fa+' · ایزد: '+n[2]+' · نماد: '+n[3]+'. کیفیت: '+n[4]+'.');
+  if(p.retro) h += blk(id==='Ra'||id==='Ke' ? 'حرکت' : 'برگشتی (وَکرا)', g.retro + (id==='Ra'||id==='Ke' ? '' : ' در ودیک، سیاره‌ی برگشتی از نظر قدرت حرکتی (چِشتا بالا) قوی شمرده می‌شود.'));
+  else if(id!=='Su' && id!=='Mo') h += blk('حرکت', 'مستقیم. اگر برگشتی بود: '+g.retro);
+  if(p.comb) h += blk('احتراق', 'خیلی نزدیک خورشید است؛ قدرت مستقلش زیر نور خورشید کم‌رنگ می‌شود و موضوعاتش با هویت و اقتدار گره می‌خورد.');
+  if(p.varg) h += blk('وارگوتاما', 'در راشی و ناوامشا در یک برج است؛ نشانه‌ی قدرت و ثبات این سیاره.');
+  h += blk('نظرهایی که می‌اندازد', p.asp.map(function(a){ var occ = CH.houses[a.h-1].occ.filter(function(b){return b!==id;}); return I18L('نظر '+ORD[a.n]+' به خانه‌ی '+fa(a.h), ORD[a.n]+' aspect on house '+fa(a.h))+(occ.length?' ('+occ.map(function(b){return G[b].fa;}).join('، ')+')':''); }).join(' · '));
+  var got = CH.aspects.filter(function(x){ return x.to===id; });
+  if(got.length) h += blk('نظرهایی که می‌گیرد', got.map(function(x){ return '<p style="margin:4px 0">'+aspText(x)+'</p>'; }).join(''));
+  var cj = CH.conj.filter(function(c){ return c[0]===id || c[1]===id; });
+  if(cj.length) h += blk('همنشینی و تأثیر متقابل', cj.map(function(c){ var o = c[0]===id?c[1]:c[0]; return '<p style="margin:4px 0"><b style="color:'+G[o].hex+'">'+G[o].fa+':</b> '+conjText(id,o)+'</p>'; }).join(''));
+  var md = CH.dasha.list.filter(function(m){ return m.lord===id && m.end>CH.utc; })[0];
+  h += blk(I18L('دوره‌ی دشای '+g.fa, g.fa+' dasha period'), g.dasha + (md ? ' در این چارت: '+jDate(Math.max(md.start,CH.utc),true)+' تا '+jDate(md.end,true)+'.' : ''));
+  return h;
+}
+function houseHTML(n){
+  var H = CH.houses[n-1], s = SIGNS[H.sign], lord = s.lord, lp = CH.P[lord].house, types = houseTypes(n);
+  var h = '<div class="dh"><span class="num">'+n+'</span><div><h4 id="dT">خانه‌ی '+fa(n)+'</h4><span>'+HOUSES[n-1].sa+' بهاوا</span><div class="chips">'+types.map(function(t){return '<span class="chip g">'+t+'</span>';}).join('')+'</div></div></div>';
+  h += '<div class="grid2"><div><small>برج</small>'+s.fa+'</div><div><small>صاحب خانه</small>'+G[lord].fa+'</div><div><small>عنصر و کیفیت</small>'+s.el+' · '+s.q+'</div><div><small>محل صاحب</small>خانه‌ی '+fa(lp)+'</div></div>';
+  if(n===1) h += blk('طالع', dms(CH.lagna.deg)+' '+s.fa+' · ناکشاترای '+NAK[CH.lagna.nak][0]+'، پادای '+fa(CH.lagna.pada));
+  h += blk('موضوعات', HOUSES[n-1].kw);
+  h += blk('رنگ برج', I18L('این حوزه با کیفیت «'+s.kw+'» تجربه می‌شود.', 'This area is experienced through the quality of “'+s.kw+'”.'));
+  h += blk('صاحب خانه', I18L('صاحب این خانه، '+G[lord].fa+'، در خانه‌ی '+fa(lp)+' نشسته؛ موضوعات «'+HOUSES[n-1].kw.split('، ').slice(0,2).join(' و ')+'» به حوزه‌ی «'+HOUSES[lp-1].kw.split('، ').slice(0,2).join(' و ')+'» گره خورده‌اند.', 'The lord of this house, '+G[lord].fa+', sits in house '+fa(lp)+'; the themes of “'+HOUSES[n-1].kw.split('، ').slice(0,2).join(' and ')+'” are tied to the area of “'+HOUSES[lp-1].kw.split('، ').slice(0,2).join(' and ')+'”.'));
+  h += blk('سیاره‌های این خانه', H.occ.length ? H.occ.map(function(b){ return '<p style="margin:4px 0"><b style="color:'+G[b].hex+'">'+G[b].fa+':</b> '+G[b].house[n-1]+'</p>'; }).join('') : 'خالی است؛ نتیجه را صاحب خانه و نظرها تعیین می‌کنند.');
+  h += blk('نظرهایی که می‌گیرد', H.aspBy.length ? H.aspBy.map(function(a){ return G[a.by].fa+I18L(' (نظر '+ORD[a.n]+')', ' ('+ORD[a.n]+' aspect)'); }).join('، ') : 'هیچ سیاره‌ای به این خانه نظر ندارد.');
+  return h;
+}
+function nakHTML(i){
+  var n = NAK[i], a = i*NAKLEN;
+  return '<div class="dh"><span class="num">'+(i+1)+'</span><div><h4 id="dT">'+n[0]+'</h4><span>ناکشاترای '+fa(i+1)+' از ۲۷</span></div></div>'+
+    '<div class="grid2"><div><small>بازه</small>'+SIGNS[signOf(a)].fa+' '+dms(a%30)+'</div><div><small>حاکم</small>'+G[n[1]].fa+'</div><div><small>ایزد</small>'+n[2]+'</div><div><small>نماد</small>'+n[3]+'</div></div>'+
+    blk('کیفیت', n[4])+blk('در دشا', I18L('ماه در این ناکشاتراست، پس زندگی با دوره‌ی '+G[n[1]].fa+' شروع شده؛ '+fa(CH.dasha.balance.toFixed(1))+' سال از آن باقی بود.', 'The Moon is in this nakshatra, so life began in the '+G[n[1]].fa+' period, with '+fa(CH.dasha.balance.toFixed(1))+' years of it remaining.'));
+}
+document.addEventListener('click', function(e){
+  var t = e.target.closest ? e.target : null; if(!t) return;
+  var pl = t.closest('[data-planet]'), ac = t.closest('[data-act]'), hz = t.closest('[data-house]'), md = t.closest('[data-md]');
+  if(pl){ openDrawer(planetHTML(pl.getAttribute('data-planet'))); return; }
+  if(hz){ openDrawer(houseHTML(+hz.getAttribute('data-house'))); return; }
+  if(md){ var el = $('#md'+md.getAttribute('data-md')); if(el){ el.open = true; el.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'}); } return; }
+  if(ac){ var a = ac.getAttribute('data-act');
+    if(a[0]==='h') openDrawer(houseHTML(+a.slice(2)));
+    else if(a[0]==='p') openDrawer(planetHTML(a.slice(2)));
+    else if(a[0]==='n') openDrawer(nakHTML(+a.slice(2)));
+    else if(a[0]==='a') openDrawer(areaHTML(a.slice(2)));
+    else if(a==='d') $('#dasha').scrollIntoView({behavior:RM?'auto':'smooth'});
+  }
+});
+document.addEventListener('keydown', function(e){
+  var back = e.key==='Escape' || e.key==='GoBack' || (e.key==='Backspace' && !/INPUT|SELECT/.test(e.target.tagName));
+  if(back && drawer.classList.contains('open')){ e.preventDefault(); closeDrawer(); return; }
+  if((e.key==='Enter'||e.key===' ') && e.target.matches && e.target.matches('[data-house],.pchip,.lg,.ax')){ e.preventDefault(); e.target.dispatchEvent(new MouseEvent('click',{bubbles:true})); }
+});
+scrim.addEventListener('click', closeDrawer); $('#dClose').addEventListener('click', closeDrawer);
+$$('[data-style]').forEach(function(b){ b.addEventListener('click', function(){ style = b.dataset.style; $$('[data-style]').forEach(function(x){ x.setAttribute('aria-pressed', String(x===b)); }); renderChart(); }); });
+$$('[data-div]').forEach(function(b){ b.addEventListener('click', function(){ div = +b.dataset.div; $$('[data-div]').forEach(function(x){ x.setAttribute('aria-pressed', String(x===b)); }); renderChart(); }); });
+
+
+/* ===== حالت مخفی: آیوردایا (روش سه‌جفتی جیمینی) و دوره‌های ماراکا ===== */
+function omenData(){
+  var P = CH.P, lag = CH.lagna.sign, ll = SIGNS[lag].lord, l8 = lordOfHouse(CH,8);
+  function q(s){ return SIGNS[s].q; }
+  function pair(a,b){ var k=[q(a),q(b)].sort().join('|');
+    var T = {'متحرک|متحرک':2,'ثابت|متحرک':1,'دوگانه|متحرک':0,'ثابت|ثابت':0,'دوگانه|ثابت':2,'دوگانه|دوگانه':1}; return T[k]; }
+  var votes = [pair(P[ll].sign,P[l8].sign), pair(lag,P.Mo.sign), pair(P.Sa.sign,P.Mo.sign)];
+  var cnt = [0,0,0]; votes.forEach(function(v){ cnt[v]++; });
+  var cat = cnt[2]>=2 ? 2 : cnt[0]>=2 ? 0 : 1;
+  var CAT = [['آلپایو (کوتاه)',0,36],['مادهیایو (میانه)',36,72],['پورنایو (بلند)',72,108]][cat];
+  var prim = {}, sec = {};
+  [2,7].forEach(function(h){ prim[lordOfHouse(CH,h)] = 1; CH.houses[h-1].occ.forEach(function(b){ prim[b] = 1; }); });
+  [lordOfHouse(CH,8), lordOfHouse(CH,6), lordOfHouse(CH,12)].forEach(function(b){ if(!prim[b]) sec[b] = 1; });
+  if(!prim.Sa) sec.Sa = 1;
+  function w(b){ return prim[b] ? 2 : sec[b] ? 1 : 0; }
+  var start = CH.utc + CAT[1]*YEAR_MS, end = CH.utc + CAT[2]*YEAR_MS, now = Date.now(), list = [];
+  CH.dasha.list.forEach(function(md){ md.sub.forEach(function(ad){
+    if(ad.end < Math.max(start, now) || ad.start > end) return;
+    var s = w(md.lord) + w(ad.lord); if(s>=3) list.push({md:md.lord, ad:ad.lord, s:s, a:ad.start, b:ad.end});
+  }); });
+  if(list.length < 2) CH.dasha.list.forEach(function(md){ md.sub.forEach(function(ad){
+    if(ad.end < Math.max(start, now) || ad.start > end) return;
+    var s = w(md.lord) + w(ad.lord); if(s===2 && list.length<3) list.push({md:md.lord, ad:ad.lord, s:s, a:ad.start, b:ad.end});
+  }); });
+  list.sort(function(x,y){ return y.s-x.s || x.a-y.a; });
+  return {cat:CAT, votes:votes, win:list.slice(0,3), prim:Object.keys(prim)};
+}
+var omenTaps = [], omenTimer = null;
+function showOmen(){
+  var o = omenData(), el = document.createElement('div');
+  function age(t){ return fa(Math.floor((t-CH.utc)/YEAR_MS)); }
+  el.className = 'omen'; el.setAttribute('role','dialog'); el.setAttribute('aria-label','پیش‌بینی پنهان');
+  el.innerHTML = '<div class="omen-card"><svg class="ring" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20"/></svg>'+
+    '<small>آیوردایا · طول عمر در سنت جیوتیش</small><b>'+o.cat[0]+'</b><p>حدود '+fa(o.cat[1])+' تا '+fa(o.cat[2])+' سال</p>'+
+    '<small>بازه‌های ماراکا (حساس)</small>'+(o.win.length ? o.win.map(function(x){ return '<div class="ow"><span>'+G[x.md].fa+' / '+G[x.ad].fa+'</span><span>'+jDate(x.a,true)+' تا '+jDate(x.b,true)+'</span><span>سن '+age(x.a)+'</span></div>'; }).join('') : '<p>در این بازه دوره‌ی ماراکای شاخصی پیدا نشد.</p>')+
+    '<em>محاسبه‌ی سنتی جیمینی و پاراشارا؛ پیش‌گویی واقعی نیست.</em></div>';
+  document.body.appendChild(el);
+  requestAnimationFrame(function(){ el.classList.add('on'); });
+  function close(){ el.classList.remove('on'); setTimeout(function(){ el.remove(); }, 700); clearTimeout(omenTimer); }
+  el.addEventListener('click', close);
+  omenTimer = setTimeout(close, 10000);
+}
+document.addEventListener('click', function(e){
+  var c = e.target.closest && e.target.closest('#drawer canvas.p3d[data-p="Sa"]'); if(!c) return;
+  var t = Date.now(); omenTaps = omenTaps.filter(function(x){ return t-x < 1200; }); omenTaps.push(t);
+  if(omenTaps.length>=3){ omenTaps = []; showOmen(); }
+});
+
+/* نور شیشه زیر نشانگر */
+document.addEventListener('pointermove', function(e){
+  var g = e.target.closest && e.target.closest('.glass'); if(!g) return;
+  var r = g.getBoundingClientRect(); g.style.setProperty('--mx',(e.clientX-r.left)+'px'); g.style.setProperty('--my',(e.clientY-r.top)+'px');
+}, {passive:true});
+
+/* ناوبری فعال */
+var links = $$('#dock a'), secs = $$('section.sec'), curSec = null;
+function syncNav(){
+  var line = innerHeight*.38, on = null;
+  secs.forEach(function(s){ if(s.getBoundingClientRect().top <= line) on = s; });
+  if(on===curSec) return; curSec = on;
+  links.forEach(function(a){ var hit = on && a.getAttribute('href')==='#'+on.id; a.classList.toggle('on', !!hit); if(hit && lay()==='mobile'){ var d = $('#dock'); d.scrollTo({left: a.offsetLeft - d.clientWidth/2 + a.clientWidth/2, behavior: RM?'auto':'smooth'}); } });
+}
+var navT = false; addEventListener('scroll', function(){ if(navT) return; navT = true; requestAnimationFrame(function(){ navT = false; syncNav(); }); }, {passive:true});
+
+/* چیدمان */
+var devNames = {mobile:'موبایل',tablet:'تبلت',desktop:'دسکتاپ',tv:'تلویزیون'};
+function syncSeg(){
+  var cur='auto'; try{ cur = localStorage.getItem('jyLayout')||'auto'; }catch(e){}
+  $$('[data-lay]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lay===cur)); });
+  $('#devInfo').textContent = devNames[root.dataset.layout]+' (دستگاه: '+devNames[root.dataset.device]+')';
+}
+$$('[data-lay]').forEach(function(b){ b.addEventListener('click', function(){ window.__jy.setManual(b.dataset.lay); syncSeg(); heroSize(); }); });
+syncSeg();
+
+/* ناوبری فضایی تلویزیون */
+function vis(el){ var r = el.getBoundingClientRect(); return r.width>0 && r.height>0; }
+function spatial(dir){
+  var scope = drawer.classList.contains('open') ? drawer : document;
+  var els = $$('a[href],button,input,select,summary,[tabindex="0"]', scope).filter(vis), cur = document.activeElement;
+  if(!cur || cur===document.body || els.indexOf(cur)<0){ var f = els.filter(function(e){ var r=e.getBoundingClientRect(); return r.top>=0 && r.top<innerHeight; })[0]||els[0]; if(f) f.focus(); return; }
+  var a = cur.getBoundingClientRect(), ax=a.left+a.width/2, ay=a.top+a.height/2, best=null, bs=Infinity;
+  els.forEach(function(e){ if(e===cur) return; var b=e.getBoundingClientRect(), dx=b.left+b.width/2-ax, dy=b.top+b.height/2-ay, m, s;
+    if(dir==='right'){ if(dx<=4) return; m=dx; s=Math.abs(dy); } else if(dir==='left'){ if(dx>=-4) return; m=-dx; s=Math.abs(dy); }
+    else if(dir==='down'){ if(dy<=4) return; m=dy; s=Math.abs(dx); } else { if(dy>=-4) return; m=-dy; s=Math.abs(dx); }
+    var sc = m + s*2.2; if(sc<bs){ bs=sc; best=e; } });
+  if(best){ best.focus({preventScroll:true}); best.scrollIntoView({block:'center',inline:'nearest',behavior:RM?'auto':'smooth'}); }
+  else if(dir==='down'||dir==='up') (scope===drawer?drawer:window).scrollBy({top:(dir==='down'?1:-1)*innerHeight*.4,behavior:'smooth'});
+}
+document.addEventListener('keydown', function(e){
+  if(lay()!=='tv') return;
+  var d = {ArrowRight:'right',ArrowLeft:'left',ArrowUp:'up',ArrowDown:'down'}[e.key]; if(!d) return;
+  if(/INPUT|SELECT/.test(e.target.tagName) && (d==='left'||d==='right')) return;
+  e.preventDefault(); spatial(d);
+});
+
+/* ================= حلقه‌ی اصلی ================= */
+var lastT = 0;
+function loop(t){
+  requestAnimationFrame(loop);
+  if(document.hidden) return;
+  var mobile = lay()==='mobile';
+  if(mobile && t-lastT < 30) return;
+  lastT = t;
+  if(t-lastSky > (mobile?60:33)){ drawSky(t); lastSky = t; }
+  heroFrame(t);
+  var time = RM ? 2 : t/1000;
+  visible.forEach(function(c){
+    var id = c.getAttribute('data-p');
+    if(GL) GL.draw(c, id, time); else fallbackDraw(c, id);
+  });
+}
+sizeSky(); heroSize();
+var rz; addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(function(){ sizeSky(); heroSize(); syncSeg(); }, 150); });
+setTimeout(function(){ milky = buildMilky(); }, 30);
+recompute();
+scanPlanets(); syncNav();
+requestAnimationFrame(loop);
+/* تغییر زبان: بازسازی بخش‌های پویا */
+window.addEventListener('langchange', function(){ if(drawer.classList.contains('open')) closeDrawer(); if(CH) recompute(); }); /* محاسبه‌ی دوباره: متن یوگاها هنگام ساخت چارت تولید می‌شود */
+})();
+
+</script>
+<!--i18n-->
+<script>
+window.I18N_EN = {"جیوتیش؛ نقشه آسمان تولد":"Jyotish: Your Birth Sky Map","تولد":"Birth","چارت":"Chart","پتانسیل":"Potential","سیاره‌ها":"Planets","خانه‌ها":"Houses","تأثیرات":"Influences","دشا":"Dasha","یوگاها":"Yogas","مرجع":"Reference","ساخته شده توسط":"Made by","جیوتیش":"Jyotish","نقشه‌ی آسمانِ لحظه‌ی تولدت، با منطق ودیک: سایدریال، آیانامشای لاهیری، خانه‌های برج‌کامل.":"The sky map of the moment you were born, with Vedic logic: sidereal, Lahiri ayanamsa, whole-sign houses.","نقشه‌ی آسمانت را بکش":"Draw your sky map","لحظه‌ی تولد":"Moment of birth","تاریخ میلادی، ساعت و شهر را وارد کن. چارت همان لحظه دوباره کشیده می‌شود. نمونه از پیش پر شده است.":"Enter the Gregorian date, time and city. The chart is redrawn for that moment. A sample is pre-filled.","نام (اختیاری":"Name (optional","تاریخ تولد (میلادی":"Birth date (Gregorian","ساعت و دقیقه":"Hour and minute","محل تولد":"Place of birth","عرض جغرافیایی":"Latitude","طول جغرافیایی":"Longitude","منطقه‌ی زمانی":"Time zone","عرض شمال مثبت، جنوب منفی؛ طول شرق مثبت، غرب منفی.":"North latitude positive, south negative; east longitude positive, west negative.","روی هر خانه بزن تا معنایش، سیاره‌های داخلش و نظرهایی که می‌گیرد باز شود.":"Tap any house to open its meaning, the planets inside it and the aspects it receives.","شمال هند":"North Indian","جنوب هند":"South Indian","راشی D1":"Rashi D1","ناوامشا D9":"Navamsa D9","جایگاه سیاره‌ها":"Planet positions","پتانسیل زندگی":"Life potential","هر حوزه از ۰ تا ۱۰۰ بر اساس قدرت خانه‌ها، صاحب‌خانه‌ها، سیاره‌های نماینده، نظرها و یوگاهای مرتبط. روی هر حوزه بزن تا ببینی چه چیزی امتیازش را بالا یا پایین برده.":"Each area is scored 0 to 100 from house strength, house lords, significator planets, aspects and related yogas. Tap an area to see what raised or lowered its score.","امتیازها قدرت نسبی هر حوزه را در همین چارت با قواعد کلاسیک جیوتیش نشان می‌دهند، نه پیش‌بینی قطعی. امتیاز پایین یعنی آن حوزه برای رشد به تلاش و آگاهی بیشتری نیاز دارد.":"Scores show the relative strength of each area in this chart by classical Jyotish rules, not a definite prediction. A low score means that area needs more effort and awareness to grow.","نُه گراها":"The nine grahas","هر سیاره با برج، درجه، ناکشاترا، خانه و شأن. برای تفسیر کامل روی کارت بزن.":"Each planet with its sign, degree, nakshatra, house and dignity. Tap a card for the full reading.","دوازده بهاوا":"The twelve bhavas","خانه‌ها به روش برج‌کامل: برج طالع، خانه‌ی اول است.":"Whole-sign houses: the rising sign is the first house.","تأثیرات متقابل":"Mutual influences","همنشینی (هم‌برجی) و نظرهای ودیک (دریشتی). همه نظر هفتم دارند؛ مریخ ۴ و ۸، مشتری ۵ و ۹، زحل ۳ و ۱۰، راهو و کتو ۵ و ۹.":"Conjunctions (same sign) and Vedic aspects (drishti). All planets aspect the 7th; Mars also the 4th and 8th, Jupiter the 5th and 9th, Saturn the 3rd and 10th, Rahu and Ketu the 5th and 9th.","همنشینی‌ها":"Conjunctions","نظرها":"Aspects","دشای ویمشوتری":"Vimshottari dasha","چرخه‌ی ۱۲۰ ساله‌ی دوره‌های سیاره‌ای، از ناکشاترای ماه در لحظه‌ی تولد. تاریخ‌ها شمسی‌اند.":"The 120-year cycle of planetary periods, starting from the Moon’s nakshatra at birth. Dates are shown in the Gregorian calendar.","ترکیب‌های کلاسیک که در این چارت فعال‌اند.":"Classical combinations active in this chart.","یوگاهای بررسی‌شده که فعال نیستند":"Checked yogas that are not active","چیت‌شیت مرجع":"Reference cheat sheet","جدول‌های کلیدواژه‌ای جیوتیش؛ توضیح هر جدول زیرش آمده.":"Jyotish keyword tables; notes are under each table.","گراها (سیاره‌ها":"Grahas (planets","اعتلا":"Exaltation","هبوط":"Debilitation","همیشه روبه‌روی هم‌اند. درجه‌ی دقیق اعتلا در پرونده‌ی هر سیاره آمده است.":"Exaltation and debilitation are always opposite each other. The exact exaltation degree is in each planet’s profile.","گره میانگین":"mean node","احتراق":"Combustion","سیاره‌ای که خیلی نزدیک خورشید باشد قدرت مستقلش کم می‌شود.":"A planet very close to the Sun loses its independent strength.","راشی‌ها (برج‌ها":"Rashis (signs","سایدریال":"sidereal","بهاواها (خانه‌ها":"Bhavas (houses","کندرا":"Kendra","تریکونا":"Trikona","دوستانا":"Dusthana","اوپاچایا":"Upachaya","۲۷ ناکشاترا":"The 27 nakshatras","هر ناکشاترا ۱۳°۲۰′ است و به ۴ پادای ۳°۲۰′ تقسیم می‌شود. ناکشاترای ماه (جانما ناکشاترا) مهم‌ترین است و آغاز دشا را تعیین می‌کند.":"Each nakshatra is 13°20′ and divides into 4 padas of 3°20′. The Moon’s nakshatra (janma nakshatra) is the most important and sets the start of the dasha.","چیدمان":"Layout","خودکار":"Auto","موبایل":"Mobile","دسکتاپ":"Desktop","تلویزیون":"TV","محاسبه‌ها با فرمول‌های نجومی داخل خود صفحه انجام می‌شود (دقت حدود ۰٫۲ درجه). جیوتیش سنتی تفسیری است، نه علم تجربی. در تلویزیون با کلیدهای جهت‌نما جابه‌جا شوید.":"Calculations use astronomical formulas inside the page itself (accurate to about 0.2 degrees). Traditional Jyotish is interpretive, not an empirical science. On a TV, move with the arrow keys.","بخش‌ها":"Sections","مثلاً سینا":"e.g. Sina","سبک چارت":"Chart style","نوع چارت":"Chart type","انتخاب چیدمان":"Choose layout","بستن":"Close","خورشید":"Sun","سوریا":"Surya","روح":"Soul","اقتدار":"Authority","پدر":"Father","حیات":"Vitality","دولت":"Government","اقتدار و هویت":"Authority and identity","بدشگون ملایم":"Mildly malefic","یکشنبه":"Sunday","یاقوت سرخ":"Ruby","خورشید هیچ‌وقت برگشتی نمی‌شود.":"The Sun is never retrograde.","دوره‌ی خودنمایی، مسئولیت و تماس با اقتدار؛ موضوع پدر، دولت و هویت پررنگ می‌شود.":"A period of visibility, responsibility and contact with authority; themes of father, government and identity come forward.","اعتمادبه‌نفس، حضور پررنگ و رهبری؛ مراقب غرور باش.":"Self-confidence, strong presence and leadership; watch out for pride.","درآمد از اقتدار یا دولت، گفتار محکم؛ تنش خانوادگی ممکن است.":"Income from authority or government, firm speech; family tension is possible.","شجاعت و ابتکار؛ موفقیت با تلاش شخصی.":"Courage and initiative; success through personal effort.","آرامش درونی با کار به دست می‌آید؛ غرور در خانه و نسبت با مادر.":"Inner peace comes through work; pride at home and in the relationship with the mother.","هوش خلاق و رهبری؛ افتخار به فرزندان.":"Creative intelligence and leadership; pride in children.","پیروزی بر رقیب، بنیه‌ی قوی، موفقیت در خدمت.":"Victory over rivals, strong constitution, success in service.","شریک قوی یا مسلط؛ کشمکش «من» و «ما».":"A strong or dominant partner; a tug-of-war between “me” and “us”.","کشش به رازها و دگرگونی‌های عمیق؛ انرژی حیاتی را حفظ کن.":"Drawn to secrets and deep transformations; protect your vital energy.","پدر یا استاد مهم، باور قوی؛ بخت از راه درستکاری.":"An important father or teacher, strong beliefs; fortune through integrity.","قوی‌ترین جایگاه خورشید: جایگاه بالا، شهرت و مدیریت.":"The Sun’s strongest position: high status, fame and management.","درآمد از ارتباطات بزرگ؛ آرزوها محقق می‌شوند.":"Income from big networks; wishes come true.","کار پشت صحنه یا در خارج، کشش معنوی؛ هزینه برای اعتبار.":"Behind-the-scenes work or work abroad, a spiritual pull; spending for reputation.","ماه":"Moon","چاندرا":"Chandra","ذهن":"Mind","احساس":"Emotion","مادر":"Mother","مردم":"People","آرامش":"Calm","ذهن و احساس":"Mind and emotion","خوش‌یُمن":"Benefic","دوشنبه":"Monday","مروارید":"Pearl","ماه هیچ‌وقت برگشتی نمی‌شود.":"The Moon is never retrograde.","دوره‌ی احساسات، خانه، مادر و ارتباط با مردم؛ ذهن حساس‌تر و نیاز به امنیت بیشتر.":"A period of emotions, home, mother and connection with people; a more sensitive mind and a greater need for security.","احساساتی، جذاب و تغییرپذیر؛ چهره‌ای روشن.":"Emotional, charming and changeable; a bright face.","درآمد نوسانی، گفتار دلنشین، پیوند خانوادگی.":"Fluctuating income, pleasant speech, family bonds.","ذهن کنجکاو، سفرهای کوتاه، نوشتن.":"A curious mind, short trips, writing.","قوی‌ترین جایگاه ماه: آرامش، خانه‌دوستی، مادر مهم.":"The Moon’s strongest position: calm, love of home, an important mother.","تخیل قوی، عشق احساسی، دلبستگی به فرزند.":"Strong imagination, emotional love, attachment to children.","نگرانی و حساسیت گوارشی؛ مهارت در مراقبت از دیگران.":"Worry and digestive sensitivity; skill in caring for others.","نیاز به شریک عاطفی، محبوب نزد مردم.":"Needs an emotional partner; popular with people.","احساسات عمیق، شهود قوی، نوسان روحی.":"Deep emotions, strong intuition, mood swings.","ایمان، سفر، و مادر یا راهنمای معنوی.":"Faith, travel, and a mother or spiritual guide.","شغل مرتبط با عموم؛ شهرت متغیر.":"A career connected with the public; changing fame.","دوستان زیاد، درآمد از مردم.":"Many friends, income from people.","خیال‌پردازی، خواب‌های پرمعنا، نیاز به خلوت.":"Daydreaming, meaningful dreams, a need for solitude.","مریخ":"Mars","منگالا":"Mangala","انرژی":"Energy","شجاعت":"Courage","برادر":"Brother","زمین":"Land","رقابت":"Competition","انرژی و جنگندگی":"Energy and fighting spirit","بدشگون":"Malefic","سه‌شنبه":"Tuesday","مرجان":"Coral","انرژی به درون برمی‌گردد: خشم فروخورده، عمل بعد از تأمل طولانی، و جنگیدن با خود به‌جای دیگران.":"Energy turns inward: suppressed anger, action after long reflection, and fighting yourself instead of others.","دوره‌ی عمل، رقابت، ملک و انرژی بالا؛ مناسب شروع‌های جسورانه، مراقب تصادف و دعوا.":"A period of action, competition, property and high energy; good for bold beginnings, watch out for accidents and fights.","پرانرژی، رک و ورزشکار؛ گاهی کج‌خلق (مانگلیک).":"Energetic, blunt and athletic; sometimes short-tempered (Manglik).","گفتار تند، تلاش زیاد برای ثروت.":"Sharp speech, great effort for wealth.","شجاعت ممتاز، رقابت، رابطه با برادر.":"Outstanding courage, competition, relationship with brothers.","تنش در خانه؛ ملک و زمین (مانگلیک).":"Tension at home; property and land (Manglik).","اراده‌ی خلاق، ورزش، عشق پرشور.":"Creative will, sports, passionate love.","شکست دشمن؛ عالی برای رقابت، ورزش و جراحی.":"Defeat of enemies; excellent for competition, sports and surgery.","شریک پرشور، اصطکاک در رابطه (مانگلیک).":"A passionate partner, friction in the relationship (Manglik).","تغییرات ناگهانی، شجاعت در بحران (مانگلیک).":"Sudden changes, courage in a crisis (Manglik).","مجاهد باورها؛ تنش با پدر ممکن است.":"A fighter for beliefs; tension with the father is possible.","قوی‌ترین جایگاه مریخ: فرمانده، مهندس، جاه‌طلب.":"Mars’s strongest position: commander, engineer, ambitious.","درآمد از تلاش، دوستان پرانرژی.":"Income through effort, energetic friends.","خرج انرژی، کار پنهان، خشم سرکوب‌شده (مانگلیک).":"Energy spent, hidden work, suppressed anger (Manglik).","عطارد":"Mercury","بودها":"Budha","هوش":"Intelligence","گفتار":"Speech","تجارت":"Trade","یادگیری":"Learning","طنز":"Humor","هوش و ارتباط":"Intelligence and communication","خوش‌یُمن (تابع همنشین":"Benefic (depends on its companions","چهارشنبه":"Wednesday","زمرد":"Emerald","ذهن درون‌نگر و بازنگر؛ عالی برای پژوهش و نوشتن عمیق، تصمیم‌گیری کندتر.":"An introspective, reflective mind; excellent for research and deep writing, slower decision-making.","دوره‌ی یادگیری، تجارت، نوشتن و ارتباط؛ ذهن فعال و فرصت‌های تحصیلی.":"A period of learning, trade, writing and communication; an active mind and educational opportunities.","قوی‌ترین جایگاه عطارد: باهوش، شوخ و جوان‌نما.":"Mercury’s strongest position: clever, witty and youthful-looking.","گفتار شیرین، درآمد از تجارت.":"Sweet speech, income from trade.","نویسنده، ارتباط‌گیر، مهارت دست.":"A writer and communicator, skilled with the hands.","تحصیل خوب، خانه‌ای پر از کتاب.":"Good education, a home full of books.","ذهن تحلیلی، هوش ریاضی.":"An analytical mind, mathematical intelligence.","حل مسئله و حسابداری؛ نگرانی ذهنی.":"Problem-solving and accounting; mental worry.","شریک جوان یا باهوش، تجارت مشترک.":"A young or clever partner, a shared business.","پژوهش و علوم پنهان؛ ذهن کاوشگر.":"Research and the occult; an exploring mind.","فلسفه و آموزش عالی.":"Philosophy and higher education.","شغل ارتباطی، تجارت، رسانه.":"A career in communication, trade or media.","درآمد از شبکه‌سازی و ایده.":"Income from networking and ideas.","تخیل، زبان خارجی، ذهن ناآرام شبانه.":"Imagination, foreign languages, a restless mind at night.","مشتری":"Jupiter","گورو":"Guru","خرد":"Wisdom","بخت":"Fortune","فرزند":"Children","استاد":"Teacher","ایمان":"Faith","خرد و برکت":"Wisdom and blessing","خوش‌یُمن بزرگ":"Great benefic","پنجشنبه":"Thursday","یاقوت زرد":"Yellow sapphire","خرد درونی‌شده؛ ایمان شخصی به‌جای آیین رسمی، معلمی که از تجربه‌ی خودش یاد گرفته.":"Internalized wisdom; personal faith instead of formal ritual, a teacher who learned from their own experience.","دوره‌ی رشد، آموزش، فرزند و برکت؛ معمولاً از بهترین دوره‌های زندگی.":"A period of growth, education, children and blessings; usually one of the best periods of life.","قوی‌ترین جایگاه مشتری: خردمند، خوش‌اقبال و محافظت‌شده.":"Jupiter’s strongest position: wise, fortunate and protected.","ثروت، گفتار مؤثر، خانواده‌ی بزرگ.":"Wealth, effective speech, a large family.","اراده‌ی آرام، ارتباط آموزنده.":"Calm will, instructive communication.","خانه‌ی پربرکت، تحصیل خوب.":"A blessed home, good education.","فرزند خوب، هوش، استعداد مشاوره.":"Good children, intelligence, a talent for counseling.","غلبه بر دشمن با خرد؛ مراقب وزن و کبد باش.":"Overcoming enemies through wisdom; watch your weight and liver.","همسر فرهیخته، شراکت خوب.":"A cultured spouse, good partnership.","عمر طولانی، ارث، دانش پنهان.":"Long life, inheritance, hidden knowledge.","بخت عالی، استاد معنوی، ایمان.":"Excellent fortune, a spiritual teacher, faith.","شغل محترم، آموزش، مدیریت اخلاقی.":"A respected career, teaching, ethical management.","درآمد فراوان، آرزوهای برآورده.":"Abundant income, fulfilled wishes.","معنویت، خیریه، خرج سخاوتمندانه.":"Spirituality, charity, generous spending.","زهره":"Venus","شوکرا":"Shukra","عشق":"Love","زیبایی":"Beauty","همسر":"Spouse","هنر":"Art","رفاه":"Comfort","عشق و زیبایی":"Love and beauty","جمعه":"Friday","الماس":"Diamond","بازتعریف عشق و ارزش‌ها؛ روابط کارمایی و سلیقه‌ای خاص و غیرمتعارف.":"Redefining love and values; karmic relationships and a special, unconventional taste.","دوره‌ی عشق، ازدواج، هنر، رفاه و لذت؛ طولانی‌ترین دشا (۲۰ سال).":"A period of love, marriage, art, comfort and pleasure; the longest dasha (20 years).","جذاب، هنرمند و دوست‌داشتنی.":"Attractive, artistic and lovable.","ثروت، صدای زیبا، ذوق غذا.":"Wealth, a beautiful voice, a taste for food.","هنر بیانی، رابطه‌ی خوب با خواهر و برادر.":"Expressive art, a good relationship with siblings.","قوی‌ترین جایگاه زهره: خانه‌ی زیبا، وسیله‌ی نقلیه، آسایش.":"Venus’s strongest position: a beautiful home, vehicles, comfort.","عشق رمانتیک، خلاقیت هنری.":"Romantic love, artistic creativity.","چالش در رابطه یا تعادل هورمونی؛ خدمت هنری.":"Challenges in relationships or hormonal balance; artistic service.","همسر جذاب، ازدواج مهم؛ گاهی افراط در لذت.":"An attractive spouse, an important marriage; sometimes overindulgence.","ارث از همسر، جذابیت مرموز.":"Inheritance through the spouse, a mysterious charm.","بخت از هنر، ایمانی مهربان.":"Fortune through art, a kind faith.","شغل هنری یا مرتبط با زیبایی، محبوبیت.":"An artistic or beauty-related career, popularity.","درآمد از هنر و روابط.":"Income from art and relationships.","لذت‌های پنهان، سفر خارج، معنویت عاشقانه.":"Hidden pleasures, travel abroad, devotional spirituality.","زحل":"Saturn","شانی":"Shani","کارما":"Karma","انضباط":"Discipline","تأخیر":"Delay","کار":"Work","صبر":"Patience","انضباط و کارما":"Discipline and karma","بدشگون بزرگ":"Great malefic","شنبه":"Saturday","یاقوت کبود":"Blue sapphire","درس‌های کارمایی درونی‌تر؛ سخت‌گیری با خود، مسئولیتی که از گذشته مانده.":"More inward karmic lessons; being strict with yourself, a responsibility left over from the past.","دوره‌ی کار سخت، مسئولیت، ساختن و صبر؛ نتیجه دیر اما ماندگار می‌آید.":"A period of hard work, responsibility, building and patience; results come late but last.","جدی و صبور؛ رشد کند اما پایدار.":"Serious and patient; slow but steady growth.","ثروت دیرهنگام، گفتار سنجیده.":"Late wealth, measured speech.","پشتکار عالی؛ موفقیت با گذشت زمان.":"Excellent perseverance; success over time.","سختی در خانه یا رابطه با مادر؛ آرامش دیر می‌رسد.":"Hardship at home or with the mother; peace arrives late.","تأخیر در فرزند، ذهن جدی.":"Delay with children, a serious mind.","پیروزی آهسته بر رقیب، خدمت پرتلاش.":"Slow victory over rivals, hardworking service.","قوی‌ترین جایگاه زحل: ازدواج دیر یا با فرد پخته‌تر، تعهد.":"Saturn’s strongest position: late marriage or a more mature partner, commitment.","عمر طولانی؛ رنج‌هایی که حکمت می‌آورند.":"Long life; suffering that brings wisdom.","باور سنتی، پدر سخت‌گیر.":"Traditional beliefs, a strict father.","جاه‌طلبی؛ صعود آهسته تا قله.":"Ambition; a slow climb to the top.","درآمد پایدار و رو به افزایش.":"Steady and growing income.","خلوت، کار در نهادهای بسته، انضباط معنوی.":"Solitude, work in closed institutions, spiritual discipline.","راهو":"Rahu","عطش":"Craving","وسوسه":"Temptation","نوآوری":"Innovation","بیگانه":"Foreign","توهم":"Illusion","عطش و جاه‌طلبی":"Craving and ambition","سایه‌ای بدشگون":"Malefic shadow planet","عقیق هسونیت":"Hessonite garnet","راهو و کتو همیشه برگشتی‌اند؛ این حالت طبیعی آن‌هاست و معنای ویژه‌ای ندارد.":"Rahu and Ketu are always retrograde; this is their natural state and has no special meaning.","دوره‌ی جاه‌طلبی، تغییرات ناگهانی، خارج و تکنولوژی؛ اوج‌ها و سردرگمی‌های غیرمنتظره.":"A period of ambition, sudden changes, foreign lands and technology; unexpected highs and confusions.","شخصیت غیرمتعارف، عطش هویت.":"An unconventional personality, a thirst for identity.","ثروت از راه غیرمعمول، گفتار اغراق‌آمیز.":"Wealth by unusual means, exaggerated speech.","جسارت عالی، رسانه، تکنولوژی.":"Great daring, media, technology.","بی‌قراری در خانه، جابه‌جایی.":"Restlessness at home, relocation.","ذهن نوآور، عشق غیرمعمول.":"An innovative mind, unusual love.","غلبه بر دشمن؛ عالی برای رقابت.":"Overcoming enemies; excellent for competition.","شریک خارجی یا متفاوت.":"A foreign or unusual partner.","علوم پنهان، تحولات ناگهانی.":"The occult, sudden transformations.","باورهای غیرسنتی، سفر به خارج.":"Non-traditional beliefs, travel abroad.","جاه‌طلبی شدید، شهرت ناگهانی.":"Intense ambition, sudden fame.","بهترین جایگاه راهو: درآمد زیاد و شبکه‌ی گسترده.":"Rahu’s best position: high income and a wide network.","خارج، خواب‌های عجیب، هزینه‌های پنهان.":"Foreign lands, strange dreams, hidden expenses.","کتو":"Ketu","رهایی":"Liberation","معنویت":"Spirituality","جدایی":"Detachment","شهود":"Intuition","گذشته":"The past","رهایی و شهود":"Liberation and intuition","چشم گربه":"Cat’s eye","دوره‌ی درون‌گرایی، جدایی از وابستگی‌ها و بیداری معنوی؛ اتفاق‌های ناگهانی و پایان‌ها.":"A period of introversion, detachment from attachments and spiritual awakening; sudden events and endings.","درون‌گرا و شهودی؛ بی‌اعتنا به ظاهر.":"Introverted and intuitive; indifferent to appearances.","بی‌علاقگی به مال، گفتار کوتاه.":"Indifference to possessions, brief speech.","شجاعت بی‌ادعا.":"Unassuming courage.","فاصله‌ی عاطفی از خانه؛ جستجوی آرامش درونی.":"Emotional distance from home; a search for inner peace.","هوش شهودی، فاصله با فرزند.":"Intuitive intelligence, distance from children.","شفا، غلبه بر دشمن.":"Healing, overcoming enemies.","فاصله در رابطه، شریک معنوی.":"Distance in relationships, a spiritual partner.","عرفان، تجربه‌های فراحسی.":"Mysticism, extrasensory experiences.","معنویت شخصی، تردید در آیین رسمی.":"Personal spirituality, doubt about formal ritual.","تغییر مسیر شغلی، کار بی‌نام‌ونشان.":"Career changes, work without recognition.","بی‌علاقگی به سود؛ دوستان کم اما خاص.":"Indifference to profit; few but special friends.","بهترین جایگاه کتو: رهایی، مدیتیشن، موکشا.":"Ketu’s best position: liberation, meditation, moksha.","حمل":"Aries","مِشا":"Mesha","آتش":"Fire","متحرک":"Movable","شروع":"Beginnings","شتاب":"Speed","ثور":"Taurus","ورِشابا":"Vrishabha","خاک":"Earth","ثابت":"Fixed","ثبات":"Stability","لذت":"Pleasure","ثروت":"Wealth","جوزا":"Gemini","میتونا":"Mithuna","هوا":"Air","دوگانه":"Dual","ارتباط":"Communication","کنجکاوی":"Curiosity","دوگانگی":"Duality","سرطان":"Cancer","کارکا":"Karka","آب":"Water","خانه":"Home","مراقبت":"Care","اسد":"Leo","سیمها":"Simha","افتخار":"Pride","رهبری":"Leadership","نمایش":"Display","سنبله":"Virgo","کانیا":"Kanya","دقت":"Precision","خدمت":"Service","تحلیل":"Analysis","میزان":"Libra","تولا":"Tula","تعادل":"Balance","رابطه":"Relationship","عقرب":"Scorpio","ورِشچیکا":"Vrishchika","عمق":"Depth","راز":"Secrets","دگرگونی":"Transformation","قوس":"Sagittarius","دانو":"Dhanu","باور":"Belief","آزادی":"Freedom","سفر":"Travel","جدی":"Capricorn","ماکارا":"Makara","جاه‌طلبی":"Ambition","ساختار":"Structure","دلو":"Aquarius","کومبها":"Kumbha","جمع":"Community","انسان‌دوستی":"Humanitarianism","حوت":"Pisces","مینا":"Meena","خیال":"Imagination","شفقت":"Compassion","تنو":"Tanu","بدن":"Body","خود":"Self","ظاهر":"Appearance","سلامت":"Health","مسیر کلی زندگی":"Overall life path","دانا":"Dhana","خانواده":"Family","غذا":"Food","ارزش‌ها":"Values","ساهاجا":"Sahaja","خواهر و برادر کوچک":"Younger siblings","مهارت":"Skill","سوکا":"Sukha","ملک":"Property","وسیله‌ی نقلیه":"Vehicles","پوترا":"Putra","خلاقیت":"Creativity","کارمای خوب گذشته":"Good past karma","ریپو":"Ripu","دشمن":"Enemies","بیماری":"Illness","بدهی":"Debt","کالاترا":"Kalatra","ازدواج":"Marriage","شریک":"Partner","قرارداد":"Contracts","آیوس":"Ayus","عمر":"Lifespan","ارث":"Inheritance","علوم پنهان":"The occult","دارما":"Dharma","پدر و استاد":"Father and teacher","سفر دور":"Long journeys","شغل":"Career","شهرت":"Fame","جایگاه اجتماعی":"Social status","عمل":"Action","لابا":"Labha","درآمد":"Income","آرزو":"Wishes","دوستان":"Friends","برادر بزرگ":"Elder siblings","ویایا":"Vyaya","هزینه":"Expenses","خارج":"Abroad","خواب":"Sleep","موکشا":"Moksha","ماراکا":"Maraka","اشوینی":"Ashwini","اشوین‌ها (پزشکان آسمانی":"The Ashvins (celestial physicians","سر اسب":"Horse’s head","سرعت":"Speed","شفا":"Healing","آغاز":"Beginnings","بهارانی":"Bharani","یاما":"Yama","زهدان":"Womb","تحمل":"Endurance","تولد و مرگ":"Birth and death","مسئولیت":"Responsibility","کریتیکا":"Krittika","آگنی":"Agni","تیغ و شعله":"Blade and flame","برندگی":"Sharpness","پالایش":"Purification","روهینی":"Rohini","برهما":"Brahma","ارابه‌ی گاو":"Ox cart","باروری":"Fertility","جذابیت":"Attraction","مریگاشیرا":"Mrigashira","سوما":"Soma","سر آهو":"Deer’s head","جستجو":"Search","لطافت":"Gentleness","آردرا":"Ardra","رودرا":"Rudra","قطره‌ی اشک":"Teardrop","طوفان":"Storm","هوش تیز":"Sharp intellect","پوناروسو":"Punarvasu","آدیتی":"Aditi","تیردان":"Quiver","بازگشت":"Return","امید":"Hope","تجدید":"Renewal","پوشیا":"Pushya","بریهاسپاتی":"Brihaspati","گل و پستان گاو":"Flower and cow’s udder","تغذیه":"Nourishment","حمایت":"Support","برکت":"Blessing","آشلشا":"Ashlesha","ناگاها (مارها":"The Nagas (serpents","مار چنبره‌زده":"Coiled serpent","رمز":"Mystery","نفوذ":"Influence","ماگها":"Magha","پیتارها (نیاکان":"The Pitris (ancestors","تخت شاهی":"Royal throne","اصالت":"Nobility","میراث":"Heritage","پوروا پالگونی":"Purva Phalguni","بهاگا":"Bhaga","ننو و تخت":"Hammock and bed","آسایش":"Comfort","اوتارا پالگونی":"Uttara Phalguni","آریامان":"Aryaman","پایه‌های تخت":"Legs of a bed","تعهد":"Commitment","دوستی":"Friendship","سخاوت":"Generosity","هستا":"Hasta","ساویتار":"Savitar","دست":"Hand","چاره‌جویی":"Resourcefulness","شوخ‌طبعی":"Wit","چیترا":"Chitra","ویشواکارما":"Vishvakarma","مروارید درخشان":"Bright pearl","طراحی":"Design","زیبایی‌آفرینی":"Creating beauty","درخشش":"Radiance","سواتی":"Swati","وایو":"Vayu","جوانه در باد":"Shoot in the wind","استقلال":"Independence","انعطاف":"Flexibility","ویشاکها":"Vishakha","ایندرا و آگنی":"Indra and Agni","دروازه‌ی پیروزی":"Gate of victory","هدف‌گرایی":"Goal-orientation","عزم":"Determination","انورادها":"Anuradha","میترا":"Mitra","نیلوفر":"Lotus","وفاداری":"Loyalty","سازمان‌دهی":"Organizing","جیشتا":"Jyeshtha","ایندرا":"Indra","گوشواره و چتر":"Earring and umbrella","بزرگی":"Greatness","قدرت پنهان":"Hidden power","مولا":"Mula","نیریتی":"Nirriti","ریشه‌های بسته":"Bound roots","ریشه‌کنی":"Uprooting","کاوش":"Exploration","حقیقت":"Truth","پوروا آشادها":"Purva Ashadha","آپاس (آب‌ها":"Apas (the waters","بادبزن":"Fan","شکست‌ناپذیری":"Invincibility","اقناع":"Persuasion","اوتارا آشادها":"Uttara Ashadha","ویشودِوا":"Vishvedevas","عاج فیل":"Elephant tusk","پیروزی ماندگار":"Lasting victory","درستکاری":"Integrity","شراوانا":"Shravana","ویشنو":"Vishnu","گوش":"Ear","شنیدن":"Listening","دانیشتا":"Dhanishtha","هشت واسو":"The eight Vasus","طبل":"Drum","ریتم":"Rhythm","شاتابیشا":"Shatabhisha","وارونا":"Varuna","دایره‌ی تهی":"Empty circle","پوروا بهادراپادا":"Purva Bhadrapada","آجا اکاپادا":"Aja Ekapada","شمشیر":"Sword","آتش درونی":"Inner fire","آرمان":"Ideals","شدت":"Intensity","اوتارا بهادراپادا":"Uttara Bhadrapada","آهیر بودنیا":"Ahir Budhnya","مار ژرفا":"Serpent of the deep","ریواتی":"Revati","پوشان":"Pushan","ماهی":"Fish","سفر امن":"Safe journey","پایان خوش":"Happy ending","در اوج قدرت است؛ بهترین نتایج این سیاره را می‌دهد.":"It is at the peak of its power; it gives this planet’s best results.","مولاتریکونا":"Moolatrikona","در «دفتر کار» خود است؛ بسیار قوی و کارآمد.":"It is in its own “office”; very strong and effective.","خانه‌ی خود":"Own sign","در خانه‌ی خودش است؛ راحت، مطمئن و قوی.":"It is in its own sign; comfortable, confident and strong.","برج دوست":"Friendly sign","مهمان دوست است؛ نتایج خوب و روان.":"It is a guest of a friend; good, smooth results.","برج خنثی":"Neutral sign","در برج خنثی است؛ نتیجه به خانه و همنشین‌ها بستگی دارد.":"It is in a neutral sign; results depend on the house and companions.","برج دشمن":"Enemy sign","در برج دشمن است؛ اصطکاک و تلاش بیشتر.":"It is in an enemy sign; more friction and effort.","در ضعیف‌ترین حالت است؛ درس‌هایش سخت‌تر است، مگر اینکه هبوطش شکسته شود (نیچا بنگا).":"It is at its weakest; its lessons are harder, unless its debilitation is cancelled (neecha bhanga).","بودهادیتیا: هوش درخشان، فصاحت و قدرت تحلیل.":"Budhaditya: brilliant intelligence, eloquence and analytical power.","خرد عاطفی، آرامش ذهن و محبوبیت.":"Emotional wisdom, a calm mind and popularity.","چاندرا-منگالا: جسارت مالی، احساسات تند و پرشور.":"Chandra-Mangala: financial daring, intense and passionate emotions.","گورو-چاندالا: باورهای غیرسنتی؛ مراقب استاد یا راهنمای دروغین باش.":"Guru-Chandala: non-traditional beliefs; beware of a false teacher or guide.","تنش با پدر یا اقتدار؛ مسئولیت سنگین و دیر به ثمر نشستن.":"Tension with the father or authority; heavy responsibility and late rewards.","ویش یوگا: جدیت و سنگینی عاطفی؛ با کار درونی به بلوغ می‌رسد.":"Vish yoga: seriousness and emotional heaviness; it matures through inner work.","گرهان (کسوف): ابهام در هویت یا رابطه با پدر؛ عطش دیده شدن.":"Grahan (eclipse): ambiguity in identity or in the relationship with the father; a hunger to be seen.","گرهان (کسوف): بی‌اعتنایی به منیت، کشش معنوی، تردید به خود.":"Grahan (eclipse): indifference to ego, a spiritual pull, self-doubt.","گرهان (خسوف): ذهن مضطرب و پرخیال؛ شهود قوی اما ناآرام.":"Grahan (lunar eclipse): an anxious, imaginative mind; strong but restless intuition.","گرهان (خسوف): جدایی عاطفی، حس‌های فراحسی.":"Grahan (lunar eclipse): emotional detachment, extrasensory feelings.","ترمز و گاز با هم؛ خطر حادثه، اما پشتکار آهنین.":"Brake and gas together; risk of accidents, but iron perseverance.","وفاداری و هنر ماندگار؛ عشقی که دیر اما محکم می‌آید.":"Loyalty and lasting art; a love that comes late but firmly.","جاذبه‌ی پرشور و هنر پرانرژی.":"Passionate attraction and energetic art.","آنگاراکا: انرژی انفجاری؛ جسارت بی‌مهار، مراقب خشم باش.":"Angaraka: explosive energy; unchecked daring, watch your anger.","هنر کلام، ذوق تجاری‌ـهنری.":"The art of words, a commercial-artistic flair.","دو استاد ناهمسو: کشمکش میان معنویت و لذت.":"Two clashing teachers: a tug-of-war between spirituality and pleasure.","تأخیرهای کارمایی؛ پشتکار در شرایط سخت.":"Karmic delays; perseverance in hard conditions.","دقت جراحانه، خشم ناگهانی.":"Surgical precision, sudden anger.","اراده‌ی آتشین و رهبری جنگنده.":"A fiery will and fighting leadership.","تعادل خرد و انضباط؛ مسیر حرفه‌ای جدی و اخلاقی.":"Wisdom balanced with discipline; a serious, ethical career path.","شکوه، اخلاق و رهبری محترم.":"Glory, ethics and respected leadership.","ذهن سریع و حساس؛ مراقب پراکندگی فکر باش.":"A quick, sensitive mind; watch out for scattered thinking.","لطافت، ذوق هنری و محبوبیت.":"Gentleness, artistic taste and popularity.","خلاقیت هنری؛ گاهی رقابت میان خود و شریک.":"Artistic creativity; sometimes rivalry between self and partner.","ذهن ساختارمند و عملی.":"A structured, practical mind.","ذهن تیز و زبان برنده.":"A sharp mind and a cutting tongue.","گورو-منگالا: شجاعت اخلاقی، رهبری درستکار.":"Guru-Mangala: moral courage, righteous leadership.","دانش و خرد؛ آموزش و مشاوره.":"Knowledge and wisdom; teaching and counseling.","لذت‌جویی شدید، هنر نوآورانه.":"Intense pleasure-seeking, innovative art.","ذهن نوآور و فناورانه؛ گاهی فریب‌کار.":"An innovative, technological mind; sometimes deceptive.","معنویت عمیق و خرد شهودی.":"Deep spirituality and intuitive wisdom.","جدایی از لذت‌ها، عشق معنوی.":"Detachment from pleasures, spiritual love.","زهد، کار بی‌نام، انضباط معنوی.":"Asceticism, anonymous work, spiritual discipline.","شهود ذهنی، ذهن غیرخطی.":"Mental intuition, a non-linear mind.","گاجاکساری یوگا":"Gajakesari yoga","مشتری در کندرا":"Jupiter in a kendra","۱۰) از ماه":"10) from the Moon","خرد، شهرت، احترام و توان غلبه بر مشکلات؛ «فیل و شیر».":"Wisdom, fame, respect and the power to overcome problems; “the elephant and the lion”.","بودهادیتیا یوگا":"Budhaditya yoga","خورشید و عطارد در یک برج":"Sun and Mercury in the same sign","هوش درخشان، فصاحت و موفقیت تحصیلی.":"Brilliant intelligence, eloquence and academic success.","چاندرا-منگالا یوگا":"Chandra-Mangala yoga","ماه و مریخ در یک برج":"Moon and Mars in the same sign","جسارت مالی و توان کسب ثروت با تلاش.":"Financial daring and the ability to earn wealth through effort.","روچاکا یوگا":"Ruchaka yoga","مریخ در خانه‌ی خود یا اعتلا و در کندرا":"Mars in its own sign or exalted, and in a kendra","یکی از پنج مهاپوروشا: شجاعت، فرماندهی، بدن قوی.":"One of the five Mahapurushas: courage, command, a strong body.","بهادرا یوگا":"Bhadra yoga","عطارد در خانه‌ی خود یا اعتلا و در کندرا":"Mercury in its own sign or exalted, and in a kendra","مهاپوروشا: هوش، سخنوری و مهارت تجاری.":"Mahapurusha: intelligence, eloquence and business skill.","هامسا یوگا":"Hamsa yoga","مشتری در خانه‌ی خود یا اعتلا و در کندرا":"Jupiter in its own sign or exalted, and in a kendra","مهاپوروشا: خرد، پاکی، احترام و معنویت.":"Mahapurusha: wisdom, purity, respect and spirituality.","مالاویا یوگا":"Malavya yoga","زهره در خانه‌ی خود یا اعتلا و در کندرا":"Venus in its own sign or exalted, and in a kendra","مهاپوروشا: زیبایی، هنر، رفاه و ازدواج خوب.":"Mahapurusha: beauty, art, comfort and a good marriage.","شاشا یوگا":"Shasha yoga","زحل در خانه‌ی خود یا اعتلا و در کندرا":"Saturn in its own sign or exalted, and in a kendra","مهاپوروشا: قدرت سازمانی، رهبری مردم و پشتکار.":"Mahapurusha: organizational power, leading people and perseverance.","راجا یوگا":"Raja yoga","صاحب کندرا و صاحب تریکونا همنشین یا در نظر متقابل":"A kendra lord and a trikona lord conjunct or in mutual aspect","قدرت، جایگاه و موفقیت، به‌ویژه در دوره‌ی دشای این سیاره‌ها.":"Power, status and success, especially during the dashas of these planets.","ویپاریتا راجا یوگا":"Viparita raja yoga","صاحب خانه‌های ۶، ۸ یا ۱۲ در خانه‌های ۶، ۸ یا ۱۲":"The lord of house 6, 8 or 12 in house 6, 8 or 12","موفقیت از دل بحران؛ سختی‌ها به سکوی پرش تبدیل می‌شوند.":"Success out of crisis; hardships become a springboard.","نیچا بنگا راجا یوگا":"Neecha bhanga raja yoga","سیاره‌ی در هبوط که صاحب برجش در کندرا از طالع یا ماه است":"A debilitated planet whose sign lord is in a kendra from the ascendant or the Moon","ضعف به قدرت تبدیل می‌شود؛ صعود پس از سختی.":"Weakness turns into strength; a rise after hardship.","کمادروما یوگا":"Kemadruma yoga","هیچ سیاره‌ای (جز خورشید و گره‌ها) در خانه‌های دوم و دوازدهم ماه و همراه آن نیست":"No planet (except the Sun and the nodes) in the second or twelfth house from the Moon or with it","احساس تنهایی یا بی‌پشتوانگی؛ با سیاره‌های قوی در کندرا خنثی می‌شود.":"A feeling of loneliness or lack of support; cancelled by strong planets in kendras.","گورو-چاندالا یوگا":"Guru-Chandala yoga","مشتری همنشین راهو":"Jupiter conjunct Rahu","باورهای غیرسنتی؛ هشدار درباره‌ی راهنماهای دروغین.":"Non-traditional beliefs; a warning about false guides.","گرهان یوگا":"Grahan yoga","خورشید یا ماه همنشین راهو یا کتو":"The Sun or Moon conjunct Rahu or Ketu","آشفتگی در هویت یا ذهن؛ شهود قوی اما ناآرام.":"Turmoil in identity or mind; strong but restless intuition.","کالا سارپا یوگا":"Kala Sarpa yoga","همه‌ی هفت سیاره در یک طرف محور راهو و کتو":"All seven planets on one side of the Rahu–Ketu axis","زندگی پرنوسان و سرنوشت‌محور؛ اوج‌های بزرگ پس از تلاش.":"A turbulent, destiny-driven life; great peaks after effort.","ایران":"Iran","تهران":"Tehran","مشهد":"Mashhad","اصفهان":"Isfahan","شیراز":"Shiraz","تبریز":"Tabriz","کرج":"Karaj","اهواز":"Ahvaz","قم":"Qom","کرمانشاه":"Kermanshah","ارومیه":"Urmia","رشت":"Rasht","زاهدان":"Zahedan","کرمان":"Kerman","همدان":"Hamadan","یزد":"Yazd","اردبیل":"Ardabil","بندرعباس":"Bandar Abbas","اراک":"Arak","زنجان":"Zanjan","سنندج":"Sanandaj","قزوین":"Qazvin","خرم‌آباد":"Khorramabad","گرگان":"Gorgan","ساری":"Sari","بوشهر":"Bushehr","بیرجند":"Birjand","ایلام":"Ilam","شهرکرد":"Shahrekord","یاسوج":"Yasuj","سمنان":"Semnan","بجنورد":"Bojnurd","کاشان":"Kashan","آمل":"Amol","بابل":"Babol","دزفول":"Dezful","نیشابور":"Neyshabur","سبزوار":"Sabzevar","آبادان":"Abadan","قشم":"Qeshm","کیش":"Kish","جهان":"World","دبی":"Dubai","استانبول":"Istanbul","لندن":"London","پاریس":"Paris","برلین":"Berlin","هامبورگ":"Hamburg","آمستردام":"Amsterdam","استکهلم":"Stockholm","وین":"Vienna","رم":"Rome","مسکو":"Moscow","ایروان":"Yerevan","باکو":"Baku","کابل":"Kabul","هرات":"Herat","بغداد":"Baghdad","دوحه":"Doha","دهلی":"Delhi","بمبئی":"Mumbai","کوالالامپور":"Kuala Lumpur","توکیو":"Tokyo","سیدنی":"Sydney","ملبورن":"Melbourne","تورنتو":"Toronto","ونکوور":"Vancouver","نیویورک":"New York","لس‌آنجلس":"Los Angeles","یوگاکارکا":"Yogakaraka","صاحب":"lord of","همنشین‌اند.":"are conjunct.","جای هم را عوض کرده‌اند (پاریوارتانا).":"have exchanged signs (parivartana).","به هم نظر متقابل دارند.":"are in mutual aspect.","صاحب خانه‌ی":"Lord of house","در خانه‌ی":"in house","در هبوط است اما هبوطش شکسته شده.":"is debilitated, but its debilitation is cancelled.","پول":"Money","دارایی":"Assets","درآمد و انباشت":"Income and savings","شغل و جایگاه":"Career and status","حرفه، پیشرفت شغلی و موقعیت اجتماعی":"Profession, career growth and social position","عشق و ازدواج":"Love and marriage","شراکت عاطفی":"Romantic partnership","مهاجرت و خارج":"Migration and abroad","زندگی در خارج":"Living abroad","سفرهای دور":"Long journeys","فاصله از زادگاه":"Distance from your birthplace","سلامت و بنیه":"Health and vitality","بنیه‌ی بدنی، انرژی حیاتی و توان بهبود":"Physical vitality, life energy and recovery","تحصیل و هوش":"Education and intelligence","تحصیل و هوش تحلیلی":"Education and analytical intelligence","خانه و خانواده":"Home and family","آرامش، خانه، ملک و رابطه با خانواده":"Peace, home, property and family relationships","فرزند و خلاقیت":"Children and creativity","خلاقیت و بیان شخصی":"Creativity and self-expression","دیده شدن":"Being seen","اعتبار و نفوذ":"Reputation and influence","شجاعت و رقابت":"Courage and competition","جسارت، پیروزی بر رقیب و پشتکار":"Daring, victory over rivals and perseverance","شهود و رشد درونی":"Intuition and inner growth","در دوستانا (ویپاریتا":"in a dusthana (viparita","در کندرا یا تریکونا":"in a kendra or trikona","در خانه‌ی سود":"in the house of gains","محترق":"combust","نظر":"aspect","به خانه‌ی":"on house","راهو در خانه‌ی":"Rahu in house","صاحب طالع در خانه‌ی":"Ascendant lord in house","صاحب خانه‌ی ۴ (زادگاه) در خانه‌ی":"Lord of house 4 (homeland) in house","صاحب خانه‌ی ۱۲ در خانه‌ی":"Lord of house 12 in house","ماه در خانه‌ی ۱۲":"Moon in house 12","طالع در برج متحرک":"Ascendant in a movable sign","سیاره در خانه‌ی ۱۲":"planet(s) in house 12","صاحب طالع":"Ascendant lord","در طالع":"in the ascendant","کتو در خانه‌ی ۱۲ (موکشا":"Ketu in house 12 (moksha","مشتری در خانه‌ی":"Jupiter in house","نماینده":"Significator","پتانسیل بالا":"High potential","این حوزه در چارت پشتیبانی قوی دارد؛ با تلاش کم‌تر نتیجه‌ی بیشتری می‌دهد.":"This area has strong support in the chart; less effort brings more results.","خوب":"Good","زمینه‌ی مساعدی هست؛ با تمرکز و زمان‌بندی درست رشد می‌کند.":"There is favorable ground; it grows with focus and good timing.","متوسط":"Average","نتیجه بیشتر به تلاش و انتخاب‌های خودت بستگی دارد تا به چارت.":"Results depend more on your own effort and choices than on the chart.","چالشی":"Challenging","جای کار و رشد زیادی دارد؛ درس‌های این حوزه با صبر و آگاهی حل می‌شوند.":"Lots of room for work and growth; the lessons of this area are solved with patience and awareness.","هفتم":"7th","چهارم":"4th","هشتم":"8th","پنجم":"5th","نهم":"9th","سوم":"3rd","دهم":"10th","ورود دستی مختصات…":"Enter coordinates manually…","تاریخ تولد را کامل وارد کن.":"Enter the full birth date.","مختصات معتبر نیست؛ عرض بین ۸۹- و ۸۹ و طول بین ۱۸۰- و ۱۸۰.":"Invalid coordinates; latitude must be between -89 and 89 and longitude between -180 and 180.","معادل شمسی":"Solar Hijri equivalent","ساعت جهانی":"Universal time","اختلاف":"Offset","آیانامشا":"Ayanamsa","برگشتی":"Retrograde","وارگوتاما":"Vargottama","لگنا (طالع":"Lagna (ascendant","پادای":"Pada","راشی ماه":"Moon sign","برج اصلی در ودیک":"Main sign in Vedic","ناکشاترای ماه":"Moon’s nakshatra","حاکم":"Ruler","دشای جاری":"Current dasha","تا":"to","راشی":"Rashi","ناوامشا":"Navamsa","خانه‌ی":"House","چارت راشی D1":"Rashi chart D1","چارت ناوامشا D9":"Navamsa chart D9","عدد کم‌رنگ = شماره‌ی برج (۱ حمل … ۱۲ حوت":"Faint number = sign number (1 Aries … 12 Pisces","عدد = شماره‌ی خانه":"number = house number","نام برج بالای هر خانه، شماره‌ی خانه پایین آن":"Sign name at the top of each house, house number at the bottom","جایگاه در ناوامشا":"Navamsa positions","لگنا":"Lagna","رابطه‌ی طبیعی‌شان دوستانه است؛ همدیگر را تقویت می‌کنند.":"By nature they are friendly; they strengthen each other.","رابطه‌ی طبیعی‌شان پرتنش است؛ میان این دو حوزه کشمکش هست.":"By nature they are in tension; there is a tug-of-war between these two areas.","رابطه‌شان خنثی یا مختلط است؛ نتیجه به برج و خانه بستگی دارد.":"Their relationship is neutral or mixed; the result depends on sign and house.","با":"with","درمی‌آمیزد.":"blends with.","با نظر":"with aspect","را بر":"onto","می‌تاباند.":"shines.","همنشین در خانه‌ی":"Together in house","در این چارت هیچ دو سیاره‌ای هم‌برج نیستند.":"No two planets share a sign in this chart.","⇄ نظر متقابل":"⇄ mutual aspect","← نظر":"→ aspect","نظر دوطرفه است و این پیوند را پررنگ‌تر می‌کند.":"The aspect goes both ways, which makes this bond stronger.","نظری میان سیاره‌ها نیست.":"There are no aspects between planets.","دوره‌ی":"Period of","جاری":"current","سال":"years","هیچ‌کدام از یوگاهای کلاسیک فهرست در این چارت فعال نیست.":"None of the classical yogas on the list are active in this chart.","فعال در دشای جاری":"Active in the current dasha","خلاصه":"Summary","دوره‌ی جاری":"The current period","مستقیماً به این حوزه وصل است؛ الان زمان فعال شدنش است.":"is directly tied to this area; now is when it activates.","خانه‌ها و نماینده‌ها":"Houses and significators","خانه‌های":"Houses","عوامل تقویت‌کننده":"Strengthening factors","عوامل تضعیف‌کننده (جای رشد":"Weakening factors (room to grow","سیاره":"Planet","سانسکریت":"Sanskrit","کارکا (نماینده‌ی":"Karaka (signifies","طبیعت":"Nature","دشمنان":"Enemies","روز":"Day","سنگ":"Gemstone","برج":"Sign","عنصر":"Element","کیفیت":"Quality","کلیدواژه‌ها":"Keywords","نام":"Name","موضوعات":"Themes","نوع":"Type","ناکشاترا":"Nakshatra","بازه (سایدریال":"Range (sidereal","ایزد":"Deity","نماد":"Symbol","در برج":"In","در":"in","با رنگ":"with the color of","بیان می‌شود.":"is expressed.","در ناکشاترای":"In nakshatra",". کیفیت":". Quality","حرکت":"Motion","برگشتی (وَکرا":"Retrograde (vakra","در ودیک، سیاره‌ی برگشتی از نظر قدرت حرکتی (چِشتا بالا) قوی شمرده می‌شود.":"In Vedic astrology a retrograde planet counts as strong in motional strength (high cheshta bala).","مستقیم. اگر برگشتی بود":"Direct. If it were retrograde","خیلی نزدیک خورشید است؛ قدرت مستقلش زیر نور خورشید کم‌رنگ می‌شود و موضوعاتش با هویت و اقتدار گره می‌خورد.":"It is very close to the Sun; its independent strength fades under the Sun’s light and its themes get tied to identity and authority.","در راشی و ناوامشا در یک برج است؛ نشانه‌ی قدرت و ثبات این سیاره.":"It is in the same sign in rashi and navamsa; a sign of this planet’s strength and stability.","نظرهایی که می‌اندازد":"Aspects it casts","نظرهایی که می‌گیرد":"Aspects it receives","همنشینی و تأثیر متقابل":"Conjunctions and mutual influence","دوره‌ی دشای":"Dasha period","در این چارت":"in this chart","بهاوا":"Bhava","صاحب خانه":"House lord","عنصر و کیفیت":"Element and quality","محل صاحب":"Lord’s position","طالع":"Ascendant","ناکشاترای":"Nakshatra","رنگ برج":"Sign color","این حوزه با کیفیت":"This area, with the quality of","تجربه می‌شود.":"is experienced.","صاحب این خانه":"The lord of this house","نشسته؛ موضوعات":"sits; the themes of","به حوزه‌ی":"to the area of","گره خورده‌اند.":"are tied.","سیاره‌های این خانه":"Planets in this house","خالی است؛ نتیجه را صاحب خانه و نظرها تعیین می‌کنند.":"Empty; the house lord and aspects decide the result.","هیچ سیاره‌ای به این خانه نظر ندارد.":"No planet aspects this house.","از ۲۷":"of 27","بازه":"Range","در دشا":"In the dasha","ماه در این ناکشاتراست":"The Moon is in this nakshatra","پس زندگی با دوره‌ی":"so life began with the period of","شروع شده":"began","سال از آن باقی بود.":"years of it remained.","آلپایو (کوتاه":"Alpayu (short","مادهیایو (میانه":"Madhyayu (medium","پورنایو (بلند":"Purnayu (long","پیش‌بینی پنهان":"Hidden forecast","آیوردایا · طول عمر در سنت جیوتیش":"Ayurdaya · lifespan in the Jyotish tradition","حدود":"About","بازه‌های ماراکا (حساس":"Maraka windows (sensitive","سن":"Age","در این بازه دوره‌ی ماراکای شاخصی پیدا نشد.":"No significant maraka period was found in this range.","محاسبه‌ی سنتی جیمینی و پاراشارا؛ پیش‌گویی واقعی نیست.":"A traditional Jaimini and Parashara calculation; not a real prediction.","تبلت":"Tablet","دستگاه":"Device","ـ":"—","نمودار پتانسیل حوزه‌های زندگی":"Life potential chart","فروردین":"Farvardin","اردیبهشت":"Ordibehesht","خرداد":"Khordad","تیر":"Tir","مرداد":"Mordad","شهریور":"Shahrivar","مهر":"Mehr","آبان":"Aban","آذر":"Azar","دی":"Dey","بهمن":"Bahman","اسفند":"Esfand","پرونده‌ی":"Profile of","و":"and","اکنون":"Now","زبان":"Language","شمسی":"Solar Hijri","عدد کم‌رنگ = شماره‌ی برج (۱ حمل … ۱۲ حوت)":"Faint number = sign number (1 Aries … 12 Pisces)"};
+window.I18N_EXACT = {"خانه": "House", "خو": "Su", "ما": "Mo", "مر": "Ma", "عط": "Me", "مش": "Ju", "زه": "Ve", "زح": "Sa", "را": "Ra", "کت": "Ke", "لگ": "As"};
+(function(){ var st = document.createElement('style');
+  st.textContent = 'html[lang="en"] .tl .now::after{content:"Now"}html[lang="en"] td .en{display:none}html[data-layout="mobile"] .i18n-tg{bottom:calc(88px + env(safe-area-inset-bottom,0px))}';
+  document.head.appendChild(st); })();
+
+/* ===== دوزبانه: فارسی (پیش‌فرض) / English =====
+   متن‌ها در کد فارسی می‌مانند؛ در حالت انگلیسی، متن نمایش‌داده‌شده (DOM، ویژگی‌ها، بوم) با دیکشنری I18N_EN ترجمه می‌شود.
+   منطق و داده‌های برنامه دست نمی‌خورند. */
+(function(){
+  var KEY = 'vibeLang', ATTRS = ['title','aria-label','placeholder','alt'];
+  var DIG = {'۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9','٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9','٫':'.','٬':','};
+  var FA_RE = /[؀-ۿ]/, DIG_RE = /[۰-۹٠-٩٫٬]/g;
+  var L = /[ء-يٱ-ۓۺ-ۿ‌]/; /* حرف فارسی برای مرز کلمه */
+  function digits(s){ return s.replace(DIG_RE, function(d){ return DIG[d]; }); }
+  function norm(s){ return digits(s).replace(/\s+/g,' ').trim(); }
+
+  var SRC = window.I18N_EN || {}, PAT = window.I18N_PAT || [], SKIP = '[data-i18n-skip]' + (window.I18N_SKIP ? ',' + window.I18N_SKIP : '');
+  var D = Object.create(null), keys = [];
+  Object.keys(SRC).forEach(function(k){ var n = norm(k); if(n && SRC[k] != null){ D[n] = SRC[k]; if(FA_RE.test(n)) keys.push(n); } });
+  keys.sort(function(a,b){ return b.length - a.length; });
+  var X = Object.create(null); Object.keys(window.I18N_EXACT || {}).forEach(function(k){ X[norm(k)] = window.I18N_EXACT[k]; });
+  var esc = function(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); };
+  var SUB = keys.length ? new RegExp('(^|[^\\u0621-\\u064A\\u0671-\\u06D3\\u06FA-\\u06FF\\u200C])(' + keys.map(esc).join('|') + ')(?=$|[^\\u0621-\\u064A\\u0671-\\u06D3\\u06FA-\\u06FF\\u200C])','g') : null;
+
+  function punct(s){
+    return s.replace(/‌/g,'').replace(/،\s?/g,', ').replace(/؛\s?/g,'; ').replace(/؟/g,'?').replace(/٪/g,'%').replace(/«\s?([^«»]*?)\s?»/g,'“$1”')
+            .replace(/[←→]/g, function(a){ return a === '←' ? '→' : '←'; });
+  }
+  var cache = Object.create(null);
+  function tr(text){
+    if(!text || !(FA_RE.test(text) || /[←→]/.test(text))) return text;
+    if(text in cache) return cache[text];
+    var lead = text.match(/^\s*/)[0], tail = text.match(/\s*$/)[0], core = norm(text), out;
+    var em = core.match(/^([\s·:،,.\-+()|*«»]*)([\s\S]*?)([\s·:،,.\-+()|*«»]*)$/);
+    if(core in X) out = X[core];
+    else if(core in D) out = D[core];
+    else if(em[2] in D) out = em[1] + D[em[2]] + em[3];
+    else {
+      out = core;
+      for(var i=0;i<PAT.length;i++){ var p = PAT[i]; if(p[0].test(out)){ out = out.replace(p[0], p[1]); break; } }
+      if(FA_RE.test(out) && SUB){ out = out.replace(SUB, function(m, pre, k){ return pre + D[k]; }); }
+      if(FA_RE.test(out) && SUB){ out = out.replace(SUB, function(m, pre, k){ return pre + D[k]; }); }
+    }
+    out = lead + punct(digits(out)).replace(/([.!?]\s+)([a-z])/g, function(m, p, c){ return p + c.toUpperCase(); }) + tail;
+    cache[text] = out; return out;
+  }
+
+  var lang = window.__LANG === 'en' ? 'en' : 'fa', TXT = new WeakMap(), ATT = new WeakMap();
+  function skip(el){ return el && el.closest && el.closest(SKIP); }
+  function doText(n){
+    var p = n.parentNode; if(!p || p.nodeName === 'SCRIPT' || p.nodeName === 'STYLE' || p.nodeName === 'TEXTAREA' || skip(p)) return;
+    var rec = TXT.get(n), cur = n.data;
+    if(rec && rec.tr === cur) return;           /* قبلاً ترجمه شده */
+    var t = tr(cur); if(t === cur) return;
+    if(p.childNodes.length === 1) t = t.replace(/^(\s*)([a-z])/, function(m, s, c){ return s + c.toUpperCase(); });
+    TXT.set(n, {orig:cur, tr:t}); n.data = t;
+  }
+  function doAttrs(el){
+    if(skip(el)) return;
+    var rec = ATT.get(el);
+    if(el !== document.documentElement && el.getAttribute('dir') === 'rtl'){
+      if(!rec){ rec = {}; ATT.set(el, rec); }
+      rec.dir = {orig:'rtl', tr:'ltr'}; el.setAttribute('dir', 'ltr');
+    }
+    if(el.hasAttribute('data-en') && !(rec && rec.__html != null)){
+      if(!rec){ rec = {}; ATT.set(el, rec); }
+      rec.__html = el.innerHTML; el.innerHTML = el.getAttribute('data-en');
+    }
+    for(var i=0;i<ATTRS.length;i++){
+      var a = ATTRS[i], v = el.getAttribute(a); if(v == null) continue;
+      if(rec && rec[a] && rec[a].tr === v) continue;
+      var t = tr(v); if(t === v) continue;
+      if(!rec){ rec = {}; ATT.set(el, rec); } rec[a] = {orig:v, tr:t}; el.setAttribute(a, t);
+    }
+  }
+  function walk(root){
+    if(root.nodeType === 3){ doText(root); return; }
+    if(root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
+    if(root.nodeType === 1) doAttrs(root);
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT), n;
+    while((n = w.nextNode())){ if(n.nodeType === 3) doText(n); else doAttrs(n); }
+  }
+  function restore(){
+    var w = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT), n;
+    while((n = w.nextNode())){
+      if(n.nodeType === 3){ var r = TXT.get(n); if(r && r.tr === n.data) n.data = r.orig; TXT.delete(n); }
+      else { var a = ATT.get(n); if(a){ for(var k in a){ if(k === '__html') n.innerHTML = a[k]; else if(n.getAttribute(k) === a[k].tr) n.setAttribute(k, a[k].orig); } ATT.delete(n); } }
+    }
+  }
+  var mo = new MutationObserver(function(list){
+    if(lang !== 'en') return;
+    for(var i=0;i<list.length;i++){
+      var m = list[i];
+      if(m.type === 'characterData') doText(m.target);
+      else if(m.type === 'attributes') doAttrs(m.target);
+      else for(var j=0;j<m.addedNodes.length;j++) walk(m.addedNodes[j]);
+    }
+  });
+
+  /* متن‌های روی بوم (canvas) */
+  var C = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype;
+  if(C){ ['fillText','strokeText','measureText'].forEach(function(f){ var o = C[f]; C[f] = function(t){ if(lang === 'en' && typeof t === 'string'){ var a = Array.prototype.slice.call(arguments); a[0] = tr(t); return o.apply(this, a); } return o.apply(this, arguments); }; }); }
+
+  function apply(){
+    var r = document.documentElement;
+    r.lang = lang; r.dir = lang === 'en' ? 'ltr' : 'rtl';
+    if(lang === 'en'){ walk(document.documentElement); mo.observe(document.documentElement, {subtree:true, childList:true, characterData:true, attributes:true, attributeFilter:ATTRS.concat(['dir'])}); }
+    else { mo.disconnect(); restore(); }
+    var tt = document.querySelector('title'); if(tt){ if(!tt.__fa) tt.__fa = tt.textContent; document.title = lang === 'en' ? tr(tt.__fa) : tt.__fa; }
+    r.classList.remove('i18n-wait');
+    [].forEach.call(document.querySelectorAll('[data-i18n-switch] [data-l]'), function(b){ b.setAttribute('aria-pressed', String(b.dataset.l === lang)); });
+  }
+  function set(l, save){
+    var changed = l !== lang; lang = l; window.__LANG = l;
+    if(save){ try { localStorage.setItem(KEY, l); } catch(e){} }
+    if(changed){ apply(); if(typeof window.I18N_HOOK === 'function') try { window.I18N_HOOK(l); } catch(e){} try { window.dispatchEvent(new CustomEvent('langchange', {detail:l})); } catch(e){} try { window.dispatchEvent(new Event('resize')); } catch(e){} }
+  }
+
+  /* دکمه‌ی تغییر زبان */
+  var tg = document.createElement('div');
+  tg.className = 'i18n-tg'; tg.setAttribute('data-i18n-skip',''); tg.setAttribute('data-i18n-switch',''); tg.setAttribute('role','group'); tg.setAttribute('aria-label','Language / زبان');
+  tg.innerHTML = '<button type="button" data-l="fa" lang="fa">فا</button><button type="button" data-l="en" lang="en">EN</button>';
+  document.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-i18n-switch] [data-l]'); if(b){ e.stopPropagation(); set(b.dataset.l, true); } }, true);
+  document.body.appendChild(tg);
+
+  /* بار اول: پرسیدن زبان */
+  var saved = null, canSave = true;
+  try { saved = localStorage.getItem(KEY); } catch(e){ canSave = false; }
+  if(canSave && saved !== 'fa' && saved !== 'en'){
+    var ask = document.createElement('div');
+    ask.className = 'i18n-ask'; ask.setAttribute('role','dialog'); ask.setAttribute('aria-modal','true'); ask.setAttribute('aria-labelledby','i18nT');
+    ask.innerHTML = '<div class="box"><h2 id="i18nT"><span lang="fa" dir="rtl">زبان را انتخاب کن</span><span lang="en" dir="ltr">Choose your language</span></h2><p><span lang="fa" dir="rtl">بعداً هم هر وقت خواستی عوضش کن</span><span lang="en" dir="ltr">You can change it anytime later</span></p>' +
+      '<div class="row"><button type="button" class="pri" data-l="fa" lang="fa">فارسی<small>Persian</small></button><button type="button" data-l="en" lang="en">English<small>انگلیسی</small></button></div></div>';
+    var pick = function(l){ set(l, true); ask.remove(); document.removeEventListener('keydown', onKey, true); };
+    var onKey = function(e){ if(e.key === 'Escape'){ e.stopPropagation(); pick('fa'); } };
+    ask.addEventListener('click', function(e){ var b = e.target.closest('button'); if(b) pick(b.dataset.l); else if(e.target === ask) pick('fa'); });
+    document.addEventListener('keydown', onKey, true);
+    ask.setAttribute('data-i18n-skip','');
+    document.body.appendChild(ask);
+    setTimeout(function(){ var b = ask.querySelector('.pri'); if(b) b.focus(); }, 50);
+  }
+  window.I18N = { tr:tr, set:function(l){ set(l, true); }, get lang(){ return lang; } };
+  apply();
+})();
+</script>
+<!--/i18n-->
+</body>
+</html>

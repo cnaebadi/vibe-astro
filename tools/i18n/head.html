@@ -1,0 +1,33 @@
+<!--i18n-head-->
+<script>
+/* زبان: قبل از رندر، جهت صفحه را تنظیم می‌کند تا پرش دیده نشود */
+(function(){
+  var l = 'fa'; try { l = localStorage.getItem('vibeLang') || 'fa'; } catch(e){}
+  if(l === 'en'){ var r = document.documentElement; r.lang = 'en'; r.dir = 'ltr'; r.classList.add('i18n-wait'); }
+  window.__LANG = l === 'en' ? 'en' : 'fa';
+  window.I18L = function(fa, en){ return window.__LANG === 'en' ? en : fa; };
+})();
+</script>
+<style>
+html.i18n-wait body{visibility:hidden}
+.i18n-tg{position:fixed;z-index:9990;bottom:14px;inset-inline-start:14px;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(18,16,34,.72);border:1px solid rgba(241,212,139,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.i18n-tg button{all:unset;cursor:pointer;font:600 12px/1 Vazirmatn,system-ui,sans-serif;color:rgba(236,239,250,.7);padding:7px 11px;border-radius:999px;transition:background .2s,color .2s}
+.i18n-tg button[aria-pressed="true"]{background:rgba(241,212,139,.92);color:#1a1530}
+.i18n-tg button:focus-visible{outline:2px solid #f1d48b;outline-offset:2px}
+.i18n-ask{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:16px;background:rgba(6,5,14,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:i18nIn .35s ease}
+.i18n-ask .box{width:min(360px,100%);padding:26px 22px 20px;border-radius:22px;text-align:center;background:linear-gradient(160deg,rgba(40,32,72,.96),rgba(20,17,38,.96));border:1px solid rgba(241,212,139,.3);box-shadow:0 20px 60px rgba(0,0,0,.5);color:#eceffa;font-family:Vazirmatn,system-ui,sans-serif}
+.i18n-ask h2{margin:0 0 8px;font-size:1.15rem;font-weight:800;color:#f1d48b}
+.i18n-ask h2 span,.i18n-ask p span{display:block}
+.i18n-ask h2 span[lang=en]{font-size:.92rem;font-weight:600;opacity:.85;margin-top:2px}
+.i18n-ask p{margin:0 0 18px;font-size:.86rem;color:rgba(236,239,250,.6)}
+.i18n-ask .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.i18n-ask button{all:unset;box-sizing:border-box;cursor:pointer;padding:14px 10px;border-radius:14px;font:700 1rem/1.2 Vazirmatn,system-ui,sans-serif;text-align:center;border:1px solid rgba(241,212,139,.35);color:#eceffa;transition:transform .15s,background .2s}
+.i18n-ask button:hover{transform:translateY(-2px);background:rgba(241,212,139,.12)}
+.i18n-ask button.pri{background:rgba(241,212,139,.92);color:#1a1530;border-color:transparent}
+.i18n-ask button:focus-visible{outline:2px solid #f1d48b;outline-offset:3px}
+.i18n-ask small{display:block;font-weight:400;font-size:.72rem;opacity:.7;margin-top:3px}
+@keyframes i18nIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.i18n-ask{animation:none}}
+@media print{.i18n-tg{display:none}}
+</style>
+<!--/i18n-head-->
