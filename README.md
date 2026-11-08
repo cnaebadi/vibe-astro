@@ -1,4 +1,4 @@
-# Vibe Coded
+# Vibe Astro
 
 ![Vibe coded with Claude](https://img.shields.io/badge/vibe%20coded-with%20Claude-d6b46a)
 ![Single file](https://img.shields.io/badge/each%20project-one%20HTML%20file-6b6fe0)
